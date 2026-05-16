@@ -1,11 +1,35 @@
 ---
 // src/pages/[id].astro
+import { readFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQ from '../components/FAQ.astro';
 import Gallery from '../components/Gallery.astro';
 import db from '../data/db.json';
+
+// ── faq6000.txt 전체 파싱 (빌드 타임에 1회 실행) ──────────────────────────
+const _faqFilePath = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  '../../faq6000.txt'
+);
+const _faqRaw = readFileSync(_faqFilePath, 'utf-8');
+
+// "Q. ...\nA. ..." 블록을 빈 줄 기준으로 분리 후 파싱
+const _allFaqs: { q: string; a: string }[] = [];
+for (const chunk of _faqRaw.split(/\n{2,}/)) {
+  const lines = chunk.split('\n');
+  const qLine = lines.find(l => l.trimStart().startsWith('Q.'));
+  const aLine = lines.find(l => l.trimStart().startsWith('A.'));
+  if (qLine && aLine) {
+    _allFaqs.push({
+      q: qLine.replace(/^Q\.\s*/, '').trim(),
+      a: aLine.replace(/^A\.\s*/, '').replace(/\]\]/g, '').trim(),
+    });
+  }
+}
 
 export async function getStaticPaths() {
   return db.map((page: any) => ({
@@ -102,6 +126,18 @@ const paginPages    = db.slice(paginStart, paginEnd);
 // ── 지도 URL (지역명 검색, 좌표 아님) ──────────────────────────────────────
 const naverMapUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(region + ' ' + keyword)}`;
 const googleMapUrl = `https://www.google.com/maps/search/${encodeURIComponent(region + ' ' + keyword)}`;
+
+// ── faq6000.txt에서 페이지별 10개 선택 (중복 없음) ─────────────────────────
+// currentIndex × 10 시작점으로 슬라이싱, 파일 끝 초과 시 순환
+const _faqTotal  = _allFaqs.length;
+const _faqStart  = (_faqTotal > 0) ? (currentIndex * 10) % _faqTotal : 0;
+const pageFaqs = Array.from({ length: 10 }, (_, i) => {
+  const raw = _allFaqs[(_faqStart + i) % _faqTotal];
+  return {
+    q: raw.q.replace(/"region"/g, region),
+    a: raw.a.replace(/"region"/g, region),
+  };
+});
 ---
 
 <BaseLayout
@@ -260,7 +296,7 @@ const googleMapUrl = `https://www.google.com/maps/search/${encodeURIComponent(re
     </section>
 
     <!-- ⑧ FAQ (작업후기 다음에 배치) -->
-    <FAQ region={region} keyword={keyword} />
+    <FAQ region={region} keyword={keyword} faqs={pageFaqs} />
 
     <!-- ⑨ 지도 링크 (region 이름 검색) -->
     <section class="flex flex-col sm:flex-row gap-3">

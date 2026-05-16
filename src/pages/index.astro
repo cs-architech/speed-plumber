@@ -1,5 +1,8 @@
 ---
 // src/pages/index.astro
+import { readFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import ContactForm from '../components/ContactForm.astro';
@@ -12,6 +15,26 @@ try {
   recentPages = db.slice(0, 20);
 } catch {
   // db.json 없을 때 빈 배열
+}
+
+// 홈페이지용 FAQ: faq6000.txt 맨 앞 10개 사용
+const _homeFaqPath = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  '../../faq6000.txt'
+);
+const _homeRaw = readFileSync(_homeFaqPath, 'utf-8');
+const homeFaqs: { q: string; a: string }[] = [];
+for (const chunk of _homeRaw.split(/\n{2,}/)) {
+  if (homeFaqs.length >= 10) break;
+  const lines = chunk.split('\n');
+  const qLine = lines.find(l => l.trimStart().startsWith('Q.'));
+  const aLine = lines.find(l => l.trimStart().startsWith('A.'));
+  if (qLine && aLine) {
+    homeFaqs.push({
+      q: qLine.replace(/^Q\.\s*/, '').replace(/"region"/g, '전국').trim(),
+      a: aLine.replace(/^A\.\s*/, '').replace(/\]\]/g, '').replace(/"region"/g, '전국').trim(),
+    });
+  }
 }
 ---
 
@@ -92,7 +115,7 @@ try {
 
     <!-- FAQ -->
     <section class="max-w-3xl mx-auto px-4 py-10">
-      <FAQ region="전국" keyword="배관막힘" />
+      <FAQ region="전국" keyword="배관막힘" faqs={homeFaqs} />
     </section>
   </main>
 
