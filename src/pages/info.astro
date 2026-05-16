@@ -1,0 +1,49 @@
+---
+// src/pages/info.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="배관막힘 소개 | 배관매니저"
+  description="배관막힘의 원인, 종류, 해결 방법을 자세히 알아보세요. 배관매니저 전문 업체가 설명합니다."
+>
+  <Header />
+
+  <main class="max-w-4xl mx-auto px-4 py-10 space-y-10">
+    <div class="text-center">
+      <h1 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">배관막힘 소개</h1>
+      <p class="text-gray-500 max-w-xl mx-auto">배관막힘의 원인부터 해결 방법까지 전문가가 알기 쉽게 설명합니다.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {[
+        { title: '배관막힘 원인', icon: '🔍', items: ['기름때·음식물 찌꺼기 축적', '헤어·이물질 누적', '배관 노후화·파손', '나무뿌리 침입', '스케일(석회질) 쌓임'] },
+        { title: '막힘 종류', icon: '📋', items: ['주방 싱크대 배관막힘', '욕실·화장실 배관막힘', '우수관·하수관막힘', '변기 막힘·역류', '세탁기 배수관막힘'] },
+        { title: '해결 방법', icon: '🛠️', items: ['고압 세척 (하이드로젯)', '배관 내시경 점검', '기계적 뚫기(스네이크)', '배관 부분 교체', '약품 처리'] },
+        { title: '예방 관리', icon: '🛡️', items: ['월 1회 뜨거운 물 + 베이킹소다', '음식물 망 필터 설치', '분기별 전문 점검', '헤어 캐처 설치', '기름 직접 투하 금지'] },
+      ].map(card => (
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
+          <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-2xl">{card.icon}</span> {card.title}
+          </h2>
+          <ul class="space-y-2">
+            {card.items.map(item => (
+              <li class="flex items-start gap-2 text-sm text-gray-600">
+                <span class="text-brand-500 mt-0.5 flex-shrink-0">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <ContactForm region="전국" keyword="배관막힘" />
+  </main>
+
+  <footer class="bg-gray-800 text-gray-400 text-xs text-center py-6 mt-12">
+    <p>© 2024 배관매니저 | Tel: 1866-2449</p>
+  </footer>
+</BaseLayout>

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+output/
+.astro/
+*.zip
+백업/
+홈페이지제작.zip

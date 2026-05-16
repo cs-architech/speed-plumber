@@ -1,0 +1,348 @@
+---
+// src/pages/[id].astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQ from '../components/FAQ.astro';
+import Gallery from '../components/Gallery.astro';
+import db from '../data/db.json';
+
+export async function getStaticPaths() {
+  return db.map((page: any) => ({
+    params: { id: page.id },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const {
+  id, region, sigungu, eupmyeondong, keyword, lat, lon,
+  mid_keyword, nearby_areas = [], images = [],
+  body_text = '', body_title = '',
+} = page;
+
+// ── 지역별 다른 키워드 풀 (첫 번째 카드 제외) ───────────────────────────────
+const kwPool = ['싱크대막힘', '변기막힘', '배관막힘', '하수구막힘', '우수관막힘',
+                '하수구역류', '배관고압세척', '하수구뚫음', '세면대막힘'];
+const altKeywords = kwPool.filter(k => k !== keyword);
+
+// ── 스핀택스 (seed 기반 고정) ──────────────────────────────────────────────
+const wordSetA: string[] = [
+  '신속한','빠른','즉각적인','전문적인','안전한','믿을 수 있는','검증된','숙련된',
+  '경험 많은','당일 출동','번개같은','초고속','30분 내','긴급한','확실한','완벽한',
+  '정확한','차별화된','과학적인','체계적인','친절한','양심적인','합리적인','가성비 좋은',
+  '15년 경력의','기술력 뛰어난','첨단 장비 보유한','근본 원인 잡는','100% 해결하는',
+];
+const wordSetB: string[] = [
+  '출동 서비스','배관 해결','현장 점검','즉시 처리','완벽한 수리','고압 세척',
+  '정밀 내시경','완전 복구','싱크대 소통','하수구 개통','이물질 제거','배관 스케일링',
+  '역류 차단','악취 박멸','유지방 파쇄','석회 파쇄','긴급 출동','배관 스캔',
+  '원인 분석','강력 세정','완벽 통수 작업','신속 통수 처리',
+];
+const wordSetC: string[] = [
+  '지금 바로 연락하세요!','24시간 대기 중입니다.','빠르게 해결해드립니다.',
+  '전문가가 직접 출동합니다.','믿고 맡겨주세요!','속 시원하게 뚫어드립니다.',
+  '당일 출동 가능합니다.','완벽한 해결을 보장합니다.','재발 없이 확실하게 고칩니다.',
+  '연중무휴 밤낮으로 달려갑니다.','전화 한 통이면 충분합니다.',
+  '확실한 통수를 약속드립니다.',
+];
+
+function seededRandom(seed: number) {
+  let s = seed;
+  return function () {
+    s = (s * 1664525 + 1013904223) & 0xffffffff;
+    return (s >>> 0) / 0xffffffff;
+  };
+}
+const rand    = seededRandom(parseInt(id.replace(/\D/g,'').slice(0,8) || '12345', 10));
+const pickA   = wordSetA[Math.floor(rand() * wordSetA.length)];
+const pickB   = wordSetB[Math.floor(rand() * wordSetB.length)];
+const pickC   = wordSetC[Math.floor(rand() * wordSetC.length)];
+const spinText = `${pickA} ${keyword} ${pickB} — ${pickC}`;
+
+// ── LocalBusiness JSON-LD ──────────────────────────────────────────────────
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: `배관매니저 ${region} ${keyword}`,
+  description: `${region} ${keyword} 전문 업체. 24시간 신속 출동, 정확한 진단과 완벽 해결.`,
+  telephone: '1866-2449',
+  url: `https://baegun-manager.com/${id}`,
+  areaServed: region,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: sigungu,
+    addressRegion: eupmyeondong || sigungu,
+    addressCountry: 'KR',
+  },
+  geo: lat && lon ? {
+    '@type': 'GeoCoordinates',
+    latitude: lat,
+    longitude: lon,
+  } : undefined,
+  openingHours: 'Mo-Su 00:00-24:00',
+  priceRange: '₩₩',
+};
+
+// ── 본문 텍스트 분할 ────────────────────────────────────────────────────────
+const bodyParagraphs = body_text
+  ? body_text.split('\n\n').filter((p: string) => p.trim()).slice(0, 25)
+  : [];
+const gridItems = bodyParagraphs.length > 0
+  ? bodyParagraphs
+  : Array.from({ length: 5 }, (_, i) => `${region} ${keyword} 작업 후기 ${i + 1}`);
+
+// ── 페이지네이션 ────────────────────────────────────────────────────────────
+const totalPages    = db.length;
+const currentIndex  = db.findIndex((p: any) => p.id === id);
+const paginStart    = Math.max(0, currentIndex - 5);
+const paginEnd      = Math.min(totalPages, paginStart + 10);
+const paginPages    = db.slice(paginStart, paginEnd);
+
+// ── 지도 URL (지역명 검색, 좌표 아님) ──────────────────────────────────────
+const naverMapUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(region + ' ' + keyword)}`;
+const googleMapUrl = `https://www.google.com/maps/search/${encodeURIComponent(region + ' ' + keyword)}`;
+---
+
+<BaseLayout
+  title={`${region} ${keyword} | 배관막힘 전문 업체 1866-2449`}
+  description={`${region} ${keyword} 전문 업체 배관매니저. 24시간 신속 출동, 무료 상담 1866-2449. ${mid_keyword}`}
+  canonical={`https://baegun-manager.com/${id}`}
+  region={region}
+  keyword={keyword}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <!-- ── ① Sticky 전화 띠 (스크롤해도 고정) ── -->
+  <div class="sticky top-16 z-40 bg-gradient-to-r from-brand-800 to-brand-700 text-white text-center py-2.5 px-4 shadow-lg">
+    <p class="text-xs font-semibold opacity-90 mb-0.5 hidden sm:block">
+      {region} {keyword} 전문 업체 · 24시간 긴급출동
+    </p>
+    <a
+      href="tel:18662449"
+      class="inline-flex items-center gap-2 text-yellow-300 font-black text-xl md:text-2xl hover:text-yellow-200 transition-colors"
+    >
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+      </svg>
+      1866-2449
+    </a>
+    <p class="text-xs opacity-75 mt-0.5 hidden sm:block">지금 바로 전화하시면 전문 상담사가 연결됩니다</p>
+  </div>
+
+  <!-- 모바일 하단 고정 전화 버튼 -->
+  <a
+    href="tel:18662449"
+    class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-accent-500 text-white text-center py-4 font-black text-lg shadow-2xl flex items-center justify-center gap-2"
+  >
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+    </svg>
+    1866-2449 지금 전화하기
+  </a>
+
+  <main class="mx-auto max-w-5xl px-4 py-6 space-y-10 pb-24 md:pb-10">
+
+    <!-- ②  히어로: 타이틀 + 이미지 (비율 유지) -->
+    <section class="text-center">
+      <p class="text-sm font-semibold text-brand-600 uppercase tracking-widest mb-2">해결가능 업체 지역 안내</p>
+      <h1 class="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
+        <span class="text-brand-700">{region}</span> {keyword}
+      </h1>
+      <p class="text-gray-600 mb-6 max-w-xl mx-auto text-sm md:text-base">
+        {region} 일대 {keyword} 전문 업체가 24시간 대기 중입니다.
+        빠른 출동으로 배관 문제를 즉시 해결해드립니다.
+      </p>
+
+      <!-- 메인 이미지: 화면비율 유지, object-contain -->
+      {images.length > 0 && (
+        <div class="rounded-2xl overflow-hidden mx-auto shadow-lg max-w-2xl bg-gray-100">
+          <img
+            src={images[0]}
+            alt={`${region} ${keyword} 대표 작업 사진`}
+            class="w-full h-auto object-contain max-h-96"
+            loading="eager"
+            onerror="this.parentElement.style.display='none'"
+          />
+        </div>
+      )}
+    </section>
+
+    <!-- ③ 스핀택스 문장 -->
+    <section class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+      <p class="text-base md:text-lg text-gray-800 font-medium text-center">{spinText}</p>
+    </section>
+
+    <!-- ④ 상담 폼 -->
+    <ContactForm region={region} keyword={keyword} />
+
+    <!-- ⑤ 업체 점검 가능 지역 리스트 -->
+    {nearby_areas.length > 0 && (
+      <section>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+          <span class="text-brand-600">{sigungu}</span> 인근 업체 점검 가능 지역
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {nearby_areas.map((area: any, i: number) => {
+            // 첫 번째 카드만 페이지 키워드 유지, 나머지는 순환
+            const areaKw = i === 0 ? keyword : altKeywords[(i - 1) % altKeywords.length];
+            const midLine = mid_keyword ? mid_keyword.split('/') : [];
+            const midWord = midLine[i % midLine.length] || areaKw;
+            // 지도: region 이름 검색 (좌표 아님)
+            const navArea = `https://map.naver.com/v5/search/${encodeURIComponent(area.region + ' ' + areaKw)}`;
+            const gooArea = `https://www.google.com/maps/search/${encodeURIComponent(area.region + ' ' + areaKw)}`;
+            return (
+              <article class="bg-white border border-gray-200 rounded-xl p-4 hover:border-brand-300 hover:shadow-md transition-all">
+                <h3 class="font-bold text-brand-700 mb-2 text-sm leading-snug">
+                  [ {area.region} {areaKw} 업체 점검 가능지역 ]
+                </h3>
+                <p class="text-xs text-gray-500 mb-2 leading-relaxed">{midWord}</p>
+                <p class="text-xs text-gray-400 mb-3">
+                  분류: 건설업 &gt; 전문건설업 / 배관·냉난방공사
+                </p>
+                <div class="flex gap-2">
+                  <a
+                    href={navArea}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 text-center text-xs bg-green-500 hover:bg-green-600 text-white py-2 px-2 rounded-lg font-medium transition-colors"
+                  >
+                    🗺 네이버지도
+                  </a>
+                  <a
+                    href={gooArea}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 text-center text-xs bg-blue-500 hover:bg-blue-600 text-white py-2 px-2 rounded-lg font-medium transition-colors"
+                  >
+                    🗺 구글지도
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- ⑥ 갤러리 (이미지 비율 유지) -->
+    <Gallery images={images} region={region} keyword={keyword} />
+
+    <!-- ⑦ 업체 작업후기 -->
+    <section>
+      <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+        {body_title || `${region} ${keyword} 업체 작업후기`}
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+        {gridItems.map((para: string, i: number) => {
+          const shortTitle = para.slice(0, 18) + (para.length > 18 ? '…' : '');
+          return (
+            <div class="group">
+              <button
+                class="review-toggle w-full text-left bg-white border border-gray-200 rounded-xl p-3 hover:border-brand-400 hover:bg-brand-50 transition-all text-xs font-medium text-gray-700 leading-relaxed"
+                data-target={`review-body-${i}`}
+                aria-expanded="false"
+              >
+                {shortTitle}
+                <span class="block text-brand-500 text-xs mt-1">▼ 더보기</span>
+              </button>
+              <div
+                id={`review-body-${i}`}
+                class="review-body hidden mt-1 bg-white border border-brand-100 rounded-xl p-3 text-xs text-gray-600 leading-relaxed"
+              >
+                {para}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- ⑧ FAQ (작업후기 다음에 배치) -->
+    <FAQ region={region} keyword={keyword} />
+
+    <!-- ⑨ 지도 링크 (region 이름 검색) -->
+    <section class="flex flex-col sm:flex-row gap-3">
+      <a
+        href={naverMapUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition-colors shadow-sm text-sm md:text-base"
+      >
+        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        네이버지도에서 {region} {keyword} 검색
+      </a>
+      <a
+        href={googleMapUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-1 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition-colors shadow-sm text-sm md:text-base"
+      >
+        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        구글지도에서 {region} {keyword} 검색
+      </a>
+    </section>
+
+    <!-- ⑩ 거미줄 페이지네이션 -->
+    <nav aria-label="관련 페이지" class="border-t border-gray-200 pt-6">
+      <p class="text-sm text-gray-500 mb-3 font-medium">관련 지역 더보기</p>
+      <div class="flex flex-wrap gap-2">
+        {paginPages.map((p: any, i: number) => (
+          <a
+            href={`/${p.id}`}
+            class={`px-3 py-1.5 text-xs rounded-lg border transition-colors ${
+              p.id === id
+                ? 'bg-brand-600 text-white border-brand-600 font-bold'
+                : 'bg-white text-gray-600 border-gray-200 hover:border-brand-400 hover:text-brand-600'
+            }`}
+          >
+            {p.region} {p.keyword}
+          </a>
+        ))}
+      </div>
+      <p class="text-xs text-gray-400 mt-2">전체 {totalPages}개 지역 서비스</p>
+    </nav>
+
+    <!-- 하단 전화 배너 -->
+    <section class="bg-brand-800 text-white rounded-2xl p-6 text-center">
+      <p class="text-lg font-bold mb-1">{region} {keyword} 지금 바로 해결하세요</p>
+      <p class="text-white/60 text-xs mb-4">24시간 365일 · 작업 전 정확한 견적</p>
+      <a
+        href="tel:18662449"
+        class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-black text-2xl px-10 py-4 rounded-2xl shadow-lg hover:scale-105 transition-all"
+      >
+        📞 1866-2449
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-800 text-gray-400 text-xs text-center py-6 mt-4">
+    <p>© 2024 배관매니저 | 배관막힘 전문 업체</p>
+    <p class="mt-1">Tel: 1866-2449 | {region} {keyword} 전문</p>
+    <nav class="mt-3 flex flex-wrap justify-center gap-4 text-gray-500">
+      <a href="/" class="hover:text-gray-300">홈</a>
+      <a href="/reviews" class="hover:text-gray-300">작업후기</a>
+      <a href="/info" class="hover:text-gray-300">배관막힘소개</a>
+    </nav>
+  </footer>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('.review-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = (btn as HTMLElement).dataset.target;
+      const body = document.getElementById(targetId!);
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      body?.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      const hint = btn.querySelector('span');
+      if (hint) hint.textContent = isOpen ? '▼ 더보기' : '▲ 닫기';
+    });
+  });
+</script>

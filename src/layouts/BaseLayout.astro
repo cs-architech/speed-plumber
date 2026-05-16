@@ -1,0 +1,90 @@
+---
+// src/layouts/BaseLayout.astro
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: object;
+  region?: string;
+  keyword?: string;
+}
+const {
+  title,
+  description = '배관막힘 전문 업체 배관매니저. 24시간 신속 출동, 1866-2449',
+  canonical,
+  ogImage = '/og-default.jpg',
+  jsonLd,
+  region = '',
+  keyword = '배관막힘',
+} = Astro.props;
+
+const siteUrl   = 'https://baegun-manager.com';
+const canonUrl  = canonical ?? siteUrl;
+const pageTitle = title;
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── 기본 SEO ── -->
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  {canonical && <link rel="canonical" href={canonUrl} />}
+
+  <!-- ── Open Graph (네이버·카카오·페이스북) ── -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={canonUrl} />
+  <meta property="og:title"       content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={`${siteUrl}${ogImage}`} />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="ko_KR" />
+  <meta property="og:site_name"   content="배관매니저" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={`${siteUrl}${ogImage}`} />
+
+  <!-- ── 전화번호 자동 감지 비활성화 방지 (모바일) ── -->
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- ── 폰트 ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- ── 페이지별 JSON-LD ── -->
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  )}
+
+  <!-- ── 공통 Organization JSON-LD ── -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: '배관매니저',
+    url: siteUrl,
+    telephone: '1866-2449',
+    description: '전국 배관막힘, 싱크대막힘 전문 업체. 24시간 신속 출동.',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '1866-2449',
+      contactType: 'customer service',
+      availableLanguage: 'Korean',
+      hoursAvailable: 'Mo-Su 00:00-24:00',
+    },
+    sameAs: [],
+  })} />
+</head>
+<body class="font-sans bg-gray-50 text-gray-900 antialiased">
+  <slot />
+</body>
+</html>

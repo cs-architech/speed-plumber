@@ -1,0 +1,171 @@
+---
+// src/pages/reviews/index.astro
+// 하수구막힘 후기 게시판: 4열 그리드, 사진 위 · 제목 아래
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+
+const reviewFiles = import.meta.glob('../../content/reviews/*.md', { eager: true });
+
+const reviews = Object.entries(reviewFiles)
+  .map(([filepath, mod]: [string, any]) => {
+    const fm = mod.frontmatter || {};
+    const filename = filepath.split('/').pop()?.replace('.md', '') || '';
+    const rawBody = (mod.rawContent?.() || '')
+      .replace(/^---[\s\S]*?---\n?/, '')
+      .trim();
+    return {
+      slug:    fm.slug || filename,
+      title:   fm.title || '작업 후기',
+      date:    fm.date  || '',
+      image:   fm.image || '',
+      region:  fm.region || '',
+      keyword: fm.keyword || '',
+      excerpt: rawBody.slice(0, 100) + (rawBody.length > 100 ? '…' : ''),
+    };
+  })
+  .filter(r => r.title)
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+const hasReviews = reviews.length > 0;
+
+// BreadcrumbList JSON-LD
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: '홈', item: 'https://baegun-manager.com/' },
+    { '@type': 'ListItem', position: 2, name: '작업 후기', item: 'https://baegun-manager.com/reviews' },
+  ],
+};
+---
+
+<BaseLayout
+  title="하수구막힘 작업 후기 게시판 | 배관매니저"
+  description="배관매니저의 실제 하수구막힘 해결 작업 후기 모음. 배관막힘, 싱크대막힘, 변기막힘 고객 만족 사례를 확인하세요."
+  canonical="https://baegun-manager.com/reviews"
+  jsonLd={breadcrumb}
+>
+  <Header />
+
+  <main class="mx-auto max-w-6xl px-4 py-10 pb-24 md:pb-10">
+
+    <!-- 페이지 헤더 -->
+    <div class="text-center mb-10">
+      <p class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Customer Reviews</p>
+      <h1 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">하수구막힘 후기</h1>
+      <p class="text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
+        전국 배관매니저 고객님들의 실제 작업 후기입니다.<br/>
+        신속하고 정확한 배관막힘 해결 사례를 확인해보세요.
+      </p>
+      <a
+        href="tel:18662449"
+        class="inline-flex items-center gap-2 mt-6 bg-accent-500 hover:bg-accent-600 text-white font-bold px-6 py-3 rounded-full transition-colors shadow-md"
+      >
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+        </svg>
+        무료 상담 1866-2449
+      </a>
+    </div>
+
+    {hasReviews ? (
+      <!-- 4열 그리드: 사진(위) → 제목(아래) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {reviews.map((review) => (
+          <article
+            class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-200 transition-all overflow-hidden group flex flex-col"
+            itemscope
+            itemtype="https://schema.org/Article"
+          >
+            <!-- 사진 (위) -->
+            <div class="overflow-hidden bg-gray-100 aspect-video">
+              {review.image ? (
+                <img
+                  src={review.image}
+                  alt={review.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  itemprop="image"
+                  onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500 to-brand-700\'><svg class=\'w-10 h-10 text-white/50\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\'/></svg></div>'"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500 to-brand-700">
+                  <svg class="w-10 h-10 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                </div>
+              )}
+            </div>
+
+            <!-- 제목 (아래) -->
+            <div class="p-4 flex flex-col flex-1">
+              {review.date && (
+                <time class="text-xs text-gray-400 mb-1" datetime={review.date} itemprop="datePublished">
+                  {review.date.slice(0, 10)}
+                </time>
+              )}
+              <h2
+                class="text-sm font-bold text-gray-800 mb-2 leading-snug line-clamp-2 group-hover:text-brand-600 transition-colors flex-1"
+                itemprop="headline"
+              >
+                {review.title}
+              </h2>
+              {review.excerpt && (
+                <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed" itemprop="description">
+                  {review.excerpt}
+                </p>
+              )}
+              {(review.region || review.keyword) && (
+                <div class="mt-2 flex gap-1 flex-wrap">
+                  {review.region && (
+                    <span class="text-xs bg-brand-50 text-brand-700 px-2 py-0.5 rounded-full font-medium">
+                      {review.region}
+                    </span>
+                  )}
+                  {review.keyword && (
+                    <span class="text-xs bg-accent-50 text-accent-600 px-2 py-0.5 rounded-full font-medium">
+                      {review.keyword}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-20">
+        <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        <p class="text-gray-400 text-lg font-medium mb-2">아직 등록된 후기가 없습니다</p>
+        <p class="text-gray-400 text-sm">
+          <code class="bg-gray-100 px-2 py-1 rounded text-xs">node scripts/process-content.js</code> 를 실행하면 후기가 자동 생성됩니다.
+        </p>
+      </div>
+    )}
+
+    <!-- 하단 CTA -->
+    <div class="mt-12 bg-brand-800 text-white rounded-2xl p-8 text-center">
+      <h2 class="text-xl font-bold mb-1">배관막힘 문제 지금 해결하세요</h2>
+      <p class="text-white/60 text-sm mb-4">24시간 365일 신속 출동 · 작업 전 정확한 견적</p>
+      <a
+        href="tel:18662449"
+        class="inline-block bg-accent-500 hover:bg-accent-600 text-white font-black text-2xl px-10 py-4 rounded-2xl shadow-lg hover:scale-105 transition-all"
+      >
+        📞 1866-2449
+      </a>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-400 text-xs text-center py-6 mt-4">
+    <p>© 2024 배관매니저 | 하수구막힘 전문 업체 | Tel: 1866-2449</p>
+    <nav class="mt-2 flex justify-center gap-4 text-gray-500">
+      <a href="/" class="hover:text-gray-300">홈</a>
+      <a href="/reviews" class="hover:text-gray-300">작업후기</a>
+      <a href="/info" class="hover:text-gray-300">배관막힘소개</a>
+    </nav>
+  </footer>
+</BaseLayout>

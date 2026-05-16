@@ -1,0 +1,141 @@
+---
+// src/components/Gallery.astro
+interface Props {
+  images: string[];   // 이미지 경로 배열 (5~15장)
+  region?: string;
+  keyword?: string;
+}
+const { images = [], region = '', keyword = '' } = Astro.props;
+
+// 이미지가 없을 때 플레이스홀더
+const placeholder = '/images/placeholder.jpg';
+const validImages = images.length > 0 ? images : [placeholder, placeholder, placeholder];
+
+const mainImages  = validImages.slice(0, 3);    // 상단 3장 (그리드)
+const thumbImages = validImages.slice(3);        // 나머지 썸네일
+---
+
+<section class="py-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">
+    {region && <span class="text-brand-600">{region}</span>} {keyword} 작업 사진
+  </h2>
+
+  <!-- 상단 메인 3장 그리드 -->
+  {mainImages.length > 0 && (
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+      {mainImages.map((src, i) => (
+        <button
+          class="gallery-open aspect-video sm:aspect-square w-full overflow-hidden rounded-xl bg-gray-100 group"
+          data-src={src}
+          data-idx={i}
+          aria-label={`작업 사진 ${i + 1} 크게 보기`}
+        >
+          <img
+            src={src}
+            alt={`${region} ${keyword} 작업 사진 ${i + 1}`}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading={i === 0 ? 'eager' : 'lazy'}
+            onerror="this.src='/images/placeholder.jpg'"
+          />
+        </button>
+      ))}
+    </div>
+  )}
+
+  <!-- 하단 썸네일 -->
+  {thumbImages.length > 0 && (
+    <div class="flex flex-wrap gap-2">
+      {thumbImages.map((src, i) => (
+        <button
+          class="gallery-open w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 group border-2 border-transparent hover:border-brand-400 transition-colors"
+          data-src={src}
+          data-idx={i + 3}
+          aria-label={`작업 사진 ${i + 4} 크게 보기`}
+        >
+          <img
+            src={src}
+            alt={`${region} ${keyword} 작업 사진 ${i + 4}`}
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-200"
+            loading="lazy"
+            onerror="this.src='/images/placeholder.jpg'"
+          />
+        </button>
+      ))}
+    </div>
+  )}
+
+  <!-- 라이트박스 모달 -->
+  <div
+    id="gallery-modal"
+    class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="사진 크게 보기"
+  >
+    <button
+      id="modal-close"
+      class="absolute top-4 right-4 text-white bg-white/20 hover:bg-white/40 rounded-full p-2 transition-colors"
+      aria-label="닫기"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <button id="modal-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-white/20 hover:bg-white/40 rounded-full p-3 transition-colors" aria-label="이전">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <img id="modal-img" src="" alt="작업 사진" class="max-h-[85vh] max-w-full rounded-xl object-contain" />
+    <button id="modal-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-white/20 hover:bg-white/40 rounded-full p-3 transition-colors" aria-label="다음">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+    <div id="modal-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm"></div>
+  </div>
+</section>
+
+<script define:vars={{ validImages }}>
+  const modal   = document.getElementById('gallery-modal');
+  const modalImg = document.getElementById('modal-img');
+  const counter = document.getElementById('modal-counter');
+  let currentIdx = 0;
+
+  function openModal(idx) {
+    currentIdx = idx;
+    modalImg.src = validImages[idx];
+    counter.textContent = `${idx + 1} / ${validImages.length}`;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir) {
+    currentIdx = (currentIdx + dir + validImages.length) % validImages.length;
+    modalImg.src = validImages[currentIdx];
+    counter.textContent = `${currentIdx + 1} / ${validImages.length}`;
+  }
+
+  document.querySelectorAll('.gallery-open').forEach(btn => {
+    btn.addEventListener('click', () => openModal(Number(btn.dataset.idx)));
+  });
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-prev').addEventListener('click', () => navigate(-1));
+  document.getElementById('modal-next').addEventListener('click', () => navigate(1));
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+  document.addEventListener('keydown', e => {
+    if (modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape')      closeModal();
+    if (e.key === 'ArrowLeft')   navigate(-1);
+    if (e.key === 'ArrowRight')  navigate(1);
+  });
+</script>

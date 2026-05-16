@@ -1,0 +1,210 @@
+---
+// src/components/FAQ.astro
+interface Props {
+  region: string;
+  keyword: string;
+}
+const { region, keyword } = Astro.props;
+
+// 시드 기반 고정 랜덤 (빌드마다 동일한 결과 보장)
+function hash(s: string) {
+  let h = 0;
+  for (const c of s) h = (Math.imul(31, h) + c.charCodeAt(0)) | 0;
+  return Math.abs(h);
+}
+const seed = hash(region + keyword);
+function pick<T>(arr: T[], offset = 0): T {
+  return arr[(seed + offset) % arr.length];
+}
+
+// ── 8개 FAQ · 각 항목마다 Q·A 3가지 변형 (Spintax) ──────────────────────
+const faqs = [
+  {
+    q: pick([
+      `${region} ${keyword}, 왜 맨날 막힐까요? 주범은 누구인가요?`,
+      `${region}에서 ${keyword}이 반복되는 진짜 원인은 무엇인가요?`,
+      `${keyword}가 자꾸 재발하는 근본 이유가 궁금합니다`,
+    ], 0),
+    a: pick([
+      `${region} ${keyword}의 주요 원인은 음식물찌꺼기(30%), 기름과 지방(25%), 머리카락(20%), 비누 찌꺼기(15%), 기타 이물질(10%)입니다. 특히 싱크대에서는 음식물찌꺼기와 기름이, 욕실에서는 머리카락과 비누 찌꺼기가 주요 원인이 됩니다. 정기적인 세척과 올바른 사용법으로 예방할 수 있으며, 막힘 발생 시 전문 장비로 완벽하게 해결해 드립니다.`,
+      `${keyword}를 유발하는 물질은 음식물 찌꺼기(30%), 유지방(25%), 머리카락(20%), 비누 잔여물(15%) 순입니다. 싱크대는 기름 슬러지, 욕실은 헤어·비누가 주범이므로 각기 다른 접근이 필요합니다. 재발 방지를 위해 정기 청소와 전문 고압세척을 권장합니다.`,
+      `배관 내부 통계상 음식물찌꺼기·유지방이 전체 원인의 55%를 차지합니다. ${region} 지역 특성상 노후 배관이 많아 이물질 축적 속도가 빠른 편입니다. 15년 경력 전문 기술자의 내시경 진단으로 원인을 명확히 파악해 드립니다.`,
+    ], 1),
+  },
+  {
+    q: pick([
+      `${region} 싱크대역류! 셀프로 해결하는 특급 비법이 있나요?`,
+      `${keyword}를 직접 해결할 수 있는 DIY 방법이 있을까요?`,
+      `${region} 배수구가 막혔을 때 집에서 먼저 해볼 수 있는 방법은?`,
+    ], 2),
+    a: pick([
+      `뜨거운 물(80°C) 1L에 베이킹소다 1컵, 식초 1컵을 순서대로 부어 화학반응을 이용하는 DIY 방법이 있습니다. 하지만 심한 막힘의 경우 전문 장비 없이 무리하게 시도하면 오히려 배관 손상을 일으킬 수 있어 주의가 필요합니다. 15년 경력 전문 기술자의 정확한 진단을 권장합니다.`,
+      `초기 단계라면 뜨거운 물(80°C) 투입 후 베이킹소다·식초 조합이 효과적입니다. 그러나 기름 슬러지나 굳은 이물질에는 거의 무효하며 배관 내벽을 손상시킬 수 있습니다. 증상이 반복된다면 고압세척 등 전문 처리가 근본 해결책입니다.`,
+      `베이킹소다+식초 방법은 경미한 초기 막힘에만 유효합니다. 시중 화학 약품은 PVC 배관을 부식시킬 위험이 있으므로 주의하세요. 재발 없는 해결을 원하신다면 내시경 점검 후 원인 제거가 우선입니다.`,
+    ], 3),
+  },
+  {
+    q: pick([
+      `${region} ${keyword}은 어떤 방법으로 해결하나요?`,
+      `전문 업체의 ${keyword} 해결 절차가 궁금합니다`,
+      `${region} 배관 막힘, 어떤 장비와 방법으로 처리하나요?`,
+    ], 4),
+    a: pick([
+      `3단계 진단 시스템(① 내시경 카메라로 정확한 위치 파악 → ② 고압세척기로 이물질 완벽 제거 → ③ 예방 세척으로 재발 방지)을 통해 확실하게 해결합니다. 싱크대, 변기, 샤워실, 배수구 등 모든 하수구 문제를 95% 이상의 해결률로 보장합니다.`,
+      `먼저 배관 내시경으로 막힘 위치와 원인을 눈으로 확인합니다. 이후 상황에 따라 고압세척(워터젯) 또는 스케일링 장비로 이물질을 물리적으로 제거하고, 마지막으로 통수 상태를 재확인합니다. ${region} 지역 평균 95% 이상 당일 완전 해결됩니다.`,
+      `내시경 카메라로 원인 파악 → 고압 분사로 이물질 제거 → 완료 확인 3단계로 진행됩니다. 단순 막힘은 30분, 심한 스케일 축적은 2~3시간 소요됩니다. 작업 전 고객에게 상황과 비용을 먼저 안내해 드립니다.`,
+    ], 5),
+  },
+  {
+    q: pick([
+      `${region} 하수구 긴급출동 서비스는 언제까지 가능한가요?`,
+      `새벽이나 공휴일에도 ${keyword} 출동이 가능한가요?`,
+      `${region}에서 야간에 ${keyword} 문제가 생기면 연락할 수 있나요?`,
+    ], 6),
+    a: pick([
+      `저희 설비팀은 24시간 365일 긴급출동 서비스를 제공합니다. 새벽 시간이나 공휴일에도 연락 주시면 30분 이내에 현장에 도착해 신속하게 문제를 해결합니다. ${region}을 중심으로 인접 지역까지 전담 기술자가 배치되어 있어 빠른 출동과 정확한 해결이 가능합니다.`,
+      `연중무휴 24시간 운영합니다. 새벽 2시, 명절 당일에도 동일한 서비스를 제공합니다. ${region} 지역 전담 기술자가 상시 대기 중이므로 평균 30분 이내 현장 도착이 가능합니다.`,
+      `24시간 · 365일 출동 가능합니다. 심야·공휴일 추가 요금 없이 동일 서비스를 제공하며, ${region} 및 인접 지역은 30분 이내 출동을 목표로 운영합니다.`,
+    ], 7),
+  },
+  {
+    q: pick([
+      `하수구에서 꿀렁꿀렁 소리가 나고 냄새가 나요. 원인이 무엇인가요?`,
+      `배수할 때 이상한 소리와 악취가 올라오는 이유는 무엇인가요?`,
+      `${region} 배수구에서 역류음과 하수 냄새가 나는데 왜 그런가요?`,
+    ], 8),
+    a: pick([
+      `배관 내부에 공기가 원활하게 순환되지 않아 발생하는 소리입니다. 이는 내부에 이물질이 쌓여 배관이 막히기 시작했다는 초기 신호이므로 즉각적인 청소나 전문적인 관리가 필요합니다.`,
+      `공기 역류(에어 로킹) 현상으로, 관로 단면이 이물질로 좁아졌다는 신호입니다. 방치하면 완전 막힘 또는 역류로 악화되므로 초기에 고압세척으로 처리하는 것이 가장 경제적입니다.`,
+      `관로 내 공기 흐름이 방해받을 때 발생하는 소리입니다. 악취는 트랩(봉수) 파손이나 이물질 부패가 원인입니다. 방치 시 완전 막힘으로 진행되므로 전문 점검을 권장합니다.`,
+    ], 9),
+  },
+  {
+    q: pick([
+      `배관 뚫는 약품을 여러 개 섞어 사용해도 되나요?`,
+      `하수구 뚫는 약품을 다른 제품과 함께 써도 괜찮나요?`,
+      `${region} ${keyword} 해결을 위해 약품을 섞어 써도 안전한가요?`,
+    ], 10),
+    a: pick([
+      `절대 안 됩니다. 서로 다른 약품이 섞일 경우 화학 반응을 일으켜 치명적인 유독가스가 발생할 수 있어 매우 위험합니다. 반드시 한 가지 제품만 단독으로 사용해야 합니다.`,
+      `절대 혼용하지 마세요. 산성·알칼리성 약품이 만나면 유독 염소 가스 등이 발생해 생명에 위험할 수 있습니다. 약품은 한 종류만, 사용 후 물로 충분히 희석하는 것이 원칙입니다.`,
+      `매우 위험합니다. 종류가 다른 배관 약품을 혼합하면 폭발적 화학반응과 독성 가스 발생 위험이 있습니다. 약품 대신 전문 고압세척을 이용하시는 것이 안전합니다.`,
+    ], 11),
+  },
+  {
+    q: pick([
+      `${region} 배수구막힘 해결을 위해 케이블 타이로 찌꺼기를 제거하는 방법은?`,
+      `집에서 배수구 찌꺼기를 직접 제거하는 간단한 방법이 있나요?`,
+      `전문 업체 부르기 전 ${keyword} 자가 조치 방법이 있나요?`,
+    ], 12),
+    a: pick([
+      `케이블 타이 끝을 사선으로 잘라 갈고리 모양으로 만든 뒤, 배수구에 넣고 회전시키며 찌꺼기를 긁어내는 자가 조치 방법입니다. 배관 손상 없이 U자 트랩 근처의 머리카락이나 얇은 이물질을 제거하는 데 유용합니다. 단, 깊은 곳의 단단한 기름 덩어리에는 효과가 없으며, 케이블 타이가 배관 깊숙이 빠지지 않도록 주의하세요.`,
+      `케이블 타이를 갈고리 형태로 가공해 배수구에 삽입·회전하는 방법으로 표면 이물질 제거가 가능합니다. 머리카락·얇은 이물질에는 효과적이지만, 굳은 기름 슬러지나 깊은 막힘에는 효과가 없습니다. 작업 중 타이가 유입되지 않도록 끝을 잡고 작업하세요.`,
+      `옷걸이 철사나 케이블 타이 끝을 구부려 갈고리를 만들어 배수구에 삽입하면 초기 머리카락 제거에 도움이 됩니다. 단, 배관 내벽 스크래치나 이물질 심화를 유발할 수 있으므로 경미한 경우에만 시도하세요.`,
+    ], 13),
+  },
+  {
+    q: pick([
+      `${region} 하수구전문업체를 한 번에 확인할 수 있는 곳이 있나요?`,
+      `${region} 지역 ${keyword} 전문 업체 정보를 어디서 확인하나요?`,
+      `${keyword} 업체 비교와 상담을 한 곳에서 할 수 있는 방법이 있나요?`,
+    ], 14),
+    a: pick([
+      `${region} 지역의 하수구수리 및 관련 업종 업체를 한 곳에 모아 안내해 드리는 전용 상담·안내 페이지가 마련되어 있습니다. 본문에 정리된 점검 가능 지역과 연락처, 상담 신청 페이지를 통해 직접 확인하시고 신속하게 문의하실 수 있습니다.`,
+      `이 페이지 내 '점검 가능 지역' 섹션에서 ${region} 인근 업체 서비스 정보를 한눈에 확인할 수 있습니다. 상담 신청 폼을 통해 방문 견적 없이 전화 상담도 바로 신청하실 수 있습니다.`,
+      `${region} ${keyword} 전문 업체 정보와 서비스 지역을 이 페이지에서 통합 안내드립니다. 1866-2449로 전화하시면 24시간 직접 상담과 빠른 출동 서비스를 제공받으실 수 있습니다.`,
+    ], 15),
+  },
+];
+
+// FAQPage JSON-LD (SEO 구조화 데이터)
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<section class="py-8" itemscope itemtype="https://schema.org/FAQPage">
+  <h2 class="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+    <span class="text-2xl">💬</span>
+    자주 묻는 질문
+  </h2>
+  <p class="text-sm text-gray-500 mb-6">{region} {keyword} 관련 고객 FAQ</p>
+
+  <div class="space-y-2" id="faq-list">
+    {faqs.map((faq, i) => (
+      <div
+        class="faq-item border border-gray-200 rounded-xl overflow-hidden transition-shadow hover:shadow-sm"
+        itemscope
+        itemprop="mainEntity"
+        itemtype="https://schema.org/Question"
+      >
+        <button
+          class="faq-toggle w-full text-left flex items-start justify-between p-4 md:p-5 bg-white hover:bg-blue-50 transition-colors gap-3"
+          data-index={i}
+          aria-expanded="false"
+        >
+          <span class="font-semibold text-gray-800 text-sm md:text-base leading-relaxed" itemprop="name">
+            <span class="inline-block text-brand-600 font-black mr-2 text-base">Q.</span>{faq.q}
+          </span>
+          <svg
+            class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5 transition-transform duration-300"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <!-- SEO: aria-hidden 아닌 hidden → 검색엔진 크롤링 가능 -->
+        <div
+          class="faq-answer overflow-hidden"
+          style="max-height:0;transition:max-height 0.35s ease"
+          itemscope
+          itemprop="acceptedAnswer"
+          itemtype="https://schema.org/Answer"
+        >
+          <div class="px-4 md:px-5 py-4 bg-blue-50 border-t border-blue-100" itemprop="text">
+            <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+              <span class="text-accent-500 font-black mr-2">A.</span>{faq.a}
+            </p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- FAQPage JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.faq-item') as HTMLElement;
+      const answer = item.querySelector('.faq-answer') as HTMLElement;
+      const icon   = btn.querySelector('.faq-icon') as HTMLElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // 다른 항목 닫기
+      document.querySelectorAll('.faq-item').forEach((el: Element) => {
+        const a = el.querySelector('.faq-answer') as HTMLElement;
+        const b = el.querySelector('.faq-toggle') as HTMLElement;
+        const ic = el.querySelector('.faq-icon') as HTMLElement;
+        if (a) a.style.maxHeight = '0';
+        if (b) b.setAttribute('aria-expanded', 'false');
+        if (ic) ic.style.transform = '';
+      });
+
+      if (!isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+</script>
