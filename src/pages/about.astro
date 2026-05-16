@@ -1,0 +1,118 @@
+---
+// src/pages/about.astro — 회사소개
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const breadcrumbs = [
+  { name: '홈', url: '/' },
+  { name: '회사소개', url: '/about' },
+];
+---
+
+<BaseLayout
+  title="배관매니저 회사소개 | 15년 배관막힘 전문 업체"
+  description="배관매니저는 15년 경력의 배관막힘 전문 업체입니다. 서울·경기 전지역 24시간 신속출동, 출장비 무료, 1866-2449."
+  canonical="https://plumbers24.netlify.app/about"
+  breadcrumbs={breadcrumbs}
+>
+  <Header />
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <!-- 브레드크럼 -->
+    <nav class="text-sm text-gray-500 mb-6 flex items-center gap-1">
+      <a href="/" class="hover:text-blue-600">홈</a>
+      <span>›</span>
+      <span class="text-gray-800 font-medium">회사소개</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-black text-gray-900 mb-2">배관매니저 회사소개</h1>
+    <p class="text-gray-500 mb-10">15년 경력 배관막힘 전문 업체</p>
+
+    <!-- 핵심 가치 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+      {[
+        { icon: '⚡', title: '신속 출동', desc: '연락 후 평균 30분 이내 현장 도착. 24시간 365일 대기 중.' },
+        { icon: '🔍', title: '정밀 진단', desc: '최신 배관 내시경 장비로 막힘 원인을 정확히 파악합니다.' },
+        { icon: '💯', title: '완벽 해결', desc: '고압세척, 스케일링 등 전문 장비로 근본 원인 제거.' },
+      ].map(v => (
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center">
+          <div class="text-4xl mb-3">{v.icon}</div>
+          <h3 class="font-bold text-lg text-gray-800 mb-2">{v.title}</h3>
+          <p class="text-gray-500 text-sm">{v.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- 회사 소개 텍스트 -->
+    <section class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-10">
+      <h2 class="text-2xl font-bold text-gray-800 mb-5">배관매니저를 소개합니다</h2>
+      <div class="prose prose-gray max-w-none space-y-4 text-gray-700 leading-relaxed">
+        <p>
+          배관매니저는 <strong>2009년 창업</strong>한 15년 경력의 배관막힘 전문 업체입니다.
+          서울 및 경기 전지역을 커버하며, 하수구막힘·싱크대막힘·배관막힘·우수관막힘 등
+          모든 배관 관련 문제를 해결합니다.
+        </p>
+        <p>
+          저희는 단순히 막힘을 뚫는 것에 그치지 않습니다.
+          <strong>최신 배관 내시경 장비</strong>로 정확한 원인을 진단하고,
+          고압세척·플렉스 샤프트·스케일링 등 첨단 장비를 이용해
+          배관을 새것처럼 복구합니다.
+        </p>
+        <p>
+          모든 작업은 <strong>투명한 정찰제</strong>로 진행됩니다.
+          작업 전 정확한 견적을 제공하며, 불필요한 추가 비용은 없습니다.
+          또한 시공 완료 후 <strong>1년 무상 A/S</strong>를 보장합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 보유 장비 -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-800 mb-5">전문 장비 보유 현황</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          { name: '고압 워터젯 세척기', desc: '초강력 수압으로 배관 내벽 슬러지 완전 제거' },
+          { name: '배관 내시경 카메라', desc: '실시간 모니터링으로 정확한 막힘 위치 파악' },
+          { name: '플렉스 샤프트 장비', desc: '배관 내벽의 고착된 기름 덩어리·이물질 분쇄' },
+          { name: '전동 관통기(스프링)', desc: '소형 막힘 신속 해결 전용 장비' },
+          { name: '강력 석션기', desc: '분쇄된 이물질 완전 외부 배출' },
+          { name: '누수 탐지 장비', desc: '비파괴 공법으로 누수 위치 정밀 탐지' },
+        ].map(eq => (
+          <div class="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+            <span class="text-blue-500 mt-0.5">✔</span>
+            <div>
+              <p class="font-semibold text-gray-800">{eq.name}</p>
+              <p class="text-sm text-gray-500">{eq.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 수치 현황 -->
+    <section class="bg-blue-900 text-white rounded-2xl p-8 mb-12">
+      <h2 class="text-xl font-bold text-center mb-6">배관매니저 성과</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        {[
+          { num: '15년+', label: '업력' },
+          { num: '50,000+', label: '시공 건수' },
+          { num: '98%', label: '고객 만족도' },
+          { num: '30분', label: '평균 출동 시간' },
+        ].map(s => (
+          <div>
+            <div class="text-3xl font-black text-yellow-300 mb-1">{s.num}</div>
+            <div class="text-blue-200 text-sm">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 상담 폼 -->
+    <ContactForm region="전국" keyword="배관막힘" />
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 text-sm text-center py-6 mt-10">
+    <p>© 2024 배관매니저 | Tel: <a href="tel:18662449" class="text-yellow-400 font-bold">1866-2449</a> | 24시간 365일</p>
+  </footer>
+</BaseLayout>

@@ -5,74 +5,46 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
-  jsonLd?: object;
+  jsonLd?: object | object[];
   region?: string;
   keyword?: string;
+  breadcrumbs?: { name: string; url: string }[];
 }
 const {
   title,
-  description = '배관막힘 전문 업체 배관매니저. 24시간 신속 출동, 1866-2449',
+  description = '배관막힘·싱크대막힘 전문 업체 배관매니저. 24시간 신속 출동, 1866-2449',
   canonical,
   ogImage = '/og-default.jpg',
   jsonLd,
   region = '',
   keyword = '배관막힘',
+  breadcrumbs,
 } = Astro.props;
 
-const siteUrl   = 'https://baegun-manager.com';
-const canonUrl  = canonical ?? siteUrl;
-const pageTitle = title;
----
+const siteUrl  = 'https://plumbers24.netlify.app';
+const canonUrl = canonical ?? (siteUrl + Astro.url.pathname);
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+// BreadcrumbList JSON-LD
+const breadcrumbLd = breadcrumbs?.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((b, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: b.name,
+        item: siteUrl + b.url,
+      })),
+    }
+  : null;
 
-  <!-- ── 기본 SEO ── -->
-  <title>{pageTitle}</title>
-  <meta name="description" content={description} />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  {canonical && <link rel="canonical" href={canonUrl} />}
-
-  <!-- ── Open Graph (네이버·카카오·페이스북) ── -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content={canonUrl} />
-  <meta property="og:title"       content={pageTitle} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image"       content={`${siteUrl}${ogImage}`} />
-  <meta property="og:image:width"  content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale"      content="ko_KR" />
-  <meta property="og:site_name"   content="배관매니저" />
-
-  <!-- ── Twitter Card ── -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content={pageTitle} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image"       content={`${siteUrl}${ogImage}`} />
-
-  <!-- ── 전화번호 자동 감지 비활성화 방지 (모바일) ── -->
-  <meta name="format-detection" content="telephone=no" />
-
-  <!-- ── 폰트 ── -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
-
-  <!-- ── 페이지별 JSON-LD ── -->
-  {jsonLd && (
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  )}
-
-  <!-- ── 공통 Organization JSON-LD ── -->
-  <script type="application/ld+json" set:html={JSON.stringify({
+const allLd = [
+  {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'LocalBusiness',
     name: '배관매니저',
     url: siteUrl,
-    telephone: '1866-2449',
+    telephone: '18662449',
     description: '전국 배관막힘, 싱크대막힘 전문 업체. 24시간 신속 출동.',
     contactPoint: {
       '@type': 'ContactPoint',
@@ -81,10 +53,70 @@ const pageTitle = title;
       availableLanguage: 'Korean',
       hoursAvailable: 'Mo-Su 00:00-24:00',
     },
-    sameAs: [],
-  })} />
+  },
+  ...(breadcrumbLd ? [breadcrumbLd] : []),
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+];
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href={canonUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={canonUrl} />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={`${siteUrl}${ogImage}`} />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="ko_KR" />
+  <meta property="og:site_name"   content="배관매니저" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={`${siteUrl}${ogImage}`} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD -->
+  {allLd.map(ld => (
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  ))}
 </head>
 <body class="font-sans bg-gray-50 text-gray-900 antialiased">
+  <!-- 상단 고정 전화번호 바 -->
+  <div id="phone-bar" class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white text-center py-2 px-4 shadow-lg">
+    <a
+      href="tel:18662449"
+      class="inline-flex items-center gap-2 text-yellow-300 font-black text-lg md:text-xl hover:text-yellow-200 transition-colors"
+      aria-label="전화 연결 1866-2449"
+    >
+      <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+      </svg>
+      1866-2449
+    </a>
+    <span class="text-white/70 text-xs ml-3 hidden sm:inline">지금 전화하시면 전문 상담사가 연결됩니다 · 24시간 365일</span>
+  </div>
+
+  <!-- 상단 바 높이만큼 여백 -->
+  <div class="h-10"></div>
+
   <slot />
 </body>
 </html>

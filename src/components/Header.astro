@@ -1,14 +1,26 @@
 ---
 // src/components/Header.astro
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) =>
+  currentPath === path || currentPath.startsWith(path + '/');
+
+const navLinks = [
+  { href: '/',          label: '홈',       icon: '🏠' },
+  { href: '/about',     label: '회사소개', icon: '🏢' },
+  { href: '/seoul',     label: '서울',     icon: '🗼' },
+  { href: '/gyeonggi',  label: '경기',     icon: '🌿' },
+  { href: '/reviews',   label: '배관후기', icon: '📝' },
+  { href: '/contact',   label: '상담신청', icon: '📞' },
+];
 ---
 
-<header class="sticky top-0 z-50 bg-white shadow-md">
+<header class="sticky top-10 z-50 bg-white shadow-md border-b border-gray-100">
   <div class="mx-auto max-w-6xl px-4">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-14">
 
       <!-- 로고 -->
-      <a href="/" class="flex items-center gap-2 font-bold text-xl text-brand-700">
-        <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <a href="/" class="flex items-center gap-2 font-black text-xl text-blue-800">
+        <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
         </svg>
@@ -16,33 +28,39 @@
       </a>
 
       <!-- 데스크탑 네비 -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
-        <a href="/" class="hover:text-brand-600 transition-colors">홈</a>
-        <a href="/info" class="hover:text-brand-600 transition-colors">배관막힘소개</a>
-        <a href="/reviews" class="hover:text-brand-600 transition-colors font-semibold">하수구막힘 후기</a>
+      <nav class="hidden md:flex items-center gap-1 text-sm font-medium">
+        {navLinks.slice(0, -1).map(link => (
+          <a
+            href={link.href}
+            class={`px-3 py-2 rounded-lg transition-colors ${
+              isActive(link.href)
+                ? 'bg-blue-50 text-blue-700 font-bold'
+                : 'text-gray-600 hover:text-blue-700 hover:bg-blue-50'
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
         <a
-          href="tel:18662449"
-          class="flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded-full transition-colors font-bold shadow-sm"
+          href="/contact"
+          class="ml-2 flex items-center gap-1.5 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full font-bold shadow transition-colors"
         >
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
           </svg>
-          1866-2449 전화연결
+          상담신청
         </a>
       </nav>
 
-      <!-- 모바일 전화 버튼 + 햄버거 -->
-      <div class="flex md:hidden items-center gap-3">
-        <a
-          href="tel:18662449"
-          class="flex items-center gap-1.5 bg-accent-500 text-white px-3 py-2 rounded-full text-sm font-bold shadow"
-        >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+      <!-- 모바일 -->
+      <div class="flex md:hidden items-center gap-2">
+        <a href="tel:18662449" class="flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-full text-sm font-bold">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
           </svg>
-          1866-2449
+          전화
         </a>
-        <button id="menu-toggle" class="p-2 rounded-md text-gray-600 hover:bg-gray-100" aria-label="메뉴 열기">
+        <button id="menu-toggle" class="p-2 rounded-md text-gray-600 hover:bg-gray-100" aria-label="메뉴">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
@@ -51,14 +69,20 @@
     </div>
 
     <!-- 모바일 드롭다운 -->
-    <div id="mobile-menu" class="md:hidden hidden pb-4 border-t border-gray-100">
-      <nav class="flex flex-col gap-1 pt-3 text-sm font-medium text-gray-700">
-        <a href="/" class="px-3 py-2.5 hover:bg-gray-50 rounded-lg">🏠 홈</a>
-        <a href="/info" class="px-3 py-2.5 hover:bg-gray-50 rounded-lg">📋 배관막힘소개</a>
-        <a href="/reviews" class="px-3 py-2.5 hover:bg-brand-50 text-brand-700 rounded-lg font-semibold">📝 하수구막힘 후기</a>
-        <a href="tel:18662449" class="px-3 py-2.5 bg-accent-50 text-accent-600 rounded-lg font-bold mt-1">
-          📞 배관막힘 상담 1866-2449
-        </a>
+    <div id="mobile-menu" class="md:hidden hidden pb-3 border-t border-gray-100">
+      <nav class="flex flex-col gap-0.5 pt-2 text-sm font-medium">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={`flex items-center gap-2 px-3 py-2.5 rounded-lg ${
+              isActive(link.href)
+                ? 'bg-blue-50 text-blue-700 font-bold'
+                : 'text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            <span>{link.icon}</span>{link.label}
+          </a>
+        ))}
       </nav>
     </div>
   </div>

@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://baegun-manager.com',
+  site: 'https://plumbers24.netlify.app',
   integrations: [
     tailwind(),
   ],

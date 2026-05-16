@@ -1,0 +1,94 @@
+---
+// src/pages/seoul/index.astro — 서울특별시 허브
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { getByCity, getUniqueSigungu, getDongsBySigungu } from '../../lib/regions';
+
+const sidoname = '서울특별시';
+const sigungus = getUniqueSigungu(sidoname);
+
+const breadcrumbs = [
+  { name: '홈', url: '/' },
+  { name: '서울특별시', url: '/seoul' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: '서울특별시 배관막힘 전문 업체',
+  areaServed: { '@type': 'AdministrativeArea', name: '서울특별시' },
+  provider: { '@type': 'LocalBusiness', name: '배관매니저', telephone: '18662449' },
+};
+---
+
+<BaseLayout
+  title="서울특별시 배관막힘 전문 업체 | 배관매니저 1866-2449"
+  description="서울특별시 전지역 배관막힘·싱크대막힘·하수구막힘 전문. 배관매니저 1866-2449. 24시간 신속출동, 출장비 무료."
+  canonical="https://plumbers24.netlify.app/seoul"
+  breadcrumbs={breadcrumbs}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <!-- 브레드크럼 -->
+    <nav class="text-sm text-gray-500 mb-6 flex items-center gap-1" aria-label="breadcrumb">
+      <a href="/" class="hover:text-blue-600">홈</a>
+      <span>›</span>
+      <span class="text-gray-800 font-medium">서울특별시</span>
+    </nav>
+
+    <!-- 히어로 -->
+    <div class="bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-2xl p-8 mb-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-black mb-3">🗼 서울특별시 배관막힘</h1>
+      <p class="text-blue-100 mb-5">{sigungus.length}개 구 전지역 · 24시간 신속출동 · 출장비 무료</p>
+      <a href="tel:18662449" class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-black text-xl px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+        </svg>
+        1866-2449 바로 전화
+      </a>
+    </div>
+
+    <!-- 서울 시군구 그리드 -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-800 mb-5">서울특별시 구별 배관막힘 서비스</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        {sigungus.map(sg => {
+          const dongs = getDongsBySigungu(sidoname, sg);
+          return (
+            <a
+              href={`/seoul/${encodeURIComponent(sg)}`}
+              class="bg-white border border-gray-200 hover:border-blue-400 hover:shadow-md rounded-xl p-4 transition-all group"
+            >
+              <div class="font-bold text-gray-800 group-hover:text-blue-700 mb-1">{sg}</div>
+              <div class="text-xs text-gray-400">{dongs.length}개 동</div>
+              <div class="text-xs text-blue-500 mt-1">배관막힘 →</div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- 서울 특장점 -->
+    <section class="bg-blue-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">서울특별시 배관막힘 전문 서비스</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+        <div class="flex items-start gap-2"><span class="text-blue-500">✔</span> 서울 전 지역 24시간 365일 출동</div>
+        <div class="flex items-start gap-2"><span class="text-blue-500">✔</span> 평균 30분 내 현장 도착</div>
+        <div class="flex items-start gap-2"><span class="text-blue-500">✔</span> 배관 내시경 무료 점검</div>
+        <div class="flex items-start gap-2"><span class="text-blue-500">✔</span> 작업 전 투명한 견적 제공</div>
+        <div class="flex items-start gap-2"><span class="text-blue-500">✔</span> 비파괴 공법 시공 (타일 훼손 최소화)</div>
+        <div class="flex items-start gap-2"><span class="text-blue-500">✔</span> 1년 무상 A/S 보장</div>
+      </div>
+    </section>
+
+    <!-- 상담 폼 -->
+    <ContactForm region="서울특별시" keyword="배관막힘" />
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 text-sm text-center py-6 mt-10">
+    <p>© 2024 배관매니저 | Tel: <a href="tel:18662449" class="text-yellow-400 font-bold">1866-2449</a></p>
+  </footer>
+</BaseLayout>

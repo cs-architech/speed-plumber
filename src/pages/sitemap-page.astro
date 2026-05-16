@@ -1,0 +1,122 @@
+---
+// src/pages/sitemap-page.astro — HTML 사이트맵
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import { getAllRegions, getUniqueSigungu, getDongsBySigungu } from '../lib/regions';
+
+const seoulSigungu   = getUniqueSigungu('서울특별시');
+const gyeonggiSigungu = getUniqueSigungu('경기도');
+
+const PER_PAGE = 50;
+const allDongs  = getAllRegions().filter(r => r.dong);
+const pageNum   = parseInt(Astro.url.searchParams.get('page') ?? '1') || 1;
+const totalPages = Math.ceil(allDongs.length / PER_PAGE);
+const pageDongs = allDongs.slice((pageNum - 1) * PER_PAGE, pageNum * PER_PAGE);
+---
+
+<BaseLayout
+  title="전체 지역 사이트맵 | 배관매니저"
+  description="배관매니저 전체 서비스 지역 목록. 서울특별시·경기도 전지역 배관막힘 전문."
+  canonical="https://plumbers24.netlify.app/sitemap-page"
+>
+  <Header />
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-6 flex items-center gap-1">
+      <a href="/" class="hover:text-blue-600">홈</a>
+      <span>›</span>
+      <span class="text-gray-800 font-medium">전체 지역 사이트맵</span>
+    </nav>
+
+    <h1 class="text-3xl font-black text-gray-900 mb-2">전체 서비스 지역</h1>
+    <p class="text-gray-500 mb-8">배관매니저가 서비스하는 모든 지역을 확인하세요.</p>
+
+    <!-- 정적 메뉴 -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-700 mb-3 border-b pb-2">주요 페이지</h2>
+      <div class="flex flex-wrap gap-2">
+        {[
+          { href: '/', label: '홈 · 메인' },
+          { href: '/about', label: '회사소개' },
+          { href: '/seoul', label: '서울특별시 허브' },
+          { href: '/gyeonggi', label: '경기도 허브' },
+          { href: '/reviews', label: '배관후기' },
+          { href: '/contact', label: '상담신청' },
+        ].map(l => (
+          <a href={l.href} class="text-sm bg-blue-50 hover:bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full">{l.label}</a>
+        ))}
+      </div>
+    </section>
+
+    <!-- 서울 구 목록 -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-700 mb-3 border-b pb-2">
+        🗼 서울특별시 ({seoulSigungu.length}개 구)
+      </h2>
+      <div class="flex flex-wrap gap-2">
+        {seoulSigungu.map(sg => (
+          <a href={`/seoul/${encodeURIComponent(sg)}`} class="text-sm bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-700 text-gray-600 px-3 py-1.5 rounded-full transition-colors">
+            {sg}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- 경기 시군 목록 -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-700 mb-3 border-b pb-2">
+        🌿 경기도 ({gyeonggiSigungu.length}개 시군)
+      </h2>
+      <div class="flex flex-wrap gap-2">
+        {gyeonggiSigungu.map(sg => (
+          <a href={`/gyeonggi/${encodeURIComponent(sg)}`} class="text-sm bg-white border border-gray-200 hover:border-green-400 hover:text-green-700 text-gray-600 px-3 py-1.5 rounded-full transition-colors">
+            {sg}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- 전체 동 목록 (페이지네이션) -->
+    <section>
+      <h2 class="text-lg font-bold text-gray-700 mb-3 border-b pb-2">
+        전체 읍면동 페이지 ({allDongs.length}개, 페이지 {pageNum}/{totalPages})
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 mb-6">
+        {pageDongs.map(r => {
+          const slug = r.sidoname === '서울특별시' ? 'seoul' : 'gyeonggi';
+          return (
+            <a
+              href={`/${slug}/${encodeURIComponent(r.sigungu)}/${encodeURIComponent(r.dong)}`}
+              class="text-xs bg-white border border-gray-100 hover:border-blue-300 hover:text-blue-600 text-gray-600 px-2 py-2 rounded-lg transition-colors"
+            >
+              <span class="block text-gray-400 text-xs">{r.sidoname === '서울특별시' ? '서울' : '경기'}</span>
+              {r.sigungu} {r.dong}
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- 페이지네이션 -->
+      <div class="flex flex-wrap gap-2 justify-center">
+        {pageNum > 1 && (
+          <a href={`/sitemap-page?page=${pageNum - 1}`} class="px-4 py-2 bg-white border border-gray-200 hover:border-blue-400 rounded-lg text-sm text-gray-600 hover:text-blue-600">← 이전</a>
+        )}
+        {Array.from({ length: Math.min(totalPages, 10) }, (_, i) => i + 1).map(p => (
+          <a
+            href={`/sitemap-page?page=${p}`}
+            class={`px-3 py-2 rounded-lg text-sm border ${p === pageNum ? 'bg-blue-600 text-white border-blue-600' : 'bg-white border-gray-200 text-gray-600 hover:border-blue-400'}`}
+          >
+            {p}
+          </a>
+        ))}
+        {pageNum < totalPages && (
+          <a href={`/sitemap-page?page=${pageNum + 1}`} class="px-4 py-2 bg-white border border-gray-200 hover:border-blue-400 rounded-lg text-sm text-gray-600 hover:text-blue-600">다음 →</a>
+        )}
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 text-sm text-center py-6 mt-10">
+    <p>© 2024 배관매니저 | Tel: <a href="tel:18662449" class="text-yellow-400 font-bold">1866-2449</a></p>
+  </footer>
+</BaseLayout>

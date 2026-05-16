@@ -1,0 +1,107 @@
+---
+// src/pages/gyeonggi/[sigungu]/[dong].astro — 경기 읍면동 개별 페이지
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import DongPage from '../../../components/DongPage.astro';
+import { getDongsBySigungu, getUniqueSigungu } from '../../../lib/regions';
+
+export async function getStaticPaths() {
+  const sidoname = '경기도';
+  const sigungus = getUniqueSigungu(sidoname);
+  const paths = [];
+  for (const sg of sigungus) {
+    const dongs = getDongsBySigungu(sidoname, sg);
+    for (const row of dongs) {
+      paths.push({
+        params: { sigungu: sg, dong: row.dong },
+        props: { row },
+      });
+    }
+  }
+  return paths;
+}
+
+const { sigungu, dong } = Astro.params;
+const { row } = Astro.props;
+const sidoname = '경기도';
+const region   = `${sigungu} ${dong}`;
+const keyword  = '배관막힘';
+
+const breadcrumbs = [
+  { name: '홈', url: '/' },
+  { name: '경기도', url: '/gyeonggi' },
+  { name: sigungu, url: `/gyeonggi/${encodeURIComponent(sigungu)}` },
+  { name: dong, url: `/gyeonggi/${encodeURIComponent(sigungu)}/${encodeURIComponent(dong)}` },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: `배관매니저 ${region} ${keyword}`,
+  description: `${region} ${keyword} 전문 업체. 24시간 신속 출동.`,
+  telephone: '18662449',
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: `${sidoname} ${sigungu} ${dong}`,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: row.lat, longitude: row.lon },
+};
+---
+
+<BaseLayout
+  title={`${region} 배관막힘 전문 업체 | 1866-2449 · 24시간 긴급출동`}
+  description={`${region} 배관막힘·싱크대막힘·하수구막힘 전문. 배관매니저 1866-2449. 24시간 신속출동, 출장비 무료.`}
+  canonical={`https://plumbers24.netlify.app/gyeonggi/${encodeURIComponent(sigungu)}/${encodeURIComponent(dong)}`}
+  breadcrumbs={breadcrumbs}
+  jsonLd={jsonLd}
+  region={region}
+  keyword={keyword}
+>
+  <Header />
+
+  <!-- 히어로 헤더 -->
+  <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white text-center py-6 px-4">
+    <h1 class="text-lg md:text-xl font-bold mb-3 opacity-95">{region} 배관막힘 전문 업체 · 24시간 긴급출동</h1>
+    <a
+      href="tel:18662449"
+      class="inline-flex items-center gap-3 bg-yellow-400 text-blue-900 font-black text-2xl md:text-3xl px-8 py-4 rounded-full shadow-xl hover:bg-yellow-300 hover:scale-105 transition-all"
+    >
+      <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+      </svg>
+      1866-2449
+    </a>
+    <p class="mt-2 text-sm text-white/70">지금 바로 전화하시면 전문 상담사가 연결됩니다</p>
+  </div>
+
+  <!-- 히어로 이미지 -->
+  <div class="bg-white">
+    <div class="max-w-3xl mx-auto">
+      <img src="/images/first/01.png" alt={`${region} 배관막힘 업체 안내`} class="w-full h-auto object-contain max-h-80" loading="eager" />
+    </div>
+  </div>
+
+  <DongPage
+    sidoname={sidoname}
+    sigungu={sigungu}
+    dong={dong}
+    lat={row.lat}
+    lon={row.lon}
+    sidoSlug="gyeonggi"
+    sidoLabel="경기도"
+    accentColor="green"
+  />
+
+  <footer class="bg-gray-900 text-gray-400 text-sm text-center py-6">
+    <div class="text-yellow-400 font-bold text-lg mb-1">
+      <a href="tel:18662449" class="hover:text-yellow-300">📞 1866-2449</a>
+    </div>
+    <p>배관막힘 전문 · {region} 배관막힘 전문</p>
+    <div class="mt-4 flex justify-center gap-4 text-xs text-gray-600">
+      <a href="/" class="hover:text-gray-400">홈</a>
+      <a href="/gyeonggi" class="hover:text-gray-400">경기</a>
+      <a href={`/gyeonggi/${encodeURIComponent(sigungu)}`} class="hover:text-gray-400">{sigungu}</a>
+      <a href="/sitemap-page" class="hover:text-gray-400">사이트맵</a>
+    </div>
+  </footer>
+</BaseLayout>

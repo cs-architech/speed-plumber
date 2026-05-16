@@ -1,0 +1,240 @@
+---
+// src/components/DongPage.astro — 읍면동 개별 페이지 공통 컴포넌트
+import FAQ from './FAQ.astro';
+import ContactForm from './ContactForm.astro';
+import { readFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { getNearbyDongs } from '../lib/regions';
+import type { RegionRow } from '../lib/regions';
+
+interface Props {
+  sidoname: string;
+  sigungu: string;
+  dong: string;
+  lat: number;
+  lon: number;
+  sidoSlug: string;
+  sidoLabel: string;
+  accentColor: string;
+}
+const { sidoname, sigungu, dong, lat, lon, sidoSlug, sidoLabel, accentColor } = Astro.props;
+
+const region   = dong ? `${sigungu} ${dong}` : sigungu;
+const keyword  = '배관막힘';
+const label    = dong;
+
+// 근접 지역 10개
+const nearbyList = getNearbyDongs(sidoname, sigungu, dong, 10) as (RegionRow & { _dist?: number })[];
+
+// 키워드 풀 (region card용)
+const kwPool = ['하수구막힘', '싱크대막힘', '배관막힘', '변기막힘', '우수관막힘', '하수구역류', '배관고압세척'];
+
+// 점검가능지역 카드용 키워드
+const cardKwPool = [
+  '세면대수리/싱크대수전교체/최강뚫음/배관뚫음/하수관막힘',
+  '우수관막힘/싱크대역류/천장누수공사/막힌하수구뚫음/수도누수수리',
+  '변기역류/24시하수구뚫음/하수구막힘/싱크대펌프교체/누수탐지',
+  '변기뚫는업체/뻥뚫어고압세척/천장누수/욕실막힘/뚫는업체',
+  '배관내시경/배관뚫음/배관공사/변기역류/싱크대펌프교체',
+  '윗층천장누수/싱크대막혔을때/뻥뚫어고압세척/변기뚫는곳/보일러배관수리',
+  '최강뚫음/배관뚫는업체/소변기수리/수도누수/우수관막힘',
+  '배관막힘/최강뚫음/싱크대막힘/24시하수구뚫음/싱크대역류',
+];
+
+// 점검가능 근접 지역 카드 (가까운 7개)
+const nearbyCards = nearbyList.slice(0, 7);
+
+// faq6000.txt 파싱 (페이지별 10개, 중복 없이 시드 기반으로 선택)
+function seededRand(seed: number) {
+  let s = seed;
+  return () => {
+    s = (s * 1664525 + 1013904223) & 0xffffffff;
+    return (s >>> 0) / 4294967295;
+  };
+}
+const seed = dong.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+const rand = seededRand(seed);
+
+const faqPath = resolve(dirname(fileURLToPath(import.meta.url)), '../../faq6000.txt');
+const faqRaw  = readFileSync(faqPath, 'utf-8');
+
+const allFaqs: { q: string; a: string }[] = [];
+for (const chunk of faqRaw.split(/\n{2,}/)) {
+  const lines = chunk.split('\n');
+  const qLine = lines.find(l => l.trimStart().startsWith('Q.'));
+  const aLine = lines.find(l => l.trimStart().startsWith('A.'));
+  if (!qLine || !aLine) continue;
+  const q = qLine.replace(/^Q\.\s*/, '').trim();
+  const a = aLine.replace(/^A\.\s*/, '').replace(/\]\]/g, '')
+    .replace(/해당내용에서[^.。]*?제외하고\s*/g, '')
+    .replace(/출장비[가를은은]?\s*(무료|얘기)[는을]?\s*(제외하고\s*)?/g, '')
+    .trim();
+  if (q.endsWith('질문') || a.startsWith('대답') || q.length < 10 || a.length < 10) continue;
+  allFaqs.push({ q, a });
+}
+
+// 시드 기반으로 10개 선택 (중복 없이)
+const shuffled = [...allFaqs].sort(() => rand() - 0.5);
+const pageFaqs = shuffled.slice(0, 10).map(f => ({
+  q: f.q.replace(/"region"/g, region).replace(/"keywords"/g, keyword),
+  a: f.a.replace(/"region"/g, region).replace(/"keywords"/g, keyword),
+}));
+
+// 구글/네이버 지도 검색 URL
+const googleMapUrl  = `https://www.google.com/search?q=${encodeURIComponent(region + ' ' + keyword + ' 업체')}`;
+const naverMapUrl   = `https://map.naver.com/v5/search/${encodeURIComponent(region + ' ' + keyword + ' 업체')}`;
+
+// 작업후기 텍스트 (output/index.html 기반 + 지역 치환)
+const reviewText = `${region} 하수구막힘? 주방 싱크대 역류, 완벽 해결!
+
+저희는 단순히 감으로 작업하지 않습니다. 현장에 도착해 가장 먼저 배관 내부를 진단하기 위해 최신 내시경 장비 무료 점검을 실시했습니다.
+
+${region} 배관막힘 – 오늘은 꽉 막힌 배수구를 시원하게 처리하고 온 시공 과정을 상세히 공유합니다. 매일 사용하는 주방에서 설거지 중 갑자기 물이 내려가지 않고 차오른다면 정말 당황스러울 수밖에 없죠.
+
+내시경으로 작업 상황을 실시간으로 모니터링하면서 하수관에 손상이 가지 않도록 섬세하게 작업을 이어갔습니다.
+
+저희는 투명한 정찰제를 운영하여 불필요한 비용 청구 없이, 오직 정확한 진단과 시공으로만 고객 만족을 추구합니다. 워터젯 세척/찌꺼기 제거 후 1년 무상 A/S 보장을 통해 고객님의 안심을 최우선으로 생각합니다.
+
+완벽한 서비스는 물론, 사후 관리까지 책임지기에 한 번의 시공으로 오래도록 쾌적한 환경을 유지하실 수 있습니다.`;
+---
+
+<main>
+  <!-- 브레드크럼 -->
+  <div class="max-w-4xl mx-auto px-4 pt-6">
+    <nav class="text-sm text-gray-500 mb-4 flex items-center gap-1 flex-wrap" aria-label="breadcrumb">
+      <a href="/" class="hover:text-blue-600">홈</a>
+      <span>›</span>
+      <a href={`/${sidoSlug}`} class="hover:text-blue-600">{sidoname}</a>
+      <span>›</span>
+      <a href={`/${sidoSlug}/${encodeURIComponent(sigungu)}`} class="hover:text-blue-600">{sigungu}</a>
+      <span>›</span>
+      <span class="text-gray-800 font-medium">{dong}</span>
+    </nav>
+  </div>
+
+  <!-- ① 점검 가능지역 서비스 카드들 -->
+  <div class="max-w-4xl mx-auto px-4 pb-6">
+    <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-yellow-400 pl-3">
+      {region} 배관막힘 업체 점검 가능지역
+    </h2>
+    <p class="text-sm text-gray-500 mb-4">{nearbyCards.length + 1}개 이상의 배관막힘 서비스 지역</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <!-- 주요 서비스 지역 카드 (현재 페이지) -->
+      <div class="bg-white border-l-4 border-red-400 rounded-xl shadow-sm p-4">
+        <div class="inline-block bg-red-50 text-red-600 text-xs font-bold px-2 py-1 rounded-full mb-2">📍 주요 서비스 지역</div>
+        <div class="font-bold text-red-800 text-sm mb-1">[ {region} 배관막힘 업체 점검 가능지역 ]</div>
+        <div class="text-xs text-gray-500 bg-gray-50 rounded p-2 mb-3 leading-relaxed">{cardKwPool[0]}</div>
+        <div class="text-xs text-gray-600 mb-3">
+          <strong>분류:</strong> 등록업종 &gt; 건설 / 배관·위생설비공사<br/>
+        </div>
+        <div class="flex gap-2">
+          <a href={googleMapUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-blue-500 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">🗺 구글지도</a>
+          <a href={naverMapUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-green-500 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">🗺 네이버지도</a>
+        </div>
+      </div>
+
+      <!-- 근접 지역 카드들 -->
+      {nearbyCards.map((nb, i) => {
+        const nbRegion = `${nb.sigungu} ${nb.dong}`;
+        const nbKw = kwPool[i % kwPool.length];
+        const nbGoogleUrl = `https://www.google.com/search?q=${encodeURIComponent(nbRegion + ' ' + nbKw + ' 업체')}`;
+        const nbNaverUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(nbRegion + ' ' + nbKw + ' 업체')}`;
+        return (
+          <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+            <div class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-2 py-1 rounded-full mb-2">✅ 점검 가능 지역</div>
+            <div class="font-bold text-gray-800 text-sm mb-1">[ {nbRegion} {nbKw} 업체 점검 가능지역 ]</div>
+            <div class="text-xs text-gray-500 bg-gray-50 rounded p-2 mb-3 leading-relaxed">{cardKwPool[(i + 1) % cardKwPool.length]}</div>
+            <div class="text-xs text-gray-600 mb-3">
+              <strong>분류:</strong> 건설업 &gt; 전문건설업 / 배관·냉난방공사
+            </div>
+            <div class="flex gap-2">
+              <a href={nbGoogleUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-blue-500 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">🗺 구글지도</a>
+              <a href={nbNaverUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-green-500 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">🗺 네이버지도</a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- ② 갤러리 (작업 사진) -->
+  <div class="max-w-4xl mx-auto px-4 pb-6">
+    <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-blue-400 pl-3">작업 현장 사진</h2>
+    <p class="text-sm text-gray-500 mb-3">{region} 배관막힘 실제 작업 사진입니다</p>
+    <div class="grid grid-cols-3 gap-2">
+      {[1,2,3,4,5,6].map(n => (
+        <div class="aspect-[4/3] bg-gray-100 rounded-xl overflow-hidden">
+          <img
+            src={`/images/gallery/g0${n % 9}.jpg`}
+            alt={`${region} 배관막힘 작업 사진 ${n}`}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-gray-400 text-xs\'>사진</div>'"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ③ 상담 폼 -->
+  <div class="max-w-4xl mx-auto px-4 pb-6">
+    <ContactForm region={region} keyword={keyword} />
+  </div>
+
+  <!-- ④ 업체 작업후기 아코디언 -->
+  <div class="max-w-4xl mx-auto px-4 pb-6">
+    <div class="text-center mb-3">
+      <button id="review-toggle" class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-900 to-blue-700 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+        <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+        </svg>
+        업체 작업후기 보기
+        <span id="review-arrow" class="text-sm transition-transform duration-300">▼</span>
+      </button>
+    </div>
+    <div id="review-content" class="hidden bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+      {reviewText.split('\n\n').filter(p => p.trim()).map(para => (
+        <p class="text-gray-700 text-sm leading-relaxed mb-4 last:mb-0">
+          {para.trim()}
+        </p>
+      ))}
+    </div>
+  </div>
+
+  <!-- ⑤ FAQ -->
+  <div class="max-w-4xl mx-auto px-4 pb-6">
+    <FAQ region={region} keyword={keyword} faqs={pageFaqs} />
+  </div>
+
+  <!-- ⑥ 근접 지역 10개 링크 -->
+  {nearbyList.length > 0 && (
+    <div class="max-w-4xl mx-auto px-4 pb-10">
+      <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-green-400 pl-3">인근 지역 배관막힘 서비스</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+        {nearbyList.map(nb => (
+          <a
+            href={`/${sidoSlug}/${encodeURIComponent(nb.sigungu)}/${encodeURIComponent(nb.dong)}`}
+            class="text-center bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-700 text-gray-700 text-xs px-2 py-3 rounded-xl transition-all"
+          >
+            <div class="font-medium">{nb.sigungu}</div>
+            <div class="text-gray-500">{nb.dong}</div>
+            <div class="text-blue-400 mt-0.5">배관막힘</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+</main>
+
+<script>
+  const toggle  = document.getElementById('review-toggle');
+  const content = document.getElementById('review-content');
+  const arrow   = document.getElementById('review-arrow');
+  toggle?.addEventListener('click', () => {
+    const open = !content?.classList.contains('hidden');
+    content?.classList.toggle('hidden', open);
+    if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
+  });
+</script>

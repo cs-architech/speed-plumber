@@ -1,0 +1,76 @@
+---
+// src/components/SigunguHub.astro — 시군구 허브 공통 컴포넌트
+import ContactForm from './ContactForm.astro';
+import { getDongsBySigungu, getNearbyDongs } from '../lib/regions';
+
+interface Props {
+  sidoname: string;
+  sigungu: string;
+  sidoSlug: string;
+  sidoLabel: string;
+  accentColor: string; // 'blue' | 'green'
+}
+const { sidoname, sigungu, sidoSlug, sidoLabel, accentColor } = Astro.props;
+
+const dongs = getDongsBySigungu(sidoname, sigungu);
+
+// 키워드 풀
+const kwPool = ['하수구막힘', '싱크대막힘', '배관막힘', '변기막힘', '우수관막힘'];
+---
+
+<main class="max-w-5xl mx-auto px-4 py-10">
+  <!-- 브레드크럼 -->
+  <nav class="text-sm text-gray-500 mb-6 flex items-center gap-1 flex-wrap" aria-label="breadcrumb">
+    <a href="/" class="hover:text-blue-600">홈</a>
+    <span>›</span>
+    <a href={`/${sidoSlug}`} class={`hover:text-${accentColor}-600`}>{sidoname}</a>
+    <span>›</span>
+    <span class="text-gray-800 font-medium">{sigungu}</span>
+  </nav>
+
+  <!-- 히어로 -->
+  <div class={`bg-gradient-to-r from-${accentColor}-900 to-${accentColor}-700 text-white rounded-2xl p-7 mb-8`}>
+    <h1 class="text-2xl md:text-3xl font-black mb-2">{sigungu} 배관막힘 전문 업체</h1>
+    <p class={`text-${accentColor}-100 text-sm mb-4`}>{sidoname} {sigungu} · {dongs.length}개 읍면동 서비스 · 24시간 신속출동</p>
+    <a href="tel:18662449" class="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 font-black text-lg px-6 py-3 rounded-xl hover:bg-yellow-300 transition-colors">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+      </svg>
+      1866-2449
+    </a>
+  </div>
+
+  <!-- 읍면동 목록 -->
+  {dongs.length > 0 && (
+    <section class="mb-8">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">{sigungu} 배관막힘 서비스 읍면동</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        {dongs.map((r, i) => (
+          <a
+            href={`/${sidoSlug}/${encodeURIComponent(sigungu)}/${encodeURIComponent(r.dong)}`}
+            class={`bg-white border border-gray-200 hover:border-${accentColor}-400 hover:shadow-sm rounded-xl p-3 text-center transition-all group`}
+          >
+            <div class={`font-semibold text-gray-800 group-hover:text-${accentColor}-700 text-sm`}>{r.dong}</div>
+            <div class="text-xs text-gray-400 mt-0.5">{kwPool[i % kwPool.length]}</div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- 서비스 설명 -->
+  <section class={`bg-${accentColor}-50 rounded-2xl p-6 mb-8`}>
+    <h2 class="text-xl font-bold text-gray-800 mb-3">{sigungu} 배관막힘 전문 해결</h2>
+    <p class="text-gray-700 text-sm leading-relaxed mb-3">
+      {sidoname} {sigungu} 지역 배관막힘 문제를 배관매니저가 신속하게 해결합니다.
+      하수구막힘, 싱크대막힘, 변기막힘, 우수관막힘 등 모든 배관 문제에 24시간 대응합니다.
+    </p>
+    <p class="text-gray-700 text-sm leading-relaxed">
+      최신 배관 내시경 장비로 정확한 원인을 파악하고, 고압세척·플렉스 샤프트 등
+      전문 장비로 근본적인 해결책을 제공합니다.
+    </p>
+  </section>
+
+  <!-- 상담 폼 -->
+  <ContactForm region={sigungu} keyword="배관막힘" />
+</main>
