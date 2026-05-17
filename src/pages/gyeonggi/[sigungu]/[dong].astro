@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import DongPage from '../../../components/DongPage.astro';
 import { getDongsBySigungu, getUniqueSigungu } from '../../../lib/regions';
+import { DONG_TITLES, DONG_DESCS, strSeed } from '../../../data/title_templates';
 
 export async function getStaticPaths() {
   const sidoname = '경기도';
@@ -26,6 +27,9 @@ const { row } = Astro.props;
 const sidoname = '경기도';
 const region   = `${sigungu} ${dong}`;
 const keyword  = '배관막힘';
+const seed     = strSeed(sigungu + dong);
+const pageTitle = DONG_TITLES[seed % DONG_TITLES.length](region);
+const pageDesc  = DONG_DESCS [seed % DONG_DESCS.length ](region);
 
 const breadcrumbs = [
   { name: '홈', url: '/' },
@@ -49,8 +53,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`${region} 배관막힘 전문 업체 | 1866-2449 · 24시간 긴급출동`}
-  description={`${region} 배관막힘·싱크대막힘·하수구막힘 전문. 배관매니저 1866-2449. 24시간 신속출동, 빠른 현장 출동, 배관 완전 복구.`}
+  title={pageTitle}
+  description={pageDesc}
   canonical={`https://plumbers24.netlify.app/gyeonggi/${encodeURIComponent(sigungu)}/${encodeURIComponent(dong)}`}
   breadcrumbs={breadcrumbs}
   jsonLd={jsonLd}

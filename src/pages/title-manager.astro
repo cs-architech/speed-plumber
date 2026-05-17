@@ -1,0 +1,190 @@
+---
+// src/pages/title-manager.astro — 페이지 제목 템플릿 관리 페이지
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllRegions } from '../lib/regions';
+import {
+  DONG_TITLES, DONG_DESCS,
+  SIGUNGU_TITLES, SIGUNGU_DESCS,
+  strSeed,
+} from '../data/title_templates';
+
+// 샘플: 각 템플릿 인덱스별 대표 동 찾기
+const allRegions = getAllRegions().filter(r => r.dong);
+const templateMap: Record<number, { region: string; dong: string }[]> = {};
+for (let i = 0; i < DONG_TITLES.length; i++) templateMap[i] = [];
+
+for (const r of allRegions) {
+  const region = `${r.sigungu} ${r.dong}`;
+  const idx = strSeed(r.sigungu + r.dong) % DONG_TITLES.length;
+  if (templateMap[idx].length < 3) templateMap[idx].push({ region, dong: r.dong });
+}
+
+// 시군구 샘플
+const allSigungu = [...new Set(allRegions.map(r => `${r.sidoname}||${r.sigungu}`))].map(s => {
+  const [sido, sg] = s.split('||');
+  return { sido, sg };
+});
+const sgTemplateMap: Record<number, string[]> = {};
+for (let i = 0; i < SIGUNGU_TITLES.length; i++) sgTemplateMap[i] = [];
+for (const { sido, sg } of allSigungu) {
+  const idx = strSeed(sg) % SIGUNGU_TITLES.length;
+  if (sgTemplateMap[idx].length < 2) sgTemplateMap[idx].push(`${sg} (${sido === '서울특별시' ? '서울' : '경기'})`);
+}
+---
+
+<BaseLayout
+  title="제목 템플릿 관리 | 배관매니저"
+  description="페이지 제목·설명 템플릿 관리 페이지"
+>
+  <div class="max-w-5xl mx-auto px-4 py-10 font-sans">
+
+    <div class="mb-8">
+      <h1 class="text-2xl font-black text-gray-900 mb-1">페이지 제목 템플릿 관리</h1>
+      <p class="text-gray-500 text-sm">각 페이지는 지역명 기반 씨드로 아래 템플릿 중 하나를 자동 배정받습니다.</p>
+      <div class="mt-3 inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-sm text-blue-700">
+        <span class="font-bold">수정 방법:</span>
+        <code class="bg-blue-100 px-2 py-0.5 rounded font-mono text-xs">src/data/title_templates.ts</code>
+        파일만 편집 후 빌드하면 전체 적용됩니다
+      </div>
+    </div>
+
+    <!-- ① 동 단위 제목 템플릿 -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">
+        동(읍면동) 페이지 제목 — {DONG_TITLES.length}가지
+      </h2>
+      <div class="space-y-3">
+        {DONG_TITLES.map((fn, i) => {
+          const ex = templateMap[i]?.[0]?.region ?? '강남 세곡동';
+          const samples = templateMap[i]?.map(s => s.region) ?? [];
+          return (
+            <div class={`rounded-xl border p-4 ${i % 2 === 0 ? 'bg-white border-gray-200' : 'bg-gray-50 border-gray-200'}`}>
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                <div class="flex-1 min-w-0">
+                  <p class="font-semibold text-gray-900 text-sm break-all">{fn(ex)}</p>
+                  <p class="text-xs text-gray-400 mt-1">적용 예: {samples.join(' · ') || '(없음)'}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- ② 동 단위 설명 템플릿 -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">
+        동(읍면동) 페이지 설명 — {DONG_DESCS.length}가지
+      </h2>
+      <div class="space-y-3">
+        {DONG_DESCS.map((fn, i) => {
+          const ex = templateMap[i]?.[0]?.region ?? '강남 세곡동';
+          return (
+            <div class={`rounded-xl border p-4 ${i % 2 === 0 ? 'bg-white border-gray-200' : 'bg-gray-50 border-gray-200'}`}>
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                <p class="text-sm text-gray-700 break-all">{fn(ex)}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- ③ 시군구 제목 템플릿 -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">
+        시군구 허브 페이지 제목 — {SIGUNGU_TITLES.length}가지
+      </h2>
+      <div class="space-y-3">
+        {SIGUNGU_TITLES.map((fn, i) => {
+          const samples = sgTemplateMap[i] ?? [];
+          return (
+            <div class="rounded-xl border bg-white border-gray-200 p-4">
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-full bg-purple-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                <div class="flex-1 min-w-0">
+                  <p class="font-semibold text-gray-900 text-sm break-all">{fn('강남', '서울특별시')}</p>
+                  <p class="text-xs text-gray-400 mt-1">적용 예: {samples.join(' · ') || '(없음)'}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- ④ 지역 검색 미리보기 -->
+    <section class="mb-10">
+      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">지역 검색 미리보기</h2>
+      <div class="bg-white border border-gray-200 rounded-xl p-5">
+        <div class="flex gap-2 mb-4">
+          <input
+            id="sg-input"
+            type="text"
+            placeholder="시군구 입력 (예: 강남)"
+            class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <input
+            id="dong-input"
+            type="text"
+            placeholder="동 입력 (예: 세곡동)"
+            class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <button
+            id="preview-btn"
+            class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-4 py-2 rounded-lg transition-colors"
+          >
+            미리보기
+          </button>
+        </div>
+        <div id="preview-result" class="hidden space-y-2 text-sm">
+          <div class="bg-gray-50 rounded-lg p-3">
+            <p class="text-xs text-gray-400 mb-1">제목</p>
+            <p id="preview-title" class="font-semibold text-gray-900"></p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-3">
+            <p class="text-xs text-gray-400 mb-1">설명</p>
+            <p id="preview-desc" class="text-gray-700"></p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-3">
+            <p class="text-xs text-gray-400 mb-1">배정된 템플릿 번호</p>
+            <p id="preview-idx" class="text-blue-600 font-bold"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ 수정 가이드 -->
+    <section class="bg-yellow-50 border border-yellow-200 rounded-xl p-5 text-sm">
+      <h2 class="font-bold text-yellow-800 mb-3">수정 방법</h2>
+      <ol class="list-decimal list-inside space-y-2 text-yellow-700">
+        <li><code class="bg-yellow-100 px-1 rounded font-mono text-xs">src/data/title_templates.ts</code> 파일을 열어 원하는 번호의 템플릿 문자열을 수정</li>
+        <li>저장 후 <code class="bg-yellow-100 px-1 rounded font-mono text-xs">npm run build</code> 실행</li>
+        <li>빌드 완료 후 git push → Netlify 자동 배포</li>
+      </ol>
+      <p class="mt-3 text-xs text-yellow-600">※ 템플릿을 추가하면 더 많은 변형이 생깁니다. 배열 끝에 항목 추가 후 빌드.</p>
+    </section>
+
+  </div>
+
+  <script define:vars={{ titles: DONG_TITLES.map(f => f('__R__')), descs: DONG_DESCS.map(f => f('__R__')) }}>
+    function strSeedJS(s) {
+      return s.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    }
+    document.getElementById('preview-btn')?.addEventListener('click', () => {
+      const sg   = document.getElementById('sg-input').value.trim();
+      const dong = document.getElementById('dong-input').value.trim();
+      if (!sg) return;
+      const region = dong ? `${sg} ${dong}` : sg;
+      const seed   = strSeedJS(sg + dong);
+      const tIdx   = seed % titles.length;
+      const dIdx   = seed % descs.length;
+      document.getElementById('preview-title').textContent = titles[tIdx].replace('__R__', region);
+      document.getElementById('preview-desc').textContent  = descs[dIdx].replace('__R__', region);
+      document.getElementById('preview-idx').textContent   = `제목 #${tIdx + 1} / 설명 #${dIdx + 1}`;
+      document.getElementById('preview-result').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

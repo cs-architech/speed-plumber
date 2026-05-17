@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import { getUniqueSigungu, getDongsBySigungu } from '../../../lib/regions';
+import { SIGUNGU_TITLES, SIGUNGU_DESCS, strSeed } from '../../../data/title_templates';
 
 export async function getStaticPaths() {
   const sidoname = '서울특별시';
@@ -15,6 +16,9 @@ const { sigungu } = Astro.params;
 const sidoname = '서울특별시';
 const dongs = getDongsBySigungu(sidoname, sigungu);
 const kwPool = ['하수구막힘', '싱크대막힘', '배관막힘', '변기막힘', '우수관막힘'];
+const seed = strSeed(sigungu);
+const pageTitle = SIGUNGU_TITLES[seed % SIGUNGU_TITLES.length](sigungu, sidoname);
+const pageDesc  = SIGUNGU_DESCS [seed % SIGUNGU_DESCS.length ](sigungu, sidoname);
 
 const breadcrumbs = [
   { name: '홈', url: '/' },
@@ -32,8 +36,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`${sigungu} 배관막힘 전문 업체 | 서울특별시 | 배관매니저 1866-2449`}
-  description={`서울특별시 ${sigungu} 배관막힘·싱크대막힘·하수구막힘 전문. 1866-2449. 24시간 신속출동, 30분 내 현장 도착.`}
+  title={pageTitle}
+  description={pageDesc}
   canonical={`https://plumbers24.netlify.app/seoul/${encodeURIComponent(sigungu)}`}
   breadcrumbs={breadcrumbs}
   jsonLd={jsonLd}
