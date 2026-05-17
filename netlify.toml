@@ -1,5 +1,5 @@
 [build]
-  command   = "npm run build"
+  command   = "pip install -r requirements.txt && npm run build"
   publish   = "dist"
   base      = "."
 
@@ -22,6 +22,10 @@
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+[[edge_functions]]
+  path     = "/*"
+  function = "geo-blocker"
 
 [[redirects]]
   from   = "/info"

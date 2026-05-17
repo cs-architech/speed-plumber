@@ -28,9 +28,13 @@ export const GET: APIRoute = async () => {
     })
     .filter(Boolean);
 
+  // static: / contact reviews etc — priority 1.0; sido: /seoul /gyeonggi — 0.9 (deduplicated from staticPages)
+  const sidoUrls   = ['/seoul', '/gyeonggi'];
+  const otherStatics = staticPages.filter(p => !sidoUrls.includes(p));
+
   const allUrls = [
-    ...staticPages.map(p => ({ url: p, priority: '1.0', changefreq: 'weekly' })),
-    ...['  /seoul', '/gyeonggi'].map(p => ({ url: p.trim(), priority: '0.9', changefreq: 'weekly' })),
+    ...otherStatics.map(p => ({ url: p, priority: '1.0', changefreq: 'weekly' })),
+    ...sidoUrls.map(p => ({ url: p, priority: '0.9', changefreq: 'weekly' })),
     ...[...sigungus].map(u => ({ url: u, priority: '0.8', changefreq: 'weekly' })),
     ...dongs.map(u => ({ url: u, priority: '0.7', changefreq: 'monthly' })),
   ];

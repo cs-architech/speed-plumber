@@ -2,11 +2,19 @@
 // src/components/DongPage.astro — 읍면동 개별 페이지 공통 컴포넌트
 import FAQ from './FAQ.astro';
 import ContactForm from './ContactForm.astro';
-import { readFileSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getNearbyDongs } from '../lib/regions';
 import type { RegionRow } from '../lib/regions';
+import {
+  seededPick, seededPickN,
+  REGION_LIST_TITLES, SERVICE_SUMMARIES,
+  CARD_CLASSIFICATIONS, REVIEW_TEXTS,
+  FAQ_TITLES, GALLERY_TITLES,
+  generateRoadAddr, generateJibunAddr,
+} from '../lib/spintax';
+import { getStation } from '../data/subway';
 
 interface Props {
   sidoname: string;
@@ -20,19 +28,26 @@ interface Props {
 }
 const { sidoname, sigungu, dong, lat, lon, sidoSlug, sidoLabel, accentColor } = Astro.props;
 
-const region   = dong ? `${sigungu} ${dong}` : sigungu;
-const keyword  = '배관막힘';
-const label    = dong;
+const region  = dong ? `${sigungu} ${dong}` : sigungu;
+const keyword = '배관막힘';
 
-// 근접 지역 10개
-const nearbyList = getNearbyDongs(sidoname, sigungu, dong, 10) as (RegionRow & { _dist?: number })[];
+// 페이지별 고유 시드 (동 이름 기반)
+const seed = dong.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0)
+           + sigungu.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+
+// 근접 지역 15개 (카드용 11~15개 + 인근링크용 전체)
+const nearbyAll = getNearbyDongs(sidoname, sigungu, dong, 15) as (RegionRow & { _dist?: number })[];
+
+// 카드 표시 개수: 시드 기반 11~15
+const cardCount = 11 + (seed % 5); // 11, 12, 13, 14, 15 중 하나
+const nearbyCards = nearbyAll.slice(0, Math.min(cardCount, nearbyAll.length));
 
 // 키워드 풀 (region card용)
 const kwPool = ['하수구막힘', '싱크대막힘', '배관막힘', '변기막힘', '우수관막힘', '하수구역류', '배관고압세척'];
 
-// 점검가능지역 카드용 키워드
+// 점검가능지역 카드용 키워드 조합
 const cardKwPool = [
-  '세면대수리/싱크대수전교체/최강뚫음/배관뚫음/하수관막힘',
+  '세면대수리/싱크대수전교체/배관뚫음/하수관막힘/최강뚫음',
   '우수관막힘/싱크대역류/천장누수공사/막힌하수구뚫음/수도누수수리',
   '변기역류/24시하수구뚫음/하수구막힘/싱크대펌프교체/누수탐지',
   '변기뚫는업체/뻥뚫어고압세척/천장누수/욕실막힘/뚫는업체',
@@ -40,20 +55,53 @@ const cardKwPool = [
   '윗층천장누수/싱크대막혔을때/뻥뚫어고압세척/변기뚫는곳/보일러배관수리',
   '최강뚫음/배관뚫는업체/소변기수리/수도누수/우수관막힘',
   '배관막힘/최강뚫음/싱크대막힘/24시하수구뚫음/싱크대역류',
+  '하수구막힘해결/배관고압세척/변기뚫음/싱크대역류/누수탐지',
+  '배관세척/하수구뚫음전문/변기막힘해결/싱크대막힘처리/우수관점검',
+  '고압세척전문/배관내시경/하수구정비/변기수리/싱크대막힘뚫음',
+  '하수도청소/배관교체/싱크대수리/변기막힘뚫음/우수관세척',
 ];
 
-// 점검가능 근접 지역 카드 (가까운 7개)
-const nearbyCards = nearbyList.slice(0, 7);
+// 지도 검색 URL (좌표 아닌 지역명 검색)
+const googleMapUrl = `https://www.google.com/maps/search/${encodeURIComponent(region + ' 배관막힘')}`;
+const naverMapUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(region + ' 배관막힘')}`;
 
-// faq6000.txt 파싱 (페이지별 10개, 중복 없이 시드 기반으로 선택)
-function seededRand(seed: number) {
-  let s = seed;
+// 주소 생성 (시드 기반)
+const roadAddr  = generateRoadAddr(sidoname, sigungu, dong, seed);
+const jibunAddr = generateJibunAddr(sidoname, sigungu, dong, seed);
+
+// spintax 텍스트 선택
+const listTitle    = seededPick(seed,       REGION_LIST_TITLES).replace('{region}', region);
+const listSummary  = seededPick(seed + 1,   SERVICE_SUMMARIES).replace('{count}', String(nearbyCards.length + 1));
+const faqTitle     = seededPick(seed + 2,   FAQ_TITLES).replace('{region}', region);
+const galleryTitle = seededPick(seed + 3,   GALLERY_TITLES);
+const reviewText   = seededPick(seed + 4,   REVIEW_TEXTS).replace(/\{region\}/g, region);
+
+// 갤러리 이미지 — 워싱된 이미지 목록 (public/images/gallery/washed/)
+const galleryDir = resolve(process.cwd(), 'public', 'images', 'gallery', 'washed');
+let galleryImages: string[] = [];
+try {
+  if (existsSync(galleryDir)) {
+    const files = readdirSync(galleryDir).filter(f => /\.(jpe?g|png|webp)$/i.test(f));
+    // 시드 기반으로 5~11개 선택
+    const imgCount = 5 + (seed % 7); // 5~11
+    const picked = seededPickN(seed, files, imgCount);
+    galleryImages = picked.map(f => `/images/gallery/washed/${f}`);
+  }
+} catch { /* 이미지 없어도 빌드 실패하지 않음 */ }
+
+// fallback 플레이스홀더 (워싱 이미지 없을 때)
+const gallerySlots = galleryImages.length > 0
+  ? galleryImages
+  : Array.from({ length: 6 }, (_, i) => `/images/gallery/g0${(i % 9) + 1}.jpg`);
+
+// FAQ 파싱 (8~13개, 시드 기반)
+function seededRand(s: number) {
+  let cur = s;
   return () => {
-    s = (s * 1664525 + 1013904223) & 0xffffffff;
-    return (s >>> 0) / 4294967295;
+    cur = (cur * 1664525 + 1013904223) & 0xffffffff;
+    return (cur >>> 0) / 4294967295;
   };
 }
-const seed = dong.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
 const rand = seededRand(seed);
 
 const faqPath = resolve(dirname(fileURLToPath(import.meta.url)), '../../faq6000.txt');
@@ -66,7 +114,8 @@ for (const chunk of faqRaw.split(/\n{2,}/)) {
   const aLine = lines.find(l => l.trimStart().startsWith('A.'));
   if (!qLine || !aLine) continue;
   const q = qLine.replace(/^Q\.\s*/, '').trim();
-  const a = aLine.replace(/^A\.\s*/, '').replace(/\]\]/g, '')
+  const a = aLine.replace(/^A\.\s*/, '')
+    .replace(/\]\]/g, '')
     .replace(/해당내용에서[^.。]*?제외하고\s*/g, '')
     .replace(/출장비[가를은은]?\s*(무료|얘기)[는을]?\s*(제외하고\s*)?/g, '')
     .trim();
@@ -74,29 +123,13 @@ for (const chunk of faqRaw.split(/\n{2,}/)) {
   allFaqs.push({ q, a });
 }
 
-// 시드 기반으로 10개 선택 (중복 없이)
-const shuffled = [...allFaqs].sort(() => rand() - 0.5);
-const pageFaqs = shuffled.slice(0, 10).map(f => ({
+// 시드 기반 8~13개 선택
+const faqCount  = 8 + (seed % 6); // 8, 9, 10, 11, 12, 13 중 하나
+const shuffled  = [...allFaqs].sort(() => rand() - 0.5);
+const pageFaqs  = shuffled.slice(0, faqCount).map(f => ({
   q: f.q.replace(/"region"/g, region).replace(/"keywords"/g, keyword),
   a: f.a.replace(/"region"/g, region).replace(/"keywords"/g, keyword),
 }));
-
-// 구글/네이버 지도 검색 URL
-const googleMapUrl  = `https://www.google.com/search?q=${encodeURIComponent(region + ' ' + keyword + ' 업체')}`;
-const naverMapUrl   = `https://map.naver.com/v5/search/${encodeURIComponent(region + ' ' + keyword + ' 업체')}`;
-
-// 작업후기 텍스트 (output/index.html 기반 + 지역 치환)
-const reviewText = `${region} 하수구막힘? 주방 싱크대 역류, 완벽 해결!
-
-저희는 단순히 감으로 작업하지 않습니다. 현장에 도착해 가장 먼저 배관 내부를 진단하기 위해 최신 내시경 장비 무료 점검을 실시했습니다.
-
-${region} 배관막힘 – 오늘은 꽉 막힌 배수구를 시원하게 처리하고 온 시공 과정을 상세히 공유합니다. 매일 사용하는 주방에서 설거지 중 갑자기 물이 내려가지 않고 차오른다면 정말 당황스러울 수밖에 없죠.
-
-내시경으로 작업 상황을 실시간으로 모니터링하면서 하수관에 손상이 가지 않도록 섬세하게 작업을 이어갔습니다.
-
-저희는 투명한 정찰제를 운영하여 불필요한 비용 청구 없이, 오직 정확한 진단과 시공으로만 고객 만족을 추구합니다. 워터젯 세척/찌꺼기 제거 후 1년 무상 A/S 보장을 통해 고객님의 안심을 최우선으로 생각합니다.
-
-완벽한 서비스는 물론, 사후 관리까지 책임지기에 한 번의 시공으로 오래도록 쾌적한 환경을 유지하실 수 있습니다.`;
 ---
 
 <main>
@@ -115,63 +148,123 @@ ${region} 배관막힘 – 오늘은 꽉 막힌 배수구를 시원하게 처리
 
   <!-- ① 점검 가능지역 서비스 카드들 -->
   <div class="max-w-4xl mx-auto px-4 pb-6">
-    <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-yellow-400 pl-3">
-      {region} 배관막힘 업체 점검 가능지역
+    <h2 class="text-lg font-bold text-gray-800 mb-2 border-l-4 border-yellow-400 pl-3">
+      {listTitle}
     </h2>
-    <p class="text-sm text-gray-500 mb-4">{nearbyCards.length + 1}개 이상의 배관막힘 서비스 지역</p>
+    <p class="text-sm text-gray-500 mb-4">{listSummary}</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <!-- 주요 서비스 지역 카드 (현재 페이지) -->
-      <div class="bg-white border-l-4 border-red-400 rounded-xl shadow-sm p-4">
-        <div class="inline-block bg-red-50 text-red-600 text-xs font-bold px-2 py-1 rounded-full mb-2">📍 주요 서비스 지역</div>
-        <div class="font-bold text-red-800 text-sm mb-1">[ {region} 배관막힘 업체 점검 가능지역 ]</div>
-        <div class="text-xs text-gray-500 bg-gray-50 rounded p-2 mb-3 leading-relaxed">{cardKwPool[0]}</div>
-        <div class="text-xs text-gray-600 mb-3">
-          <strong>분류:</strong> 등록업종 &gt; 건설 / 배관·위생설비공사<br/>
-        </div>
-        <div class="flex gap-2">
-          <a href={googleMapUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-blue-500 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">🗺 구글지도</a>
-          <a href={naverMapUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-green-500 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">🗺 네이버지도</a>
-        </div>
-      </div>
 
-      <!-- 근접 지역 카드들 -->
-      {nearbyCards.map((nb, i) => {
-        const nbRegion = `${nb.sigungu} ${nb.dong}`;
-        const nbKw = kwPool[i % kwPool.length];
-        const nbGoogleUrl = `https://www.google.com/search?q=${encodeURIComponent(nbRegion + ' ' + nbKw + ' 업체')}`;
-        const nbNaverUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(nbRegion + ' ' + nbKw + ' 업체')}`;
+      <!-- 첫 번째 카드: 주요 서비스 지역 (현재 페이지) -->
+      {(() => {
+        const st = getStation(sigungu);
         return (
-          <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-            <div class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-2 py-1 rounded-full mb-2">✅ 점검 가능 지역</div>
-            <div class="font-bold text-gray-800 text-sm mb-1">[ {nbRegion} {nbKw} 업체 점검 가능지역 ]</div>
-            <div class="text-xs text-gray-500 bg-gray-50 rounded p-2 mb-3 leading-relaxed">{cardKwPool[(i + 1) % cardKwPool.length]}</div>
-            <div class="text-xs text-gray-600 mb-3">
-              <strong>분류:</strong> 건설업 &gt; 전문건설업 / 배관·냉난방공사
+          <div class="bg-white border-l-4 border-red-400 rounded-xl shadow-sm p-4 flex flex-col gap-2">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="bg-red-50 text-red-600 text-xs font-bold px-2 py-0.5 rounded-full">📍 주요 서비스 지역</span>
             </div>
-            <div class="flex gap-2">
-              <a href={nbGoogleUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-blue-500 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">🗺 구글지도</a>
-              <a href={nbNaverUrl} target="_blank" rel="noopener" class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-green-500 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">🗺 네이버지도</a>
+            <div class="font-bold text-red-800 text-sm">[ {region} 배관막힘 업체 점검 가능지역 ]</div>
+            <div class="text-xs text-gray-500 bg-gray-50 rounded p-2 leading-relaxed">{cardKwPool[seed % cardKwPool.length]}</div>
+
+            <div class="text-xs text-gray-700 leading-[1.8] space-y-0.5">
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">분류</span>{seededPick(seed, CARD_CLASSIFICATIONS)}</div>
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">도로명</span>{roadAddr}</div>
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">지번</span>{jibunAddr}</div>
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">위도/경도</span>{lat.toFixed(6)}, {lon.toFixed(6)}</div>
+              <div class="flex items-start gap-1">
+                <span class="font-semibold text-gray-500 w-16 inline-block shrink-0">지하철역</span>
+                <span class="flex flex-col gap-0.5">
+                  <a href={st.naverUrl} target="_blank" rel="noopener noreferrer"
+                     class="text-purple-700 font-bold hover:underline">
+                    🚇 {st.name} ({st.line})
+                  </a>
+                  {st.addr && <span class="text-gray-400 text-[11px]">{st.addr}</span>}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex gap-2 mt-1">
+              <a href={googleMapUrl} target="_blank" rel="noopener noreferrer"
+                 class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-blue-500 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">
+                🗺 구글지도
+              </a>
+              <a href={naverMapUrl} target="_blank" rel="noopener noreferrer"
+                 class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-green-500 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">
+                🗺 네이버지도
+              </a>
+            </div>
+          </div>
+        );
+      })()}
+
+      <!-- 근접 지역 카드들 (11~15개) — 첫 번째 지역 기준 거리순 -->
+      {nearbyCards.map((nb, i) => {
+        const nbRegion    = `${nb.sigungu} ${nb.dong}`;
+        const nbSeed      = nb.dong.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+        const nbKw        = kwPool[i % kwPool.length];
+        const nbGoogleUrl = `https://www.google.com/maps/search/${encodeURIComponent(nbRegion + ' 배관막힘')}`;
+        const nbNaverUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(nbRegion + ' 배관막힘')}`;
+        const nbRoadAddr  = generateRoadAddr(sidoname, nb.sigungu, nb.dong, nbSeed);
+        const nbJibunAddr = generateJibunAddr(sidoname, nb.sigungu, nb.dong, nbSeed);
+        const nbSt        = getStation(nb.sigungu);
+        return (
+          <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-4 flex flex-col gap-2 hover:border-blue-300 hover:shadow-md transition-all">
+            <div class="flex items-center gap-2 mb-0.5">
+              <span class="bg-blue-50 text-blue-600 text-xs font-bold px-2 py-0.5 rounded-full">✅ 점검 가능 지역</span>
+            </div>
+            <div class="font-bold text-gray-800 text-sm">[ {nbRegion} {nbKw} 업체 점검 가능지역 ]</div>
+            <div class="text-xs text-gray-500 bg-gray-50 rounded p-2 leading-relaxed">{cardKwPool[(i + 1) % cardKwPool.length]}</div>
+
+            <div class="text-xs text-gray-700 leading-[1.8] space-y-0.5">
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">분류</span>{seededPick(nbSeed + i, CARD_CLASSIFICATIONS)}</div>
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">도로명</span>{nbRoadAddr}</div>
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">지번</span>{nbJibunAddr}</div>
+              <div><span class="font-semibold text-gray-500 w-16 inline-block">위도/경도</span>{nb.lat.toFixed(6)}, {nb.lon.toFixed(6)}</div>
+              <div class="flex items-start gap-1">
+                <span class="font-semibold text-gray-500 w-16 inline-block shrink-0">지하철역</span>
+                <span class="flex flex-col gap-0.5">
+                  <a href={nbSt.naverUrl} target="_blank" rel="noopener noreferrer"
+                     class="text-purple-700 font-bold hover:underline">
+                    🚇 {nbSt.name} ({nbSt.line})
+                  </a>
+                  {nbSt.addr && <span class="text-gray-400 text-[11px]">{nbSt.addr}</span>}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex gap-2 mt-1">
+              <a href={nbGoogleUrl} target="_blank" rel="noopener noreferrer"
+                 class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-blue-500 text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">
+                🗺 구글지도
+              </a>
+              <a href={nbNaverUrl} target="_blank" rel="noopener noreferrer"
+                 class="flex-1 text-center text-xs font-bold py-1.5 rounded-lg border-2 border-green-500 text-green-700 bg-green-50 hover:bg-green-100 transition-colors">
+                🗺 네이버지도
+              </a>
             </div>
           </div>
         );
       })}
+
     </div>
   </div>
 
   <!-- ② 갤러리 (작업 사진) -->
   <div class="max-w-4xl mx-auto px-4 pb-6">
-    <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-blue-400 pl-3">작업 현장 사진</h2>
+    <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-blue-400 pl-3">
+      {galleryTitle}
+    </h2>
     <p class="text-sm text-gray-500 mb-3">{region} 배관막힘 실제 작업 사진입니다</p>
     <div class="grid grid-cols-3 gap-2">
-      {[1,2,3,4,5,6].map(n => (
+      {gallerySlots.map((src, n) => (
         <div class="aspect-[4/3] bg-gray-100 rounded-xl overflow-hidden">
           <img
-            src={`/images/gallery/g0${n % 9}.jpg`}
-            alt={`${region} 배관막힘 작업 사진 ${n}`}
+            src={src}
+            alt={`${region} ${keyword} 전문업체 실제 작업 사진 ${n + 1}`}
+            title={`배관매니저 ${region} 작업 현장 ${n + 1}`}
             class="w-full h-full object-cover"
             loading="lazy"
-            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center text-gray-400 text-xs\'>사진</div>'"
+            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200\'><svg class=\'w-8 h-8 text-blue-300\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'/></svg></div>'"
           />
         </div>
       ))}
@@ -186,7 +279,13 @@ ${region} 배관막힘 – 오늘은 꽉 막힌 배수구를 시원하게 처리
   <!-- ④ 업체 작업후기 아코디언 -->
   <div class="max-w-4xl mx-auto px-4 pb-6">
     <div class="text-center mb-3">
-      <button id="review-toggle" class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-900 to-blue-700 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+      <button
+        id="review-toggle"
+        type="button"
+        class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-900 to-blue-700 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+        aria-expanded="false"
+        aria-controls="review-content"
+      >
         <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
           <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
         </svg>
@@ -194,7 +293,11 @@ ${region} 배관막힘 – 오늘은 꽉 막힌 배수구를 시원하게 처리
         <span id="review-arrow" class="text-sm transition-transform duration-300">▼</span>
       </button>
     </div>
-    <div id="review-content" class="hidden bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+    <div
+      id="review-content"
+      class="hidden bg-white rounded-2xl border border-gray-100 shadow-sm p-6"
+      role="region"
+    >
       {reviewText.split('\n\n').filter(p => p.trim()).map(para => (
         <p class="text-gray-700 text-sm leading-relaxed mb-4 last:mb-0">
           {para.trim()}
@@ -205,15 +308,17 @@ ${region} 배관막힘 – 오늘은 꽉 막힌 배수구를 시원하게 처리
 
   <!-- ⑤ FAQ -->
   <div class="max-w-4xl mx-auto px-4 pb-6">
-    <FAQ region={region} keyword={keyword} faqs={pageFaqs} />
+    <FAQ region={region} keyword={keyword} faqs={pageFaqs} titleOverride={faqTitle} />
   </div>
 
-  <!-- ⑥ 근접 지역 10개 링크 -->
-  {nearbyList.length > 0 && (
+  <!-- ⑥ 인근 지역 링크 -->
+  {nearbyAll.length > 0 && (
     <div class="max-w-4xl mx-auto px-4 pb-10">
-      <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-green-400 pl-3">인근 지역 배관막힘 서비스</h2>
+      <h2 class="text-lg font-bold text-gray-800 mb-3 border-l-4 border-green-400 pl-3">
+        인근 지역 배관막힘 서비스
+      </h2>
       <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-        {nearbyList.map(nb => (
+        {nearbyAll.map(nb => (
           <a
             href={`/${sidoSlug}/${encodeURIComponent(nb.sigungu)}/${encodeURIComponent(nb.dong)}`}
             class="text-center bg-white border border-gray-200 hover:border-blue-400 hover:text-blue-700 text-gray-700 text-xs px-2 py-3 rounded-xl transition-all"
@@ -236,5 +341,6 @@ ${region} 배관막힘 – 오늘은 꽉 막힌 배수구를 시원하게 처리
     const open = !content?.classList.contains('hidden');
     content?.classList.toggle('hidden', open);
     if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
+    toggle?.setAttribute('aria-expanded', String(!open));
   });
 </script>

@@ -1,5 +1,7 @@
 ---
 // src/pages/index.astro — 메인 페이지
+// ※ 텍스트·SEO 수정 → src/data/contents_list_fix_main.ts 만 편집하세요
+// ※ URL·전화번호·Apps Script → src/data/contents_list_fix_netlify.ts 만 편집하세요
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,6 +10,8 @@ import Header from '../components/Header.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQ from '../components/FAQ.astro';
 import { getAllRegions, regionUrl, SIDO_SLUG } from '../lib/regions';
+import { mainContent as MC } from '../data/contents_list_fix_main';
+import { siteConfig as SC } from '../data/contents_list_fix_netlify';
 
 // ── 최근 업데이트 지역 (5×5=25개) ──────────────────────────────────────────
 const allRegions = getAllRegions().filter(r => r.dong);
@@ -20,6 +24,25 @@ const recentPages = [...seoulRegions, ...gyeonggiRegions].slice(0, 25);
 const seoulSigungu = [...new Set(allRegions.filter(r => r.sidoname === '서울특별시').map(r => r.sigungu))];
 // 경기 시군구 목록
 const gyeonggiSigungu = [...new Set(allRegions.filter(r => r.sidoname === '경기도').map(r => r.sigungu))];
+
+// ── 작업 후기 (최신 3개) ──────────────────────────────────────────────────────
+const reviewFiles = import.meta.glob('../content/reviews/*.md', { eager: true });
+const latestReviews = Object.entries(reviewFiles)
+  .map(([, mod]: [string, any]) => {
+    const fm = mod.frontmatter || {};
+    const rawBody = (mod.rawContent?.() || '').replace(/^---[\s\S]*?---\n?/, '').trim();
+    return {
+      title:   fm.title || '작업 후기',
+      date:    fm.date  || '',
+      image:   fm.image || '',
+      region:  fm.region || '',
+      keyword: fm.keyword || '',
+      excerpt: rawBody.slice(0, 110) + (rawBody.length > 110 ? '…' : ''),
+    };
+  })
+  .filter(r => r.title && r.title !== '작업 후기')
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, 3);
 
 // ── FAQ (faq6000.txt에서 10개) ──────────────────────────────────────────────
 const faqPath = resolve(dirname(fileURLToPath(import.meta.url)), '../../faq6000.txt');
@@ -42,65 +65,57 @@ for (const chunk of faqRaw.split(/\n{2,}/)) {
 ---
 
 <BaseLayout
-  title="배관매니저 | 배관막힘 전문 업체 1866-2449 · 24시간 신속출동"
-  description="전국 배관막힘, 싱크대막힘, 우수관막힘 전문 업체 배관매니저. 24시간 신속 출동, 1866-2449. 서울·경기 전지역 커버."
+  title={MC.seo.title}
+  description={MC.seo.description}
+  canonical={MC.seo.canonical}
 >
   <Header />
 
   <main>
     <!-- ① 히어로 섹션 -->
     <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden">
-      <!-- 배경 패턴 -->
       <div class="absolute inset-0 opacity-10">
         <div class="absolute top-0 left-0 w-full h-full" style="background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px;"></div>
       </div>
-
       <div class="relative max-w-5xl mx-auto px-4 py-16 md:py-24 text-center">
-        <p class="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-3">24시간 신속출동 · 출장비 무료</p>
+        <p class="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-3">{MC.hero.tagline}</p>
         <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight">
-          배관막힘 전문 업체<br/>
-          <span class="text-yellow-300">배관매니저</span>
+          {MC.hero.h1Prefix}<br/>
+          <span class="text-yellow-300">{MC.hero.brandName}</span>
         </h1>
-        <p class="text-white/80 text-base md:text-lg mb-8 max-w-xl mx-auto">
-          서울·경기 전지역 커버 · 배관막힘·싱크대막힘·우수관막힘<br/>
-          작업 전 정확한 견적 · 1년 무상 A/S
+        <p class="text-white/80 text-base md:text-lg mb-8 max-w-xl mx-auto whitespace-pre-line">
+          {MC.hero.subtext}
         </p>
         <a
-          href="tel:18662449"
+          href={SC.tel}
           class="inline-flex items-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl md:text-3xl px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-all"
         >
           <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
           </svg>
-          1866-2449
+          {MC.hero.ctaText}
         </a>
-        <p class="text-white/50 text-xs mt-3">클릭 시 바로 전화 연결됩니다</p>
-
-        <!-- 특징 뱃지 -->
+        <p class="text-white/50 text-xs mt-3">{MC.hero.ctaSubtext}</p>
         <div class="flex flex-wrap justify-center gap-3 mt-8">
-          {['✅ 출장비 무료', '✅ 24시간 365일', '✅ 30분 내 출동', '✅ 1년 무상 A/S', '✅ 작업 전 견적'].map(b => (
+          {MC.hero.badges.map(b => (
             <span class="bg-white/15 text-white text-xs font-semibold px-3 py-1.5 rounded-full">{b}</span>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- ② 히어로 이미지 (first image) -->
+    <!-- ② 히어로 이미지 -->
     <section class="bg-white overflow-hidden">
       <div class="max-w-5xl mx-auto">
-        <img
-          src="/images/first/01.png"
-          alt="배관매니저 배관막힘 전문 업체 안내"
-          class="w-full h-auto object-cover max-h-[480px]"
-          loading="eager"
-          fetchpriority="high"
-        />
-        <img
-          src="/images/first/02.png"
-          alt="배관매니저 서비스 안내"
-          class="w-full h-auto object-cover max-h-[480px]"
-          loading="lazy"
-        />
+        {MC.heroImages.map(img => (
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="w-full h-auto object-cover max-h-[480px]"
+            loading={img.eager ? 'eager' : 'lazy'}
+            fetchpriority={img.eager ? 'high' : undefined}
+          />
+        ))}
       </div>
     </section>
 
@@ -108,11 +123,7 @@ for (const chunk of faqRaw.split(/\n{2,}/)) {
     <section class="max-w-5xl mx-auto px-4 py-12">
       <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">주요 서비스</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {[
-          { icon: '🔧', title: '배관막힘', desc: '노후 배관·이물질·기름때 고압세척 및 전문 장비로 완벽 해결', href: '/seoul' },
-          { icon: '🚿', title: '싱크대막힘', desc: '주방·욕실 배관막힘 신속 해결. 음식물·헤어 제거', href: '/gyeonggi' },
-          { icon: '🌧️', title: '우수관막힘', desc: '건물 외벽·지하 우수관 전문 장비 해결. 역류·누수 예방', href: '/contact' },
-        ].map(s => (
+        {MC.services.map(s => (
           <a href={s.href} class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md hover:border-blue-200 transition-all">
             <div class="text-4xl mb-3">{s.icon}</div>
             <h3 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-blue-700">{s.title}</h3>
@@ -214,17 +225,46 @@ for (const chunk of faqRaw.split(/\n{2,}/)) {
       </section>
     )}
 
-    <!-- ⑦ 업체 신뢰 지표 -->
+    <!-- ⑦ 작업 후기 3선 -->
+    {latestReviews.length > 0 && (
+      <section class="max-w-5xl mx-auto px-4 py-10">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">실제 작업 후기</h2>
+          <a href="/reviews" class="text-sm text-blue-600 hover:underline font-medium">전체 후기 보기 →</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {latestReviews.map(r => (
+            <a href="/reviews" class="group bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all overflow-hidden flex flex-col">
+              <div class="aspect-video bg-gray-100 overflow-hidden">
+                {r.image ? (
+                  <img src={r.image} alt={r.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700">
+                    <svg class="w-10 h-10 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  </div>
+                )}
+              </div>
+              <div class="p-4 flex flex-col flex-1">
+                {r.date && <time class="text-xs text-gray-400 mb-1">{r.date.slice(0,10)}</time>}
+                <h3 class="text-sm font-bold text-gray-800 mb-2 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors flex-1">{r.title}</h3>
+                <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-2">{r.excerpt}</p>
+                <div class="flex gap-1 flex-wrap">
+                  {r.region && <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">{r.region}</span>}
+                  {r.keyword && <span class="text-xs bg-red-50 text-red-600 px-2 py-0.5 rounded-full">{r.keyword}</span>}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- ⑧ 업체 신뢰 지표 -->
     <section class="bg-blue-900 text-white py-12 px-4">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-2xl font-bold text-center mb-8">왜 배관매니저인가요?</h2>
+        <h2 class="text-2xl font-bold text-center mb-8">왜 {MC.hero.brandName}인가요?</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {[
-            { num: '15년+', label: '배관 전문 경력' },
-            { num: '30분', label: '평균 출동 시간' },
-            { num: '98%', label: '고객 만족도' },
-            { num: '1년', label: '무상 A/S 보장' },
-          ].map(s => (
+          {MC.stats.map(s => (
             <div class="text-center bg-blue-800/50 rounded-2xl p-5">
               <div class="text-3xl font-black text-yellow-300 mb-1">{s.num}</div>
               <div class="text-blue-100 text-sm">{s.label}</div>
@@ -245,24 +285,20 @@ for (const chunk of faqRaw.split(/\n{2,}/)) {
     <div class="max-w-5xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
-          <p class="text-white font-bold text-lg mb-1">배관매니저</p>
-          <p class="text-sm">배관막힘 전문 업체 · 서울·경기 전지역 커버</p>
+          <p class="text-white font-bold text-lg mb-1">{SC.siteName}</p>
+          <p class="text-sm">{MC.footer.tagline}</p>
           <p class="text-sm mt-1">
             Tel:
-            <a href="tel:18662449" class="text-yellow-400 font-bold hover:text-yellow-300">1866-2449</a>
+            <a href={SC.tel} class="text-yellow-400 font-bold hover:text-yellow-300">{SC.phone}</a>
           </p>
         </div>
         <div class="flex flex-wrap gap-3 text-sm">
-          <a href="/" class="hover:text-white">홈</a>
+          {SC.navLinks.map(l => <a href={l.href} class="hover:text-white">{l.label}</a>)}
           <a href="/about" class="hover:text-white">회사소개</a>
-          <a href="/seoul" class="hover:text-white">서울</a>
-          <a href="/gyeonggi" class="hover:text-white">경기</a>
-          <a href="/reviews" class="hover:text-white">배관후기</a>
-          <a href="/contact" class="hover:text-white">상담신청</a>
           <a href="/sitemap-page" class="hover:text-white">사이트맵</a>
         </div>
       </div>
-      <p class="text-center text-xs text-gray-600 mt-6">© 2024 배관매니저 · 24시간 365일 신속 출동 · 출장비 무료</p>
+      <p class="text-center text-xs text-gray-600 mt-6">{MC.footer.copyright}</p>
     </div>
   </footer>
 </BaseLayout>
