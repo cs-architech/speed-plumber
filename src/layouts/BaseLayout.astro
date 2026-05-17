@@ -24,7 +24,7 @@ const {
 const siteUrl  = 'https://plumbers24.netlify.app';
 const canonUrl = canonical ?? (siteUrl + Astro.url.pathname);
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyDVeRRffY40-PLJB3AXFWpJVqyQ9yxIJVvQj_Jxnm6x528J5HX-t6CVG_MDmfdSey0/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec';
 const gaId = import.meta.env.PUBLIC_GA_ID;
 
 // BreadcrumbList JSON-LD
@@ -297,7 +297,7 @@ const allLd = [
     // ── 일 방문자 카운터 (하루 1회, localStorage 기반) ──────────────
     (function trackVisit() {
       try {
-        const APPS_URL = 'https://script.google.com/macros/s/AKfycbyDVeRRffY40-PLJB3AXFWpJVqyQ9yxIJVvQj_Jxnm6x528J5HX-t6CVG_MDmfdSey0/exec';
+        const APPS_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec';
         const today = new Date().toISOString().slice(0, 10);
         const key   = 'pv_counted_' + today;
         if (localStorage.getItem(key)) return; // 오늘 이미 카운트됨
