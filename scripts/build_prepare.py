@@ -46,7 +46,7 @@ def main():
         sys.exit(rc)
 
     print("\n" + "=" * 60)
-    print("[build_prepare] 빌드 준비 완료 ✓")
+    print("[build_prepare] 빌드 준비 완료 OK")
     print("=" * 60)
 
 

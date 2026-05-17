@@ -4,7 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import DongPage from '../../../components/DongPage.astro';
 import { getDongsBySigungu, getUniqueSigungu } from '../../../lib/regions';
-import { DONG_TITLES, DONG_DESCS, strSeed } from '../../../data/title_templates';
+import { DONG_TITLES, DONG_DESCS, DONG_SUBS, strSeed, getTitleParts } from '../../../data/title_templates';
 
 export async function getStaticPaths() {
   const sidoname = '경기도';
@@ -30,6 +30,9 @@ const keyword  = '배관막힘';
 const seed     = strSeed(sigungu + dong);
 const pageTitle = DONG_TITLES[seed % DONG_TITLES.length](region);
 const pageDesc  = DONG_DESCS [seed % DONG_DESCS.length ](region);
+const { target, solution } = getTitleParts(seed);
+const pageH1   = `${region} ${target} 전문 · ${solution}`;
+const pageSub  = DONG_SUBS[seed % DONG_SUBS.length](target, solution);
 
 const breadcrumbs = [
   { name: '홈', url: '/' },
@@ -64,18 +67,24 @@ const jsonLd = {
   <Header />
 
   <!-- 히어로 헤더 -->
-  <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white text-center py-6 px-4">
-    <h1 class="text-lg md:text-xl font-bold mb-3 opacity-95">{region} 배관막힘 전문 업체 · 24시간 긴급출동</h1>
-    <a
-      href="tel:18662449"
-      class="inline-flex items-center gap-3 bg-yellow-400 text-blue-900 font-black text-2xl md:text-3xl px-8 py-4 rounded-full shadow-xl hover:bg-yellow-300 hover:scale-105 transition-all"
-    >
-      <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
-      </svg>
-      1866-2449
-    </a>
-    <p class="mt-2 text-sm text-white/70">지금 바로 전화하시면 전문 상담사가 연결됩니다</p>
+  <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white text-center py-7 px-4">
+    <h1 class="text-xl md:text-2xl font-black mb-2 leading-snug">{pageH1}</h1>
+    <p class="text-sm text-blue-200 mb-4 max-w-lg mx-auto leading-relaxed">{pageSub}</p>
+    <div class="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/40 text-green-300 text-xs px-3 py-1.5 rounded-full mb-5">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block"></span>
+      24시간 긴급출동 대기 중 · 30분 이내 도착
+    </div>
+    <div>
+      <a
+        href="tel:18662449"
+        class="inline-flex items-center gap-3 bg-yellow-400 text-blue-900 font-black text-2xl md:text-3xl px-8 py-4 rounded-full shadow-xl hover:bg-yellow-300 hover:scale-105 transition-all"
+      >
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+        </svg>
+        1866-2449
+      </a>
+    </div>
   </div>
 
   <!-- 히어로 이미지 -->

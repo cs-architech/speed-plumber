@@ -159,3 +159,36 @@ export const SIGUNGU_DESCS: ((sg: string, sd: string) => string)[] = (() => {
 export function strSeed(s: string): number {
   return s.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
 }
+
+// ── 동(읍면동) 페이지 H1 서브텍스트 (20가지) ─────────────────────────────────
+export const DONG_SUBS: ((target: string, solution: string) => string)[] = [
+  (t, s) => `${s} 기술로 ${t}을 말끔히 처리. 작업 후 현장 정리까지 완벽.`,
+  (t, s) => `전문 ${s} 기술로 ${t}을 빠르게 해결합니다.`,
+  (t, s) => `${s} 방식으로 ${t}의 근본 원인까지 완벽하게 제거합니다.`,
+  (t, s) => `${t}으로 고민이라면 ${s} 전문 배관매니저에게 맡겨보세요.`,
+  (t, s) => `${s} 전문 장비로 ${t}을 근본부터 해결. 재발 방지까지 책임집니다.`,
+  (t, s) => `${t} 반복 재발? ${s} 전문 기사가 원인을 찾아 완전히 해결합니다.`,
+  (t, s) => `${s} 작업 후 ${t}은 완전히 해소. 출동부터 마무리까지 한 번에 완료합니다.`,
+  (t, s) => `전문 ${s} 장비로 ${t}을 즉시 해소. 투명한 견적, 신속한 처리.`,
+  (t, s) => `${t}은 시간이 지날수록 악화됩니다. ${s} 전문가가 지금 바로 출동합니다.`,
+  (t, s) => `${s} 기술로 ${t}을 속 시원하게 뚫어드립니다. 24시간 언제든 연락 가능.`,
+  (t, s) => `${t} 때문에 불편하셨죠? ${s} 장비로 빠르고 깔끔하게 해결해 드립니다.`,
+  (t, s) => `${s} 기술과 첨단 장비로 ${t}의 원인을 정확히 파악 후 처리합니다.`,
+  (t, s) => `${t}은 배관매니저의 ${s} 기술로 해결. 작업 결과를 직접 눈으로 확인하세요.`,
+  (t, s) => `고압장비와 ${s} 기술로 ${t}을 완벽 해소. 깨끗한 배관 상태로 복원합니다.`,
+  (t, s) => `${s} 전문 기사 즉시 출동. ${t} 문제를 당일 해결해 드립니다.`,
+  (t, s) => `${t}으로 인한 불쾌함을 ${s} 기술로 빠르게 해결하고 쾌적함을 되찾으세요.`,
+  (t, s) => `오직 ${s}에 집중한 전문 기술로 ${t}을 빈틈없이 처리합니다.`,
+  (t, s) => `${t} 전문 배관매니저가 ${s} 기술로 단번에 해결. 재발 방지 관리까지 제공.`,
+  (t, s) => `${s} 작업으로 ${t}을 근본 해결. 깔끔한 마무리와 A/S까지 보장합니다.`,
+  (t, s) => `${t} 걱정 끝! ${s} 기술을 갖춘 전문가가 30분 이내 출동합니다.`,
+];
+
+// ── 시드에서 제목 구성 요소(타겟·솔루션) 추출 ──────────────────────────────
+// DONG_TITLES 빌드 순서: TARGETS(5) × SOLUTIONS(20) × SUFFIXES(20) = 2,000
+export function getTitleParts(seed: number): { target: string; solution: string } {
+  const idx         = seed % 2000;
+  const targetIdx   = Math.floor(idx / 400);      // 2000 / 5 = 400
+  const solutionIdx = Math.floor(idx / 20) % 20;
+  return { target: TARGETS[targetIdx], solution: SOLUTIONS[solutionIdx] };
+}
