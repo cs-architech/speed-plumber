@@ -62,8 +62,8 @@ const cardKwPool = [
 ];
 
 // 지도 검색 URL (좌표 아닌 지역명 검색)
-const googleMapUrl = `https://www.google.com/maps/search/${encodeURIComponent(region + ' 배관막힘')}`;
-const naverMapUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(region + ' 배관막힘')}`;
+const googleMapUrl = `https://www.google.com/maps/search/${encodeURIComponent(region)}`;
+const naverMapUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(region)}`;
 
 // 주소 생성 (시드 기반)
 const roadAddr  = generateRoadAddr(sidoname, sigungu, dong, seed);
@@ -202,8 +202,8 @@ const pageFaqs  = shuffled.slice(0, faqCount).map(f => ({
         const nbRegion    = `${nb.sigungu} ${nb.dong}`;
         const nbSeed      = nb.dong.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
         const nbKw        = kwPool[i % kwPool.length];
-        const nbGoogleUrl = `https://www.google.com/maps/search/${encodeURIComponent(nbRegion + ' 배관막힘')}`;
-        const nbNaverUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(nbRegion + ' 배관막힘')}`;
+        const nbGoogleUrl = `https://www.google.com/maps/search/${encodeURIComponent(nbRegion)}`;
+        const nbNaverUrl  = `https://map.naver.com/v5/search/${encodeURIComponent(nbRegion)}`;
         const nbRoadAddr  = generateRoadAddr(sidoname, nb.sigungu, nb.dong, nbSeed);
         const nbJibunAddr = generateJibunAddr(sidoname, nb.sigungu, nb.dong, nbSeed);
         const nbSt        = getStation(nb.sigungu);

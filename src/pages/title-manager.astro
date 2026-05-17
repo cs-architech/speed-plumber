@@ -1,157 +1,146 @@
 ---
-// src/pages/title-manager.astro — 페이지 제목 템플릿 관리 페이지
+// src/pages/title-manager.astro — 페이지 제목 템플릿 관리 (2,000종)
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllRegions } from '../lib/regions';
-import {
-  DONG_TITLES, DONG_DESCS,
-  SIGUNGU_TITLES, SIGUNGU_DESCS,
-  strSeed,
-} from '../data/title_templates';
+import { DONG_TITLES, DONG_DESCS, SIGUNGU_TITLES, SIGUNGU_DESCS, strSeed } from '../data/title_templates';
 
-// 샘플: 각 템플릿 인덱스별 대표 동 찾기
-const allRegions = getAllRegions().filter(r => r.dong);
-const templateMap: Record<number, { region: string; dong: string }[]> = {};
-for (let i = 0; i < DONG_TITLES.length; i++) templateMap[i] = [];
+// 빌드 시 샘플 20개 생성 (대표 지역 × 씨드 배정)
+const SAMPLE_REGIONS = [
+  '강남 세곡동','중랑 면목5동','마포 공덕동','화성 동탄3동','수원 영통동',
+  '송파 마천1동','강서 화곡3동','분당 정자동','고양 화정1동','부천 소사본동',
+  '광진 중곡1동','안산 상록동','성남 수정동','용인 기흥동','인천 부평동',
+  '노원 상계3동','강동 암사1동','은평 녹번동','평택 비전1동','수원 권선동',
+];
 
-for (const r of allRegions) {
-  const region = `${r.sigungu} ${r.dong}`;
-  const idx = strSeed(r.sigungu + r.dong) % DONG_TITLES.length;
-  if (templateMap[idx].length < 3) templateMap[idx].push({ region, dong: r.dong });
-}
-
-// 시군구 샘플
-const allSigungu = [...new Set(allRegions.map(r => `${r.sidoname}||${r.sigungu}`))].map(s => {
-  const [sido, sg] = s.split('||');
-  return { sido, sg };
+const samples = SAMPLE_REGIONS.map(region => {
+  const [sg, dong] = region.split(' ');
+  const seed = strSeed(sg + dong);
+  return {
+    region,
+    title: DONG_TITLES[seed % DONG_TITLES.length](region),
+    desc:  DONG_DESCS [seed % DONG_DESCS.length ](region),
+    tIdx:  (seed % DONG_TITLES.length) + 1,
+    dIdx:  (seed % DONG_DESCS.length)  + 1,
+  };
 });
-const sgTemplateMap: Record<number, string[]> = {};
-for (let i = 0; i < SIGUNGU_TITLES.length; i++) sgTemplateMap[i] = [];
-for (const { sido, sg } of allSigungu) {
-  const idx = strSeed(sg) % SIGUNGU_TITLES.length;
-  if (sgTemplateMap[idx].length < 2) sgTemplateMap[idx].push(`${sg} (${sido === '서울특별시' ? '서울' : '경기'})`);
-}
+
+// 시군구 샘플 10개
+const SG_SAMPLES = [
+  { sg: '강남', sd: '서울특별시' },{ sg: '마포', sd: '서울특별시' },
+  { sg: '화성', sd: '경기도' },    { sg: '분당', sd: '경기도' },
+  { sg: '송파', sd: '서울특별시' },{ sg: '고양', sd: '경기도' },
+  { sg: '중랑', sd: '서울특별시' },{ sg: '수정', sd: '경기도' },
+  { sg: '영등포', sd: '서울특별시' },{ sg: '부천', sd: '경기도' },
+];
+const sgSamples = SG_SAMPLES.map(({ sg, sd }) => {
+  const seed = strSeed(sg);
+  return {
+    sg, sd,
+    title: SIGUNGU_TITLES[seed % SIGUNGU_TITLES.length](sg, sd),
+    idx:   (seed % SIGUNGU_TITLES.length) + 1,
+  };
+});
 ---
 
-<BaseLayout
-  title="제목 템플릿 관리 | 배관매니저"
-  description="페이지 제목·설명 템플릿 관리 페이지"
->
-  <div class="max-w-5xl mx-auto px-4 py-10 font-sans">
+<BaseLayout title="제목 관리 | 배관매니저" description="페이지 제목 템플릿 관리">
+  <div class="max-w-5xl mx-auto px-4 py-10">
 
+    <!-- 헤더 -->
     <div class="mb-8">
       <h1 class="text-2xl font-black text-gray-900 mb-1">페이지 제목 템플릿 관리</h1>
-      <p class="text-gray-500 text-sm">각 페이지는 지역명 기반 씨드로 아래 템플릿 중 하나를 자동 배정받습니다.</p>
-      <div class="mt-3 inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-sm text-blue-700">
-        <span class="font-bold">수정 방법:</span>
+      <p class="text-gray-500 text-sm mb-3">지역명 씨드로 2,000가지 패턴 중 하나가 자동 배정됩니다.</p>
+      <div class="flex flex-wrap gap-3">
+        <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full">동 제목 {DONG_TITLES.length.toLocaleString()}종</span>
+        <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full">동 설명 {DONG_DESCS.length.toLocaleString()}종</span>
+        <span class="bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1.5 rounded-full">시군구 제목 {SIGUNGU_TITLES.length.toLocaleString()}종</span>
+        <span class="bg-orange-100 text-orange-700 text-xs font-bold px-3 py-1.5 rounded-full">시군구 설명 {SIGUNGU_DESCS.length.toLocaleString()}종</span>
+      </div>
+      <div class="mt-3 bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-sm text-blue-700 inline-flex items-center gap-2">
+        <span class="font-bold">수정:</span>
         <code class="bg-blue-100 px-2 py-0.5 rounded font-mono text-xs">src/data/title_templates.ts</code>
-        파일만 편집 후 빌드하면 전체 적용됩니다
+        편집 → 빌드 → push
       </div>
     </div>
 
-    <!-- ① 동 단위 제목 템플릿 -->
+    <!-- ① 동 페이지 샘플 20개 -->
     <section class="mb-10">
-      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">
-        동(읍면동) 페이지 제목 — {DONG_TITLES.length}가지
-      </h2>
-      <div class="space-y-3">
-        {DONG_TITLES.map((fn, i) => {
-          const ex = templateMap[i]?.[0]?.region ?? '강남 세곡동';
-          const samples = templateMap[i]?.map(s => s.region) ?? [];
-          return (
-            <div class={`rounded-xl border p-4 ${i % 2 === 0 ? 'bg-white border-gray-200' : 'bg-gray-50 border-gray-200'}`}>
-              <div class="flex items-start gap-3">
-                <span class="w-7 h-7 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
-                <div class="flex-1 min-w-0">
-                  <p class="font-semibold text-gray-900 text-sm break-all">{fn(ex)}</p>
-                  <p class="text-xs text-gray-400 mt-1">적용 예: {samples.join(' · ') || '(없음)'}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">동 페이지 제목 샘플 20개</h2>
+      <div class="overflow-x-auto rounded-xl border border-gray-200">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-gray-500 text-xs uppercase">
+            <tr>
+              <th class="px-4 py-2 text-left w-8">#</th>
+              <th class="px-4 py-2 text-left w-28">지역</th>
+              <th class="px-4 py-2 text-left">제목 (패턴 번호)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {samples.map((s, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td class="px-4 py-2.5 text-gray-400 text-xs">{i + 1}</td>
+                <td class="px-4 py-2.5 text-gray-500 text-xs whitespace-nowrap">{s.region}</td>
+                <td class="px-4 py-2.5 text-gray-900 font-medium">
+                  {s.title}
+                  <span class="ml-2 text-[10px] text-blue-400">#{s.tIdx}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <!-- ② 동 단위 설명 템플릿 -->
+    <!-- ② 동 페이지 설명 샘플 5개 -->
     <section class="mb-10">
-      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">
-        동(읍면동) 페이지 설명 — {DONG_DESCS.length}가지
-      </h2>
+      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">동 페이지 설명 샘플 5개</h2>
       <div class="space-y-3">
-        {DONG_DESCS.map((fn, i) => {
-          const ex = templateMap[i]?.[0]?.region ?? '강남 세곡동';
-          return (
-            <div class={`rounded-xl border p-4 ${i % 2 === 0 ? 'bg-white border-gray-200' : 'bg-gray-50 border-gray-200'}`}>
-              <div class="flex items-start gap-3">
-                <span class="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
-                <p class="text-sm text-gray-700 break-all">{fn(ex)}</p>
-              </div>
-            </div>
-          );
-        })}
+        {samples.slice(0, 5).map(s => (
+          <div class="bg-gray-50 rounded-xl border border-gray-200 p-4">
+            <p class="text-xs text-gray-400 mb-1">{s.region} <span class="text-blue-400">#{s.dIdx}</span></p>
+            <p class="text-sm text-gray-700">{s.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
 
-    <!-- ③ 시군구 제목 템플릿 -->
+    <!-- ③ 시군구 허브 샘플 -->
     <section class="mb-10">
-      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">
-        시군구 허브 페이지 제목 — {SIGUNGU_TITLES.length}가지
-      </h2>
-      <div class="space-y-3">
-        {SIGUNGU_TITLES.map((fn, i) => {
-          const samples = sgTemplateMap[i] ?? [];
-          return (
-            <div class="rounded-xl border bg-white border-gray-200 p-4">
-              <div class="flex items-start gap-3">
-                <span class="w-7 h-7 rounded-full bg-purple-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
-                <div class="flex-1 min-w-0">
-                  <p class="font-semibold text-gray-900 text-sm break-all">{fn('강남', '서울특별시')}</p>
-                  <p class="text-xs text-gray-400 mt-1">적용 예: {samples.join(' · ') || '(없음)'}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">시군구 페이지 제목 샘플 10개</h2>
+      <div class="overflow-x-auto rounded-xl border border-gray-200">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-gray-500 text-xs uppercase">
+            <tr>
+              <th class="px-4 py-2 text-left w-24">시군구</th>
+              <th class="px-4 py-2 text-left">제목</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {sgSamples.map((s, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td class="px-4 py-2.5 text-gray-500 text-xs whitespace-nowrap">{s.sg} ({s.sd === '서울특별시' ? '서울' : '경기'})</td>
+                <td class="px-4 py-2.5 text-gray-900 font-medium">
+                  {s.title}
+                  <span class="ml-2 text-[10px] text-purple-400">#{s.idx}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <!-- ④ 지역 검색 미리보기 -->
+    <!-- ④ 지역 검색 미리보기 (클라이언트 JS) -->
     <section class="mb-10">
       <h2 class="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2 mb-4">지역 검색 미리보기</h2>
       <div class="bg-white border border-gray-200 rounded-xl p-5">
-        <div class="flex gap-2 mb-4">
-          <input
-            id="sg-input"
-            type="text"
-            placeholder="시군구 입력 (예: 강남)"
-            class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            id="dong-input"
-            type="text"
-            placeholder="동 입력 (예: 세곡동)"
-            class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <button
-            id="preview-btn"
-            class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-4 py-2 rounded-lg transition-colors"
-          >
-            미리보기
-          </button>
+        <div class="flex gap-2 mb-4 flex-wrap">
+          <input id="sg-input" type="text" placeholder="시군구 (예: 강남)" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <input id="dong-input" type="text" placeholder="동 (예: 세곡동)" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <button id="preview-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-5 py-2 rounded-lg transition-colors">미리보기</button>
         </div>
         <div id="preview-result" class="hidden space-y-2 text-sm">
-          <div class="bg-gray-50 rounded-lg p-3">
-            <p class="text-xs text-gray-400 mb-1">제목</p>
-            <p id="preview-title" class="font-semibold text-gray-900"></p>
-          </div>
-          <div class="bg-gray-50 rounded-lg p-3">
-            <p class="text-xs text-gray-400 mb-1">설명</p>
-            <p id="preview-desc" class="text-gray-700"></p>
-          </div>
-          <div class="bg-gray-50 rounded-lg p-3">
-            <p class="text-xs text-gray-400 mb-1">배정된 템플릿 번호</p>
-            <p id="preview-idx" class="text-blue-600 font-bold"></p>
-          </div>
+          <div class="bg-blue-50 rounded-lg p-3"><p class="text-xs text-blue-400 mb-1">제목 (<span id="tidx"></span>번 패턴)</p><p id="preview-title" class="font-semibold text-gray-900"></p></div>
+          <div class="bg-gray-50 rounded-lg p-3"><p class="text-xs text-gray-400 mb-1">설명 (<span id="didx"></span>번 패턴)</p><p id="preview-desc" class="text-gray-700 text-xs leading-relaxed"></p></div>
         </div>
       </div>
     </section>
@@ -160,31 +149,57 @@ for (const { sido, sg } of allSigungu) {
     <section class="bg-yellow-50 border border-yellow-200 rounded-xl p-5 text-sm">
       <h2 class="font-bold text-yellow-800 mb-3">수정 방법</h2>
       <ol class="list-decimal list-inside space-y-2 text-yellow-700">
-        <li><code class="bg-yellow-100 px-1 rounded font-mono text-xs">src/data/title_templates.ts</code> 파일을 열어 원하는 번호의 템플릿 문자열을 수정</li>
-        <li>저장 후 <code class="bg-yellow-100 px-1 rounded font-mono text-xs">npm run build</code> 실행</li>
-        <li>빌드 완료 후 git push → Netlify 자동 배포</li>
+        <li><code class="bg-yellow-100 px-1 rounded font-mono text-xs">src/data/title_templates.ts</code> 열어 TARGETS / SOLUTIONS / SUFFIXES 단어 수정</li>
+        <li>저장 후 <code class="bg-yellow-100 px-1 rounded font-mono text-xs">npm run build</code> → git push → Netlify 자동 배포</li>
       </ol>
-      <p class="mt-3 text-xs text-yellow-600">※ 템플릿을 추가하면 더 많은 변형이 생깁니다. 배열 끝에 항목 추가 후 빌드.</p>
+      <p class="mt-2 text-xs text-yellow-600">단어 추가 시 조합 수 자동 증가. 5×21×20 = 2,100종 등.</p>
     </section>
-
   </div>
 
-  <script define:vars={{ titles: DONG_TITLES.map(f => f('__R__')), descs: DONG_DESCS.map(f => f('__R__')) }}>
-    function strSeedJS(s) {
-      return s.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-    }
-    document.getElementById('preview-btn')?.addEventListener('click', () => {
-      const sg   = document.getElementById('sg-input').value.trim();
-      const dong = document.getElementById('dong-input').value.trim();
-      if (!sg) return;
-      const region = dong ? `${sg} ${dong}` : sg;
-      const seed   = strSeedJS(sg + dong);
-      const tIdx   = seed % titles.length;
-      const dIdx   = seed % descs.length;
-      document.getElementById('preview-title').textContent = titles[tIdx].replace('__R__', region);
-      document.getElementById('preview-desc').textContent  = descs[dIdx].replace('__R__', region);
-      document.getElementById('preview-idx').textContent   = `제목 #${tIdx + 1} / 설명 #${dIdx + 1}`;
-      document.getElementById('preview-result').classList.remove('hidden');
-    });
+  <script>
+  // 클라이언트 사이드 미리보기 — 단어 풀 직접 계산
+  const TARGETS   = ["하수구막힘","싱크대막힘","변기막힘","우수관막힘","배관막힘"];
+  const SOLUTIONS = ["당일 신속출동","고압세척 전문","내시경 진단","원인 완벽해결","24시 긴급출동","역류 즉시차단","악취 근본제거","석션 흡입작업","플렉스 스케일링","유지방 완벽분쇄","횡주관 청소","메인배관 통수","관통기 뚫음","이물질 제거","배수구 청소","동파 스팀해빙","요석 파쇄작업","빗물역류 복구","식당 배관관리","아파트 공동관 뚫음"];
+  const SUFFIXES  = ["배관매니저 전문업체","확실한 뚫는업체","믿을 수 있는 곳","출장전문 해결사","정밀작업 추천","정직한 정찰제","투명한 비용안내","책임 A/S 보장","야간출동 가능","원스톱 종합설비","재발방지 관리","베테랑 기사방문","첨단장비 완비","친절한 기사","완벽한 뒷정리","신속정확 서비스","거품없는 견적","최고의 만족도","단골 추천 1위","타업체 실패환영"];
+  const DONG_INTRO = ["답답한 {r} 배관 문제, 이제 배관매니저가 속 시원하게 뚫어드립니다.","{r} 전 지역 가장 빠른 출장! 변기, 하수구, 싱크대 막힘 전문 해결사입니다.","갑작스러운 역류와 악취로 당황하셨나요? {r} 긴급출동 대기 중입니다.","반복되는 배관막힘으로 인한 스트레스, {r} 배관 전문가가 확실히 끝내겠습니다.","{r} 가정집부터 상가, 공장까지 모든 배관의 찌든 때를 완벽하게 청소합니다."];
+  const DESC_BODY  = ["배관 내시경 카메라를 투입하여 육안으로 보이지 않는 깊은 곳의 막힘 원인을 정확히 진단합니다.","오랜 시간 단단하게 굳어진 유지방 덩어리는 플렉스 샤프트의 체인으로 배관 손상 없이 깨끗하게 갈아냅니다.","강력한 수압의 엔진 고압세척기로 기름때와 각종 슬러지를 새 배관처럼 완벽하게 세척합니다.","실수로 들어간 플라스틱이나 장난감 등 이물질은 초강력 석션기를 통해 안전하게 빼냅니다.","복잡하게 꺾인 배관이나 미세한 틈새의 찌꺼기까지 놓치지 않고 꼼꼼하게 스케일링을 진행합니다.","건물 메인 배관부터 가지 배관까지 전체적인 관로 탐지를 통해 근본적인 배수 불량을 개선합니다.","변기 탈거 없이 특수 관통기를 사용하여 오수관으로 넘어간 휴지와 물티슈를 시원하게 밀어냅니다.","장마철 잦은 베란다 우수관 역류를 방지하기 위해 낙엽과 흙먼지를 고압으로 씻어내어 대비합니다.","식당 트렌치 하수구에 쌓인 끈적한 기름때는 뜨거운 스팀 세척과 약품을 병행하여 흔적 없이 제거합니다.","오래된 노후 주택의 좁은 배관도 다년간 쌓인 베테랑 기사의 노하우로 파손 없이 안전하게 통수합니다."];
+  const DESC_OUTRO = ["작업 후 꼼꼼한 현장 정리와 확실한 A/S 보장으로 끝까지 책임지겠습니다.","거품을 뺀 투명한 정찰제 요금으로 비용 부담을 줄여드립니다.","야간, 주말, 공휴일 24시간 연중무휴로 고객님의 불편을 가장 먼저 해결합니다.","해결하지 못하면 비용을 받지 않는 100% 만족 보장 제도를 실시하고 있습니다.","다시 막히지 않도록 평소 올바른 배관 사용 및 관리 꿀팁을 친절하게 안내해 드립니다."];
+
+  const TOTAL_TITLES = TARGETS.length * SOLUTIONS.length * SUFFIXES.length; // 2000
+  const TOTAL_DESCS  = DONG_INTRO.length * DESC_BODY.length * DESC_OUTRO.length;
+
+  function strSeed(s) { return s.split('').reduce((a,c) => a + c.charCodeAt(0), 0); }
+
+  function getTitle(region, seed) {
+    const idx  = seed % TOTAL_TITLES;
+    const ti   = Math.floor(idx / (SOLUTIONS.length * SUFFIXES.length));
+    const si   = Math.floor((idx % (SOLUTIONS.length * SUFFIXES.length)) / SUFFIXES.length);
+    const sfI  = idx % SUFFIXES.length;
+    return { text: `${region} ${TARGETS[ti]} ${SOLUTIONS[si]} ${SUFFIXES[sfI]}`, idx: idx+1 };
+  }
+
+  function getDesc(region, seed) {
+    const idx  = seed % TOTAL_DESCS;
+    const ii   = Math.floor(idx / (DESC_BODY.length * DESC_OUTRO.length));
+    const bi   = Math.floor((idx % (DESC_BODY.length * DESC_OUTRO.length)) / DESC_OUTRO.length);
+    const oi   = idx % DESC_OUTRO.length;
+    const intro = DONG_INTRO[ii].replace(/\{r\}/g, region);
+    return { text: `${intro} ${DESC_BODY[bi]} ${DESC_OUTRO[oi]}`, idx: idx+1 };
+  }
+
+  document.getElementById('preview-btn')?.addEventListener('click', () => {
+    const sg   = (document.getElementById('sg-input')).value.trim();
+    const dong = (document.getElementById('dong-input')).value.trim();
+    if (!sg) return;
+    const region = dong ? `${sg} ${dong}` : sg;
+    const seed   = strSeed(sg + dong);
+    const t = getTitle(region, seed);
+    const d = getDesc(region, seed);
+    document.getElementById('preview-title').textContent = t.text;
+    document.getElementById('preview-desc').textContent  = d.text;
+    document.getElementById('tidx').textContent = String(t.idx);
+    document.getElementById('didx').textContent = String(d.idx);
+    document.getElementById('preview-result').classList.remove('hidden');
+  });
   </script>
 </BaseLayout>
