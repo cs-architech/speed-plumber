@@ -191,16 +191,21 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyDVeRRffY40-PL
     btn.textContent = '전송 중...';
 
     const otherText = (document.getElementById('cf-other-text')?.value || '').trim();
+    const inquiryParts = [...cats];
+    if (otherText) inquiryParts.push(`기타: ${otherText}`);
+    const now = new Date();
+    const date = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
     const payload = {
+      type:     'inquiry',
+      date,
       name,
       phone,
-      category: cats.join(', '),
-      other_text: otherText,
+      inquiry:  inquiryParts.join(', '),
       region:   form.querySelector('[name="region"]').value,
       keyword:  form.querySelector('[name="keyword"]').value,
       page_url: form.querySelector('#cf-page-url').value,
       source:   'contact-form',
-      timestamp: new Date().toISOString(),
+      timestamp: now.toISOString(),
     };
 
     try {

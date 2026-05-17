@@ -260,13 +260,17 @@ const allLd = [
       btn.disabled = true;
       btn.textContent = '전송 중...';
 
+      const _now = new Date();
+      const _date = `${_now.getFullYear()}-${String(_now.getMonth()+1).padStart(2,'0')}-${String(_now.getDate()).padStart(2,'0')}`;
       const payload = {
-        name: nameVal,
-        phone: phoneVal,
-        service,
+        type:     'inquiry',
+        date:     _date,
+        name:     nameVal,
+        phone:    phoneVal,
+        inquiry:  service,
         page_url: window.location.href,
-        timestamp: new Date().toISOString(),
-        source: 'quick-bar',
+        source:   'quick-bar',
+        timestamp: _now.toISOString(),
       };
 
       try {
