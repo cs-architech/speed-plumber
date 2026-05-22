@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ region }} {{ keyword }} 전문 업체. 즉시 출동, 정밀 진단, 완벽 해결. 지금 바로 상담하세요.">
+<meta name="description" content="{{ desc_text }}">
 <meta name="keywords" content="{{ keyword }}, {{ region }} {{ keyword }}, 하수구막힘, 배관막힘, 싱크대막힘, 변기막힘, 고압세척">
-<meta property="og:title" content="{{ region }} {{ keyword }} 전문 업체 | {{ site_name }}">
-<meta property="og:description" content="{{ region }} 지역 {{ keyword }} 신속 출동. 원인 진단부터 완벽 해결까지.">
+<meta property="og:title" content="{{ title_text }}">
+<meta property="og:description" content="{{ desc_text }}">
 <meta property="og:type" content="website">
-<title>{{ region }} {{ keyword }} 전문 | {{ site_name }}</title>
+<meta property="og:url" content="{{ canonical_url }}">
+{% if og_image_url %}<meta property="og:image" content="{{ og_image_url }}">{% endif %}
+<link rel="canonical" href="{{ canonical_url }}">
+<title>{{ title_text }}</title>
 <style>
 /* ── Reset & Base ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}

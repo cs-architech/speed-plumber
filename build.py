@@ -34,7 +34,7 @@ REGIONS_JSON    = BASE_DIR / "regions_data.json"
 TEMPLATE_FILE   = "template.html"
 
 # ─── 사이트 설정 ───────────────────────────────────────────────────────────────
-PHONE               = "010-6522-5759"
+PHONE               = "1866-2449"
 SITE_NAME           = "하수구막힘 전문"
 GOOGLE_APPS_URL     = (
     "https://script.google.com/macros/s/"
@@ -44,24 +44,140 @@ REGION_BLOCK_COUNT  = 13  # 생성할 지역 블록 수 (주요 1 + 점검가능
 GALLERY_RANGE       = (5, 11)
 KEYWORDS_POOL       = ['싱크대막힘', '변기막힘', '배관막힘', '하수구막힘',
                        '우수관막힘', '하수구역류', '배관고압세척', '하수구뚫음']
+SITE_DOMAIN         = "https://speed-plumber.netlify.app"  # Netlify 도메인 (실제 주소로 확인 후 수정)
 
-# ─── Spintax 풀 ────────────────────────────────────────────────────────────────
-TITLE_POOL = [
-    "{region} {keyword} 업체 점검가능 지역 리스트",
-    "{region} 지역 {keyword} 서비스 가능 업체 현황",
-    "{keyword} 전문 업체 · {region} 점검 가능 구역 안내",
-    "{region} 인근 {keyword} 출장 가능 지역 목록",
-    "{keyword} 업체 서비스 지역 ({region} 기준)",
-    "{region} {keyword} 담당 가능 지역 현황 정리",
+# ─── 1. 사용자 제공 데이터 (블록 조립형 무한 조합 스핀택스) ─────────────────────
+
+TITLE_PREFIXES = [
+    "", "[긴급]", "[당일출동]", "갑작스러운", "답답한", "골치 아픈", 
+    "타업체 포기건,", "급하게 알아본", "자꾸 반복되는", "새벽에 터진", 
+    "지긋지긋한", "해결 안 되는", "비용 걱정 없는", "가장 빠른", 
+    "후기 좋은", "실패 없는", "눈탱이 없는", "지인 추천", 
+    "셀프로 안 되는", "자주 발생하는"
 ]
 
+TITLE_FORMATS = [
+    "{prefix} {region} {keyword} {action} {suffix}",           
+    "{prefix} [{region}] {keyword} {action} {suffix}",         
+    "{prefix} {region} 주변 {keyword} {action} {suffix}",      
+    "{prefix} {keyword} 문제, {region} {action} {suffix}",     
+    "{region} 지역 {keyword} {prefix} {action} {suffix}",      
+    "[{region} 출장] {prefix} {keyword} {action} {suffix}"     
+]
+
+TITLE_ACTIONS = [
+    "확실한 해결 사례", "속 시원한 조치 방법", "비용 및 작업 과정 안내", 
+    "30분 내 당일 방문 정보", "전문가의 리얼 시공기", "원인부터 찾는 점검", 
+    "정직한 비용 처리 결과", "최신 장비로 소통 완료", "해결 비결 전격 공개", 
+    "출장 서비스 추천 목록", "눈속임 없는 진짜 리뷰", "직접 겪어본 생생한 경험", 
+    "타업체 실패건 100% 성공", "증상별 맞춤 해결 가이드", "초고속 방문 서비스", 
+    "비용 폭탄 피하는 노하우", "정가제 출장 리스트", "작업 소요 시간 총정리", 
+    "예방부터 스케일링까지", "근본 원인 완벽 차단", "하자 없는 꼼꼼한 시공", 
+    "거품 뺀 합리적인 선택", "최상급 장비 보유 현황", "단골이 많은 진짜 이유", 
+    "이용 고객 만족도 1위", "믿고 맡기는 안심 서비스", "현장 검증 완료", 
+    "덤터기 없는 양심 시공", "내돈내산 찐 시공기", "배관 내시경 꼼꼼 점검"
+]
+
+TITLE_SUFFIXES = [
+    "", "(긴급출동 가능)", "강력 추천",  "(서울/경기 긴급출동)", "총정리", "알아보기", 
+    "공개합니다", "확인하세요", "꿀팁", "비교 분석", "안내", 
+    "(당일 조치)", "필독", "리스트", "대공개", "주의할 점"
+]
+
+# 제목 54,000개 자동 생성
+TITLE_POOL = []
+for prefix in TITLE_PREFIXES:
+    for fmt in TITLE_FORMATS:
+        for action in TITLE_ACTIONS:
+            for suffix in TITLE_SUFFIXES:
+                raw_text = fmt.format(
+                    prefix=prefix, 
+                    region="{region}", 
+                    keyword="{keyword}", 
+                    action=action, 
+                    suffix=suffix
+                )
+                TITLE_POOL.append(" ".join(raw_text.split()))
+
+DESC_PART1 = [
+    "오늘은 {region} 인근에서 {keyword} 문제로 스트레스 받으시는 분들을 위해 준비했습니다.",
+    "{keyword} 때문에 갑자기 당황하셨나요?",
+    "안녕하세요! 최근 {region} 지역에서 {keyword} 관련 문의가 정말 많아졌는데요.",
+    "{region}에서 {keyword} 관련 정보를 찾고 계신다면 꼭 끝까지 읽어주세요!",
+    "{keyword} 방치하면 나중에 더 큰 공사비가 깨질 수 있습니다.",
+    "요즘 {region} 주변 {keyword} 비용이 천차만별이죠?",
+    "물은 안 내려가고 악취까지... {keyword} 정말 답답하시죠?",
+    "지금 당장 {region} 지역에 {keyword} 전문가가 필요하신가요?",
+    "타업체에서 뚫지 못해 포기한 {keyword}도 문제없습니다!",
+    "본 포스팅에서는 {region} 기준 {keyword} 출장 서비스 지역을 총정리합니다.",
+    "검색된 {keyword} 점검 가능 구역 {count_plus_3}개 중 핵심만 추렸습니다.",
+    "{keyword} 작업 전 반드시 확인해야 할 지역별 출장 현황입니다.",
+    "총 {count_plus_3}개 이상의 {region} {keyword} 출장 가능 지역 데이터를 분석했습니다.",
+    "잦은 {keyword} 현상으로 업체를 여러 번 부르셨다면 이 글에 주목해 주세요.",
+    "야간이나 주말에 갑자기 터진 {keyword} 문제, 이제 걱정 마세요."
+]
+
+DESC_PART2 = [
+    "주변에 {count_plus_3}개가 넘는 업체가 있지만,",
+    "{region} 주변 서비스 가능 지역 {count_plus_3}곳을 직접 조사해 보고,",
+    "타업체에서 실패한 건도 해결 가능한 {count_plus_3}개 이상의 네트워크 중,",
+    "덤터기 쓰지 않고 합리적으로 조치할 수 있는 {count_plus_3}개의 출장 구역 중,",
+    "{region} 전역 {count_plus_3}곳을 담당하는 배관 기사님들의 작업 동선을 분석하여,",
+    "고객님들의 합리적인 선택을 돕기 위해 {count_plus_3}개의 점검 가능 구역 데이터를 추합했고,",
+    "{region} 지역에서 당장 조치가 필요한 분들을 위해, {count_plus_3}개의 긴급출동 가능 권역을 비교하여,",
+    "시간 낭비하지 마시라고 총 {count_plus_3}개의 출장 가능 리스트 중,",
+    "{region} 인근 {count_plus_3}개 거점의 특수 장비 배차 현황을 파악하여,",
+    "현재 검색된 {count_plus_3}개의 서비스 권역 데이터를 바탕으로,",
+    "{region} 고객님들이 가장 많이 찾으시는 데이터를 검토하여,",
+    "{region} 업체가 전담하는 {count_plus_3}개 구역의 출장 이력을 바탕으로,",
+    "작업 소요 시간과 이동 동선이 가장 효율적인 곳을 찾기 위해,",
+    "근본 원인을 잡아내는 업체를 선별하기 위해 {count_plus_3}개 거점을 확인했고,",
+    "비용부터 A/S까지 확실한 업체를 찾기 위해 {count_plus_3}개의 데이터를 꼼꼼히 비교했습니다."
+]
+
+DESC_PART3 = [
+    "그중에서도 가장 평점이 좋고 출장이 빠른 핵심 {count}곳의 정보를",
+    "가장 믿을 수 있는 {count}개 출장 구역의 리스트를",
+    "가장 가까운 {count}곳의 상세 정보를",
+    "대표적인 {count}개 지역의 상세 서비스 현황을",
+    "30분 내 당일 방문이 가능한 {count}개 주요 지역 리스트를",
+    "이 중 출장비 걱정 없는 {count}곳의 찐 정보를",
+    "가장 신속하게 방문하는 베스트 {count}곳의 위치를",
+    "실시간 점검이 가능한 베스트 {count}곳만 엄선해서",
+    "확실하게 해결해 줄 수 있는 {count}개의 핵심 출장 지역을",
+    "가까운 순으로 {count}개 지역을 우선적으로 추려",
+    "핫스팟으로 떠오르는 {count}곳의 상세 정보를",
+    "가장 만족도가 높은 핵심 {count}개 권역만 깔끔하게",
+    "가장 효율적인 대표 {count}개 지역을 선별하여",
+    "고객 만족도가 가장 높은 {count}곳의 리스트를",
+    "실시간 배차가 가능한 상위 {count}개 지역을"
+]
+
+DESC_PART4 = [
+    "꼼꼼하게 비교해 드릴게요.",
+    "알기 쉽게 정리해 봤습니다.",
+    "투명하게 공개합니다.",
+    "상세히 안내해 드립니다.",
+    "지금 바로 공유해 드립니다.",
+    "낱낱이 파헤쳐 보겠습니다.",
+    "아래에 정리해 두었습니다.",
+    "지금 바로 확인해 보세요.",
+    "깔끔하게 요약해 드립니다.",
+    "우선적으로 안내해 드립니다.",
+    "밑에서 바로 확인하실 수 있습니다.",
+    "확실하게 짚어 드리겠습니다.",
+    "가감 없이 알려드립니다.",
+    "빠르게 요약정리해 드립니다.",
+    "한눈에 보기 쉽게 제공합니다."
+]
+
+# 설명 50,625개 자동 생성
 DESC_POOL = [
-    "{keyword} 외 등 {count}+3개 점검 가능 지역을 찾았고, 이 중 최대 {count}개를 확인할 수 있도록 정리했습니다.",
-    "총 {count}+3개 이상의 {keyword} 서비스 가능 지역 중 대표 {count}개 지역을 선별하여 안내드립니다.",
-    "{keyword} 출장 가능 지역이 {count}+3곳 이상 확인되었으며, 주요 {count}개 지역 정보를 아래에 정리하였습니다.",
-    "검색된 {keyword} 점검 가능 지역 {count}+3개 중 가까운 순으로 {count}개 지역을 추려 제공합니다.",
-    "{count}개 이상의 {keyword} 서비스 지역을 확인했으며, 그 중 {count}곳의 상세 정보를 아래에서 확인하실 수 있습니다.",
-    "{keyword} 업체가 담당하는 {count}+3개 구역 데이터를 분석하여 핵심 {count}개 지역만 모아드렸습니다.",
+    f"{d1} {d2} {d3} {d4}" 
+    for d1 in DESC_PART1 
+    for d2 in DESC_PART2 
+    for d3 in DESC_PART3 
+    for d4 in DESC_PART4
 ]
 
 CATEGORY_POOL = [
@@ -70,36 +186,23 @@ CATEGORY_POOL = [
     "건설업종 : 배관공사 전문 (냉난방 포함)",
     "업종 분류 : 배관·위생설비 전문건설",
     "등록업종 > 건설 / 배관·위생설비공사",
-    "사업 분야 : 배관막힘·냉난방설비 전문",
+    "사업 분야 : 배관막힘·냉난방설비 전문"
 ]
 
-# 동의어 치환 테이블 (SEO 유사문서 회피)
 SYNONYMS = {
-    "해결": ["처리", "완료", "조치", "수습"],
-    "전문가": ["기술자", "전문 기사", "숙련 기사"],
-    "신속": ["빠르게", "즉시", "즉각"],
-    "확인": ["점검", "진단", "검토"],
-    "작업": ["시공", "조치", "서비스"],
-    "배관": ["관로", "파이프", "수도관"],
-    "막힘": ["폐색", "차단", "정체"],
-    "역류": ["거꾸로 흐름", "백플로우"],
-    "악취": ["불쾌한 냄새", "이취"],
-    "고압세척": ["고압 청소", "워터젯 세척"],
-    "뚫": ["통수", "소통"],
-    "스케일링": ["찌꺼기 제거", "관로 청소"],
+    "해결": ["처리", "완료", "조치", "수습", "마무리"],
+    "전문가": ["기술자", "전문 기사", "숙련 기사", "베테랑", "전문팀"],
+    "신속": ["빠르게", "즉시", "즉각", "지체 없이", "총알처럼"],
+    "확인": ["점검", "진단", "검토", "파악", "테스트"],
+    "작업": ["시공", "조치", "서비스", "공사", "케어"],
+    "배관": ["관로", "파이프", "수도관", "하수관", "오수관"],
+    "막힘": ["폐색", "차단", "정체", "막히는 현상"],
+    "역류": ["거꾸로 흐름", "백플로우", "물이 넘침", "토출"],
+    "악취": ["불쾌한 냄새", "이취", "하수구 냄새", "썩은 내"],
+    "고압세척": ["고압 청소", "워터젯 세척", "배관 스케일링", "초고압 세척"],
+    "뚫": ["통수", "소통", "뚫어", "해결"],
+    "스케일링": ["찌꺼기 제거", "관로 청소", "기름때 제거", "내부 스케일링"],
 }
-
-# 텍스트 내 치환할 지역명 목록
-KNOWN_REGIONS = [
-    "안산", "수원", "군포", "시흥", "안양", "의왕", "광명", "부천",
-    "화성", "오산", "인천", "성남", "용인", "종로구", "중구",
-    "고양", "과천", "하남", "의정부", "남양주",
-]
-KNOWN_KEYWORDS = [
-    "하수구막힘", "배관막힘", "싱크대막힘", "변기막힘",
-    "하수구역류", "배관고압세척", "하수구뚫음", "배관뚫음",
-    "하수구뚫는업체", "싱크대역류",
-]
 
 # ─── 유틸 ──────────────────────────────────────────────────────────────────────
 
@@ -112,11 +215,9 @@ def haversine(lat1, lng1, lat2, lng2) -> float:
          * math.sin(d_lng / 2) ** 2)
     return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
-
 def load_lines(path: Path) -> list[str]:
     with open(path, encoding="utf-8") as f:
         return [ln.strip() for ln in f if ln.strip()]
-
 
 # ─── 지역 데이터 ──────────────────────────────────────────────────────────────
 
@@ -127,24 +228,19 @@ def load_regions() -> pd.DataFrame:
     df["경도"] = pd.to_numeric(df["경도"], errors="coerce")
     return df.dropna(subset=["위도", "경도"]).reset_index(drop=True)
 
-
 def region_fullname(row) -> str:
     emd = str(row.get("읍면동", "") or "").strip()
     if emd and emd.lower() != "nan":
         return f"{row['시군구']} {emd}"
     return str(row["시군구"])
 
-
 def load_regions_json() -> list[dict] | None:
-    """regions_data.json 이 있으면 로드, 없으면 None 반환."""
     if REGIONS_JSON.exists():
         with open(REGIONS_JSON, encoding="utf-8") as f:
             return json.load(f)
     return None
 
-
 def build_region_blocks(df: pd.DataFrame, main_keyword: str, mid_kw_lines: list[str]) -> list[dict]:
-    # ── regions_data.json 우선 사용 ──────────────────────────────────────────
     json_data = load_regions_json()
     if json_data:
         blocks = []
@@ -171,7 +267,6 @@ def build_region_blocks(df: pd.DataFrame, main_keyword: str, mid_kw_lines: list[
             })
         return blocks
 
-    # ── fallback: region.csv 랜덤 선택 ────────────────────────────────────────
     primary_idx = random.choice(df.index.tolist())
     primary = df.loc[primary_idx]
     p_lat, p_lng = float(primary["위도"]), float(primary["경도"])
@@ -206,31 +301,25 @@ def build_region_blocks(df: pd.DataFrame, main_keyword: str, mid_kw_lines: list[
         })
     return blocks
 
-
 # ─── 이미지 처리 ──────────────────────────────────────────────────────────────
 
 def wash_and_compress(src: Path, dst: Path, max_kb: int = 100):
-    """EXIF 제거 + 미세 크롭(해시 변경) + 100KB 이하 압축 → 단일 저장."""
     target = max_kb * 1024
     with Image.open(src) as img:
         img = img.convert("RGB")
-        # EXIF 제거: 픽셀 데이터 새 이미지 복사
         clean = Image.new("RGB", img.size)
         clean.putdata(list(img.getdata()))  # type: ignore[arg-type]
-        # 미세 크롭 (1~3px) → 해시 변경
         w, h = clean.size
         clean = clean.crop((
             random.randint(1, 3), random.randint(1, 3),
             w - random.randint(1, 3), h - random.randint(1, 3),
         ))
-        # 100KB 이하가 될 때까지 품질 단계적 하향
         for quality in [85, 75, 65, 55, 45, 35]:
             buf = BytesIO()
             clean.save(buf, format="JPEG", quality=quality, optimize=True)
             if buf.tell() <= target:
                 dst.write_bytes(buf.getvalue())
                 return
-        # 여전히 크면 해상도도 축소
         max_dim = 1200
         if max(clean.size) > max_dim:
             clean.thumbnail((max_dim, max_dim), Image.LANCZOS)
@@ -238,9 +327,7 @@ def wash_and_compress(src: Path, dst: Path, max_kb: int = 100):
         clean.save(buf, format="JPEG", quality=35, optimize=True)
         dst.write_bytes(buf.getvalue())
 
-
 def select_diverse_photos(n: int) -> list[Path]:
-    """시리즈별로 1장씩 돌아가며 다양하게 선택"""
     exts = {".jpg", ".jpeg", ".png"}
     all_photos = [p for p in PHOTOS_DIR.iterdir() if p.suffix.lower() in exts]
     if not all_photos:
@@ -265,9 +352,7 @@ def select_diverse_photos(n: int) -> list[Path]:
             break
     return selected[:n]
 
-
 def process_gallery_named(img_dir: Path, region: str, keyword: str) -> list[str]:
-    """이미지 세탁 + 100KB 압축 → '{region} {keyword} 업체 긴급출동(N).jpg' 단일 저장."""
     img_dir.mkdir(parents=True, exist_ok=True)
     n = random.randint(*GALLERY_RANGE)
     photos = select_diverse_photos(n)
@@ -282,15 +367,19 @@ def process_gallery_named(img_dir: Path, region: str, keyword: str) -> list[str]
             print(f"  [WARN] {src.name}: {e}")
     return paths
 
-
 # ─── 첫 번째 이미지 ───────────────────────────────────────────────────────────
 
 def copy_first_images() -> list[str]:
     dst_dir = IMAGES_OUT_DIR / "first"
-    dst_dir.mkdir(parents=True, exist_ok=True)
+    if dst_dir.exists():
+        shutil.rmtree(dst_dir)
+    dst_dir.mkdir(parents=True)
     exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+    if not FIRST_IMG_DIR.exists():
+        return []
     imgs = sorted(
-        [p for p in FIRST_IMG_DIR.iterdir() if p.suffix.lower() in exts],
+        [p for p in FIRST_IMG_DIR.iterdir()
+         if p.suffix.lower() in exts and p.stem[:2].isdigit()],
         key=lambda p: p.name,
     )
     paths = []
@@ -300,37 +389,29 @@ def copy_first_images() -> list[str]:
         paths.append(f"images/first/{img.name}")
     return paths
 
-
 # ─── 후기 텍스트 처리 ─────────────────────────────────────────────────────────
 
-def apply_synonyms(text: str) -> str:
+def apply_synonyms_review(text: str) -> str:
+    """후기 텍스트용 45% 확률 치환 함수"""
     for word, syns in SYNONYMS.items():
-        if word in text and random.random() > 0.45:
-            # 첫 1~2회만 치환
+        if word in text and random.random() < 0.45:
             replacement = random.choice(syns)
             text = text.replace(word, replacement, random.randint(1, 2))
     return text
 
-
 def process_review(region: str, keyword: str) -> list[str]:
+    if not TEXT_DIR.exists():
+        return ["후기 내용을 불러올 수 없습니다."]
+        
     txt_files = list(TEXT_DIR.glob("*.txt"))
     if not txt_files:
         return ["후기 내용을 불러올 수 없습니다."]
 
     raw = (random.choice(txt_files)).read_text(encoding="utf-8")
 
-    # 전화번호 제거
     raw = re.sub(r"0\d{1,2}[-\s]?\d{3,4}[-\s]?\d{4}", "", raw)
-    # "출장비 무료" 제거
     raw = re.sub(r"출장비\s*무료[^.。]*[.。]?", "", raw)
 
-    # 기존 지역명·키워드 → 플레이스홀더
-    for r in sorted(KNOWN_REGIONS, key=len, reverse=True):
-        raw = raw.replace(r, "__REGION__", 1)
-    for k in sorted(KNOWN_KEYWORDS, key=len, reverse=True):
-        raw = raw.replace(k, "__KW__", 1)
-
-    # 문단 분리 → 셔플 (앞뒤 1개씩 고정)
     paras = [p.strip() for p in raw.split("\n\n") if p.strip()]
     if len(paras) > 3:
         head, tail = paras[:1], paras[-1:]
@@ -339,14 +420,14 @@ def process_review(region: str, keyword: str) -> list[str]:
         paras = head + mid + tail
 
     # 동의어 치환
-    paras = [apply_synonyms(p) for p in paras]
+    paras = [apply_synonyms_review(p) for p in paras]
 
-    # 지역/키워드 삽입 (2~3곳 사이사이)
+    # 임의의 문단에 지역+키워드 강제 주입
     inject_at = random.sample(range(len(paras)), min(3, len(paras)))
     for pos in inject_at:
         paras[pos] = f"{region} {keyword} – " + paras[pos]
 
-    # 플레이스홀더 → 실제 값
+    # 만약 원본 텍스트에 사용자가 직접 __REGION__ 과 __KW__ 를 적어두었다면 실제 값으로 교체
     result = []
     for p in paras:
         p = p.replace("__REGION__", region).replace("__KW__", keyword)
@@ -354,12 +435,10 @@ def process_review(region: str, keyword: str) -> list[str]:
 
     return result
 
-
 # ─── 단일 페이지 빌드 ─────────────────────────────────────────────────────────
 
 def build_one(page_dir: Path, keywords: list[str], mid_kw_lines: list[str],
               df, env, tpl, first_images: list[str], page_num: int):
-    """랜덤 지역·키워드 조합으로 index.html 1개 생성 (이미지 단일 폴더, 100KB 압축)."""
     page_dir.mkdir(parents=True, exist_ok=True)
     img_dir = page_dir / "images"
 
@@ -367,15 +446,25 @@ def build_one(page_dir: Path, keywords: list[str], mid_kw_lines: list[str],
     region_blocks = build_region_blocks(df, main_keyword, mid_kw_lines)
     primary_name  = region_blocks[0]["name"]
 
-    title_text = random.choice(TITLE_POOL).format(region=primary_name, keyword=main_keyword)
-    desc_text  = random.choice(DESC_POOL).format(keyword=main_keyword, count=REGION_BLOCK_COUNT)
+    rel_path      = page_dir.relative_to(OUTPUT_DIR)
+    canonical_url = f"{SITE_DOMAIN}/{rel_path.as_posix()}/"
+    first_img_name = Path(first_images[0]).name if first_images else ""
+    og_image_url  = f"{SITE_DOMAIN}/images/first/{first_img_name}" if first_img_name else ""
 
-    # 이미지 세탁: 단일 폴더, 한글 파일명, 100KB 이하
+    title_text = random.choice(TITLE_POOL).format(region=primary_name, keyword=main_keyword)
+
+    # [수정] KeyError: 'region'을 방지하기 위해 region=primary_name 매개변수 반드시 포함
+    desc_text  = random.choice(DESC_POOL).format(
+        region=primary_name,
+        keyword=main_keyword, 
+        count=REGION_BLOCK_COUNT, 
+        count_plus_3=REGION_BLOCK_COUNT + 3
+    )
+
     gallery_images = process_gallery_named(img_dir, primary_name, main_keyword)
     main_gallery   = gallery_images[:3]
-    sub_gallery    = [(p, p) for p in gallery_images[3:]]  # 썸네일=동일파일, CSS로 축소
+    sub_gallery    = [(p, p) for p in gallery_images[3:]]
 
-    # 상단 이미지 상대경로
     first_imgs_rel = [f"../images/first/{Path(p).name}" for p in first_images]
 
     review_paras = process_review(primary_name, main_keyword)
@@ -395,6 +484,8 @@ def build_one(page_dir: Path, keywords: list[str], mid_kw_lines: list[str],
         google_apps_url = GOOGLE_APPS_URL,
         build_time      = datetime.now().strftime("%Y-%m-%d %H:%M"),
         block_count     = len(region_blocks),
+        canonical_url   = canonical_url,
+        og_image_url    = og_image_url,
     )
 
     out = page_dir / "index.html"
@@ -402,14 +493,31 @@ def build_one(page_dir: Path, keywords: list[str], mid_kw_lines: list[str],
     print(f"  [page {page_num}] {primary_name} / {main_keyword}  gallery={len(gallery_images)}")
     return out
 
+# ─── SEO 파일 생성 ──────────────────────────────────────────────────────────────
+
+def write_robots_txt():
+    content = f"User-agent: *\nAllow: /\nSitemap: {SITE_DOMAIN}/sitemap.xml\n"
+    (OUTPUT_DIR / "robots.txt").write_text(content, encoding="utf-8")
+    print("  [SEO] robots.txt 생성 완료")
+
+def write_sitemap(urls: list[str]):
+    today = datetime.now().strftime("%Y-%m-%d")
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for url in urls:
+        lines.append(
+            f'  <url><loc>{url}</loc><lastmod>{today}</lastmod>'
+            f'<changefreq>weekly</changefreq><priority>0.8</priority></url>'
+        )
+    lines.append("</urlset>")
+    (OUTPUT_DIR / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
+    print(f"  [SEO] sitemap.xml 생성 완료 ({len(urls)}개 URL)")
 
 # ─── 메인 빌드 ────────────────────────────────────────────────────────────────
 
 def build(test_count: int = 0):
-    """
-    test_count > 0 : test_count개 테스트 페이지만 output/test-N/ 에 생성
-    test_count == 0: 단일 페이지 output/index.html 생성 (기존 동작)
-    """
     print("=" * 55)
     print("  build.py  -  Static Site Generator")
     if test_count:
@@ -419,14 +527,13 @@ def build(test_count: int = 0):
     OUTPUT_DIR.mkdir(exist_ok=True)
     IMAGES_OUT_DIR.mkdir(exist_ok=True)
 
-    # 공통 데이터 로드 (1회)
     print("[1/4] 데이터 로드 중...")
     keywords     = load_lines(KEYWORDS_FILE)
     mid_kw_lines = load_lines(MID_KW_FILE)
     df           = load_regions()
 
     print("[2/4] 상단 이미지 복사 중...")
-    first_images = copy_first_images()   # output/images/first/
+    first_images = copy_first_images()
 
     print("[3/4] Jinja2 환경 준비 중...")
     env = Environment(
@@ -440,33 +547,42 @@ def build(test_count: int = 0):
     print("[4/4] 페이지 생성 중...")
 
     if test_count:
-        # ── 테스트 모드: N개 페이지 → output/test-1/ … output/test-N/
         generated = []
+        canonical_urls = []
         for i in range(1, test_count + 1):
             page_dir = OUTPUT_DIR / f"test-{i}"
             out = build_one(page_dir, keywords, mid_kw_lines, df, env, tpl,
                             first_images, i)
             generated.append(out)
+            canonical_urls.append(f"{SITE_DOMAIN}/test-{i}/")
 
+        write_robots_txt()
+        write_sitemap(canonical_urls)
         print("-" * 55)
         print(f"[DONE] {test_count}개 테스트 페이지 생성 완료")
         for p in generated:
             print(f"  -> {p}")
     else:
-        # ── 단일 모드: output/index.html (기존 동작)
-        # 단일 모드에서는 이미지를 output/images/ 바로 아래 저장
         main_keyword  = random.choice(keywords[:6])
         region_blocks = build_region_blocks(df, main_keyword, mid_kw_lines)
-        primary_name  = region_blocks[0]["name"]
+        primary_name   = region_blocks[0]["name"]
+
+        canonical_url  = f"{SITE_DOMAIN}/"
+        first_img_name = Path(first_images[0]).name if first_images else ""
+        og_image_url   = f"{SITE_DOMAIN}/images/first/{first_img_name}" if first_img_name else ""
 
         title_text = random.choice(TITLE_POOL).format(
             region=primary_name, keyword=main_keyword
         )
+        
+        # [수정] KeyError 방지용 region=primary_name 파라미터 추가
         desc_text = random.choice(DESC_POOL).format(
-            keyword=main_keyword, count=REGION_BLOCK_COUNT
+            region=primary_name,
+            keyword=main_keyword, 
+            count=REGION_BLOCK_COUNT,
+            count_plus_3=REGION_BLOCK_COUNT + 3
         )
 
-        # 이미지: output/images/ 단일 폴더, 100KB, 한글 파일명
         gallery_images = process_gallery_named(IMAGES_OUT_DIR, primary_name, main_keyword)
         main_gallery   = gallery_images[:3]
         sub_gallery    = [(p, p) for p in gallery_images[3:]]
@@ -487,18 +603,18 @@ def build(test_count: int = 0):
             google_apps_url = GOOGLE_APPS_URL,
             build_time      = datetime.now().strftime("%Y-%m-%d %H:%M"),
             block_count     = len(region_blocks),
+            canonical_url   = canonical_url,
+            og_image_url    = og_image_url,
         )
 
         out = OUTPUT_DIR / "index.html"
         out.write_text(html, encoding="utf-8")
+        write_robots_txt()
+        write_sitemap([canonical_url])
         print(f"[OK] {out}  ({primary_name} / {main_keyword})")
         print(f"     gallery={len(gallery_images)}")
 
-
 if __name__ == "__main__":
     import sys
-    # 인자로 숫자를 넘기면 그 수만큼 테스트 페이지 생성
-    # 예: python build.py 3   → 테스트 3페이지
-    #     python build.py      → 단일 index.html
     count = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     build(test_count=count)
