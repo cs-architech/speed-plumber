@@ -240,34 +240,38 @@ def load_regions_json() -> list[dict] | None:
             return json.load(f)
     return None
 
-def build_region_blocks(df: pd.DataFrame, main_keyword: str, mid_kw_lines: list[str]) -> list[dict]:
-    json_data = load_regions_json()
-    if json_data:
-        blocks = []
-        alt_kw_pool = [k for k in KEYWORDS_POOL if k != main_keyword]
-        for i, entry in enumerate(json_data):
-            name    = entry["name"]
-            lat     = float(entry["lat"])
-            lng     = float(entry["lon"])
-            area_kw = main_keyword if i == 0 else alt_kw_pool[(i - 1) % len(alt_kw_pool)]
-            q_search = urllib.parse.quote(f"{name} {area_kw} 업체")
-            blocks.append({
-                "name":        name,
-                "jibun_addr":  entry.get("jibun_addr", ""),
-                "road_addr":   entry.get("road_addr", ""),
-                "lat":         round(lat, 6),
-                "lng":         round(lng, 6),
-                "keyword":     area_kw,
-                "mid_kw":      random.choice(mid_kw_lines),
-                "category":    entry.get("category", random.choice(CATEGORY_POOL)),
-                "weather":     entry.get("weather", ""),
-                "google_url":  f"https://www.google.com/maps/search/{q_search}",
-                "naver_url":   f"https://map.naver.com/v5/search/{q_search}",
-                "is_primary":  bool(entry.get("is_primary", i == 0)),
-            })
-        return blocks
+def build_region_blocks(df: pd.DataFrame, main_keyword: str, mid_kw_lines: list[str],
+                        primary_idx: int | None = None) -> list[dict]:
+    # primary_idx 미지정 + regions_data.json 존재 → JSON 우선 사용 (단일 페이지 모드)
+    if primary_idx is None:
+        json_data = load_regions_json()
+        if json_data:
+            blocks = []
+            alt_kw_pool = [k for k in KEYWORDS_POOL if k != main_keyword]
+            for i, entry in enumerate(json_data):
+                name    = entry["name"]
+                lat     = float(entry["lat"])
+                lng     = float(entry["lon"])
+                area_kw = main_keyword if i == 0 else alt_kw_pool[(i - 1) % len(alt_kw_pool)]
+                q_search = urllib.parse.quote(f"{name} {area_kw} 업체")
+                blocks.append({
+                    "name":        name,
+                    "jibun_addr":  entry.get("jibun_addr", ""),
+                    "road_addr":   entry.get("road_addr", ""),
+                    "lat":         round(lat, 6),
+                    "lng":         round(lng, 6),
+                    "keyword":     area_kw,
+                    "mid_kw":      random.choice(mid_kw_lines),
+                    "category":    entry.get("category", random.choice(CATEGORY_POOL)),
+                    "weather":     entry.get("weather", ""),
+                    "google_url":  f"https://www.google.com/maps/search/{q_search}",
+                    "naver_url":   f"https://map.naver.com/v5/search/{q_search}",
+                    "is_primary":  bool(entry.get("is_primary", i == 0)),
+                })
+            return blocks
 
-    primary_idx = random.choice(df.index.tolist())
+    if primary_idx is None:
+        primary_idx = random.choice(df.index.tolist())
     primary = df.loc[primary_idx]
     p_lat, p_lng = float(primary["위도"]), float(primary["경도"])
 
@@ -614,7 +618,127 @@ def build(test_count: int = 0):
         print(f"[OK] {out}  ({primary_name} / {main_keyword})")
         print(f"     gallery={len(gallery_images)}")
 
+# ─── 미리 굽기 (pages_bank/) ──────────────────────────────────────────────────
+
+def build_bank(count: int):
+    """모든 페이지를 pages_bank/에 미리 생성 (공유 이미지 풀 사용)"""
+    BANK_DIR       = BASE_DIR / "pages_bank"
+    BANK_IMG_DIR   = BANK_DIR / "images"
+    BANK_FIRST_DIR = BANK_IMG_DIR / "first"
+    BANK_GAL_DIR   = BANK_IMG_DIR / "gallery"
+
+    print("=" * 55)
+    print(f"  build_bank  -  {count}개 페이지 미리 굽기 (지역 기반)")
+    print("=" * 55)
+
+    # 이미지가 이미 있으면 재처리 생략, 기존 page-NNNN 폴더만 삭제
+    regen_images = not BANK_GAL_DIR.exists() or not any(BANK_GAL_DIR.iterdir())
+    if regen_images:
+        if BANK_DIR.exists():
+            shutil.rmtree(BANK_DIR)
+        for d in [BANK_DIR, BANK_IMG_DIR, BANK_FIRST_DIR, BANK_GAL_DIR]:
+            d.mkdir(parents=True)
+    else:
+        print("  (기존 이미지 풀 재사용)")
+        for p in BANK_DIR.iterdir():
+            if p.name != "images" and p.is_dir():
+                shutil.rmtree(p)
+
+    # 상단 이미지 복사 (숫자로 시작하는 파일만)
+    exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+    if regen_images and FIRST_IMG_DIR.exists():
+        for p in sorted(FIRST_IMG_DIR.iterdir()):
+            if p.suffix.lower() in exts and p.stem[:2].isdigit():
+                shutil.copy2(p, BANK_FIRST_DIR / p.name)
+    first_imgs_rel = [f"../images/first/{p.name}" for p in sorted(BANK_FIRST_DIR.iterdir()) if p.is_file()]
+    first_img_name = Path(first_imgs_rel[0]).name if first_imgs_rel else ""
+
+    # 갤러리 공유 풀 (이미지 없으면 새로 처리)
+    if regen_images:
+        print("[1/3] 공유 갤러리 이미지 처리 중...")
+        photo_exts = {".jpg", ".jpeg", ".png"}
+        all_photos = sorted([p for p in PHOTOS_DIR.iterdir() if p.suffix.lower() in photo_exts]) if PHOTOS_DIR.exists() else []
+        gallery_pool: list[str] = []
+        for idx, src in enumerate(all_photos):
+            fname = f"gallery-{idx+1:03d}.jpg"
+            try:
+                wash_and_compress(src, BANK_GAL_DIR / fname, max_kb=100)
+                gallery_pool.append(f"../images/gallery/{fname}")
+            except Exception as e:
+                print(f"  [WARN] {src.name}: {e}")
+        print(f"  공유 이미지: {len(gallery_pool)}개")
+    else:
+        gallery_pool = [f"../images/gallery/{p.name}" for p in sorted(BANK_GAL_DIR.iterdir()) if p.is_file()]
+        print(f"[1/3] 기존 갤러리 풀 재사용: {len(gallery_pool)}개")
+
+    # 데이터 로드 + 지역×키워드 조합 생성
+    print("[2/3] 데이터 로드 및 조합 생성 중...")
+    keywords     = load_lines(KEYWORDS_FILE)
+    mid_kw_lines = load_lines(MID_KW_FILE)
+    df           = load_regions()
+    region_indices = df.index.tolist()
+
+    # 1,095 지역 × 상위 6 키워드 = 최대 6,570 고유 조합
+    combos = [(ri, kw) for kw in keywords[:6] for ri in region_indices]
+    random.shuffle(combos)
+    combos = combos[:count]
+    print(f"  지역 수: {len(region_indices)}, 조합 수: {len(combos)}")
+
+    env = Environment(loader=FileSystemLoader(str(BASE_DIR)), autoescape=False, keep_trailing_newline=True)
+    env.filters["nl2br"] = lambda v: v.replace("\n", "<br>")
+    tpl = env.get_template(TEMPLATE_FILE)
+
+    # 페이지 생성
+    print(f"[3/3] {count}개 페이지 생성 중...")
+    for i, (region_idx, main_keyword) in enumerate(combos, 1):
+        page_dir = BANK_DIR / f"page-{i:04d}"
+        page_dir.mkdir(exist_ok=True)
+
+        region_blocks = build_region_blocks(df, main_keyword, mid_kw_lines, primary_idx=region_idx)
+        primary_name  = region_blocks[0]["name"]
+
+        canonical_url = f"{SITE_DOMAIN}/page-{i:04d}/"
+        og_image_url  = f"{SITE_DOMAIN}/images/first/{first_img_name}" if first_img_name else ""
+
+        title_text = random.choice(TITLE_POOL).format(region=primary_name, keyword=main_keyword)
+        desc_text  = random.choice(DESC_POOL).format(
+            region=primary_name, keyword=main_keyword,
+            count=REGION_BLOCK_COUNT, count_plus_3=REGION_BLOCK_COUNT + 3,
+        )
+
+        n_gal        = random.randint(*GALLERY_RANGE)
+        selected     = random.sample(gallery_pool, min(n_gal, len(gallery_pool))) if gallery_pool else []
+        main_gallery = selected[:3]
+        sub_gallery  = [(p, p) for p in selected[3:]]
+
+        html = tpl.render(
+            phone=PHONE, site_name=SITE_NAME,
+            region=primary_name, keyword=main_keyword,
+            title_text=title_text, desc_text=desc_text,
+            region_blocks=region_blocks,
+            first_images=first_imgs_rel,
+            main_gallery=main_gallery, sub_gallery=sub_gallery,
+            review_paras=process_review(primary_name, main_keyword),
+            google_apps_url=GOOGLE_APPS_URL,
+            build_time=datetime.now().strftime("%Y-%m-%d %H:%M"),
+            block_count=len(region_blocks),
+            canonical_url=canonical_url, og_image_url=og_image_url,
+        )
+        (page_dir / "index.html").write_text(html, encoding="utf-8")
+        if i % 100 == 0 or i == count:
+            print(f"  [{i:>4}/{count}] {primary_name} / {main_keyword}")
+
+    print("=" * 55)
+    print(f"[완료] pages_bank/ 에 {count}개 페이지 생성됨")
+    print(f"  공유 이미지 풀: {len(gallery_pool)}개")
+    print("=" * 55)
+
+
 if __name__ == "__main__":
     import sys
-    count = int(sys.argv[1]) if len(sys.argv) > 1 else 0
-    build(test_count=count)
+    if len(sys.argv) > 1 and sys.argv[1] == "bank":
+        n = int(sys.argv[2]) if len(sys.argv) > 2 else 1000
+        build_bank(n)
+    else:
+        count = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+        build(test_count=count)
