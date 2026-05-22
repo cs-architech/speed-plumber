@@ -1,0 +1,35 @@
+name: Google 인덱싱 API 하루 1회 수집 요청 (KST 09:00)
+
+on:
+  schedule:
+    # KST 09:00 = UTC 00:00
+    - cron: "0 0 * * *"
+  workflow_dispatch:  # 수동 실행 허용
+
+jobs:
+  google-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 의존성 설치
+        run: pip install google-auth requests
+
+      - name: 서비스 계정 JSON 복원
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          echo "$GOOGLE_SERVICE_ACCOUNT_JSON" > service_account.json
+
+      - name: Google 수집 요청 실행
+        run: python google_indexer.py
+
+      - name: 서비스 계정 파일 삭제 (보안)
+        if: always()
+        run: rm -f service_account.json
