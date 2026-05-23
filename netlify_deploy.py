@@ -74,17 +74,36 @@ def main() -> int:
     lines.append("</urlset>")
     (OUTPUT_DIR / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
 
-    # robots.txt 생성
-    (OUTPUT_DIR / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: {SITE_DOMAIN}/sitemap.xml\n",
-        encoding="utf-8",
-    )
+    # robots.txt 생성 (Googlebot, Yeti 명시)
+    robots = "\n".join([
+        "User-agent: *",
+        "Allow: /",
+        "",
+        "User-agent: Googlebot",
+        "Allow: /",
+        "",
+        "User-agent: Yeti",
+        "Allow: /",
+        "",
+        f"Sitemap: {SITE_DOMAIN}/sitemap.xml",
+        "",
+    ])
+    (OUTPUT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
+
+    # 웹마스터 인증 파일 복사 (webmaster_files/ 폴더에 파일 넣으면 자동 배포)
+    webmaster_dir = BASE_DIR / "webmaster_files"
+    if webmaster_dir.exists():
+        for vf in webmaster_dir.iterdir():
+            if vf.is_file():
+                shutil.copy2(vf, OUTPUT_DIR / vf.name)
+                print(f"  [인증파일] {vf.name} 복사 완료")
 
     elapsed_h = (datetime.now() - start_dt).total_seconds() / 3600
     print(f"  시작일시  : {start_dt.strftime('%Y-%m-%d %H:%M')}")
     print(f"  경과시간  : {elapsed_h:.1f}시간 ({elapsed_h / 24:.1f}일)")
     print(f"  배포 페이지: {count:,} / {total:,}")
     print(f"  sitemap  : {count}개 URL 등록")
+    print(f"  robots   : Googlebot, Yeti 허용")
     print("=" * 52)
     return 0
 

@@ -44,7 +44,13 @@ REGION_BLOCK_COUNT  = 13  # 생성할 지역 블록 수 (주요 1 + 점검가능
 GALLERY_RANGE       = (5, 11)
 KEYWORDS_POOL       = ['싱크대막힘', '변기막힘', '배관막힘', '하수구막힘',
                        '우수관막힘', '하수구역류', '배관고압세척', '하수구뚫음']
-SITE_DOMAIN         = "https://speed-plumber.netlify.app"  # Netlify 도메인 (실제 주소로 확인 후 수정)
+SITE_DOMAIN         = "https://speed-plumber.netlify.app"
+
+# ─── 웹마스터 인증 코드 ────────────────────────────────────────────────────────
+# Google Search Console → 설정 → 소유권 인증 → HTML 태그 → content 값 입력
+GOOGLE_SITE_VERIFICATION = ""
+# Naver Search Advisor → 사이트 추가 → HTML 태그 → content 값 입력
+NAVER_SITE_VERIFICATION  = ""
 
 # ─── 1. 사용자 제공 데이터 (블록 조립형 무한 조합 스핀택스) ─────────────────────
 
@@ -488,8 +494,10 @@ def build_one(page_dir: Path, keywords: list[str], mid_kw_lines: list[str],
         google_apps_url = GOOGLE_APPS_URL,
         build_time      = datetime.now().strftime("%Y-%m-%d %H:%M"),
         block_count     = len(region_blocks),
-        canonical_url   = canonical_url,
-        og_image_url    = og_image_url,
+        canonical_url              = canonical_url,
+        og_image_url               = og_image_url,
+        google_site_verification   = GOOGLE_SITE_VERIFICATION,
+        naver_site_verification    = NAVER_SITE_VERIFICATION,
     )
 
     out = page_dir / "index.html"
@@ -607,8 +615,10 @@ def build(test_count: int = 0):
             google_apps_url = GOOGLE_APPS_URL,
             build_time      = datetime.now().strftime("%Y-%m-%d %H:%M"),
             block_count     = len(region_blocks),
-            canonical_url   = canonical_url,
-            og_image_url    = og_image_url,
+            canonical_url              = canonical_url,
+            og_image_url               = og_image_url,
+            google_site_verification   = GOOGLE_SITE_VERIFICATION,
+            naver_site_verification    = NAVER_SITE_VERIFICATION,
         )
 
         out = OUTPUT_DIR / "index.html"
@@ -723,6 +733,8 @@ def build_bank(count: int):
             build_time=datetime.now().strftime("%Y-%m-%d %H:%M"),
             block_count=len(region_blocks),
             canonical_url=canonical_url, og_image_url=og_image_url,
+            google_site_verification=GOOGLE_SITE_VERIFICATION,
+            naver_site_verification=NAVER_SITE_VERIFICATION,
         )
         (page_dir / "index.html").write_text(html, encoding="utf-8")
         if i % 100 == 0 or i == count:
