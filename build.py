@@ -48,9 +48,9 @@ SITE_DOMAIN         = "https://speed-plumber.netlify.app"
 
 # ─── 웹마스터 인증 코드 ────────────────────────────────────────────────────────
 # Google Search Console → 설정 → 소유권 인증 → HTML 태그 → content 값 입력
-GOOGLE_SITE_VERIFICATION = ""
+GOOGLE_SITE_VERIFICATION = "Qfw9m9Ndmn1PzY6iz0Lobbm7jfBXskCQL6HJJoYOYCY"
 # Naver Search Advisor → 사이트 추가 → HTML 태그 → content 값 입력
-NAVER_SITE_VERIFICATION  = ""
+NAVER_SITE_VERIFICATION  = "abed9af5d3f4df622eeac2d2fe017acc3cbdaf26"
 
 # ─── 1. 사용자 제공 데이터 (블록 조립형 무한 조합 스핀택스) ─────────────────────
 
