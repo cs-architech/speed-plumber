@@ -397,11 +397,11 @@ document.getElementById('consultForm').addEventListener('submit', async function
   submitBtn.textContent = '전송 중...';
 
   const payload = {
+    site_url: window.location.href,
     name,
     phone,
-    inquiry: checked.join(', '),
-    region:  '{{ region }}',
-    timestamp: new Date().toLocaleString('ko-KR'),
+    inquiry:  checked.join(', '),
+    note:     '{{ region }} 지역 상담',
   };
 
   try {
@@ -457,6 +457,18 @@ function closeLb() {
   lbImg.src = '';
   document.body.style.overflow = '';
 }
+
+/* ── 방문자 pageview 기록 (Google Apps Script) ── */
+(function() {
+  var pv = {
+    type:     'pageview',
+    site_url: window.location.href,
+    date:     new Date().toISOString().slice(0, 10),
+  };
+  navigator.sendBeacon
+    ? navigator.sendBeacon('{{ google_apps_url }}', JSON.stringify(pv))
+    : fetch('{{ google_apps_url }}', { method: 'POST', mode: 'no-cors', body: JSON.stringify(pv) });
+})();
 </script>
 </body>
 </html>
