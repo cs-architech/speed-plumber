@@ -90,11 +90,32 @@ def main() -> int:
     ])
     (OUTPUT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
 
+    # 루트 index.html — page-0001 내용을 그대로 복사 (canonical은 page-0001/ 유지)
+    if count > 0:
+        shutil.copy2(pages[0] / "index.html", OUTPUT_DIR / "index.html")
+
+    # 404.html — 존재하지 않는 경로 접근 시 표시
+    not_found_html = f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>페이지를 찾을 수 없습니다</title>
+<style>body{{font-family:sans-serif;text-align:center;padding:80px 20px;background:#f5f7fa}}h1{{font-size:3rem;color:#1a237e}}p{{color:#555;margin:16px 0}}a{{color:#1a237e;font-weight:700}}</style>
+</head>
+<body>
+<h1>404</h1>
+<p>요청하신 페이지를 찾을 수 없습니다.</p>
+<p><a href="/">홈으로 돌아가기</a></p>
+</body>
+</html>"""
+    (OUTPUT_DIR / "404.html").write_text(not_found_html, encoding="utf-8")
+
     # 웹마스터 인증 파일 복사 (webmaster_files/ 폴더에 파일 넣으면 자동 배포)
     webmaster_dir = BASE_DIR / "webmaster_files"
     if webmaster_dir.exists():
         for vf in webmaster_dir.iterdir():
-            if vf.is_file():
+            if vf.is_file() and vf.suffix in {".html", ".txt"}:
                 shutil.copy2(vf, OUTPUT_DIR / vf.name)
                 print(f"  [인증파일] {vf.name} 복사 완료")
 

@@ -24,11 +24,6 @@
   function = "geo-blocker"
 
 [[redirects]]
-  from   = "/info"
-  to     = "/about"
-  status = 301
-
-[[redirects]]
-  from   = "/:path"
-  to     = "/404"
+  from   = "/*"
+  to     = "/404.html"
   status = 404
