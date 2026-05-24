@@ -32,6 +32,7 @@ MID_KW_FILE     = BASE_DIR / "mid-keywords.txt"
 REGION_CSV      = BASE_DIR / "region.csv"
 REGIONS_JSON    = BASE_DIR / "regions_data.json"
 TEMPLATE_FILE   = "template.html"
+FAQ_FILE        = BASE_DIR / "faq6000.txt"
 
 # ─── 사이트 설정 ───────────────────────────────────────────────────────────────
 PHONE               = "1866-2449"
@@ -211,6 +212,45 @@ SYNONYMS = {
 }
 
 # ─── 유틸 ──────────────────────────────────────────────────────────────────────
+
+def load_faqs() -> list[dict]:
+    """faq6000.txt 파싱 → [{q, a}, ...] 목록 반환"""
+    if not FAQ_FILE.exists():
+        return []
+    raw = FAQ_FILE.read_text(encoding="utf-8")
+    items = []
+    for chunk in raw.split("\n\n"):
+        lines = chunk.split("\n")
+        q_line = next((l for l in lines if l.lstrip().startswith("Q.")), None)
+        a_line = next((l for l in lines if l.lstrip().startswith("A.")), None)
+        if not q_line or not a_line:
+            continue
+        q = q_line.lstrip()[2:].strip()
+        a = a_line.lstrip()[2:].strip().replace("]]", "")
+        if q.endswith("질문") or a.startswith("대답") or len(q) < 10 or len(a) < 10:
+            continue
+        items.append({"q": q, "a": a})
+    return items
+
+_ALL_FAQS: list[dict] = []  # 최초 1회만 파싱
+
+def pick_faqs(region: str, keyword: str, seed_val: int, count: int = None) -> list[dict]:
+    """시드 기반으로 8~10개 FAQ를 선택하고 region/keyword 치환"""
+    global _ALL_FAQS
+    if not _ALL_FAQS:
+        _ALL_FAQS = load_faqs()
+    if not _ALL_FAQS:
+        return []
+    rng = random.Random(seed_val)
+    n = count if count else rng.randint(8, 10)
+    selected = rng.sample(_ALL_FAQS, min(n, len(_ALL_FAQS)))
+    return [
+        {
+            "q": item["q"].replace('"region"', region).replace('"keywords"', keyword),
+            "a": item["a"].replace('"region"', region).replace('"keywords"', keyword),
+        }
+        for item in selected
+    ]
 
 def haversine(lat1, lng1, lat2, lng2) -> float:
     R = 6371.0
@@ -478,6 +518,7 @@ def build_one(page_dir: Path, keywords: list[str], mid_kw_lines: list[str],
     first_imgs_rel = [f"../images/first/{Path(p).name}" for p in first_images]
 
     review_paras = process_review(primary_name, main_keyword)
+    faqs = pick_faqs(primary_name, main_keyword, seed_val=page_num)
 
     html = tpl.render(
         phone           = PHONE,
@@ -491,6 +532,7 @@ def build_one(page_dir: Path, keywords: list[str], mid_kw_lines: list[str],
         main_gallery    = main_gallery,
         sub_gallery     = sub_gallery,
         review_paras    = review_paras,
+        faqs            = faqs,
         google_apps_url = GOOGLE_APPS_URL,
         build_time      = datetime.now().strftime("%Y-%m-%d %H:%M"),
         block_count     = len(region_blocks),
@@ -599,6 +641,7 @@ def build(test_count: int = 0):
         main_gallery   = gallery_images[:3]
         sub_gallery    = [(p, p) for p in gallery_images[3:]]
         review_paras   = process_review(primary_name, main_keyword)
+        faqs           = pick_faqs(primary_name, main_keyword, seed_val=0)
 
         html = tpl.render(
             phone           = PHONE,
@@ -612,6 +655,7 @@ def build(test_count: int = 0):
             main_gallery    = main_gallery,
             sub_gallery     = sub_gallery,
             review_paras    = review_paras,
+            faqs            = faqs,
             google_apps_url = GOOGLE_APPS_URL,
             build_time      = datetime.now().strftime("%Y-%m-%d %H:%M"),
             block_count     = len(region_blocks),
@@ -745,6 +789,7 @@ def build_bank(count: int):
             first_images=first_imgs_rel,
             main_gallery=main_gallery, sub_gallery=sub_gallery,
             review_paras=process_review(primary_name, main_keyword),
+            faqs=pick_faqs(primary_name, main_keyword, seed_val=i),
             google_apps_url=GOOGLE_APPS_URL,
             build_time=datetime.now().strftime("%Y-%m-%d %H:%M"),
             block_count=len(region_blocks),
