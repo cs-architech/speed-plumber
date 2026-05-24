@@ -959,7 +959,7 @@ document.querySelectorAll('.faq-btn').forEach(function(btn) {
     });
     if (!isOpen) {
       this.setAttribute('aria-expanded', 'true');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
+      answer.style.maxHeight = '800px';
       if (arrow) arrow.style.transform = 'rotate(180deg)';
     }
   });
