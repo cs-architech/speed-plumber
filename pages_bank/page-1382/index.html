@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -723,6 +738,104 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#용인변기막힘 #군포산본변기막힘 #수원싱크대막힘 #수원변기막힘 #부천상동변기막힘</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 동안 달안동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">동안 달안동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 이 지역 음식점 배수관이 하수가 부글거리며 역류가 심할 때, 동안 달안동 세면대 물마개(팝업)가 쏙 들어가서 다시 올라오지 않습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 팝업 내부 스프링 부식이나 이물질 끼임으로 인한 부속 고장입니다. 청소가 용이한 새 자동 팝업으로 전체를 교체해야 합니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 우리 집 주방 싱크대가 물이 잘 안 빠져 배수 지연이 심할 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 해당 욕실 배수구가 배관이 완전히 막혀 통수가 안 될 때, 베란다 우수관(빗물관)에 세탁기 배수 호스를 연결해서 쓰면 왜 안 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 빗물이 정화 없이 하천으로 방류되는 관로라 오수 배출 시 불법이며, 세제 거품과 찌꺼기가 쌓여 겨울철 결빙 및 저층 세대 역류의 원인이 됩니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 일원의 부엌 싱크대가 물을 사용할 때 배관 잡음이 발생할 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 동안 달안동 변기 안 뜯고 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 관내 메인 배수관이 하수구에서 심한 악취가 계속 올라올 때, 동안 달안동 변기 물을 내릴 때마다 바닥 백시멘트 사이로 더러운 물이 새어 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기와 오수관을 연결하는 정심(플랜지) 부속이 이탈했거나 고무 패킹이 삭은 증상으로, 변기를 재설치하여 틈새를 완벽히 밀봉해야 합니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 지금 이곳 씽크대가 하수구가 완전히 폐색돼 물이 안 빠질 때, 저희 집 하수구 역류로 아랫집 천장 도배가 망가졌습니다. 동안 달안동 누수/막힘 공사 후 일상생활배상책임보험(일배책) 처리가 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 고객님께서 가입하신 보험에 '일상생활배상책임' 특약이 있다면 아랫집의 피해 복구 비용(도배, 장판 등)을 보험으로 처리할 수 있습니다. 수리 후 보험금 청구에 필요한 소견서, 전후 사진, 영수증 등을 빠짐없이 발급해 드립니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 해당 부엌 싱크대가 오수가 거품과 함께 심하게 올라올 때, 동안 달안동 싱크대 주름관 내부가 까맣게 변색되었는데 교체해야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>곰팡이와 기름때가 고착된 것으로 악취와 세균 번식의 원인이 되므로, 주기적으로 새 주름관으로 교체해 주는 것이 가장 위생적입니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 제가 머무는 곳의 손 씻는 대가 배관에서 오물이 역류해 올라올 때, 욕실 바닥 하수구에 머리카락 녹이는 약품을 정기적으로 부어도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>강력한 화학약품을 과도하게 사용하면 배수관 내부 부식이나 고무 패킹의 변형을 일으켜 아랫집 누수로 이어질 수 있으니 물리적 제거를 권장합니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 지금 이곳 욕실 바닥 배수구가 배관에서 오물이 역류해 올라올 때, 아랫집 화장실 천장으로 물이 떨어진다는데, 저희 집 하수구 막힘 때문일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두 가지 가능성이 있습니다. 첫째, 하수구가 막혀 배관 연결부 틈새로 물이 넘쳐 흐른 경우(배관 누수). 둘째, 욕실 바닥 타일 사이의 방수층이 깨져 물이 스며든 경우(방수 누수). 정확한 원인은 내시경 카메라와 누수 탐지기를 통해 윗집에서 점검해야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동안 달안동 근처의 주방 싱크대가 막힘이 심해 물이 전혀 빠지지 않을 때, 동안 달안동 카페 씽크대와 제빙기 배수구가 자주 막히는데 원인이 뭔가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>카페 배관 막힘의 1순위는 '커피 찌꺼기(원두 가루)'와 '우유 지방'입니다. 커피 찌꺼기가 물에 씻겨 내려가는 것 같아도, 배관 내부에 가라앉아 우유의 유지방과 결합하면 암석처럼 굳어버립니다. 일반적인 방법으로는 뚫기 어려우며, 동안 달안동 전문 업체의 플렉스 샤프트 장비로 배관 내부를 갈아내는 스케일링 작업이 필요합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

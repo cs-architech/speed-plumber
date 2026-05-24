@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -678,6 +693,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">성북 장위1동 변기막힘 – #수원영화동하수구막히는 현상 #수원영화동싱크대백플로우 #영화동변기소통는곳 #수원하수도워터젯 세척 #영화동배수구</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 성북 장위1동 변기막힘 자주 묻는 질문</div>
+      <div class="faq-sub">성북 장위1동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 이 현장의 세면대가 오수가 거품과 함께 심하게 올라올 때, 개수대에 끓는 물을 부으면 기름때 막힘이 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아주 가벼운 기름때라면 녹을 수 있지만, 배관 내부에 단단하게 굳은 유지방 덩어리(슬러지)에는 큰 효과가 없습니다. 오히려 가정용 싱크대 주름관(플라스틱 재질)은 고온에 약해 펄펄 끓는 물을 자주 부으면 배관이 쪼그라들거나 변형되어 누수의 원인이 될 수 있으므로 60도 이하의 따뜻한 물을 사용하는 것이 좋습니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 우리 집 세면기가 썩은 냄새가 원인도 모른 채 진동할 때, 세면대 물마개(팝업)가 쏙 들어가서 안 올라옵니다. 배관이 막힌 건가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 세면대 팝업 부속품 내부에 물때와 머리카락이 끼어 스프링이 고장 난 팝업 불량입니다. 이 경우 뚫는 작업이 아니라 기존 팝업과 트랩을 해체하고 새로운 자동 팝업으로 교체해야 물이 시원하게 내려갑니다. 정밀 진단을 위한 내시경 검사를 선행하는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 우리 집 주 하수배관이 배수 때마다 배관 울림 소리가 들릴 때, 끓는 물을 싱크대에 자주 부어주면 배관이 깨끗해지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>일반적인 PVC 플라스틱 주름관은 고온에 매우 약해 끓는 물을 자주 부으면 쪼그라들거나 찢어져 심각한 누수의 원인이 됩니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 우리 집 씽크대가 막힘이 심해 물이 전혀 빠지지 않을 때, 성북 장위1동 싱크대 하수구에서 심한 썩은 냄새가 올라오는 이유는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 씻겨 내려가지 못한 음식물과 기름 슬러지가 쌓여 부패 가스를 발생시키기 때문입니다. 트랩 점검과 배관 스케일링이 필요합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 점검 중인 식당 하수배관이 배수 속도가 눈에 띄게 느려져 불편할 때, 성북 장위1동 욕실에서 물을 전혀 안 쓰는데도 하수구에서 물이 뽀글거리며 역류해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>해당 세대의 문제가 아닌 아파트나 빌라의 공동 메인 배관이 막혀 수압이 가장 낮은 층으로 하수가 넘치는 매우 심각한 메인 관로 역류 상황입니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 해당 건물 욕실 배수구가 원인 불명의 하수 악취가 심하게 올라올 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 해당 건물 욕실 세면대가 배관에서 오물이 역류해 올라올 때, 성북 장위1동 변기 막힘 및 부속품 교체를 한 번에 해결해 주는 업체를 찾을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>성북 장위1동 지역 변기 수리, 부속 교체, 막힘 뚫음 관련 업종 업체를 한 곳에 모아 소개해 드리는 전용 페이지가 있습니다. 본문에 정리된 점검 가능 지역과 업체 연락처를 통해 신속하게 해결하실 수 있습니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성북 장위1동 해당 화장실 세면기가 물을 내릴 때 배관에서 이상 소음이 날 때, 아랫집 화장실 천장으로 물이 떨어진다는데, 저희 집 하수구 막힘 때문일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두 가지 가능성이 있습니다. 첫째, 하수구가 막혀 배관 연결부 틈새로 물이 넘쳐 흐른 경우(배관 누수). 둘째, 욕실 바닥 타일 사이의 방수층이 깨져 물이 스며든 경우(방수 누수). 정확한 원인은 내시경 카메라와 누수 탐지기를 통해 윗집에서 점검해야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

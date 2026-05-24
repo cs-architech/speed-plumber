@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -682,6 +697,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#안산단원구하수구막힘 #안산단원구배관막힘 #안산싱크대역류 #고잔동하수구 #초지동변기뚫는곳</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 원미 중3동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">원미 중3동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 관할 건물 식당 오수관이 오수가 역류하며 거품이 솟구칠 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 원미 중3동 변기 안 뜯고 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 이 지역 양변기가 하수 흐름이 현저히 둔해져 있을 때, 세탁기를 베란다 우수관에 연결해서 써도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>불법입니다. 베란다 우수관은 빗물만 내려가도록 설계되어 있어 하수처리장으로 가지 않고 바로 하천으로 방류됩니다. 이곳에 세탁기 세제 섞인 물(오수)을 버리면 환경오염으로 법적 과태료가 부과될 수 있으며, 세제 거품이 아랫집으로 역류하는 원인이 됩니다. 세탁기 배수는 반드시 오수관이 연결된 세탁실이나 화장실을 이용해야 합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 관할 건물 욕실 바닥 하수구가 하수구가 완전히 폐색돼 물이 안 빠질 때, 단순 스프링(전동 관통기) 작업과 고압세척의 차이점은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>스프링은 찌꺼기 사이에 구멍만 내어 임시로 물길을 여는 반면, 고압세척은 초강력 수압으로 배관 내벽의 모든 슬러지를 처음 상태로 되돌리는 근본적인 해법입니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 관할 건물 본관 하수관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 원미 중3동 지역 싱크대 막힘 해결 비용은 보통 얼마부터 시작하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 심각도와 사용되는 장비에 따라 다릅니다. 단순 석션(흡입) 작업은 5~10만 원 선에서 해결되지만, 단단한 이물질을 분쇄하는 샤프트 작업이나 고압세척, 내시경 촬영이 추가되면 비용이 상승합니다. 원미 중3동 지역의 정확한 견적은 현장 배관 길이와 구조를 확인한 후 안내받으실 수 있습니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 건물 내 욕실 배수구가 완전히 막혀 배수가 전혀 안 될 때, 원미 중3동 심야 시간에 하수구가 역류하는데 야간 출동이 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>원미 중3동 지역 기반 24시간 출동 업체 정보를 조회하실 수 있습니다. 역류 상태를 그냥 두면 침수 등 이차 피해가 따르므로, 해당 안내 페이지에서 24시간 대응 업체를 즉시 조회하실 수 있습니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 살고 있는 곳의 메인 배수관이 썩은 냄새가 원인도 모른 채 진동할 때, 원미 중3동 싱크대 하수구에서 심한 썩은 냄새가 올라오는 이유는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 씻겨 내려가지 못한 음식물과 기름 슬러지가 쌓여 부패 가스를 발생시키기 때문입니다. 트랩 점검과 배관 스케일링이 필요합니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 해당 건물 메인 배수관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 변기에서 계속 물방울 떨어지는 소리가 나고 수도 요금이 많이 나왔어요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기 물탱크 내부의 부속품(필밸브, 플러시밸브 등)이 노후화되어 물이 제대로 차단되지 않고 계속 새어 나가는 증상입니다. 막힘 문제는 아니지만, 방치 시 엄청난 수도 요금 폭탄을 맞을 수 있으므로 즉시 부속품 전체 교체를 진행해야 합니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 저희 집 주 하수배관이 원인 불명의 하수 악취가 심하게 올라올 때, 원미 중3동 배관 내시경 카메라 촬영은 어떤 경우에 필수적인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>이물질의 정확한 위치와 종류(기름, 시멘트 등) 파악, 배관의 역구배 불량 확인, 작업 후 완벽하게 스케일링 되었는지 결과를 검증할 때 반드시 필요합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중3동 점검 중인 욕실 배수구가 출처 불분명한 악취가 실내에 퍼질 때, 세면대 배관(트랩) 구조가 U자형인 것과 일자형인 것 중 어느 것이 좋나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>U자형(P트랩)은 물이 고여있어 하수구 악취와 벌레 차단에 탁월하며, 일자형(I트랩)은 물 빠짐이 빠르고 바닥 하수구로 바로 연결될 때 주로 사용됩니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

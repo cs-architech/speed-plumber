@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -871,6 +886,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#군포대야미동하수구막힘 #안양박달동변기막힘 #광명광명동배관막힘 #광명광명동싱크대막힘 #안양안양동하수구막힘</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 노원 상계8동 변기막힘 자주 묻는 질문</div>
+      <div class="faq-sub">노원 상계8동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 제가 머무는 곳의 세면대가 물을 사용할 때 배관 잡음이 발생할 때, 노원 상계8동 씽크대 하수구에서 심한 썩은 냄새가 올라오는 이유는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 씻겨 내려가지 못한 음식물과 기름 슬러지가 쌓여 부패 가스를 발생시키기 때문입니다. 트랩 점검과 배관 스케일링이 필요합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 제가 거주하는 식당 내 배관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 이 현장의 부엌 싱크대가 하수구가 완전히 폐색돼 물이 안 빠질 때, 단순 스프링(전동 관통기) 작업과 고압세척의 차이점은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>스프링은 찌꺼기 사이에 구멍만 내어 임시로 물길을 여는 반면, 고압세척은 초강력 수압으로 배관 내벽의 모든 슬러지를 새 배관처럼 복원하는 근본 해결책입니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 해당 현장의 세면대가 오수가 거품과 함께 심하게 올라올 때, 개수대 하부장 바닥 마루가 까맣게 썩어가고 물기가 있습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 바닥 하수구가 막혀 물이 빠지지 못하고 역류하여 마루로 스며든 증상입니다. 마루 전체가 썩기 전에 즉시 배관을 뚫어야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 건물에 있는 변기가 물을 내릴 때 배관에서 이상 소음이 날 때, 고기를 굽고 남은 기름을 주방 싱크대에 그냥 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>절대 안 됩니다. 액체 상태의 기름이라도 배관 속으로 들어가면 차갑게 식어 하얗고 단단하게 굳어버려 치명적인 막힘의 1순위 주범이 됩니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 살고 있는 곳의 식당 하수배관이 하수가 부글거리며 역류가 심할 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 노원 상계8동 변기 안 뜯고 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 제가 거주하는 음식점 배수관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 상계8동 건물에 있는 식당 오수관이 하수구에서 심한 악취가 계속 올라올 때, 노원 상계8동 샤워를 하면 바닥에 물이 한강처럼 차오르고 아주 늦게 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 유가 아래의 U자 트랩 쪽에 다량의 머리카락과 석회질이 엉켜 물길을 완전히 좁혀놓은 상태로, 뚜껑을 열고 내부 이물질을 꺼내야 합니다. 최신 배관 전문 장비로 원인 물질을 근본부터 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

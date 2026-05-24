@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -898,6 +913,86 @@ a{text-decoration:none;color:inherit}
 #안산와동변기막힘
 #수원서둔동하수구막힘</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 분당 백현동 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">분당 백현동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 지금 이곳 씽크대가 완전히 막혀 배수가 전혀 안 될 때, 분당 백현동 변기에 들어간 플라스틱 뚜껑을 뚫어뻥으로 밀어내도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>뚫어뻥 압력으로 뚜껑이 더 안쪽으로 박힐 수 있으므로, 전문 흡입 장비로 강하게 뽑아올리는 것이 가장 안전합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 우리 집 식당 내 배관이 배수 때마다 배관 울림 소리가 들릴 때, 분당 백현동 지역 싱크대 막힘 해결 비용은 보통 얼마부터 시작하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 심각도와 사용되는 장비에 따라 다릅니다. 단순 석션(흡입) 작업은 5~10만 원 선에서 해결되지만, 단단한 이물질을 분쇄하는 샤프트 작업이나 고압세척, 내시경 촬영이 추가되면 비용이 상승합니다. 분당 백현동 지역의 정확한 견적은 현장 배관 길이와 구조를 확인한 후 안내받으실 수 있습니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 저희 집 변기가 오수가 거품과 함께 심하게 올라올 때, 커피 찌꺼기는 기름기를 흡수한다는데 부엌 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 딱딱한 덩어리로 변해 가장 뚫기 힘든 막힘을 유발합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 일대 건물의 식당 하수배관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 해당 현장의 욕실 배수구가 배수구가 꽉 막혀 물이 내려가지 않을 때, 분당 백현동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빗물 전용 우수관은 옥상부터 최하층까지 연결된 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 저층(1~3층) 베란다 우수관으로 물이 역류해 올라옵니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 건물 내 주방 싱크대가 배관이 완전히 막혀 통수가 안 될 때, 음식물 쓰레기를 변기에 버리면 편한데 왜 문제가 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>뼈, 가시, 질긴 채소 섬유질이 오수관로에 걸리고 그 위로 기름기가 엉겨 붙어 해당 세대뿐만 아니라 건물 전체의 메인 오수 배관 막힘을 초래합니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 소속 건물의 화장실 변기가 오수가 역류하며 거품이 솟구칠 때, 변기 물을 내리면 시원하게 안 내려가고 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 배관 좁아짐 현상입니다. 변기 S자 트랩 어딘가에 이물질이 걸려있거나, 정화조로 나가는 메인 오수관 쪽에 막힘이 진행되고 있다는 초기 증상이므로 완전히 막혀 역류하기 전에 점검을 받아야 합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>분당 백현동 제가 거주하는 좌변기가 썩은 냄새가 원인도 모른 채 진동할 때, 분당 백현동 변기 막힘 및 부속품 교체를 한 번에 해결해 주는 업체를 찾을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>분당 백현동 지역 변기 수리, 부속 교체, 막힘 뚫음 관련 업종 업체를 한 곳에 모아 소개해 드리는 전용 페이지가 있습니다. 본문에 정리된 점검 가능 지역과 업체 연락처를 통해 신속하게 해결하실 수 있습니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

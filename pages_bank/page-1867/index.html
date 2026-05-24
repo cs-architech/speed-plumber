@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -736,6 +751,104 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#부천소사구싱크대막힘 #시흥싱크대막힘 #화성새솔동하수구막힘 #화성병점변기막힘 #안양변기막힘</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 화성 새솔동 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">화성 새솔동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 제 거처의 욕실 바닥 하수구가 하수구에서 심한 악취가 계속 올라올 때, 변기에 물티슈를 한두 장 버렸는데 막혔어요. 뚫어뻥으로 해결될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 휴지와 달리 물에 녹지 않고 질긴 섬유질로 되어 있어 뚫어뻥으로 압력을 가하면 배관 더 깊은 곳으로 밀려 들어가 상황을 악화시킬 수 있습니다. 오수관 입구에 걸려있다면 전문가용 관통기로 쉽게 빼낼 수 있으니 무리한 압력을 가하지 마세요. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 점검 중인 음식점 배수관이 하수구 역류가 거품과 함께 발생할 때, 화성 새솔동 욕실에서 물을 전혀 안 쓰는데도 하수구에서 물이 뽀글거리며 역류해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>해당 세대의 문제가 아닌 아파트나 빌라의 공동 메인 배관이 막혀 수압이 가장 낮은 층으로 하수가 넘치는 매우 심각한 메인 관로 역류 상황입니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 지금 이곳 수세식 변기가 배수구가 꽉 막혀 물이 내려가지 않을 때, 화성 새솔동 욕실에서 물을 전혀 안 쓰는데도 하수구에서 물이 뽀글거리며 역류해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>해당 세대의 문제가 아닌 아파트나 빌라의 공동 메인 배관이 막혀 수압이 가장 낮은 층으로 하수가 넘치는 매우 심각한 메인 관로 역류 상황입니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 일대 건물의 본관 하수관이 썩은 냄새가 원인도 모른 채 진동할 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 제 거처의 주 하수배관이 썩은 냄새가 원인도 모른 채 진동할 때, 싱크대에서 물을 많이 버리면 화장실 바닥 하수구로 거품이 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대와 욕실 배관이 하나로 합쳐져 나가는 구조에서 합류 지점이 막힌 것입니다. 화성 새솔동 내시경 검사를 통해 막힌 교차점을 찾아 뚫어야 합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 관할 건물 메인 배수관이 하수구가 완전히 폐색돼 물이 안 빠질 때, 인테리어 공사 후 화성 새솔동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 이 현장의 화장실 세면기가 배관이 완전히 막혀 통수가 안 될 때, 화성 새솔동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 쪽 양변기가 배수가 유독 느려 답답함을 느낄 때, 샤워 후 화장실 바닥 하수구로 물이 안 빠져서 한참 기다려야 해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>욕실 하수구 막힘의 90% 이상은 '머리카락'과 '비누 찌꺼기'가 엉켜 발생합니다. 하수구 덮개(유가)를 열고 내부의 트랩을 꺼내 엉킨 머리카락을 1차로 제거해 보시고, 그래도 안 빠진다면 하수관 깊은 곳에 슬러지가 쌓인 것이니 전문 장비 투입이 필요합니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 건물에 있는 욕실 바닥 배수구가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 커피 찌꺼기는 기름기를 흡수한다는데 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 콘크리트처럼 굳어 가장 뚫기 힘든 막힘을 유발합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>화성 새솔동 해당 현장의 식당 오수관이 배관에서 오물이 역류해 올라올 때, 아랫집 화장실 천장으로 물이 떨어진다는데, 저희 집 하수구 막힘 때문일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두 가지 가능성이 있습니다. 첫째, 하수구가 막혀 배관 연결부 틈새로 물이 넘쳐 흐른 경우(배관 누수). 둘째, 욕실 바닥 타일 사이의 방수층이 깨져 물이 스며든 경우(방수 누수). 정확한 원인은 내시경 카메라와 누수 탐지기를 통해 윗집에서 점검해야 합니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

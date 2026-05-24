@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -682,6 +697,104 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#화성세탁실차단 #화성하수구 #배수구물고임 #배관워터젯 세척 #배관내시경</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 김포 대곶면 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">김포 대곶면 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 제 거처의 좌변기가 하수구 역류가 거품과 함께 발생할 때, 내시경 카메라 촬영 비용은 별도인가요? 꼭 봐야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>김포 대곶면 지역 내 작업 시 기본적인 내시경 점검은 서비스로 포함되어 진행되는 경우가 많습니다. 내시경을 봐야 하는 이유는, 맹목적으로 구멍만 뚫는 것이 아니라 이물질의 종류(기름인지 시멘트인지), 배관의 역구배(기울기 불량) 여부, 작업 후 배관이 100% 깨끗해졌는지 고객님께서 직접 눈으로 확인하시고 안심하실 수 있도록 하기 위함입니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 제가 머무는 곳의 화장실 변기가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 겨울철 세탁실 배수구가 꽁꽁 얼어서 물이 안 내려갑니다. 뜨거운 물을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>갑자기 펄펄 끓는 물을 부으면 온도 차이로 인해 배관이 파열될 위험이 있습니다. 헤어드라이어나 수건을 감싸고 60도 이하의 미지근한 물부터 천천히 부어 녹이는 것이 안전합니다. 얼음 구간이 깊다면 전문 업체의 해빙기(스팀 장비) 작업이 필요합니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 이 현장의 욕실 바닥 하수구가 하수구에서 심한 악취가 계속 올라올 때, 아파트 베란다 우수관 막힘이나 역류 피해는 누가 책임지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 아파트 공용 시설물에 해당합니다. 개별 세대에서 인테리어 공사 등으로 배관을 임의로 훼손한 게 아니라면, 우수관 역류로 인한 막힘 뚫음 비용 및 도배/장판 등의 피해 보상은 원칙적으로 관리사무소(입주자대표회의)에서 처리해야 합니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 점검 중인 개수대가 출처 불분명한 악취가 실내에 퍼질 때, 변기 물을 내리면 시원하게 안 내려가고 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 배관 좁아짐 현상입니다. 변기 S자 트랩 어딘가에 이물질이 걸려있거나, 정화조로 나가는 메인 오수관 쪽에 막힘이 진행되고 있다는 초기 증상이므로 완전히 막혀 역류하기 전에 점검을 받아야 합니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 일원의 식당 오수관이 배수 속도가 눈에 띄게 느려져 불편할 때, 고양이 모래(두부 모래)를 변기에 버려도 된다고 해서 버렸는데 막혔습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>시중의 두부 모래가 물에 녹는다고 광고하지만, 다량이 한꺼번에 들어가거나 배관 수압이 약할 경우 배관 내부에서 찰흙처럼 찐득하게 뭉쳐버립니다. 이 경우 일반적인 방법으로는 뚫기 어려우며 강력한 석션기나 배관 스케일링 장비가 필요합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 제가 거주하는 개수대가 하수가 부글거리며 역류가 심할 때, 저희 집 하수구 역류로 아랫집 천장 도배가 망가졌습니다. 김포 대곶면 누수/막힘 공사 후 일상생활배상책임보험(일배책) 처리가 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 고객님께서 가입하신 보험에 '일상생활배상책임' 특약이 있다면 아랫집의 피해 복구 비용(도배, 장판 등)을 보험으로 처리할 수 있습니다. 작업 후 보험금 청구에 필요한 서류 일체(소견서·사진·영수증)를 꼼꼼히 챙겨 드립니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 쪽 세면대가 원인 불명의 하수 악취가 심하게 올라올 때, 부엌 싱크대 배수구에서 초파리(날파리)가 계속 올라오는데 막힘과 관련이 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 음식물 찌꺼기와 부패한 슬러지가 쌓여있다는 증거입니다. 이 오염물들이 벌레의 서식지가 되며, 심해지면 점차 물이 내려가지 않는 막힘 현상으로 이어집니다. 배관 내부 청소와 함께 U자형 트랩을 점검하거나 악취 차단 트랩을 설치하는 것이 좋습니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 우리 집 변기가 원인 불명의 하수 악취가 심하게 올라올 때, 부엌 싱크대에서 물을 많이 버리면 화장실 바닥 하수구로 거품이 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대와 욕실 배관이 하나로 합쳐져 나가는 구조에서 합류 지점이 막힌 것입니다. 김포 대곶면 내시경 검사를 통해 막힌 교차점을 찾아 뚫어야 합니다. 정밀 진단을 위한 내시경 검사를 선행하는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 관내 식당 내 배관이 배관에서 오물이 역류해 올라올 때, 김포 대곶면 싱크대 하수구에서 심한 썩은 냄새가 올라오는 이유는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 씻겨 내려가지 못한 음식물과 기름 슬러지가 쌓여 부패 가스를 발생시키기 때문입니다. 트랩 점검과 배관 스케일링이 필요합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>김포 대곶면 일대 건물의 씽크대가 원인 불명의 하수 악취가 심하게 올라올 때, 김포 대곶면 카페 씽크대와 제빙기 배수구가 자주 막히는데 원인이 뭔가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>카페 배관 막힘의 1순위는 '커피 찌꺼기(원두 가루)'와 '우유 지방'입니다. 커피 찌꺼기가 물에 씻겨 내려가는 것 같아도, 배관 내부에 가라앉아 우유의 유지방과 결합하면 암석처럼 굳어버립니다. 일반적인 방법으로는 뚫기 어려우며, 김포 대곶면 전문 업체의 플렉스 샤프트 장비로 배관 내부를 갈아내는 스케일링 작업이 필요합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

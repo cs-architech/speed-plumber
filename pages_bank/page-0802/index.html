@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -676,6 +691,104 @@ a{text-decoration:none;color:inherit}
       <p class="review-para">#수원매산동하수구막히는 현상 #수원매산동씽크대뚫음 #수원변기막힘
 #수원하수구 #매산동싱크대</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 덕양 행신1동 싱크대막힘 자주 묻는 질문</div>
+      <div class="faq-sub">덕양 행신1동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 일대 건물의 세면대가 오수가 거품과 함께 심하게 올라올 때, 덕양 행신1동 지역 주방 싱크대 막힘 해결 비용은 보통 얼마부터 시작하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 심각도와 사용되는 장비에 따라 다릅니다. 단순 석션(흡입) 작업은 5~10만 원 선에서 해결되지만, 단단한 이물질을 분쇄하는 샤프트 작업이나 고압세척, 내시경 촬영이 추가되면 비용이 상승합니다. 덕양 행신1동 지역의 정확한 견적은 현장 배관 길이와 구조를 확인한 후 안내받으실 수 있습니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 이 현장의 메인 배수관이 하수구가 완전히 폐색돼 물이 안 빠질 때, 덕양 행신1동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빗물 전용 우수관은 옥상부터 최하층까지 연결된 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 저층(1~3층) 베란다 우수관으로 물이 역류해 올라옵니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 해당 건물 식당 하수배관이 배관에서 오물이 역류해 올라올 때, 욕실 바닥 하수구에 머리카락 녹이는 약품을 정기적으로 부어도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>강력한 화학약품을 과도하게 사용하면 배수관 내부 부식이나 고무 패킹의 변형을 일으켜 아랫집 누수로 이어질 수 있으니 물리적 제거를 권장합니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 현장 내 욕실 바닥 하수구가 완전히 막혀 배수가 전혀 안 될 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 일대 건물의 본관 하수관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 덕양 행신1동 지역 싱크대 막힘 해결 비용은 보통 얼마부터 시작하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 심각도와 사용되는 장비에 따라 다릅니다. 단순 석션(흡입) 작업은 5~10만 원 선에서 해결되지만, 단단한 이물질을 분쇄하는 샤프트 작업이나 고압세척, 내시경 촬영이 추가되면 비용이 상승합니다. 덕양 행신1동 지역의 정확한 견적은 현장 배관 길이와 구조를 확인한 후 안내받으실 수 있습니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 이 지역 주방 싱크대가 물 빠짐이 갈수록 더뎌져 곤란할 때, 싱크대에 끓는 물을 부으면 기름때 막힘이 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아주 가벼운 기름때라면 녹을 수 있지만, 배관 내부에 단단하게 굳은 유지방 덩어리(슬러지)에는 큰 효과가 없습니다. 오히려 가정용 싱크대 주름관(플라스틱 재질)은 고온에 약해 펄펄 끓는 물을 자주 부으면 배관이 쪼그라들거나 변형되어 누수의 원인이 될 수 있으므로 60도 이하의 따뜻한 물을 사용하는 것이 좋습니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 해당 건물 수세식 변기가 배관이 완전히 막혀 통수가 안 될 때, 인테리어 공사(리모델링) 직후 덕양 행신1동 화장실 바닥 하수구가 막혔어요. 백시멘트가 들어간 것 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 흘러 들어간 백시멘트나 메지 가루가 배관 안에서 콘크리트처럼 경화된 심각한 상황입니다. 억지로 뚫으면 배관이 파열될 위험이 있으므로, 체인 부착 전용 장비로 배관을 살리며 시멘트만 정밀 분쇄해 빨아내는 고난도 작업이 필요합니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 쪽 화장실 변기가 원인 불명의 하수 악취가 심하게 올라올 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 제가 거주하는 씽크대가 하수 흐름이 현저히 둔해져 있을 때, 아랫집 화장실 천장 점검구 쪽에서 물이 뚝뚝 떨어집니다. 하수구 탓일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>하수구 막힘으로 인해 배관 연결부위 틈새로 물이 넘쳤거나(배관 누수), 바닥 타일의 방수층이 깨진(방수 누수) 것이므로 정확한 탐지가 병행되어야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행신1동 살고 있는 곳의 식당 하수배관이 물을 내릴 때 배관에서 이상 소음이 날 때, 덕양 행신1동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

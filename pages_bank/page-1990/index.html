@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -697,6 +712,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원호매실동하수구차단 #수원호매실동수도관막힘 #호매실동싱크대거꾸로 흐름 #수원하수구고압세척 #수도관기름제거전문</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 성동 송정동 변기막힘 자주 묻는 질문</div>
+      <div class="faq-sub">성동 송정동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 해당 건물 양변기가 하수구에서 심한 악취가 계속 올라올 때, 성동 송정동 욕실에서 물을 전혀 안 쓰는데도 하수구에서 물이 뽀글거리며 역류해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>해당 세대의 문제가 아닌 아파트나 빌라의 공동 메인 배관이 막혀 수압이 가장 낮은 층으로 하수가 넘치는 매우 심각한 메인 관로 역류 상황입니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 해당 욕실 바닥 배수구가 오수가 거품과 함께 심하게 올라올 때, 막힌 변기에 샴푸나 린스를 듬뿍 짜 넣고 기다리면 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 해 뚫릴 수 있으나, 고체 이물질이나 덩어리로 인한 막힘에는 전혀 효과가 없습니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 일대 건물의 식당 오수관이 오수가 거품과 함께 심하게 올라올 때, 저희 집 하수구 역류로 아랫집 천장 도배가 망가졌습니다. 성동 송정동 누수/막힘 공사 후 일상생활배상책임보험(일배책) 처리가 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 고객님께서 가입하신 보험에 '일상생활배상책임' 특약이 있다면 아랫집의 피해 복구 비용(도배, 장판 등)을 보험으로 처리할 수 있습니다. 공사 완료 후 보험 청구용 소견서·사진·영수증 등 필요 서류를 전부 발급해 드립니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 일대 건물의 주 하수배관이 물이 잘 안 빠져 배수 지연이 심할 때, 인테리어 공사 후 성동 송정동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 관내 좌변기가 출처 불분명한 악취가 실내에 퍼질 때, 변기 물탱크에서 삐- 하는 소리나 물방울 떨어지는 소리가 계속 납니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물탱크 내부의 필밸브나 플러시 밸브 등 부속품이 노후화되어 물이 차단되지 않는 증상으로, 방치 시 엄청난 수도 요금이 발생하므로 부속을 교체해야 합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 해당 현장의 씽크대가 원인 불명의 하수 악취가 심하게 올라올 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 근처의 양변기가 배수 속도가 눈에 띄게 느려져 불편할 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 최신 배관 전문 장비로 원인 물질을 근본부터 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 송정동 건물에 있는 주방 싱크대가 원인 불명의 하수 악취가 심하게 올라올 때, 인테리어 공사(리모델링) 직후 성동 송정동 화장실 바닥 하수구가 막혔어요. 백시멘트가 들어간 것 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 흘러 들어간 백시멘트나 메지 가루가 내부에서 딱딱하게 굳어버린 심각한 상황입니다. 무리한 처리는 배관 파손으로 이어질 수 있으므로, 전용 체인 장비로 배관 훼손 없이 시멘트를 정교하게 분쇄·제거하는 고난도 작업이 필요합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

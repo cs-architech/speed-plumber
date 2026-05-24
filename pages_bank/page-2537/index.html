@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -744,6 +759,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#인천논현동하수구폐색 #인천논현동배관폐색 #싱크대역류수습 #변기통수작업 #화장실배수불량</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 강남 개포2동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">강남 개포2동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 제 거처의 주 하수배관이 하수구 역류가 거품과 함께 발생할 때, 강남 개포2동 심야 시간에 하수구가 역류하는데 야간 출동이 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>강남 개포2동 인근 24시간 긴급 출동 업체 목록이 제공되고 있습니다. 방치 시 침수를 포함한 연쇄 피해로 이어지므로, 안내 페이지를 통해 심야 및 공휴일 대응 업체를 바로 확인하세요. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 저희 집 양변기가 원인 불명의 하수 악취가 심하게 올라올 때, 하수구가 막혔을 때 고압세척은 무조건 해야 하는 건가요? 너무 비쌀까 봐 걱정입니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>무조건 고압세척을 해야 하는 것은 아닙니다. 일반적인 아파트나 주택의 가지 배관 막힘은 석션기나 샤프트 장비만으로도 90% 이상 충분히 해결됩니다. 고압세척은 식당의 메인 횡배관이나, 건물의 메인 오수관, 토사·자갈이 유입된 외부 맨홀 막힘 등 대형 세척이 필요할 때만 씁니다. 과도한 진단 없이 현장에 최적화된 장비만 선별 투입합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 현재 위치의 부엌 싱크대가 배수구가 꽉 막혀 물이 내려가지 않을 때, 아파트 베란다 우수관 막힘이나 역류 피해는 누가 책임지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 아파트 공용 시설물에 해당합니다. 개별 세대에서 인테리어 공사 등으로 배관을 임의로 훼손한 게 아니라면, 우수관 역류로 인한 막힘 뚫음 비용 및 도배/장판 등의 피해 보상은 원칙적으로 관리사무소(입주자대표회의)에서 처리해야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 건물에 있는 개수대가 배수가 유독 느려 답답함을 느낄 때, 강남 개포2동 1층(또는 필로티 2층) 빌라에 사는데, 저희 집에서 물을 안 써도 하수구가 역류합니다. 누구 책임인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 '공동 메인 배관' 막힘 증상입니다. 윗층 세대들이 사용한 물이 1층이나 지하의 꺾이는 메인 배관에서 빠져나가지 못하고 가장 낮은 층인 고객님 댁으로 역류하는 것입니다. 이는 고객님 과실이 아니며, 건물 전체 세대가 비용을 1/N로 분담하여 강남 개포2동 고압세척 전문 업체를 통해 메인 횡주관을 뚫어야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 살고 있는 곳의 욕실 바닥 하수구가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 강남 개포2동 싱크대 하부장에서 물이 새고 마루가 까맣게 변색되고 있어요. 원인이 뭘까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 하부 배관(주름관)이 찢어졌거나, 바닥 하수구(PVC 배관)가 막혀 물이 역류하면서 발생하는 현상입니다. 역류한 물이 장기간 마루에 스며들면 마루 썩음과 곰팡이를 유발하므로, 즉시 물 사용을 중지하고 강남 개포2동 배관 전문 업체를 통해 배관 내부를 뚫어 역류를 해결해야 합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 이 지역 본관 하수관이 하수구 역류가 거품과 함께 발생할 때, 세면대 배관(트랩) 구조가 U자형인 것과 일자형인 것 중 어느 것이 좋나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>U자형(P트랩)은 물이 고여있어 하수구 악취와 벌레 차단에 탁월하며, 일자형(I트랩)은 물 빠짐이 빠르고 바닥 하수구로 바로 연결될 때 주로 사용됩니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 제 거처의 건물 중앙 하수관이 이유 없이 하수 냄새가 강하게 날 때, 강남 개포2동 세면대 물마개(팝업)가 쏙 들어가서 다시 올라오지 않습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 팝업 내부 스프링 부식이나 이물질 끼임으로 인한 부속 고장입니다. 청소가 용이한 새 자동 팝업으로 전체를 교체해야 합니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 개포2동 점검 중인 손 씻는 대가 물을 내릴 때 배관에서 이상 소음이 날 때, 단순 스프링(전동 관통기) 작업과 고압세척의 차이점은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>스프링은 찌꺼기 사이에 구멍만 내어 임시로 물길을 여는 반면, 고압세척은 초강력 수압으로 배관 내벽의 모든 슬러지를 새 배관처럼 복원하는 근본 해결책입니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

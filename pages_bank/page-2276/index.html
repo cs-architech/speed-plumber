@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -754,6 +769,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#부천하수구차단 #부천배관차단 #싱크대거꾸로 흐름 #변기통수작업 #파이프스케일링</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 성동 금호4가동 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">성동 금호4가동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 살고 있는 곳의 건물 중앙 하수관이 이유 없이 하수 냄새가 강하게 날 때, 성동 금호4가동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 제가 거주하는 개수대가 배수 속도가 눈에 띄게 느려져 불편할 때, 싱크대에 끓는 물을 부으면 기름때 막힘이 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아주 가벼운 기름때라면 녹을 수 있지만, 배관 내부에 단단하게 굳은 유지방 덩어리(슬러지)에는 큰 효과가 없습니다. 오히려 가정용 싱크대 주름관(플라스틱 재질)은 고온에 약해 펄펄 끓는 물을 자주 부으면 배관이 쪼그라들거나 변형되어 누수의 원인이 될 수 있으므로 60도 이하의 따뜻한 물을 사용하는 것이 좋습니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 일대 건물의 욕실 바닥 하수구가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 싱크대 하부장 바닥 마루가 까맣게 썩어가고 물기가 있습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 바닥 하수구가 막혀 물이 빠지지 못하고 역류하여 마루로 스며든 증상입니다. 마루 전체가 썩기 전에 즉시 배관을 뚫어야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 해당 건물 식당 내 배관이 하수구가 완전히 폐색돼 물이 안 빠질 때, 겨울철 세탁실 배수구가 꽁꽁 얼어서 물이 안 내려갑니다. 뜨거운 물을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>갑자기 펄펄 끓는 물을 부으면 온도 차이로 인해 배관이 파열될 위험이 있습니다. 헤어드라이어나 수건을 감싸고 60도 이하의 미지근한 물부터 천천히 부어 녹이는 것이 안전합니다. 얼음 구간이 깊다면 전문 업체의 해빙기(스팀 장비) 작업이 필요합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 관할 건물 메인 배수관이 원인 불명의 하수 악취가 심하게 올라올 때, 성동 금호4가동 심야 시간에 하수구가 역류하는데 야간 출동이 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>성동 금호4가동 관내 24시간 응급 출동 업체들이 안내 페이지에 정리돼 있습니다. 하수 역류를 내버려 두면 침수 같은 2차 손해가 생기므로, 서비스 안내 페이지에서 심야·주말 출동 가능 업체를 찾아보세요. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 소속 건물의 욕실 바닥 하수구가 오수가 역류하며 거품이 솟구칠 때, 성동 금호4가동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빗물 전용 우수관은 옥상부터 최하층까지 연결된 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 저층(1~3층) 베란다 우수관으로 물이 역류해 올라옵니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 관내 변기가 배관에서 오물이 역류해 올라올 때, 개수대 막힘에 베이킹소다와 식초를 섞어 쓰는 DIY 방법이 효과가 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>가벼운 물때 제거나 냄새 완화에는 도움을 주지만, 하수구 깊은 곳에 돌처럼 굳어버린 기름 덩어리는 화학 반응으로 녹일 수 없습니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 제 거처의 개수대가 막힘이 심해 물이 전혀 빠지지 않을 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 성동 금호4가동 변기 안 뜯고 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>성동 금호4가동 우리 집 음식점 배수관이 막힘이 심해 물이 전혀 빠지지 않을 때, 식당 주방에 있는 그리스트랩(기름 걸름망)이 자주 넘칩니다. 성동 금호4가동 상가 식당 정기 관리도 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 대형 식당이나 고깃집의 경우 그리스트랩 용량의 한계를 넘어 배관으로 기름이 유입되어 메인 배관이 막히는 경우가 잦습니다. 성동 금호4가동 주변 상가를 위한 정기 배관 청소·유지보수 서비스를 고압세척 장비로 제공하여 영업에 지장이 없도록 관리해 드리고 있습니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

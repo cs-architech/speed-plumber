@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -677,6 +692,104 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원율천동하수구막힘 #수원율천동배관막힘 #율천동싱크대백플로우 #율천동변기뚫음 #수원맨홀청소</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 원미 중동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">원미 중동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 제가 머무는 곳의 세면대가 원인 불명의 하수 악취가 심하게 올라올 때, 원미 중동 개수대 하수구에서 심한 썩은 냄새가 올라오는 이유는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 씻겨 내려가지 못한 음식물과 기름 슬러지가 쌓여 부패 가스를 발생시키기 때문입니다. 트랩 점검과 배관 스케일링이 필요합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 저희 집 건물 중앙 하수관이 하수구 역류가 거품과 함께 발생할 때, 커피 찌꺼기는 기름기를 흡수한다는데 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 콘크리트처럼 굳어 가장 뚫기 힘든 막힘을 유발합니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 현장 내 식당 하수배관이 배수 속도가 눈에 띄게 느려져 불편할 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 근처의 손 씻는 대가 배수 때마다 배관 울림 소리가 들릴 때, 원미 중동 샤워를 하면 바닥에 물이 한강처럼 차오르고 아주 늦게 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 유가 아래의 U자 트랩 쪽에 다량의 머리카락과 석회질이 엉켜 물길을 완전히 좁혀놓은 상태로, 덮개를 분리해 엉킨 이물질을 뽑아내야 합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 이 지역 양변기가 하수가 부글거리며 역류가 심할 때, 단순 스프링(전동 관통기) 작업과 고압세척의 차이점은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>스프링은 찌꺼기 사이에 구멍만 내어 임시로 물길을 여는 반면, 고압세척은 초강력 수압으로 배관 내벽의 모든 슬러지를 새 배관처럼 복원하는 근본 해결책입니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 제가 머무는 곳의 식당 내 배관이 하수가 부글거리며 역류가 심할 때, 원미 중동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 우리 집 수세식 변기가 물을 사용할 때 배관 잡음이 발생할 때, 원미 중동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빗물관(우수관)은 옥상~1층 전체를 연결하는 공용 배수관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 수압을 버티지 못하고 저층(1~3층) 베란다로 역류하게 됩니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 현장 내 메인 배수관이 오수가 역류하며 거품이 솟구칠 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 건물에 있는 본관 하수관이 배관이 완전히 막혀 통수가 안 될 때, 원미 중동 세면대 물마개(팝업)가 쏙 들어가서 다시 올라오지 않습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 팝업 내부 스프링 부식이나 이물질 끼임으로 인한 부속 고장입니다. 청소가 용이한 새 자동 팝업으로 전체를 교체해야 합니다. 정밀 진단을 위한 내시경 검사를 선행하는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 중동 지금 이곳 건물 중앙 하수관이 물을 사용할 때 배관 잡음이 발생할 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

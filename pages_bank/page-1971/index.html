@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -692,6 +707,86 @@ mm 단위로 정밀하게 파악할 수 있거든요.
       
       <p class="review-para">#안산상록구하수구막힘 #안산상록구관로막힘 #안산세탁실역류 #안산하수구뚫어음 #상록구배관청소</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 양평 강상면 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">양평 강상면 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 소속 건물의 개수대가 배수 때마다 배관 울림 소리가 들릴 때, 세면대 물마개(팝업)가 쏙 들어가서 안 올라옵니다. 배관이 막힌 건가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 세면대 팝업 부속품 내부에 물때와 머리카락이 끼어 스프링이 고장 난 팝업 불량입니다. 이 경우 뚫는 작업이 아니라 기존 팝업과 트랩을 해체하고 새로운 자동 팝업으로 교체해야 물이 시원하게 내려갑니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 해당 현장의 변기가 하수가 부글거리며 역류가 심할 때, 씽크대 하부장 바닥 마루가 까맣게 썩어가고 물기가 있습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 바닥 하수구가 막혀 물이 빠지지 못하고 역류하여 마루로 스며든 증상입니다. 마루 전체가 썩기 전에 즉시 배관을 뚫어야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 해당 욕실 배수구가 물이 잘 안 빠져 배수 지연이 심할 때, 아랫집 화장실 천장 점검구 쪽에서 물이 뚝뚝 떨어집니다. 하수구 탓일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>하수구 막힘으로 인해 배관 연결부위 틈새로 물이 넘쳤거나(배관 누수), 바닥 타일의 방수층이 깨진(방수 누수) 것이므로 정확한 탐지가 병행되어야 합니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 해당 화장실 세면기가 완전히 막혀 배수가 전혀 안 될 때, 저희 집 하수구 역류로 아랫집 천장 도배가 망가졌습니다. 양평 강상면 누수/막힘 공사 후 일상생활배상책임보험(일배책) 처리가 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 고객님께서 가입하신 보험에 '일상생활배상책임' 특약이 있다면 아랫집의 피해 복구 비용(도배, 장판 등)을 보험으로 처리할 수 있습니다. 공사 완료 후 보험 청구용 소견서·사진·영수증 등 필요 서류를 전부 발급해 드립니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 소속 건물의 식당 내 배관이 물이 잘 안 빠져 배수 지연이 심할 때, 양평 강상면 싱크대 하부장에서 물이 새고 마루가 까맣게 변색되고 있어요. 원인이 뭘까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 하부 배관(주름관)이 찢어졌거나, 바닥 하수구(PVC 배관)가 막혀 물이 역류하면서 발생하는 현상입니다. 역류한 물이 장기간 마루에 스며들면 마루 썩음과 곰팡이를 유발하므로, 즉시 물 사용을 중지하고 양평 강상면 배관 전문 업체를 통해 배관 내부를 뚫어 역류를 해결해야 합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 현재 위치의 음식점 배수관이 출처 불분명한 악취가 실내에 퍼질 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 해당 건물 수세식 변기가 이유 없이 하수 냄새가 강하게 날 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 양평 강상면 변기 안 뜯고 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양평 강상면 우리 집 부엌 싱크대가 완전히 막혀 배수가 전혀 안 될 때, 양평 강상면 하수구 뚫는 장비 중에 '플렉스 샤프트'는 기존 스프링 장비와 어떻게 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기존 전동 스프링 장비는 배관 중앙에 구멍만 내고 지나가기 때문에 기름 찌꺼기가 재부착돼 금방 다시 막히는 문제가 있습니다. 반면 플렉스 샤프트는 고속 회전 체인이 배관 내 기름 찌꺼기를 파쇄하듯 갈아내어 새 배관처럼 스케일링해 주는 최신 특수 장비로, 막힘 없이 유지되는 기간이 현저히 깁니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

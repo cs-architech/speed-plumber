@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -698,6 +713,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#화성세탁실정체 #화성하수구 #배수구물고임 #배관워터젯 세척 #배관내시경</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 서초 방배4동 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">서초 방배4동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 관내 씽크대가 썩은 냄새가 원인도 모른 채 진동할 때, 아파트 베란다 우수관 막힘이나 역류 피해는 누가 책임지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 아파트 공용 시설물에 해당합니다. 개별 세대에서 인테리어 공사 등으로 배관을 임의로 훼손한 게 아니라면, 우수관 역류로 인한 막힘 뚫음 비용 및 도배/장판 등의 피해 보상은 원칙적으로 관리사무소(입주자대표회의)에서 처리해야 합니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 해당 건물 부엌 싱크대가 물 빠짐이 갈수록 더뎌져 곤란할 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 현재 위치의 건물 중앙 하수관이 출처 불분명한 악취가 실내에 퍼질 때, 서초 방배4동 배관 내시경 카메라 촬영은 어떤 경우에 필수적인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>이물질의 정확한 위치와 종류(기름, 시멘트 등) 파악, 배관의 역구배 불량 확인, 작업 후 완벽하게 스케일링 되었는지 결과를 검증할 때 반드시 필요합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 관할 건물 메인 배수관이 하수가 부글거리며 역류가 심할 때, 하수구 뚫는 전문 장비 중 '플렉스 샤프트'는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전용 회전 체인이 배관 벽면에 달라붙은 굳은 기름때와 이물질을 갈아내어 관로를 원형 크기로 되돌리는 최신 배관 장비입니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 해당 씽크대가 물이 잘 안 빠져 배수 지연이 심할 때, 서초 방배4동 하수구 뚫는 장비 중에 '플렉스 샤프트'는 기존 스프링 장비와 어떻게 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기존 전동 스프링 장비는 배관 중앙에 구멍만 내고 지나가기 때문에 기름 찌꺼기가 재부착돼 금방 다시 막히는 문제가 있습니다. 반면 플렉스 샤프트는 고속 회전 체인이 배관 내 기름 찌꺼기를 파쇄하듯 갈아내어 새 배관처럼 스케일링해 주는 최신 특수 장비로, 막힘 없이 유지되는 기간이 현저히 깁니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 관할 건물 음식점 배수관이 배관에서 오물이 역류해 올라올 때, 서초 방배4동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 해당 부엌 싱크대가 오수가 거품과 함께 심하게 올라올 때, 서초 방배4동 싱크대 주름관 내부가 까맣게 변색되었는데 교체해야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>곰팡이와 기름때가 고착된 것으로 악취와 세균 번식의 원인이 되므로, 주기적으로 새 주름관으로 교체해 주는 것이 가장 위생적입니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>서초 방배4동 일대 건물의 화장실 변기가 배관에서 오물이 역류해 올라올 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

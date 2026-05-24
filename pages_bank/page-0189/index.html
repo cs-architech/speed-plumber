@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -629,6 +644,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#광명하수구막힘 #광명수도관막힘 #광명싱크대물이 넘침 #광명하수구소통음 #광명배관청소</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 양천 신월4동 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">양천 신월4동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 살고 있는 곳의 욕실 바닥 하수구가 원인 불명의 하수 악취가 심하게 올라올 때, 양천 신월4동 배관 내시경 카메라 촬영은 어떤 경우에 필수적인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>이물질의 정확한 위치와 종류(기름, 시멘트 등) 파악, 배관의 역구배 불량 확인, 작업 후 완벽하게 스케일링 되었는지 결과를 검증할 때 반드시 필요합니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 살고 있는 곳의 욕실 바닥 하수구가 하수구에서 심한 악취가 계속 올라올 때, 욕실 바닥 하수구에 머리카락 녹이는 약품을 정기적으로 부어도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>강력한 화학약품을 과도하게 사용하면 배수관 내부 부식이나 고무 패킹의 변형을 일으켜 아랫집 누수로 이어질 수 있으니 물리적 제거를 권장합니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 일원의 부엌 싱크대가 하수구가 완전히 폐색돼 물이 안 빠질 때, 양천 신월4동 변기 물을 내릴 때마다 바닥 백시멘트 사이로 더러운 물이 새어 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기와 오수관을 연결하는 정심(플랜지) 부속이 이탈했거나 고무 패킹이 삭은 증상으로, 변기를 재설치하여 틈새를 완벽히 밀봉해야 합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 제 거처의 음식점 배수관이 이유 없이 하수 냄새가 강하게 날 때, 싱크대에서 물을 많이 버리면 화장실 바닥 하수구로 물이 뽀글뽀글 거품과 함께 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 배수관과 욕실 하수관이 바닥 아래에서 하나의 배관으로 만나 나가는 구조(Y자 티 배관)일 때 발생하는 현상입니다. 두 배관이 만나는 합류 지점 이후에 찌꺼기가 쌓여 병목 현상이 생겼기 때문입니다. 어느 쪽에서 진입하든 양천 신월4동 배관 내시경을 통해 만나는 지점의 오염 슬러지를 깨끗이 없애야 두 곳 모두 시원하게 뚫립니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 건물에 있는 욕실 바닥 배수구가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 양천 신월4동 아파트 화장실에서 다른 집 담배 냄새나 하수구 악취가 심하게 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>화장실 환풍기 댐퍼 불량이나 바닥 하수구의 '봉수(냄새 차단용 고인 물)'가 말랐을 때 발생하는 현상입니다. 하수구를 정기적으로 청소하고 물을 부어주며, 필요시 양천 신월4동 설비 업체를 통해 악취 차단 전용 트랩을 설치하면 99% 해결됩니다. 최신 배관 전문 장비로 원인 물질을 근본부터 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 건물 내 좌변기가 완전히 막혀 배수가 전혀 안 될 때, 양천 신월4동 하수구 뚫는 장비 중에 '플렉스 샤프트'는 기존 스프링 장비와 어떻게 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기존 전동 스프링 장비는 배관 중앙에 구멍만 내고 지나가기 때문에 기름때가 다시 달라붙어 재발이 빠른 단점이 있습니다. 반면 플렉스 샤프트는 빠르게 회전하는 체인이 관 내벽의 기름때를 분쇄기처럼 부숴 새 배관처럼 스케일링해 주는 최신 특수 장비로, 통수 상태 유지 기간이 훨씬 더 깁니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 살고 있는 곳의 화장실 변기가 원인 불명의 하수 악취가 심하게 올라올 때, 인테리어 공사 후 양천 신월4동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 일원의 씽크대가 배관에서 오물이 역류해 올라올 때, 커피 찌꺼기는 기름기를 흡수한다는데 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 암석처럼 딱딱하게 굳어 가장 뚫기 힘든 막힘을 유발합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신월4동 이 현장의 세면기가 막힘이 심해 물이 전혀 빠지지 않을 때, 변기에 물티슈를 한 장씩만 버리는 건 수압으로 내려가지 않나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 물에 풀리지 않는 합성 섬유이므로 단 한 장이라도 배관 굴곡진 S자 트랩이나 오수관에 걸려 거대한 막힘을 유발할 수 있습니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

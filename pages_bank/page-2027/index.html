@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -683,6 +698,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원정자동하수구막힘 #수원정자동배관막힘 #공장배수구 #수원설비업체 #정자동하수도</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 포천 이동면 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">포천 이동면 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 해당 세면기가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 고양이 모래(두부 모래)를 변기에 버려도 된다고 해서 버렸는데 막혔습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>시중의 두부 모래가 물에 녹는다고 광고하지만, 다량이 한꺼번에 들어가거나 배관 수압이 약할 경우 배관 내부에서 찰흙처럼 찐득하게 뭉쳐버립니다. 이 경우 일반적인 방법으로는 뚫기 어려우며 강력한 석션기나 배관 스케일링 장비가 필요합니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 해당 화장실 변기가 이유 없이 하수 냄새가 강하게 날 때, 겨울철 세탁실 배수구가 꽁꽁 얼어서 물이 안 내려갑니다. 뜨거운 물을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>갑자기 펄펄 끓는 물을 부으면 온도 차이로 인해 배관이 파열될 위험이 있습니다. 헤어드라이어나 수건을 감싸고 60도 이하의 미지근한 물부터 천천히 부어 녹이는 것이 안전합니다. 얼음 구간이 깊다면 전문 업체의 해빙기(스팀 장비) 작업이 필요합니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 저희 집 화장실 세면기가 물이 잘 안 빠져 배수 지연이 심할 때, 겨울철 세탁실 배수구가 꽁꽁 얼어서 물이 안 내려갑니다. 뜨거운 물을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>갑자기 펄펄 끓는 물을 부으면 온도 차이로 인해 배관이 파열될 위험이 있습니다. 헤어드라이어나 수건을 감싸고 60도 이하의 미지근한 물부터 천천히 부어 녹이는 것이 안전합니다. 얼음 구간이 깊다면 전문 업체의 해빙기(스팀 장비) 작업이 필요합니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 현재 위치의 욕실 하수 배수구가 물이 잘 안 빠져 배수 지연이 심할 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 이 지역 화장실 변기가 배수구가 꽉 막혀 물이 내려가지 않을 때, 베란다 우수관(빗물관)에 세탁기 배수 호스를 연결해서 쓰면 왜 안 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 빗물이 정화 없이 하천으로 방류되는 관로라 오수 배출 시 불법이며, 세제 거품과 찌꺼기가 쌓여 겨울철 결빙 및 저층 세대 역류의 원인이 됩니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 현재 위치의 씽크대가 배관이 완전히 막혀 통수가 안 될 때, 하수구 뚫는 전문 장비 중 '플렉스 샤프트'는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>고속 회전 체인 장치가 관 내벽에 굳어있는 굳은 기름때와 이물질을 갈아내어 배관 내경을 원상 복구하는 최신 스케일링 기기입니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 우리 집 화장실 세면기가 배관에서 오물이 역류해 올라올 때, 세면대 배관(트랩) 구조가 U자형인 것과 일자형인 것 중 어느 것이 좋나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>U자형(P트랩)은 물이 고여있어 하수구 악취와 벌레 차단에 탁월하며, 일자형(I트랩)은 물 빠짐이 빠르고 바닥 하수구로 바로 연결될 때 주로 사용됩니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>포천 이동면 제가 거주하는 세면대가 배관에서 오물이 역류해 올라올 때, 부엌 싱크대 배수구에서 초파리(날파리)가 계속 올라오는데 막힘과 관련이 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 음식물 찌꺼기와 부패한 슬러지가 쌓여있다는 증거입니다. 이 오염물들이 벌레의 서식지가 되며, 심해지면 점차 물이 내려가지 않는 막힘 현상으로 이어집니다. 배관 내부 청소와 함께 U자형 트랩을 점검하거나 악취 차단 트랩을 설치하는 것이 좋습니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

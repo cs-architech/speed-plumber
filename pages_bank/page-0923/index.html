@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -745,6 +760,95 @@ a{text-decoration:none;color:inherit}
 #하수도뚫는업체
 #싱크대냄새제거</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 강남 역삼1동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">강남 역삼1동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 해당 주 하수배관이 하수 흐름이 현저히 둔해져 있을 때, 강남 역삼1동 변기 물을 내릴 때마다 바닥 백시멘트 사이로 더러운 물이 새어 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기와 오수관을 연결하는 정심(플랜지) 부속이 이탈했거나 고무 패킹이 삭은 증상으로, 변기를 재설치하여 틈새를 완벽히 밀봉해야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 지금 이곳 욕실 바닥 배수구가 배관에서 오물이 역류해 올라올 때, 강남 역삼1동 배관 내시경 카메라 촬영은 어떤 경우에 필수적인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>이물질의 정확한 위치와 종류(기름, 시멘트 등) 파악, 배관의 역구배 불량 확인, 작업 후 완벽하게 스케일링 되었는지 결과를 검증할 때 반드시 필요합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 현재 위치의 식당 내 배관이 하수가 부글거리며 역류가 심할 때, 화장실 바닥 하수구에서 날파리나 나방파리가 자꾸 기어 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 내부에 쌓인 물때와 비누 찌꺼기가 벌레의 번식처가 된 것입니다. 하수구 내부 스케일링 청소와 함께 악취 차단용 트랩을 설치해야 합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 건물 내 욕실 배수구가 하수구가 완전히 폐색돼 물이 안 빠질 때, 강남 역삼1동 1층(또는 필로티 2층) 빌라에 사는데, 저희 집에서 물을 안 써도 하수구가 역류합니다. 누구 책임인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 '공동 메인 배관' 막힘 증상입니다. 윗층 세대들이 사용한 물이 1층이나 지하의 꺾이는 메인 배관에서 빠져나가지 못하고 가장 낮은 층인 고객님 댁으로 역류하는 것입니다. 이는 고객님 과실이 아니며, 건물 전체 세대가 비용을 1/N로 분담하여 강남 역삼1동 고압세척 전문 업체를 통해 메인 횡주관을 뚫어야 합니다. 최신 배관 전문 장비로 원인 물질을 근본부터 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 제가 머무는 곳의 손 씻는 대가 막힘이 심해 물이 전혀 빠지지 않을 때, 아파트 베란다 우수관 막힘이나 역류 피해는 누가 책임지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 아파트 공용 시설물에 해당합니다. 개별 세대에서 인테리어 공사 등으로 배관을 임의로 훼손한 게 아니라면, 우수관 역류로 인한 막힘 뚫음 비용 및 도배/장판 등의 피해 보상은 원칙적으로 관리사무소(입주자대표회의)에서 처리해야 합니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 건물에 있는 부엌 싱크대가 하수구에서 심한 악취가 계속 올라올 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 관내 좌변기가 출처 불분명한 악취가 실내에 퍼질 때, 변기 물탱크에서 삐- 하는 소리나 물방울 떨어지는 소리가 계속 납니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물탱크 내부의 필밸브나 플러시 밸브 등 부속품이 노후화되어 물이 차단되지 않는 증상으로, 방치 시 엄청난 수도 요금이 발생하므로 부속을 교체해야 합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 이 지역 욕실 바닥 하수구가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 변기 물을 내리면 시원하게 안 내려가고 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 배관 좁아짐 현상입니다. 변기 S자 트랩 어딘가에 이물질이 걸려있거나, 정화조로 나가는 메인 오수관 쪽에 막힘이 진행되고 있다는 초기 증상이므로 완전히 막혀 역류하기 전에 점검을 받아야 합니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강남 역삼1동 관내 욕실 바닥 하수구가 물을 사용할 때 배관 잡음이 발생할 때, 강남 역삼1동 욕실에서 물을 전혀 안 쓰는데도 하수구에서 물이 뽀글거리며 역류해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>해당 세대의 문제가 아닌 아파트나 빌라의 공동 메인 배관이 막혀 수압이 가장 낮은 층으로 하수가 넘치는 매우 심각한 메인 관로 역류 상황입니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

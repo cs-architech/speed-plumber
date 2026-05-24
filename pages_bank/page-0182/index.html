@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -692,6 +707,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#안산고잔동하수구막힘 #안산고잔동파이프막힘 #고잔동싱크대역류 #안산변기뚫는곳 #안산하수도고압세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 단원 대부동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">단원 대부동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 일원의 주방 싱크대가 썩은 냄새가 원인도 모른 채 진동할 때, 변기에서 계속 물방울 떨어지는 소리가 나고 수도 요금이 많이 나왔어요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기 물탱크 내부의 부속품(필밸브, 플러시밸브 등)이 노후화되어 물이 제대로 차단되지 않고 계속 새어 나가는 증상입니다. 막힘 문제는 아니지만, 방치 시 엄청난 수도 요금 폭탄을 맞을 수 있으므로 즉시 부속품 전체 교체를 진행해야 합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 이 현장의 욕실 하수 배수구가 물 빠짐이 갈수록 더뎌져 곤란할 때, 단원 대부동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 해당 건물 세면대가 물이 잘 안 빠져 배수 지연이 심할 때, 단원 대부동 주방 싱크대 하부장에서 물이 새고 마루가 까맣게 변색되고 있어요. 원인이 뭘까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 하부 배관(주름관)이 찢어졌거나, 바닥 하수구(PVC 배관)가 막혀 물이 역류하면서 발생하는 현상입니다. 역류한 물이 장기간 마루에 스며들면 마루 썩음과 곰팡이를 유발하므로, 즉시 물 사용을 중지하고 단원 대부동 배관 전문 업체를 통해 배관 내부를 뚫어 역류를 해결해야 합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 지금 이곳 욕실 바닥 배수구가 하수구 역류가 거품과 함께 발생할 때, 락스와 베이킹소다를 섞어서 싱크대에 부으면 더 잘 뚫리나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>절대 안 됩니다. 락스(염소계)와 베이킹소다, 혹은 식초(산성)를 섞어 사용하면 화학 반응으로 인해 유독 가스(염소 가스)가 발생하여 호흡기에 매우 치명적입니다. 배관 세척을 원하실 때는 반드시 하나의 제품만 단독으로 사용하셔야 합니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 우리 집 개수대가 썩은 냄새가 원인도 모른 채 진동할 때, 단원 대부동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빗물관(우수관)은 옥상~1층 전체를 연결하는 공용 배수관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 수압을 버티지 못하고 저층(1~3층) 베란다로 역류하게 됩니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 저희 집 화장실 변기가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 단원 대부동 하수구 뚫는 장비 중에 '플렉스 샤프트'는 기존 스프링 장비와 어떻게 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기존 전동 스프링 장비는 배관 중앙에 구멍만 내고 지나가기 때문에 기름때가 재결합해 단기간에 재막히는 약점이 있습니다. 반면 플렉스 샤프트는 회전 체인이 내벽 기름때를 갈아내듯 완전 분쇄하여 새 배관처럼 스케일링해 주는 최신 특수 장비로, 배수 유지 기간이 비교할 수 없을 만큼 깁니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 쪽 주방 싱크대가 원인 불명의 하수 악취가 심하게 올라올 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 해당 욕실 하수 배수구가 하수구가 완전히 폐색돼 물이 안 빠질 때, 싱크대에 끓는 물을 부으면 기름때 막힘이 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아주 가벼운 기름때라면 녹을 수 있지만, 배관 내부에 단단하게 굳은 유지방 덩어리(슬러지)에는 큰 효과가 없습니다. 오히려 가정용 싱크대 주름관(플라스틱 재질)은 고온에 약해 펄펄 끓는 물을 자주 부으면 배관이 쪼그라들거나 변형되어 누수의 원인이 될 수 있으므로 60도 이하의 따뜻한 물을 사용하는 것이 좋습니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>단원 대부동 쪽 욕실 바닥 배수구가 하수 흐름이 현저히 둔해져 있을 때, 싱크대에 끓는 물을 부으면 기름때 막힘이 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아주 가벼운 기름때라면 녹을 수 있지만, 배관 내부에 단단하게 굳은 유지방 덩어리(슬러지)에는 큰 효과가 없습니다. 오히려 가정용 싱크대 주름관(플라스틱 재질)은 고온에 약해 펄펄 끓는 물을 자주 부으면 배관이 쪼그라들거나 변형되어 누수의 원인이 될 수 있으므로 60도 이하의 따뜻한 물을 사용하는 것이 좋습니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

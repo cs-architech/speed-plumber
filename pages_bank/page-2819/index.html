@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -680,6 +695,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">안성 원곡면 우수관막힘 – #안산고잔동하수구차단 #안산고잔동관로막힘 #고잔동싱크대역류 #안산변기뚫는곳 #안산하수도고압세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 안성 원곡면 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">안성 원곡면 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 해당 변기가 물을 사용할 때 배관 잡음이 발생할 때, 안성 원곡면 씽크대 하수구에서 심한 썩은 냄새가 올라오는 이유는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 씻겨 내려가지 못한 음식물과 기름 슬러지가 쌓여 부패 가스를 발생시키기 때문입니다. 트랩 점검과 배관 스케일링이 필요합니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 해당 주 하수배관이 하수 흐름이 현저히 둔해져 있을 때, 안성 원곡면 변기에 들어간 플라스틱 뚜껑을 뚫어뻥으로 밀어내도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>압력을 가할수록 뚜껑이 더 깊이 끼어버릴 수 있으므로, 전문 장비로 역방향 흡입해 꺼내는 것이 가장 안전합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 제가 거주하는 부엌 싱크대가 배관에서 오물이 역류해 올라올 때, 세탁기를 베란다 우수관에 연결해서 써도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>불법입니다. 베란다 우수관은 빗물만 내려가도록 설계되어 있어 하수처리장으로 가지 않고 바로 하천으로 방류됩니다. 이곳에 세탁기 세제 섞인 물(오수)을 버리면 환경오염으로 과태료 처분을 받을 수 있으며, 세제 거품이 아랫집으로 역류하는 원인이 됩니다. 세탁기 배수는 반드시 오수관이 연결된 세탁실이나 화장실을 이용해야 합니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 우리 집 양변기가 배수구가 꽉 막혀 물이 내려가지 않을 때, 변기 물을 내리면 시원하게 안 내려가고 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 배관 좁아짐 현상입니다. 변기 S자 트랩 어딘가에 이물질이 걸려있거나, 정화조로 나가는 메인 오수관 쪽에 막힘이 진행되고 있다는 초기 증상이므로 완전히 막혀 역류하기 전에 점검을 받아야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 해당 현장의 부엌 싱크대가 이유 없이 하수 냄새가 강하게 날 때, 안성 원곡면 싱크대 하수구에서 심한 썩은 냄새가 올라오는 이유는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 씻겨 내려가지 못한 음식물과 기름 슬러지가 쌓여 부패 가스를 발생시키기 때문입니다. 트랩 점검과 배관 스케일링이 필요합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 소속 건물의 개수대가 배수 때마다 배관 울림 소리가 들릴 때, 변기 물탱크에서 삐- 하는 소리나 물방울 떨어지는 소리가 계속 납니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물탱크 내부의 필밸브나 플러시 밸브 등 부속품이 노후화되어 물이 차단되지 않는 증상으로, 방치 시 엄청난 수도 요금이 발생하므로 부속을 교체해야 합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 근처의 씽크대가 배수 속도가 눈에 띄게 느려져 불편할 때, 싱크대에서 물을 많이 버리면 화장실 바닥 하수구로 거품이 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대와 욕실 배관이 하나로 합쳐져 나가는 구조에서 합류 지점이 막힌 것입니다. 안성 원곡면 내시경 검사를 통해 막힌 교차점을 찾아 뚫어야 합니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 원곡면 지금 이곳 수세식 변기가 배수 때마다 배관 울림 소리가 들릴 때, 안성 원곡면 변기에 들어간 플라스틱 뚜껑을 뚫어뻥으로 밀어내도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>뚫어뻥을 쓰면 뚜껑이 배관 안으로 더 밀려들어갈 수 있으므로, 고성능 석션 장비로 흡입해 빼내는 방법이 가장 안전합니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

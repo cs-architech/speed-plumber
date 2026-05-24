@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -705,6 +720,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">덕양 행주동 배관막힘 – #군포변기막힘 #안산오수관초고압 세척 #시흥공장하수구 #의왕하수도역류 #수원산업단지배관</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 덕양 행주동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">덕양 행주동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 제가 머무는 곳의 건물 중앙 하수관이 물을 내릴 때 배관에서 이상 소음이 날 때, 덕양 행주동 미용실 샴푸대 하수구가 꽉 막혔는데, 독한 약품을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>미용실은 다량의 머리카락과 함께 파마약, 염색약 등 각종 화학약품이 하수구로 흘러 들어갑니다. 이 약품들이 머리카락과 엉겨 붙어 끈적하고 단단한 덩어리를 만들기 때문에 시중의 배관 세척제로는 해결되지 않습니다. 전문 흡입 장비와 스케일링 기기로 덩어리를 직접 뽑아내야 배관 손상 없이 통수됩니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 제가 머무는 곳의 식당 하수배관이 배관에서 오물이 역류해 올라올 때, 덕양 행주동 미용실 샴푸대 하수구가 꽉 막혔는데, 독한 약품을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>미용실은 다량의 머리카락과 함께 파마약, 염색약 등 각종 화학약품이 하수구로 흘러 들어갑니다. 이 약품들이 머리카락과 엉겨 붙어 끈적하고 단단한 덩어리를 만들기 때문에 시중의 배관 세척제로는 해결되지 않습니다. 강력 흡입 장치와 전문 스케일러로 덩어리를 직접 뽑아내야 배관 손상 없이 통수됩니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 해당 씽크대가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 변기에 물티슈를 한두 장 버렸는데 막혔어요. 뚫어뻥으로 해결될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 휴지와 달리 물에 녹지 않고 질긴 섬유질로 되어 있어 뚫어뻥으로 압력을 가하면 배관 더 깊은 곳으로 밀려 들어가 상황을 악화시킬 수 있습니다. 오수관 입구에 걸려있다면 전문가용 관통기로 쉽게 빼낼 수 있으니 무리한 압력을 가하지 마세요. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 살고 있는 곳의 화장실 변기가 오수가 역류하며 거품이 솟구칠 때, 아랫집 화장실 천장으로 물이 떨어진다는데, 저희 집 하수구 막힘 때문일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두 가지 가능성이 있습니다. 첫째, 하수구가 막혀 배관 연결부 틈새로 물이 넘쳐 흐른 경우(배관 누수). 둘째, 욕실 바닥 타일 사이의 방수층이 깨져 물이 스며든 경우(방수 누수). 정확한 원인은 내시경 카메라와 누수 탐지기를 통해 윗집에서 점검해야 합니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 저희 집 식당 내 배관이 출처 불분명한 악취가 실내에 퍼질 때, 인테리어 공사 후 덕양 행주동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 살고 있는 곳의 식당 오수관이 배수 속도가 눈에 띄게 느려져 불편할 때, 고기를 굽고 남은 기름을 싱크대에 그냥 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>절대 안 됩니다. 액체 상태의 기름이라도 배관 속으로 들어가면 차갑게 식어 하얗고 단단하게 굳어버려 치명적인 막힘의 1순위 주범이 됩니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 제가 거주하는 음식점 배수관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 식당 주방에 있는 그리스트랩(기름 걸름망)이 자주 넘칩니다. 덕양 행주동 상가 식당 정기 관리도 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 대형 식당이나 고깃집의 경우 그리스트랩 용량의 한계를 넘어 배관으로 기름이 유입되어 메인 배관이 막히는 경우가 잦습니다. 덕양 행주동 인근 상가 대상 정기 고압세척 배관 청소 및 유지보수 서비스를 운영하며 영업에 지장이 없도록 관리해 드리고 있습니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 관내 변기가 막힘이 심해 물이 전혀 빠지지 않을 때, 화장실 세면기 배관(트랩) 구조가 U자형인 것과 일자형인 것 중 어느 것이 좋나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>U자형(P트랩)은 물이 고여있어 하수구 악취와 벌레 차단에 탁월하며, 일자형(I트랩)은 물 빠짐이 빠르고 바닥 하수구로 바로 연결될 때 주로 사용됩니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>덕양 행주동 관내 변기가 오수가 거품과 함께 심하게 올라올 때, 덕양 행주동 지역 씽크대 막힘 해결 비용은 보통 얼마부터 시작하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 심각도와 사용되는 장비에 따라 다릅니다. 단순 석션(흡입) 작업은 5~10만 원 선에서 해결되지만, 단단한 이물질을 분쇄하는 샤프트 작업이나 고압세척, 내시경 촬영이 추가되면 비용이 상승합니다. 덕양 행주동 지역의 정확한 견적은 현장 배관 길이와 구조를 확인한 후 안내받으실 수 있습니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -684,6 +699,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#의왕싱크대막힘 #의왕하수구 #내손동배수구 #오전동싱크대역류 #관로고압세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 동작 상도1동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">동작 상도1동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 해당 욕실 세면대가 썩은 냄새가 원인도 모른 채 진동할 때, 동작 상도1동 식당 앞 외부 맨홀에서 오물이 넘치고 악취가 진동합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부에서 나오는 기름 슬러지와 물티슈 등이 최종 집수정(맨홀)으로 나가는 길목을 완전히 틀어막은 심각한 상황입니다. 단순 스프링 장비로는 불가능하며, 대형 고압세척 차량이 출동하여 배관 내부의 찌든 때를 고압의 물로 모두 갈아내야만 근본적으로 해결됩니다. 동작 상도1동 인근 고압세척 전문 업체를 즉시 수배해야 합니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 현재 위치의 세면대가 배수 속도가 눈에 띄게 느려져 불편할 때, 개수대 하부장 바닥 마루가 까맣게 썩어가고 물기가 있습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 바닥 하수구가 막혀 물이 빠지지 못하고 역류하여 마루로 스며든 증상입니다. 마루 전체가 썩기 전에 즉시 배관을 뚫어야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 건물에 있는 주방 싱크대가 원인 불명의 하수 악취가 심하게 올라올 때, 동작 상도1동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 건물 옥상에서 1층까지 이어지는 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 저층 세대 베란다로 물이 역류하는 현상이 발생하게 됩니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 제가 머무는 곳의 세면대가 하수 흐름이 현저히 둔해져 있을 때, 씽크대에서 물을 많이 버리면 화장실 바닥 하수구로 물이 뽀글뽀글 거품과 함께 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 배수관과 욕실 하수관이 바닥 아래에서 하나의 배관으로 만나 나가는 구조(Y자 티 배관)일 때 발생하는 현상입니다. 두 배관이 만나는 합류 지점 이후에 찌꺼기가 쌓여 병목 현상이 생겼기 때문입니다. 어느 쪽에서 진입하든 동작 상도1동 배관 내시경을 통해 만나는 지점의 슬러지를 남김없이 제거해야 두 곳 모두 시원하게 뚫립니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 일원의 부엌 싱크대가 하수구에서 심한 악취가 계속 올라올 때, 하수구가 막혔을 때 고압세척은 무조건 해야 하는 건가요? 너무 비쌀까 봐 걱정입니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>무조건 고압세척을 해야 하는 것은 아닙니다. 일반적인 아파트나 주택의 가지 배관 막힘은 석션기나 샤프트 장비만으로도 90% 이상 충분히 해결됩니다. 고압세척이 필요한 경우는 식당 대형 횡관이나, 건물의 메인 오수관, 흙·자갈이 유입된 맨홀 대규모 막힘처럼 대형 슬러지 제거 시에만 권장합니다. 현장에 맞는 장비만 투입하며 불필요한 작업은 하지 않습니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 해당 메인 배수관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 변기 물을 내리면 시원하게 안 내려가고 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 배관 좁아짐 현상입니다. 변기 S자 트랩 어딘가에 이물질이 걸려있거나, 정화조로 나가는 메인 오수관 쪽에 막힘이 진행되고 있다는 초기 증상이므로 완전히 막혀 역류하기 전에 점검을 받아야 합니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 저희 집 음식점 배수관이 하수 흐름이 현저히 둔해져 있을 때, 동작 상도1동 1층(또는 필로티 2층) 빌라에 사는데, 저희 집에서 물을 안 써도 하수구가 역류합니다. 누구 책임인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 '공동 메인 배관' 막힘 증상입니다. 윗층 세대들이 사용한 물이 1층이나 지하의 꺾이는 메인 배관에서 빠져나가지 못하고 가장 낮은 층인 고객님 댁으로 역류하는 것입니다. 이는 고객님 과실이 아니며, 건물 전체 세대가 비용을 1/N로 분담하여 동작 상도1동 고압세척 전문 업체를 통해 메인 횡주관을 뚫어야 합니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>동작 상도1동 일대 건물의 세면기가 하수구 역류가 거품과 함께 발생할 때, 식당 주방에 있는 그리스트랩(기름 걸름망)이 자주 넘칩니다. 동작 상도1동 상가 식당 정기 관리도 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 대형 식당이나 고깃집의 경우 그리스트랩 용량의 한계를 넘어 배관으로 기름이 유입되어 메인 배관이 막히는 경우가 잦습니다. 동작 상도1동 인근 상가 대상 정기 고압세척 배관 청소 및 유지보수 서비스를 운영하며 영업에 지장이 없도록 관리해 드리고 있습니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -689,6 +704,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#안양만안구싱크대막히는 현상 #안양하수구 #석수동싱크대역류 #안양동하수도 #박달동배수구</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 의정부 호원2동 싱크대막힘 자주 묻는 질문</div>
+      <div class="faq-sub">의정부 호원2동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 건물에 있는 식당 오수관이 배관이 완전히 막혀 통수가 안 될 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 저희 집 건물 중앙 하수관이 출처 불분명한 악취가 실내에 퍼질 때, 싱크대 배수구에서 초파리(날파리)가 계속 올라오는데 막힘과 관련이 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 음식물 찌꺼기와 부패한 슬러지가 쌓여있다는 증거입니다. 이 오염물들이 벌레의 서식지가 되며, 심해지면 점차 물이 내려가지 않는 막힘 현상으로 이어집니다. 배관 내부 청소와 함께 U자형 트랩을 점검하거나 악취 차단 트랩을 설치하는 것이 좋습니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 관내 식당 오수관이 하수 흐름이 현저히 둔해져 있을 때, 세면대 배관(트랩) 구조가 U자형인 것과 일자형인 것 중 어느 것이 좋나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>U자형(P트랩)은 물이 고여있어 하수구 악취와 벌레 차단에 탁월하며, 일자형(I트랩)은 물 빠짐이 빠르고 바닥 하수구로 바로 연결될 때 주로 사용됩니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 근처의 주 하수배관이 물 내림 시 꾸르륵 하는 소리가 들릴 때, 고양이 모래(두부 모래)를 변기에 버려도 된다고 해서 버렸는데 막혔습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>시중의 두부 모래가 물에 녹는다고 광고하지만, 다량이 한꺼번에 들어가거나 배관 수압이 약할 경우 배관 내부에서 찰흙처럼 찐득하게 뭉쳐버립니다. 이 경우 일반적인 방법으로는 뚫기 어려우며 강력한 석션기나 배관 스케일링 장비가 필요합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 점검 중인 본관 하수관이 하수구에서 심한 악취가 계속 올라올 때, 하수구가 막혔을 때 고압세척은 무조건 해야 하는 건가요? 너무 비쌀까 봐 걱정입니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>무조건 고압세척을 해야 하는 것은 아닙니다. 일반적인 아파트나 주택의 가지 배관 막힘은 석션기나 샤프트 장비만으로도 90% 이상 충분히 해결됩니다. 고압세척은 식당 내 굵은 횡주관이나, 건물의 메인 오수관, 토사가 유입된 외부 맨홀 막힘처럼 대규모 슬러지 처리 때만 권장합니다. 불필요한 과잉 처리 없이 현장 상황에 딱 맞는 장비만 씁니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 현장 내 화장실 세면기가 배수가 유독 느려 답답함을 느낄 때, 고양이 모래(두부 모래)를 변기에 버려도 된다고 해서 버렸는데 막혔습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>시중의 두부 모래가 물에 녹는다고 광고하지만, 다량이 한꺼번에 들어가거나 배관 수압이 약할 경우 배관 내부에서 찰흙처럼 찐득하게 뭉쳐버립니다. 이 경우 일반적인 방법으로는 뚫기 어려우며 강력한 석션기나 배관 스케일링 장비가 필요합니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 해당 변기가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 의정부 호원2동 지역 부엌 싱크대 막힘 해결 비용은 보통 얼마부터 시작하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 심각도와 사용되는 장비에 따라 다릅니다. 단순 석션(흡입) 작업은 5~10만 원 선에서 해결되지만, 단단한 이물질을 분쇄하는 샤프트 작업이나 고압세척, 내시경 촬영이 추가되면 비용이 상승합니다. 의정부 호원2동 지역의 정확한 견적은 현장 배관 길이와 구조를 확인한 후 안내받으실 수 있습니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 호원2동 이 지역 식당 내 배관이 완전히 막혀 배수가 전혀 안 될 때, 싱크대 하부장 바닥 마루가 까맣게 썩어가고 물기가 있습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 바닥 하수구가 막혀 물이 빠지지 못하고 역류하여 마루로 스며든 증상입니다. 마루 전체가 썩기 전에 즉시 배관을 뚫어야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

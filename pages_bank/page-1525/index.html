@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -667,6 +682,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원팔달구하수구폐색 #수원상가변기 #팔달구싱크대역류 #하수구고압세척 #배관청소</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 노원 중계본동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">노원 중계본동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 점검 중인 화장실 세면기가 막힘이 심해 물이 전혀 빠지지 않을 때, 노원 중계본동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관(빗물관)은 옥상부터 1층까지 이어진 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 수압이 높아져 1~3층 저층 베란다로 역류가 발생합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 쪽 식당 하수배관이 하수구에서 심한 악취가 계속 올라올 때, 인테리어 공사 후 노원 중계본동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 정밀 진단을 위한 내시경 검사를 선행하는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 근처의 세면기가 오수가 역류하며 거품이 솟구칠 때, 내시경 카메라 촬영 비용은 별도인가요? 꼭 봐야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>노원 중계본동 지역 내 작업 시 기본적인 내시경 점검은 서비스로 포함되어 진행되는 경우가 많습니다. 내시경을 봐야 하는 이유는, 맹목적으로 구멍만 뚫는 것이 아니라 이물질의 종류(기름인지 시멘트인지), 배관의 역구배(기울기 불량) 여부, 작업 후 배관이 100% 깨끗해졌는지 고객님께서 직접 눈으로 확인하시고 안심하실 수 있도록 하기 위함입니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 해당 욕실 배수구가 원인 불명의 하수 악취가 심하게 올라올 때, 식기세척기를 돌릴 때마다 싱크대 하수구에서 물이 뿜어져 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>식기세척기는 한 번에 많은 양의 물을 강하게 펌핑하여 배출하므로, 배관 내부에 찌꺼기가 조금만 쌓여있어도 수압을 견디지 못하고 역류하게 됩니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 이 지역 건물 중앙 하수관이 하수 흐름이 현저히 둔해져 있을 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 건물에 있는 변기가 오수가 거품과 함께 심하게 올라올 때, 고기를 굽고 남은 기름을 씽크대에 그냥 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>절대 안 됩니다. 액체 상태의 기름이라도 배관 속으로 들어가면 차갑게 식어 하얗고 단단하게 굳어버려 치명적인 막힘의 1순위 주범이 됩니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 일원의 욕실 세면대가 오수가 역류하며 거품이 솟구칠 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 쪽 욕실 바닥 하수구가 원인 불명의 하수 악취가 심하게 올라올 때, 고양이 모래(두부 모래)를 변기에 버려도 된다고 해서 버렸는데 막혔습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>시중의 두부 모래가 물에 녹는다고 광고하지만, 다량이 한꺼번에 들어가거나 배관 수압이 약할 경우 배관 내부에서 찰흙처럼 찐득하게 뭉쳐버립니다. 이 경우 일반적인 방법으로는 뚫기 어려우며 강력한 석션기나 배관 스케일링 장비가 필요합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>노원 중계본동 저희 집 메인 배수관이 오수가 거품과 함께 심하게 올라올 때, 변기에 물티슈를 한 장씩만 버리는 건 수압으로 내려가지 않나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 물에 풀리지 않는 합성 섬유이므로 단 한 장이라도 배관 굴곡진 S자 트랩이나 오수관에 걸려 거대한 막힘을 유발할 수 있습니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

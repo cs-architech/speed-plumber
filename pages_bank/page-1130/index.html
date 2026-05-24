@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -718,6 +733,104 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#부천하수구막힘 #부천배관막힘 #부천변기뚫는업체 #부천설비업체 #부천싱크대역류</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 송파 거여1동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">송파 거여1동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 현장 내 수세식 변기가 배수 속도가 눈에 띄게 느려져 불편할 때, 막힌 변기에 샴푸나 린스를 듬뿍 짜 넣고 기다리면 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 해 뚫릴 수 있으나, 고체 이물질이나 덩어리로 인한 막힘에는 전혀 효과가 없습니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 건물에 있는 메인 배수관이 오수가 역류하며 거품이 솟구칠 때, 세면대 물마개(팝업)가 쏙 들어가서 안 올라옵니다. 배관이 막힌 건가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 세면대 팝업 부속품 내부에 물때와 머리카락이 끼어 스프링이 고장 난 팝업 불량입니다. 이 경우 뚫는 작업이 아니라 기존 팝업과 트랩을 해체하고 새로운 자동 팝업으로 교체해야 물이 시원하게 내려갑니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 우리 집 욕실 바닥 배수구가 물을 사용할 때 배관 잡음이 발생할 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 정밀 진단을 위한 내시경 검사를 선행하는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 일원의 수세식 변기가 썩은 냄새가 원인도 모른 채 진동할 때, 송파 거여1동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 쪽 세면기가 오수가 거품과 함께 심하게 올라올 때, 송파 거여1동 변기 물을 내릴 때마다 바닥 백시멘트 사이로 더러운 물이 새어 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기와 오수관을 연결하는 정심(플랜지) 부속이 이탈했거나 고무 패킹이 삭은 증상으로, 변기를 재설치하여 틈새를 완벽히 밀봉해야 합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 현재 위치의 화장실 세면기가 하수구에서 심한 악취가 계속 올라올 때, 송파 거여1동 미용실 샴푸대 하수구가 꽉 막혔는데, 독한 약품을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>미용실은 다량의 머리카락과 함께 파마약, 염색약 등 각종 화학약품이 하수구로 흘러 들어갑니다. 이 약품들이 머리카락과 엉겨 붙어 끈적하고 단단한 덩어리를 만들기 때문에 시중의 배관 세척제로는 해결되지 않습니다. 전문 흡입 장비와 스케일링 기기로 덩어리를 직접 뽑아내야 배관 손상 없이 통수됩니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 관할 건물 욕실 바닥 배수구가 썩은 냄새가 원인도 모른 채 진동할 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 우리 집 손 씻는 대가 하수구 역류가 거품과 함께 발생할 때, 단순 스프링(전동 관통기) 작업과 고압세척의 차이점은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>스프링은 찌꺼기 사이에 구멍만 내어 임시로 물길을 여는 반면, 고압세척은 초강력 수압으로 배관 내벽의 모든 슬러지를 새 배관처럼 복원하는 근본 해결책입니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 일원의 욕실 하수 배수구가 출처 불분명한 악취가 실내에 퍼질 때, 송파 거여1동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관(빗물관)은 옥상부터 1층까지 이어진 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 수압이 높아져 1~3층 저층 베란다로 역류가 발생합니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>송파 거여1동 일원의 음식점 배수관이 이유 없이 하수 냄새가 강하게 날 때, 화장실 바닥 하수구에서 날파리나 나방파리가 자꾸 기어 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 내부에 쌓인 물때와 비누 찌꺼기가 벌레의 번식처가 된 것입니다. 하수구 내부 스케일링 청소와 함께 악취 차단용 트랩을 설치해야 합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

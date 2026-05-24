@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -670,6 +685,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#광명소하동싱크대 #소하동하수구뚫음 #배관고압세척 #싱크대악취제거 #주방배수구</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 광명 소하1동 싱크대막힘 자주 묻는 질문</div>
+      <div class="faq-sub">광명 소하1동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 관할 건물 욕실 배수구가 출처 불분명한 악취가 실내에 퍼질 때, 음식물 쓰레기를 변기에 버리면 편한데 왜 문제가 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>뼈, 가시, 질긴 채소 섬유질이 오수관로에 걸리고 그 위로 기름기가 엉겨 붙어 해당 세대뿐만 아니라 건물 전체의 메인 오수 배관 막힘을 초래합니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 지금 이곳 화장실 변기가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 막힌 변기에 샴푸나 린스를 듬뿍 짜 넣고 기다리면 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 해 뚫릴 수 있으나, 고체 이물질이나 덩어리로 인한 막힘에는 전혀 효과가 없습니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 저희 집 음식점 배수관이 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 변기 물탱크에서 삐- 하는 소리나 물방울 떨어지는 소리가 계속 납니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물탱크 내부의 필밸브나 플러시 밸브 등 부속품이 노후화되어 물이 차단되지 않는 증상으로, 방치 시 엄청난 수도 요금이 발생하므로 부속을 교체해야 합니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 현장 내 욕실 바닥 하수구가 하수구가 완전히 폐색돼 물이 안 빠질 때, 화장실 바닥 하수구에서 날파리나 나방파리가 자꾸 기어 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 내부에 쌓인 물때와 비누 찌꺼기가 벌레의 번식처가 된 것입니다. 하수구 내부 스케일링 청소와 함께 악취 차단용 트랩을 설치해야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 제가 머무는 곳의 손 씻는 대가 오수가 거품과 함께 심하게 올라올 때, 광명 소하1동 샤워를 하면 바닥에 물이 한강처럼 차오르고 아주 늦게 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 유가 아래의 U자 트랩 쪽에 다량의 머리카락과 석회질이 엉켜 물길을 완전히 좁혀놓은 상태로, 덮개를 열어 엉킨 것들을 제거해야 합니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 저희 집 화장실 세면기가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 광명 소하1동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빗물 전용 우수관은 옥상부터 최하층까지 연결된 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 저층(1~3층) 베란다 우수관으로 물이 역류해 올라옵니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 쪽 씽크대가 이유 없이 하수 냄새가 강하게 날 때, 고양이 모래(두부 모래)를 변기에 버려도 된다고 해서 버렸는데 막혔습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>시중의 두부 모래가 물에 녹는다고 광고하지만, 다량이 한꺼번에 들어가거나 배관 수압이 약할 경우 배관 내부에서 찰흙처럼 찐득하게 뭉쳐버립니다. 이 경우 일반적인 방법으로는 뚫기 어려우며 강력한 석션기나 배관 스케일링 장비가 필요합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>광명 소하1동 저희 집 본관 하수관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 변기 물을 내리면 시원하게 안 내려가고 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 배관 좁아짐 현상입니다. 변기 S자 트랩 어딘가에 이물질이 걸려있거나, 정화조로 나가는 메인 오수관 쪽에 막힘이 진행되고 있다는 초기 증상이므로 완전히 막혀 역류하기 전에 점검을 받아야 합니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

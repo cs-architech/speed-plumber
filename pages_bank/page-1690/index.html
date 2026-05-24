@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -686,6 +701,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원영통동하수구막힘 #수원영통동오수관막힘 #영통욕실배수구 #수원하수구업체 #배관고압세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 원미 원미2동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">원미 원미2동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 저희 집 욕실 배수구가 물을 사용할 때 배관 잡음이 발생할 때, 음식물 쓰레기를 변기에 버리면 편한데 왜 문제가 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>뼈, 가시, 질긴 채소 섬유질이 오수관로에 걸리고 그 위로 기름기가 엉겨 붙어 해당 세대뿐만 아니라 건물 전체의 메인 오수 배관 막힘을 초래합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 현장 내 수세식 변기가 원인 불명의 하수 악취가 심하게 올라올 때, 인테리어 공사 후 원미 원미2동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 정밀 진단을 위한 내시경 검사를 선행하는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 이 현장의 건물 중앙 하수관이 오수가 거품과 함께 심하게 올라올 때, 세탁기를 베란다 우수관에 연결해서 써도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>불법입니다. 베란다 우수관은 빗물만 내려가도록 설계되어 있어 하수처리장으로 가지 않고 바로 하천으로 방류됩니다. 이곳에 세탁기 세제 섞인 물(오수)을 버리면 환경오염으로 과태료 처분을 받을 수 있으며, 세제 거품이 아랫집으로 역류하는 원인이 됩니다. 세탁기 배수는 반드시 오수관이 연결된 세탁실이나 화장실을 이용해야 합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 살고 있는 곳의 화장실 세면기가 하수구 역류가 거품과 함께 발생할 때, 원미 원미2동 세면대 물마개(팝업)가 쏙 들어가서 다시 올라오지 않습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 팝업 내부 스프링 부식이나 이물질 끼임으로 인한 부속 고장입니다. 청소가 용이한 새 자동 팝업으로 전체를 교체해야 합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 점검 중인 식당 하수배관이 오수가 거품과 함께 심하게 올라올 때, 단순 스프링(전동 관통기) 작업과 고압세척의 차이점은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>스프링은 찌꺼기 사이에 구멍만 내어 임시로 물길을 여는 반면, 고압세척은 초강력 수압으로 배관 내벽의 모든 슬러지를 처음 상태로 되돌리는 근본적인 해법입니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 관내 욕실 하수 배수구가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 고기를 굽고 남은 기름을 싱크대에 그냥 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>절대 안 됩니다. 액체 상태의 기름이라도 배관 속으로 들어가면 차갑게 식어 하얗고 단단하게 굳어버려 치명적인 막힘의 1순위 주범이 됩니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 건물 내 양변기가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 원미 원미2동 1층(또는 필로티 2층) 빌라에 사는데, 저희 집에서 물을 안 써도 하수구가 역류합니다. 누구 책임인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 '공동 메인 배관' 막힘 증상입니다. 윗층 세대들이 사용한 물이 1층이나 지하의 꺾이는 메인 배관에서 빠져나가지 못하고 가장 낮은 층인 고객님 댁으로 역류하는 것입니다. 이는 고객님 과실이 아니며, 건물 전체 세대가 비용을 1/N로 분담하여 원미 원미2동 고압세척 전문 업체를 통해 메인 횡주관을 뚫어야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>원미 원미2동 지금 이곳 욕실 바닥 배수구가 배관이 완전히 막혀 통수가 안 될 때, 변기 물을 내리면 시원하게 안 내려가고 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>전형적인 배관 좁아짐 현상입니다. 변기 S자 트랩 어딘가에 이물질이 걸려있거나, 정화조로 나가는 메인 오수관 쪽에 막힘이 진행되고 있다는 초기 증상이므로 완전히 막혀 역류하기 전에 점검을 받아야 합니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

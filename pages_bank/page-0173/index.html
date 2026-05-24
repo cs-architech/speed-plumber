@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -697,6 +712,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원호매실동하수구막힘 #수원호매실동배관막힘 #호매실동싱크대역류 #수원하수구고압세척 #배관기름제거전문</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 양천 신정3동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">양천 신정3동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 저희 집 변기가 배수가 유독 느려 답답함을 느낄 때, 식기세척기를 돌릴 때마다 부엌 싱크대 하수구에서 물이 뿜어져 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>식기세척기는 한 번에 많은 양의 물을 강하게 펌핑하여 배출하므로, 배관 내부에 찌꺼기가 조금만 쌓여있어도 수압을 견디지 못하고 역류하게 됩니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 쪽 화장실 변기가 완전히 막혀 배수가 전혀 안 될 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 건물 내 세면기가 하수 흐름이 현저히 둔해져 있을 때, 양천 신정3동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 최신 배관 전문 장비로 원인 물질을 근본부터 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 제 거처의 식당 내 배관이 오수가 거품과 함께 심하게 올라올 때, 양천 신정3동 싱크대 주름관 내부가 까맣게 변색되었는데 교체해야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>곰팡이와 기름때가 고착된 것으로 악취와 세균 번식의 원인이 되므로, 주기적으로 새 주름관으로 교체해 주는 것이 가장 위생적입니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 소속 건물의 욕실 하수 배수구가 배수구가 꽉 막혀 물이 내려가지 않을 때, 인테리어 공사 후 양천 신정3동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 소속 건물의 건물 중앙 하수관이 배수가 유독 느려 답답함을 느낄 때, 아랫집 화장실 천장 점검구 쪽에서 물이 뚝뚝 떨어집니다. 하수구 탓일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>하수구 막힘으로 인해 배관 연결부위 틈새로 물이 넘쳤거나(배관 누수), 바닥 타일의 방수층이 깨진(방수 누수) 것이므로 정확한 탐지가 병행되어야 합니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 우리 집 식당 하수배관이 하수구 역류가 거품과 함께 발생할 때, 식기세척기를 돌릴 때마다 싱크대 하수구에서 물이 뿜어져 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>식기세척기는 한 번에 많은 양의 물을 강하게 펌핑하여 배출하므로, 배관 내부에 찌꺼기가 조금만 쌓여있어도 수압을 견디지 못하고 역류하게 됩니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 현장 내 화장실 변기가 하수 흐름이 현저히 둔해져 있을 때, 겨울철 세탁실 배수구가 꽁꽁 얼어서 물이 안 내려갑니다. 뜨거운 물을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>갑자기 펄펄 끓는 물을 부으면 온도 차이로 인해 배관이 파열될 위험이 있습니다. 헤어드라이어나 수건을 감싸고 60도 이하의 미지근한 물부터 천천히 부어 녹이는 것이 안전합니다. 얼음 구간이 깊다면 전문 업체의 해빙기(스팀 장비) 작업이 필요합니다. 정밀 진단을 위한 내시경 검사를 선행하는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>양천 신정3동 건물 내 세면기가 하수 흐름이 현저히 둔해져 있을 때, 변기 물탱크에서 삐- 하는 소리나 물방울 떨어지는 소리가 계속 납니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물탱크 내부의 필밸브나 플러시 밸브 등 부속품이 노후화되어 물이 차단되지 않는 증상으로, 방치 시 엄청난 수도 요금이 발생하므로 부속을 교체해야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

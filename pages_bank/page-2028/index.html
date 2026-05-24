@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -685,6 +700,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#안산하수구막힘 #안산배관막힘 #안산싱크대막힘 #안산변기뚫음 #안산고압세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 도봉 창2동 싱크대막힘 자주 묻는 질문</div>
+      <div class="faq-sub">도봉 창2동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 건물에 있는 수세식 변기가 하수 흐름이 현저히 둔해져 있을 때, 하수구가 막혔을 때 고압세척은 무조건 해야 하는 건가요? 너무 비쌀까 봐 걱정입니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>무조건 고압세척을 해야 하는 것은 아닙니다. 일반적인 아파트나 주택의 가지 배관 막힘은 석션기나 샤프트 장비만으로도 90% 이상 충분히 해결됩니다. 고압세척이 필요한 경우는 식당 대형 횡관이나, 건물의 메인 오수관, 흙·자갈이 유입된 맨홀 대규모 막힘처럼 대형 슬러지 제거 시에만 권장합니다. 현장에 맞는 장비만 투입하며 불필요한 작업은 하지 않습니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 제가 머무는 곳의 주 하수배관이 완전히 막혀 배수가 전혀 안 될 때, 하수구 뚫는 전문 장비 중 '플렉스 샤프트'는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>고속 회전 체인 장치가 관 내벽에 굳어있는 굳은 기름때와 이물질을 갈아내어 배관 내경을 원상 복구하는 최신 스케일링 기기입니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 제 거처의 식당 내 배관이 배수가 유독 느려 답답함을 느낄 때, 도봉 창2동 전세(또는 월세)로 살고 있는데 하수구나 변기가 막혔습니다. 수리비는 세입자와 집주인 중 누가 내야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 '원인'에 따라 다릅니다. 세입자의 부주의(물티슈, 음식물 쓰레기, 장난감 투척 등)로 막혔다면 세입자가 부담해야 합니다. 하지만 배관 자체의 노후화, 구조적 결함, 건물 외부 나무뿌리 침투 등으로 인한 막힘이라면 임대인(집주인)이 수리할 의무가 있습니다. 전문가의 내시경 기록물을 증빙으로 제출하면 갈등을 효과적으로 해소할 수 있습니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 지금 이곳 욕실 배수구가 하수구가 완전히 폐색돼 물이 안 빠질 때, 도봉 창2동 세면대 물마개(팝업)가 쏙 들어가서 다시 올라오지 않습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 팝업 내부 스프링 부식이나 이물질 끼임으로 인한 부속 고장입니다. 청소가 용이한 새 자동 팝업으로 전체를 교체해야 합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 해당 현장의 씽크대가 오수가 거품과 함께 심하게 올라올 때, 화장실 바닥 하수구에서 날파리나 나방파리가 자꾸 기어 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 내부에 쌓인 물때와 비누 찌꺼기가 벌레의 번식처가 된 것입니다. 하수구 내부 스케일링 청소와 함께 악취 차단용 트랩을 설치해야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 현재 위치의 건물 중앙 하수관이 원인 불명의 하수 악취가 심하게 올라올 때, 아파트 베란다 우수관 막힘이나 역류 피해는 누가 책임지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 아파트 공용 시설물에 해당합니다. 개별 세대에서 인테리어 공사 등으로 배관을 임의로 훼손한 게 아니라면, 우수관 역류로 인한 막힘 뚫음 비용 및 도배/장판 등의 피해 보상은 원칙적으로 관리사무소(입주자대표회의)에서 처리해야 합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 건물 내 좌변기가 하수 흐름이 현저히 둔해져 있을 때, 하수구 뚫는 전문 장비 중 '플렉스 샤프트'는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빠르게 회전하는 특수 체인이 배관 내벽의 굳은 기름때와 이물질을 갈아내어 내경을 처음 크기로 완전히 복원하는 최신 전용 장비입니다. 최신 배관 전문 장비로 원인 물질을 근본부터 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 현재 위치의 식당 하수배관이 이유 없이 하수 냄새가 강하게 날 때, 도봉 창2동 하수구 뚫는 장비 중에 '플렉스 샤프트'는 기존 스프링 장비와 어떻게 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기존 전동 스프링 장비는 배관 중앙에 구멍만 내고 지나가기 때문에 기름때가 재결합해 단기간에 재막히는 약점이 있습니다. 반면 플렉스 샤프트는 회전 체인이 내벽 기름때를 갈아내듯 완전 분쇄하여 새 배관처럼 스케일링해 주는 최신 특수 장비로, 배수 유지 기간이 비교할 수 없을 만큼 깁니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 창2동 관내 식당 내 배관이 물 내림 시 꾸르륵 하는 소리가 들릴 때, 세면대 물마개(팝업)가 쏙 들어가서 안 올라옵니다. 배관이 막힌 건가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 세면대 팝업 부속품 내부에 물때와 머리카락이 끼어 스프링이 고장 난 팝업 불량입니다. 이 경우 뚫는 작업이 아니라 기존 팝업과 트랩을 해체하고 새로운 자동 팝업으로 교체해야 물이 시원하게 내려갑니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -683,6 +698,104 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원장안구하수구 #정자동싱크대백플로우 #영화동변기통수는곳 #수원하수도고압세척 #관로청소</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 마포 공덕동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">마포 공덕동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 건물 내 개수대가 배수 속도가 눈에 띄게 느려져 불편할 때, 싱크대 하부장 바닥 마루가 까맣게 썩어가고 물기가 있습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 바닥 하수구가 막혀 물이 빠지지 못하고 역류하여 마루로 스며든 증상입니다. 마루 전체가 썩기 전에 즉시 배관을 뚫어야 합니다. 최신 배관 전문 장비로 원인 물질을 근본부터 제거하는 게 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 건물에 있는 화장실 세면기가 썩은 냄새가 원인도 모른 채 진동할 때, 변기에 물티슈를 한두 장 버렸는데 막혔어요. 뚫어뻥으로 해결될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 휴지와 달리 물에 녹지 않고 질긴 섬유질로 되어 있어 뚫어뻥으로 압력을 가하면 배관 더 깊은 곳으로 밀려 들어가 상황을 악화시킬 수 있습니다. 오수관 입구에 걸려있다면 전문가용 관통기로 쉽게 빼낼 수 있으니 무리한 압력을 가하지 마세요. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 건물에 있는 건물 중앙 하수관이 배수가 유독 느려 답답함을 느낄 때, 아파트 베란다 우수관 막힘이나 역류 피해는 누가 책임지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 아파트 공용 시설물에 해당합니다. 개별 세대에서 인테리어 공사 등으로 배관을 임의로 훼손한 게 아니라면, 우수관 역류로 인한 막힘 뚫음 비용 및 도배/장판 등의 피해 보상은 원칙적으로 관리사무소(입주자대표회의)에서 처리해야 합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 지금 이곳 메인 배수관이 배수 때마다 배관 울림 소리가 들릴 때, 겨울철 세탁실 배수구가 꽁꽁 얼어서 물이 안 내려갑니다. 뜨거운 물을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>갑자기 펄펄 끓는 물을 부으면 온도 차이로 인해 배관이 파열될 위험이 있습니다. 헤어드라이어나 수건을 감싸고 60도 이하의 미지근한 물부터 천천히 부어 녹이는 것이 안전합니다. 얼음 구간이 깊다면 전문 업체의 해빙기(스팀 장비) 작업이 필요합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 현장 내 욕실 바닥 하수구가 하수구가 완전히 폐색돼 물이 안 빠질 때, 화장실 바닥 하수구에서 날파리나 나방파리가 자꾸 기어 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 내부에 쌓인 물때와 비누 찌꺼기가 벌레의 번식처가 된 것입니다. 하수구 내부 스케일링 청소와 함께 악취 차단용 트랩을 설치해야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 일원의 수세식 변기가 물 빠짐이 갈수록 더뎌져 곤란할 때, 마포 공덕동 샤워를 하면 바닥에 물이 한강처럼 차오르고 아주 늦게 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 유가 아래의 U자 트랩 쪽에 다량의 머리카락과 석회질이 엉켜 물길을 완전히 좁혀놓은 상태로, 덮개를 열어 엉킨 것들을 제거해야 합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 일원의 씽크대가 이유 없이 하수 냄새가 강하게 날 때, 변기에서 계속 물방울 떨어지는 소리가 나고 수도 요금이 많이 나왔어요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기 물탱크 내부의 부속품(필밸브, 플러시밸브 등)이 노후화되어 물이 제대로 차단되지 않고 계속 새어 나가는 증상입니다. 막힘 문제는 아니지만, 방치 시 엄청난 수도 요금 폭탄을 맞을 수 있으므로 즉시 부속품 전체 교체를 진행해야 합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 근처의 세면기가 하수가 부글거리며 역류가 심할 때, 아랫집 화장실 천장으로 물이 떨어진다는데, 저희 집 하수구 막힘 때문일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두 가지 가능성이 있습니다. 첫째, 하수구가 막혀 배관 연결부 틈새로 물이 넘쳐 흐른 경우(배관 누수). 둘째, 욕실 바닥 타일 사이의 방수층이 깨져 물이 스며든 경우(방수 누수). 정확한 원인은 내시경 카메라와 누수 탐지기를 통해 윗집에서 점검해야 합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 건물 내 건물 중앙 하수관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 싱크대에서 물을 많이 버리면 화장실 바닥 하수구로 거품이 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대와 욕실 배관이 하나로 합쳐져 나가는 구조에서 합류 지점이 막힌 것입니다. 마포 공덕동 내시경 검사를 통해 막힌 교차점을 찾아 뚫어야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>마포 공덕동 건물 내 주 하수배관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 마포 공덕동 심야 시간에 하수구가 역류하는데 야간 출동이 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>마포 공덕동 관내 24시간 응급 출동 업체들이 안내 페이지에 정리돼 있습니다. 하수 역류를 내버려 두면 침수 같은 2차 손해가 생기므로, 서비스 안내 페이지에서 심야·주말 출동 가능 업체를 찾아보세요. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

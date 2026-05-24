@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -688,6 +703,104 @@ a{text-decoration:none;color:inherit}
       <p class="review-para">#수원매산동하수구막힘 #수원매산동씽크대뚫음 #수원변기막힘
 #수원하수구 #매산동싱크대</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 만안 안양7동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">만안 안양7동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 제 거처의 욕실 배수구가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 고기를 굽고 남은 기름을 싱크대에 그냥 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>절대 안 됩니다. 액체 상태의 기름이라도 배관 속으로 들어가면 차갑게 식어 하얗고 단단하게 굳어버려 치명적인 막힘의 1순위 주범이 됩니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 해당 현장의 양변기가 하수구가 완전히 폐색돼 물이 안 빠질 때, 만안 안양7동 아파트 화장실에서 다른 집 담배 냄새나 하수구 악취가 심하게 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>화장실 환풍기 댐퍼 불량이나 바닥 하수구의 '봉수(냄새 차단용 고인 물)'가 말랐을 때 발생하는 현상입니다. 하수구를 정기적으로 청소하고 물을 부어주며, 필요시 만안 안양7동 설비 업체를 통해 악취 차단 전용 트랩을 설치하면 99% 해결됩니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 살고 있는 곳의 부엌 싱크대가 배수 속도가 눈에 띄게 느려져 불편할 때, 고양이 두부 모래를 변기에 버렸더니 완전히 막혀버렸습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두부 모래는 다량의 물을 흡수하면 진흙처럼 끈적해져 배관 전체를 꽉 막아버리므로, 무리하게 물을 내리지 말고 전문 스케일링을 받아야 합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 해당 건물 수세식 변기가 이유 없이 하수 냄새가 강하게 날 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 만안 안양7동 변기 안 뜯고 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 우리 집 세면대가 배수 때마다 배관 울림 소리가 들릴 때, 씽크대 배수구에서 초파리(날파리)가 계속 올라오는데 막힘과 관련이 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 음식물 찌꺼기와 부패한 슬러지가 쌓여있다는 증거입니다. 이 오염물들이 벌레의 서식지가 되며, 심해지면 점차 물이 내려가지 않는 막힘 현상으로 이어집니다. 배관 내부 청소와 함께 U자형 트랩을 점검하거나 악취 차단 트랩을 설치하는 것이 좋습니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 일대 건물의 욕실 하수 배수구가 원인 불명의 하수 악취가 심하게 올라올 때, 인테리어 공사(리모델링) 직후 만안 안양7동 화장실 바닥 하수구가 막혔어요. 백시멘트가 들어간 것 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 흘러 들어간 백시멘트나 메지 가루가 배관 속에서 암석처럼 굳어버린 심각한 상황입니다. 무리하게 뚫으려 하면 배관이 손상될 수 있으므로, 전용 체인 장착 스케일링 장비로 배관 보호 상태에서 시멘트만 섬세하게 파쇄·흡입하는 고난도 작업이 필요합니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 우리 집 양변기가 배수 때마다 배관 울림 소리가 들릴 때, 인테리어 공사 후 만안 안양7동 화장실 배수구가 막혔는데 백시멘트 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 소속 건물의 변기가 오수가 거품과 함께 심하게 올라올 때, 식기세척기를 돌릴 때마다 개수대 하수구에서 물이 뿜어져 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>식기세척기는 한 번에 많은 양의 물을 강하게 펌핑하여 배출하므로, 배관 내부에 찌꺼기가 조금만 쌓여있어도 수압을 견디지 못하고 역류하게 됩니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 제가 거주하는 씽크대가 배수구가 꽉 막혀 물이 내려가지 않을 때, 만안 안양7동 변기 물을 내릴 때마다 바닥 백시멘트 사이로 더러운 물이 새어 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기와 오수관을 연결하는 정심(플랜지) 부속이 이탈했거나 고무 패킹이 삭은 증상으로, 변기를 재설치하여 틈새를 완벽히 밀봉해야 합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>만안 안양7동 쪽 음식점 배수관이 배수가 유독 느려 답답함을 느낄 때, 식기세척기를 돌릴 때마다 싱크대 하수구에서 물이 뿜어져 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>식기세척기는 한 번에 많은 양의 물을 강하게 펌핑하여 배출하므로, 배관 내부에 찌꺼기가 조금만 쌓여있어도 수압을 견디지 못하고 역류하게 됩니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

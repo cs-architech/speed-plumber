@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -680,6 +695,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#안산선부동싱크대막힘 #안산선부동하수구 #선부동수도관청소 #싱크대악취제거 #싱크대배수구역류</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 권선 입북동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">권선 입북동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 제 거처의 건물 중앙 하수관이 이유 없이 하수 냄새가 강하게 날 때, 권선 입북동 세면대 물마개(팝업)가 쏙 들어가서 다시 올라오지 않습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 팝업 내부 스프링 부식이나 이물질 끼임으로 인한 부속 고장입니다. 청소가 용이한 새 자동 팝업으로 전체를 교체해야 합니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 소속 건물의 식당 하수배관이 하수가 부글거리며 역류가 심할 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 이 현장의 욕실 배수구가 썩은 냄새가 원인도 모른 채 진동할 때, 변기에서 계속 물방울 떨어지는 소리가 나고 수도 요금이 많이 나왔어요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기 물탱크 내부의 부속품(필밸브, 플러시밸브 등)이 노후화되어 물이 제대로 차단되지 않고 계속 새어 나가는 증상입니다. 막힘 문제는 아니지만, 방치 시 엄청난 수도 요금 폭탄을 맞을 수 있으므로 즉시 부속품 전체 교체를 진행해야 합니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 저희 집 식당 하수배관이 배수가 유독 느려 답답함을 느낄 때, 샤워 후 화장실 바닥 하수구로 물이 안 빠져서 한참 기다려야 해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>욕실 하수구 막힘의 90% 이상은 '머리카락'과 '비누 찌꺼기'가 엉켜 발생합니다. 하수구 덮개(유가)를 열고 내부의 트랩을 꺼내 엉킨 머리카락을 1차로 제거해 보시고, 그래도 안 빠진다면 하수관 깊은 곳에 슬러지가 쌓인 것이니 전문 장비 투입이 필요합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 건물에 있는 변기가 하수구가 완전히 폐색돼 물이 안 빠질 때, 욕실 세면대 물마개(팝업)가 쏙 들어가서 안 올라옵니다. 배관이 막힌 건가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 세면대 팝업 부속품 내부에 물때와 머리카락이 끼어 스프링이 고장 난 팝업 불량입니다. 이 경우 뚫는 작업이 아니라 기존 팝업과 트랩을 해체하고 새로운 자동 팝업으로 교체해야 물이 시원하게 내려갑니다. 전문 배관 장비를 투입해 원인 이물질을 확실히 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 이 현장의 본관 하수관이 물을 사용할 때 배관 잡음이 발생할 때, 변기 물탱크에서 삐- 하는 소리나 물방울 떨어지는 소리가 계속 납니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물탱크 내부의 필밸브나 플러시 밸브 등 부속품이 노후화되어 물이 차단되지 않는 증상으로, 방치 시 엄청난 수도 요금이 발생하므로 부속을 교체해야 합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 일원의 본관 하수관이 하수가 부글거리며 역류가 심할 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 관내 식당 하수배관이 물을 내릴 때 배관에서 이상 소음이 날 때, 식기세척기를 돌릴 때마다 싱크대 하수구에서 물이 뿜어져 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>식기세척기는 한 번에 많은 양의 물을 강하게 펌핑하여 배출하므로, 배관 내부에 찌꺼기가 조금만 쌓여있어도 수압을 견디지 못하고 역류하게 됩니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>권선 입북동 제 거처의 세면대가 배관에서 오물이 역류해 올라올 때, 권선 입북동 지역 씽크대 막힘 해결 비용은 보통 얼마부터 시작하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 심각도와 사용되는 장비에 따라 다릅니다. 단순 석션(흡입) 작업은 5~10만 원 선에서 해결되지만, 단단한 이물질을 분쇄하는 샤프트 작업이나 고압세척, 내시경 촬영이 추가되면 비용이 상승합니다. 권선 입북동 지역의 정확한 견적은 현장 배관 길이와 구조를 확인한 후 안내받으실 수 있습니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -871,6 +886,95 @@ a{text-decoration:none;color:inherit}
 #광명광명동싱크대막힘
 #의왕삼동싱크대막힘</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 안성 고삼면 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">안성 고삼면 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 근처의 욕실 하수 배수구가 물을 내릴 때 배관에서 이상 소음이 날 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 일대 건물의 욕실 하수 배수구가 배관이 완전히 막혀 통수가 안 될 때, 안성 고삼면 하수구 뚫는 장비 중에 '플렉스 샤프트'는 기존 스프링 장비와 어떻게 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기존 전동 스프링 장비는 배관 중앙에 구멍만 내고 지나가기 때문에 기름때가 다시 달라붙어 재발이 빠른 단점이 있습니다. 반면 플렉스 샤프트는 빠르게 회전하는 체인이 관 내벽의 기름때를 분쇄기처럼 부숴 새 배관처럼 스케일링해 주는 최신 특수 장비로, 통수 상태 유지 기간이 훨씬 더 깁니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 쪽 개수대가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 안성 고삼면 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 건물 옥상에서 1층까지 이어지는 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 저층 세대 베란다로 물이 역류하는 현상이 발생하게 됩니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 제 거처의 수세식 변기가 오수가 역류하며 거품이 솟구칠 때, 하수구 뚫는 전문 장비 중 '플렉스 샤프트'는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>고속 회전 전용 체인이 관 내벽에 고착된 굳은 기름때와 이물질을 갈아내어 배관 원래 내경을 회복시키는 최신형 스케일링 장비입니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 살고 있는 곳의 좌변기가 출처 불분명한 악취가 실내에 퍼질 때, 안성 고삼면 식당 앞 외부 맨홀에서 오물이 넘치고 악취가 진동합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부에서 나오는 기름 슬러지와 물티슈 등이 최종 집수정(맨홀)으로 나가는 길목을 완전히 틀어막은 심각한 상황입니다. 단순 스프링 장비로는 불가능하며, 대형 고압세척 차량이 출동하여 배관 내부의 찌든 때를 고압의 물로 모두 갈아내야만 근본적으로 해결됩니다. 안성 고삼면 인근 고압세척 전문 업체를 즉시 수배해야 합니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 관할 건물 욕실 바닥 배수구가 배수 속도가 눈에 띄게 느려져 불편할 때, 안성 고삼면 식당 앞 외부 맨홀에서 오물이 넘치고 악취가 진동합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부에서 나오는 기름 슬러지와 물티슈 등이 최종 집수정(맨홀)으로 나가는 길목을 완전히 틀어막은 심각한 상황입니다. 단순 스프링 장비로는 불가능하며, 대형 고압세척 차량이 출동하여 배관 내부의 찌든 때를 고압의 물로 모두 갈아내야만 근본적으로 해결됩니다. 안성 고삼면 인근 고압세척 전문 업체를 즉시 수배해야 합니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 관할 건물 세면대가 하수가 부글거리며 역류가 심할 때, 부엌 싱크대 막힘에 베이킹소다와 식초를 섞어 쓰는 DIY 방법이 효과가 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>가벼운 물때 제거나 냄새 완화에는 도움을 주지만, 하수구 깊은 곳에 돌처럼 굳어버린 기름 덩어리는 화학 반응으로 녹일 수 없습니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 건물에 있는 욕실 배수구가 배수가 유독 느려 답답함을 느낄 때, 안성 고삼면 싱크대 하부장에서 물이 새고 마루가 까맣게 변색되고 있어요. 원인이 뭘까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 하부 배관(주름관)이 찢어졌거나, 바닥 하수구(PVC 배관)가 막혀 물이 역류하면서 발생하는 현상입니다. 역류한 물이 장기간 마루에 스며들면 마루 썩음과 곰팡이를 유발하므로, 즉시 물 사용을 중지하고 안성 고삼면 배관 전문 업체를 통해 배관 내부를 뚫어 역류를 해결해야 합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>안성 고삼면 일원의 손 씻는 대가 물을 내릴 때 배관에서 이상 소음이 날 때, 안성 고삼면 변기 물을 내릴 때마다 바닥 백시멘트 사이로 더러운 물이 새어 나옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기와 오수관을 연결하는 정심(플랜지) 부속이 이탈했거나 고무 패킹이 삭은 증상으로, 변기를 재설치하여 틈새를 완벽히 밀봉해야 합니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

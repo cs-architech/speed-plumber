@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -675,6 +690,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">기흥 신갈동 싱크대막힘 – #부천변기막힘 #부천하수구 #변기역류 #싱크대배수구 #배관고압세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 기흥 신갈동 싱크대막힘 자주 묻는 질문</div>
+      <div class="faq-sub">기흥 신갈동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 일원의 개수대가 배관에서 오물이 역류해 올라올 때, 기흥 신갈동 식당(상가) 싱크대가 막혔는데 일반 가정집 뚫는 방법과 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 다릅니다. 상가나 식당은 일반 가정집보다 유지방(기름) 배출량이 압도적으로 많아 배관 내부에 굳어버린 유지방 덩어리가 생성됩니다. 일반 스프링 장비로는 일시적으로 뚫릴 뿐 금방 재발하므로, 기흥 신갈동 주변의 고압세척 장비나 플렉스 샤프트 장비를 보유한 전문 업체를 통해 배관 스케일링 작업을 받아야 합니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 이 지역 본관 하수관이 오수가 거품과 함께 심하게 올라올 때, 기흥 신갈동 식당 앞 외부 맨홀에서 오물이 넘치고 악취가 진동합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부에서 나오는 기름 슬러지와 물티슈 등이 최종 집수정(맨홀)으로 나가는 길목을 완전히 틀어막은 심각한 상황입니다. 단순 스프링 장비로는 불가능하며, 대형 고압세척 차량이 출동하여 배관 내부의 찌든 때를 고압의 물로 모두 갈아내야만 근본적으로 해결됩니다. 기흥 신갈동 인근 고압세척 전문 업체를 즉시 수배해야 합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 해당 건물 씽크대가 오수가 역류하며 거품이 솟구칠 때, 세면대 물마개(팝업)가 쏙 들어가서 안 올라옵니다. 배관이 막힌 건가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 막힘이 아니라 세면대 팝업 부속품 내부에 물때와 머리카락이 끼어 스프링이 고장 난 팝업 불량입니다. 이 경우 뚫는 작업이 아니라 기존 팝업과 트랩을 해체하고 새로운 자동 팝업으로 교체해야 물이 시원하게 내려갑니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 제가 거주하는 식당 내 배관이 썩은 냄새가 원인도 모른 채 진동할 때, 세탁기를 베란다 우수관에 연결해서 써도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>불법입니다. 베란다 우수관은 빗물만 내려가도록 설계되어 있어 하수처리장으로 가지 않고 바로 하천으로 방류됩니다. 이곳에 세탁기 세제 섞인 물(오수)을 버리면 환경오염으로 법적 과태료가 부과될 수 있으며, 세제 거품이 아랫집으로 역류하는 원인이 됩니다. 세탁기 배수는 반드시 오수관이 연결된 세탁실이나 화장실을 이용해야 합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 이 지역 메인 배수관이 배수가 유독 느려 답답함을 느낄 때, 기흥 신갈동 전세(또는 월세)로 살고 있는데 하수구나 변기가 막혔습니다. 수리비는 세입자와 집주인 중 누가 내야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 '원인'에 따라 다릅니다. 세입자의 부주의(물티슈, 음식물 쓰레기, 장난감 투척 등)로 막혔다면 세입자가 부담해야 합니다. 하지만 배관 자체의 노후화, 구조적 결함, 건물 외부 나무뿌리 침투 등으로 인한 막힘이라면 임대인(집주인)이 수리할 의무가 있습니다. 전문 배관 업체의 내시경 촬영 영상을 근거 자료로 쓰시면 분쟁 소지를 크게 줄일 수 있습니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 제가 머무는 곳의 식당 하수배관이 배수 때마다 배관 울림 소리가 들릴 때, 기흥 신갈동 건물 밖 도로에 있는 맨홀(집수정)에 하수가 꽉 차서 넘치려고 합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부 주방과 화장실에서 배출된 대량의 슬러지가 시관로로 나가는 길목을 꽉 막은 것으로, 대형 엔진 고압세척기를 투입해 관로를 완전히 비워내야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 살고 있는 곳의 본관 하수관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 기흥 신갈동 카페 씽크대와 제빙기 배수구가 자주 막히는데 원인이 뭔가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>카페 배관 막힘의 1순위는 '커피 찌꺼기(원두 가루)'와 '우유 지방'입니다. 커피 찌꺼기가 물에 씻겨 내려가는 것 같아도, 배관 내부에 가라앉아 우유의 유지방과 결합하면 암석처럼 굳어버립니다. 일반적인 방법으로는 뚫기 어려우며, 기흥 신갈동 전문 업체의 플렉스 샤프트 장비로 배관 내부를 갈아내는 스케일링 작업이 필요합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 신갈동 저희 집 양변기가 하수 흐름이 현저히 둔해져 있을 때, 기흥 신갈동 욕실에서 물을 전혀 안 쓰는데도 하수구에서 물이 뽀글거리며 역류해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>해당 세대의 문제가 아닌 아파트나 빌라의 공동 메인 배관이 막혀 수압이 가장 낮은 층으로 하수가 넘치는 매우 심각한 메인 관로 역류 상황입니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

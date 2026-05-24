@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -814,6 +829,95 @@ a{text-decoration:none;color:inherit}
 #싱크대냄새제거
 #겨울철배관관리</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 강서 발산1동 하수구막힘 자주 묻는 질문</div>
+      <div class="faq-sub">강서 발산1동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 지금 이곳 부엌 싱크대가 썩은 냄새가 원인도 모른 채 진동할 때, 식당 주방에 있는 그리스트랩(기름 걸름망)이 자주 넘칩니다. 강서 발산1동 상가 식당 정기 관리도 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>네, 가능합니다. 대형 식당이나 고깃집의 경우 그리스트랩 용량의 한계를 넘어 배관으로 기름이 유입되어 메인 배관이 막히는 경우가 잦습니다. 강서 발산1동 주변 상가를 위한 정기 배관 청소·유지보수 서비스를 고압세척 장비로 제공하여 영업에 지장이 없도록 관리해 드리고 있습니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 살고 있는 곳의 음식점 배수관이 막힘이 심해 물이 전혀 빠지지 않을 때, 변기에서 계속 물방울 떨어지는 소리가 나고 수도 요금이 많이 나왔어요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>변기 물탱크 내부의 부속품(필밸브, 플러시밸브 등)이 노후화되어 물이 제대로 차단되지 않고 계속 새어 나가는 증상입니다. 막힘 문제는 아니지만, 방치 시 엄청난 수도 요금 폭탄을 맞을 수 있으므로 즉시 부속품 전체 교체를 진행해야 합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 점검 중인 본관 하수관이 물 내림 시 꾸르륵 하는 소리가 들릴 때, 커피 찌꺼기는 기름기를 흡수한다는데 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 딱딱한 덩어리로 변해 가장 뚫기 힘든 막힘을 유발합니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 소속 건물의 메인 배수관이 배수 속도가 눈에 띄게 느려져 불편할 때, 강서 발산1동 배관 내시경 카메라 촬영은 어떤 경우에 필수적인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>이물질의 정확한 위치와 종류(기름, 시멘트 등) 파악, 배관의 역구배 불량 확인, 작업 후 완벽하게 스케일링 되었는지 결과를 검증할 때 반드시 필요합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 해당 현장의 변기가 하수 흐름이 현저히 둔해져 있을 때, 세면기 배관(트랩) 구조가 U자형인 것과 일자형인 것 중 어느 것이 좋나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>U자형(P트랩)은 물이 고여있어 하수구 악취와 벌레 차단에 탁월하며, 일자형(I트랩)은 물 빠짐이 빠르고 바닥 하수구로 바로 연결될 때 주로 사용됩니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 건물 내 씽크대가 오수가 역류하며 거품이 솟구칠 때, 커피 찌꺼기는 기름기를 흡수한다는데 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 콘크리트처럼 굳어 가장 뚫기 힘든 막힘을 유발합니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 일대 건물의 욕실 하수 배수구가 하수 흐름이 현저히 둔해져 있을 때, 강서 발산1동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관(빗물관)은 옥상부터 1층까지 이어진 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 수압이 높아져 1~3층 저층 베란다로 역류가 발생합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 건물에 있는 화장실 세면기가 오수가 거품과 함께 심하게 올라올 때, 강서 발산1동 건물 밖 도로에 있는 맨홀(집수정)에 하수가 꽉 차서 넘치려고 합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부 주방과 화장실에서 배출된 대량의 슬러지가 시관로로 나가는 길목을 꽉 막은 것으로, 대형 엔진 고압세척기를 투입해 관로를 완전히 비워내야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>강서 발산1동 관내 식당 내 배관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

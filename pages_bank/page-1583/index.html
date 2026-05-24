@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -807,6 +822,95 @@ a{text-decoration:none;color:inherit}
 #부천도당동배관막힘
 #안산고잔동하수구막힘</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 기흥 동백3동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">기흥 동백3동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 소속 건물의 본관 하수관이 원인 불명의 하수 악취가 심하게 올라올 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 기흥 동백3동 변기 안 뜯고 해결되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 건물에 있는 음식점 배수관이 배수 때마다 배관 울림 소리가 들릴 때, 변기 물탱크에서 삐- 하는 소리나 물방울 떨어지는 소리가 계속 납니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물탱크 내부의 필밸브나 플러시 밸브 등 부속품이 노후화되어 물이 차단되지 않는 증상으로, 방치 시 엄청난 수도 요금이 발생하므로 부속을 교체해야 합니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 현재 위치의 변기가 물 빠짐이 갈수록 더뎌져 곤란할 때, 기흥 동백3동 부엌 싱크대 하부장에서 물이 새고 마루가 까맣게 변색되고 있어요. 원인이 뭘까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 하부 배관(주름관)이 찢어졌거나, 바닥 하수구(PVC 배관)가 막혀 물이 역류하면서 발생하는 현상입니다. 역류한 물이 장기간 마루에 스며들면 마루 썩음과 곰팡이를 유발하므로, 즉시 물 사용을 중지하고 기흥 동백3동 배관 전문 업체를 통해 배관 내부를 뚫어 역류를 해결해야 합니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 일원의 메인 배수관이 완전히 막혀 배수가 전혀 안 될 때, 아랫집 화장실 천장으로 물이 떨어진다는데, 저희 집 하수구 막힘 때문일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>두 가지 가능성이 있습니다. 첫째, 하수구가 막혀 배관 연결부 틈새로 물이 넘쳐 흐른 경우(배관 누수). 둘째, 욕실 바닥 타일 사이의 방수층이 깨져 물이 스며든 경우(방수 누수). 정확한 원인은 내시경 카메라와 누수 탐지기를 통해 윗집에서 점검해야 합니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 살고 있는 곳의 수세식 변기가 배수 속도가 눈에 띄게 느려져 불편할 때, 내시경 카메라 촬영 비용은 별도인가요? 꼭 봐야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기흥 동백3동 지역 내 작업 시 기본적인 내시경 점검은 서비스로 포함되어 진행되는 경우가 많습니다. 내시경을 봐야 하는 이유는, 맹목적으로 구멍만 뚫는 것이 아니라 이물질의 종류(기름인지 시멘트인지), 배관의 역구배(기울기 불량) 여부, 작업 후 배관이 100% 깨끗해졌는지 고객님께서 직접 눈으로 확인하시고 안심하실 수 있도록 하기 위함입니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 점검 중인 세면대가 하수가 부글거리며 역류가 심할 때, 커피 찌꺼기는 기름기를 흡수한다는데 주방 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 딱딱한 덩어리로 변해 가장 뚫기 힘든 막힘을 유발합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 해당 현장의 개수대가 오수가 역류하며 거품이 솟구칠 때, 아랫집 화장실 천장 점검구 쪽에서 물이 뚝뚝 떨어집니다. 하수구 탓일까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>하수구 막힘으로 인해 배관 연결부위 틈새로 물이 넘쳤거나(배관 누수), 바닥 타일의 방수층이 깨진(방수 누수) 것이므로 정확한 탐지가 병행되어야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 건물에 있는 주방 싱크대가 물을 내릴 때 배관에서 이상 소음이 날 때, 싱크대에서 물을 많이 버리면 화장실 바닥 하수구로 물이 뽀글뽀글 거품과 함께 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 배수관과 욕실 하수관이 바닥 아래에서 하나의 배관으로 만나 나가는 구조(Y자 티 배관)일 때 발생하는 현상입니다. 두 배관이 만나는 합류 지점 이후에 찌꺼기가 쌓여 병목 현상이 생겼기 때문입니다. 어느 쪽에서 진입하든 기흥 동백3동 배관 내시경을 통해 만나는 지점의 슬러지를 남김없이 제거해야 두 곳 모두 시원하게 뚫립니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>기흥 동백3동 점검 중인 개수대가 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 하수구가 자꾸 막히는 '배관 역구배 현상'이란 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관이 물이 빠지는 출구 쪽으로 기울지 않고 반대로 솟아있어 중력을 받지 못해 늘 물과 슬러지가 고여있는 심각한 구조적 결함을 말합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

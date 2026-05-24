@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -687,6 +702,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">의정부 송산3동 우수관막힘 – #안양평촌싱크대막힘 #평촌하수구 #안양배관세척 #싱크대토출 #하수도냄새제거</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 의정부 송산3동 우수관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">의정부 송산3동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 건물 내 화장실 변기가 하수구 역류가 거품과 함께 발생할 때, 샴푸나 린스, 뚫어뻥 용액을 붓고 기다리면 변기가 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 가벼운 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 하여 도움이 될 수 있습니다. 하지만 플라스틱 뚜껑, 칫솔, 장난감 등 고체 이물질이 들어갔을 때는 전혀 효과가 없으며, 오히려 변기를 뜯어내야(탈거) 하는 상황이 발생할 수 있습니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 해당 현장의 건물 중앙 하수관이 하수구가 완전히 폐색돼 물이 안 빠질 때, 의정부 송산3동 건물 밖 도로에 있는 맨홀(집수정)에 하수가 꽉 차서 넘치려고 합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부 주방과 화장실에서 배출된 대량의 슬러지가 시관로로 나가는 길목을 꽉 막은 것으로, 대형 엔진 고압세척기를 투입해 관로를 완전히 비워내야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 건물에 있는 욕실 세면대가 물을 내릴 때 배관에서 이상 소음이 날 때, 인테리어 공사(리모델링) 직후 의정부 송산3동 화장실 바닥 하수구가 막혔어요. 백시멘트가 들어간 것 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 흘러 들어간 백시멘트나 메지 가루가 배관 속에서 암석처럼 굳어버린 심각한 상황입니다. 무리하게 뚫으려 하면 배관이 손상될 수 있으므로, 전용 체인 장착 스케일링 장비로 배관 보호 상태에서 시멘트만 섬세하게 파쇄·흡입하는 고난도 작업이 필요합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 제 거처의 식당 오수관이 배수 속도가 눈에 띄게 느려져 불편할 때, 의정부 송산3동 아파트 화장실에서 다른 집 담배 냄새나 하수구 악취가 심하게 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>화장실 환풍기 댐퍼 불량이나 바닥 하수구의 '봉수(냄새 차단용 고인 물)'가 말랐을 때 발생하는 현상입니다. 하수구를 정기적으로 청소하고 물을 부어주며, 필요시 의정부 송산3동 설비 업체를 통해 악취 차단 전용 트랩을 설치하면 99% 해결됩니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 이 현장의 욕실 배수구가 배수가 유독 느려 답답함을 느낄 때, 세면대 배관(트랩) 구조가 U자형인 것과 일자형인 것 중 어느 것이 좋나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>U자형(P트랩)은 물이 고여있어 하수구 악취와 벌레 차단에 탁월하며, 일자형(I트랩)은 물 빠짐이 빠르고 바닥 하수구로 바로 연결될 때 주로 사용됩니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 제가 머무는 곳의 부엌 싱크대가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 의정부 송산3동 변기 물이 시원하게 안 내려가고 끝까지 차올랐다가 천천히 빠집니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 어딘가에 부분적인 막힘이 진행 중이거나 통기구(숨구멍) 문제로 공기 순환이 안 되는 증상이니 역류하기 전에 정밀 점검이 필요합니다. 배관에 손상을 주지 않도록 비파괴 공법으로 뚫는 것이 안전합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 점검 중인 식당 하수배관이 배수 속도가 눈에 띄게 느려져 불편할 때, 의정부 송산3동 미용실 샴푸대 하수구가 꽉 막혔는데, 독한 약품을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>미용실은 다량의 머리카락과 함께 파마약, 염색약 등 각종 화학약품이 하수구로 흘러 들어갑니다. 이 약품들이 머리카락과 엉겨 붙어 끈적하고 단단한 덩어리를 만들기 때문에 시중의 배관 세척제로는 해결되지 않습니다. 고성능 석션 및 스케일링 장비로 덩어리를 직접 뽑아내야 배관 손상 없이 통수됩니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 건물 내 주 하수배관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 커피 찌꺼기는 기름기를 흡수한다는데 싱크대에 버려도 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 매우 단단하게 굳어 가장 뚫기 힘든 막힘을 유발합니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>의정부 송산3동 살고 있는 곳의 욕실 바닥 배수구가 원인 불명의 하수 악취가 심하게 올라올 때, 의정부 송산3동 전세(또는 월세)로 살고 있는데 하수구나 변기가 막혔습니다. 수리비는 세입자와 집주인 중 누가 내야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 '원인'에 따라 다릅니다. 세입자의 부주의(물티슈, 음식물 쓰레기, 장난감 투척 등)로 막혔다면 세입자가 부담해야 합니다. 하지만 배관 자체의 노후화, 구조적 결함, 건물 외부 나무뿌리 침투 등으로 인한 막힘이라면 임대인(집주인)이 수리할 의무가 있습니다. 배관 내시경 촬영 결과를 분쟁 자료로 활용하면 책임 소재 다툼을 줄일 수 있습니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

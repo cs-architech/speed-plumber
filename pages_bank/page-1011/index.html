@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -817,6 +832,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#인천도화동하수구막힘 #인천구월동하수구막힘 #의왕삼동싱크대막힘 #부천심곡동변기막힘 #수원지동하수구막힘</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 중구 신당5동 변기막힘 자주 묻는 질문</div>
+      <div class="faq-sub">중구 신당5동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 쪽 음식점 배수관이 배수가 유독 느려 답답함을 느낄 때, 중구 신당5동 건물 밖 도로에 있는 맨홀(집수정)에 하수가 꽉 차서 넘치려고 합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부 주방과 화장실에서 배출된 대량의 슬러지가 시관로로 나가는 길목을 꽉 막은 것으로, 대형 엔진 고압세척기를 투입해 관로를 완전히 비워내야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 현재 위치의 식당 오수관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 중구 신당5동 건물 밖 도로에 있는 맨홀(집수정)에 하수가 꽉 차서 넘치려고 합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부 주방과 화장실에서 배출된 대량의 슬러지가 시관로로 나가는 길목을 꽉 막은 것으로, 대형 엔진 고압세척기를 투입해 관로를 완전히 비워내야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 제가 거주하는 양변기가 하수가 부글거리며 역류가 심할 때, 중구 신당5동 장마철만 되면 베란다 우수관에서 거품과 물이 역류합니다. 왜 그런가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>빗물 전용 우수관은 옥상부터 최하층까지 연결된 공용 배관입니다. 옥상에서 유입된 낙엽, 흙, 쓰레기 등이 1층 하단부나 꺾이는 구간에 쌓여 막히게 되면 저층(1~3층) 베란다 우수관으로 물이 역류해 올라옵니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 이 현장의 욕실 바닥 배수구가 배수 속도가 눈에 띄게 느려져 불편할 때, 샤워 후 화장실 바닥 하수구로 물이 안 빠져서 한참 기다려야 해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>욕실 하수구 막힘의 90% 이상은 '머리카락'과 '비누 찌꺼기'가 엉켜 발생합니다. 하수구 덮개(유가)를 열고 내부의 트랩을 꺼내 엉킨 머리카락을 1차로 제거해 보시고, 그래도 안 빠진다면 하수관 깊은 곳에 슬러지가 쌓인 것이니 전문 장비 투입이 필요합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 관내 식당 내 배관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 중구 신당5동 욕실에서 물을 전혀 안 쓰는데도 하수구에서 물이 뽀글거리며 역류해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>해당 세대의 문제가 아닌 아파트나 빌라의 공동 메인 배관이 막혀 수압이 가장 낮은 층으로 하수가 넘치는 매우 심각한 메인 관로 역류 상황입니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 관내 주 하수배관이 배수 때마다 배관 울림 소리가 들릴 때, 변기에 물티슈를 한 장씩만 버리는 건 수압으로 내려가지 않나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 물에 풀리지 않는 합성 섬유이므로 단 한 장이라도 배관 굴곡진 S자 트랩이나 오수관에 걸려 거대한 막힘을 유발할 수 있습니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 점검 중인 욕실 배수구가 막힘이 심해 물이 전혀 빠지지 않을 때, 싱크대 배수구에서 초파리(날파리)가 계속 올라오는데 막힘과 관련이 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배관 내부에 음식물 찌꺼기와 부패한 슬러지가 쌓여있다는 증거입니다. 이 오염물들이 벌레의 서식지가 되며, 심해지면 점차 물이 내려가지 않는 막힘 현상으로 이어집니다. 배관 내부 청소와 함께 U자형 트랩을 점검하거나 악취 차단 트랩을 설치하는 것이 좋습니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 해당 현장의 식당 오수관이 배관에서 오물이 역류해 올라올 때, 화장실 바닥 하수구에서 날파리나 나방파리가 자꾸 기어 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>배수구 내부에 쌓인 물때와 비누 찌꺼기가 벌레의 번식처가 된 것입니다. 하수구 내부 스케일링 청소와 함께 악취 차단용 트랩을 설치해야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>중구 신당5동 현장 내 변기가 하수구에서 심한 악취가 계속 올라올 때, 중구 신당5동 주방 싱크대 하부장에서 물이 새고 마루가 까맣게 변색되고 있어요. 원인이 뭘까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 하부 배관(주름관)이 찢어졌거나, 바닥 하수구(PVC 배관)가 막혀 물이 역류하면서 발생하는 현상입니다. 역류한 물이 장기간 마루에 스며들면 마루 썩음과 곰팡이를 유발하므로, 즉시 물 사용을 중지하고 중구 신당5동 배관 전문 업체를 통해 배관 내부를 뚫어 역류를 해결해야 합니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -656,6 +671,95 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">장안 정자3동 배관막힘 – #화성새솔동변기정체 #화성변기소통는곳 #새솔동하수구 #송산그린시티변기 #수도관워터젯 세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 장안 정자3동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">장안 정자3동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 살고 있는 곳의 본관 하수관이 배수구가 꽉 막혀 물이 내려가지 않을 때, 샤워 후 화장실 바닥 하수구로 물이 안 빠져서 한참 기다려야 해요.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>욕실 하수구 막힘의 90% 이상은 '머리카락'과 '비누 찌꺼기'가 엉켜 발생합니다. 하수구 덮개(유가)를 열고 내부의 트랩을 꺼내 엉킨 머리카락을 1차로 제거해 보시고, 그래도 안 빠진다면 하수관 깊은 곳에 슬러지가 쌓인 것이니 전문 장비 투입이 필요합니다. 원인 물질 제거를 위해 배관 전용 최신 장비 투입이 필수입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 현재 위치의 손 씻는 대가 배수 때마다 배관 울림 소리가 들릴 때, 장안 정자3동 전세(또는 월세)로 살고 있는데 하수구나 변기가 막혔습니다. 수리비는 세입자와 집주인 중 누가 내야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 '원인'에 따라 다릅니다. 세입자의 부주의(물티슈, 음식물 쓰레기, 장난감 투척 등)로 막혔다면 세입자가 부담해야 합니다. 하지만 배관 자체의 노후화, 구조적 결함, 건물 외부 나무뿌리 침투 등으로 인한 막힘이라면 임대인(집주인)이 수리할 의무가 있습니다. 전문가의 내시경 기록물을 증빙으로 제출하면 갈등을 효과적으로 해소할 수 있습니다. 주기적인 배관 점검과 관리가 막힘 예방의 핵심입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 해당 건물 중앙 하수관이 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 끓는 물을 싱크대에 자주 부어주면 배관이 깨끗해지나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>일반적인 PVC 플라스틱 주름관은 고온에 매우 약해 끓는 물을 자주 부으면 쪼그라들거나 찢어져 심각한 누수의 원인이 됩니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 지금 이곳 본관 하수관이 하수구 역류가 거품과 함께 발생할 때, 막힌 변기에 샴푸나 린스를 듬뿍 짜 넣고 기다리면 뚫린다는 게 사실인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>휴지나 대변으로 인한 단순 막힘에는 계면활성제가 윤활 작용을 해 뚫릴 수 있으나, 고체 이물질이나 덩어리로 인한 막힘에는 전혀 효과가 없습니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 일원의 메인 배수관이 배수 속도가 눈에 띄게 느려져 불편할 때, 인테리어 공사(리모델링) 직후 장안 정자3동 화장실 바닥 하수구가 막혔어요. 백시멘트가 들어간 것 같습니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>타일 작업 중 흘러 들어간 백시멘트나 메지 가루가 배관 속에서 암석처럼 굳어버린 심각한 상황입니다. 무리하게 뚫으려 하면 배관이 손상될 수 있으므로, 전용 체인 장착 스케일링 장비로 배관 보호 상태에서 시멘트만 섬세하게 파쇄·흡입하는 고난도 작업이 필요합니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 이 지역 개수대가 완전히 막혀 배수가 전혀 안 될 때, 하수구 뚫는 전문 장비 중 '플렉스 샤프트'는 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>고속 회전 체인 장치가 관 내벽에 굳어있는 굳은 기름때와 이물질을 갈아내어 배관 내경을 원상 복구하는 최신 스케일링 기기입니다. 배관 내부 확인을 위한 내시경 점검이 가장 먼저 이뤄져야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 지금 이곳 욕실 바닥 배수구가 이유 없이 하수 냄새가 강하게 날 때, 장안 정자3동 하수구 뚫는 장비 중에 '플렉스 샤프트'는 기존 스프링 장비와 어떻게 다른가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>기존 전동 스프링 장비는 배관 중앙에 구멍만 내고 지나가기 때문에 기름 슬러지가 재부착해 금세 재발하는 단점이 있었습니다. 반면 플렉스 샤프트는 전용 체인이 배관 내벽 오염물을 믹서처럼 분쇄해 새 배관처럼 스케일링해 주는 최신 특수 장비로, 재막힘 없이 사용 가능한 기간이 압도적으로 깁니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 현장 내 화장실 세면기가 물 내림 시 꾸르륵 하는 소리가 들릴 때, 변기에 물티슈를 한 장씩만 버리는 건 수압으로 내려가지 않나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 물에 풀리지 않는 합성 섬유이므로 단 한 장이라도 배관 굴곡진 S자 트랩이나 오수관에 걸려 거대한 막힘을 유발할 수 있습니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>장안 정자3동 살고 있는 곳의 주방 싱크대가 하수가 부글거리며 역류가 심할 때, 장안 정자3동 식당 앞 외부 맨홀에서 오물이 넘치고 악취가 진동합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부에서 나오는 기름 슬러지와 물티슈 등이 최종 집수정(맨홀)으로 나가는 길목을 완전히 틀어막은 심각한 상황입니다. 단순 스프링 장비로는 불가능하며, 대형 고압세척 차량이 출동하여 배관 내부의 찌든 때를 고압의 물로 모두 갈아내야만 근본적으로 해결됩니다. 장안 정자3동 인근 고압세척 전문 업체를 즉시 수배해야 합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

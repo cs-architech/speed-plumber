@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -667,6 +682,104 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">시흥 거북섬동 배관막힘 – #부천하수구정체 #부천관로정체 #부천싱크대역류 #부천변기뚫음 #하수도배관 스케일링</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 시흥 거북섬동 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">시흥 거북섬동 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 제 거처의 식당 오수관이 배수 속도가 눈에 띄게 느려져 불편할 때, 시흥 거북섬동 아파트 화장실에서 다른 집 담배 냄새나 하수구 악취가 심하게 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>화장실 환풍기 댐퍼 불량이나 바닥 하수구의 '봉수(냄새 차단용 고인 물)'가 말랐을 때 발생하는 현상입니다. 하수구를 정기적으로 청소하고 물을 부어주며, 필요시 시흥 거북섬동 설비 업체를 통해 악취 차단 전용 트랩을 설치하면 99% 해결됩니다. 비파괴 처리 방식을 통해 배관 훼손 없이 막힘을 해소해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 해당 수세식 변기가 썩은 냄새가 원인도 모른 채 진동할 때, 시흥 거북섬동 전세(또는 월세)로 살고 있는데 하수구나 변기가 막혔습니다. 수리비는 세입자와 집주인 중 누가 내야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>막힘의 '원인'에 따라 다릅니다. 세입자의 부주의(물티슈, 음식물 쓰레기, 장난감 투척 등)로 막혔다면 세입자가 부담해야 합니다. 하지만 배관 자체의 노후화, 구조적 결함, 건물 외부 나무뿌리 침투 등으로 인한 막힘이라면 임대인(집주인)이 수리할 의무가 있습니다. 배관 내시경 촬영 결과를 분쟁 자료로 활용하면 책임 소재 다툼을 줄일 수 있습니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 일원의 식당 하수배관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 변기에 물티슈를 한 장씩만 버리는 건 수압으로 내려가지 않나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 물에 풀리지 않는 합성 섬유이므로 단 한 장이라도 배관 굴곡진 S자 트랩이나 오수관에 걸려 거대한 막힘을 유발할 수 있습니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 건물 내 식당 하수배관이 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 시흥 거북섬동 변기 막힘 및 부속품 교체를 한 번에 해결해 주는 업체를 찾을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>시흥 거북섬동 지역 변기 수리, 부속 교체, 막힘 뚫음 관련 업종 업체를 한 곳에 모아 소개해 드리는 전용 페이지가 있습니다. 본문에 정리된 점검 가능 지역과 업체 연락처를 통해 신속하게 해결하실 수 있습니다. 기존 배관을 보존하면서 비파괴 공법으로 통수를 회복해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 제가 거주하는 식당 오수관이 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 시흥 거북섬동 식당 주방의 씽크대가 가정집보다 더 자주 막히는 원인은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>대량의 동식물성 유지방이 매일 유입되어 배관 내경을 좁히기 때문입니다. 고압세척 장비로 내벽의 기름때를 완전히 깎아내야 재발을 막을 수 있습니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 해당 건물 본관 하수관이 배수가 유독 느려 답답함을 느낄 때, 시흥 거북섬동 건물 밖 도로에 있는 맨홀(집수정)에 하수가 꽉 차서 넘치려고 합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부 주방과 화장실에서 배출된 대량의 슬러지가 시관로로 나가는 길목을 꽉 막은 것으로, 대형 엔진 고압세척기를 투입해 관로를 완전히 비워내야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 관할 건물 식당 하수배관이 오수가 역류하며 거품이 솟구칠 때, 겨울철 세탁실 배수구가 꽁꽁 얼어서 물이 안 내려갑니다. 뜨거운 물을 부어도 될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>갑자기 펄펄 끓는 물을 부으면 온도 차이로 인해 배관이 파열될 위험이 있습니다. 헤어드라이어나 수건을 감싸고 60도 이하의 미지근한 물부터 천천히 부어 녹이는 것이 안전합니다. 얼음 구간이 깊다면 전문 업체의 해빙기(스팀 장비) 작업이 필요합니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 제가 머무는 곳의 손 씻는 대가 배수가 유독 느려 답답함을 느낄 때, 시흥 거북섬동 식당 주방의 씽크대가 가정집보다 더 자주 막히는 원인은 무엇인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>대량의 동식물성 유지방이 매일 유입되어 배관 내경을 좁히기 때문입니다. 고압세척 장비로 내벽의 기름때를 완전히 깎아내야 재발을 막을 수 있습니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 이 지역 주 하수배관이 하수 흐름이 현저히 둔해져 있을 때, 시흥 거북섬동 식당 앞 외부 맨홀에서 오물이 넘치고 악취가 진동합니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>건물 내부에서 나오는 기름 슬러지와 물티슈 등이 최종 집수정(맨홀)으로 나가는 길목을 완전히 틀어막은 심각한 상황입니다. 단순 스프링 장비로는 불가능하며, 대형 고압세척 차량이 출동하여 배관 내부의 찌든 때를 고압의 물로 모두 갈아내야만 근본적으로 해결됩니다. 시흥 거북섬동 인근 고압세척 전문 업체를 즉시 수배해야 합니다. 꾸준한 배관 점검이 막힘 예방에 가장 효과적입니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>시흥 거북섬동 이 현장의 식당 내 배관이 물 빠짐이 갈수록 더뎌져 곤란할 때, 베란다 우수관(빗물관)에 세탁기 배수 호스를 연결해서 쓰면 왜 안 되나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>우수관은 빗물이 정화 없이 하천으로 방류되는 관로라 오수 배출 시 불법이며, 세제 거품과 찌꺼기가 쌓여 겨울철 결빙 및 저층 세대 역류의 원인이 됩니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 

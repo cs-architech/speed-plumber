@@ -149,6 +149,21 @@ a{text-decoration:none;color:inherit}
   .review-btn{font-size:1rem;padding:16px 28px}
   .region-grid{grid-template-columns:1fr}
 }
+
+/* ── FAQ Accordion ── */
+.faq-wrap{margin-top:8px}
+.faq-title{font-size:1.15rem;font-weight:800;color:#1a237e;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.faq-sub{font-size:.82rem;color:#888;margin-bottom:14px}
+.faq-item{border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin-bottom:8px;transition:box-shadow .2s}
+.faq-item:hover{box-shadow:0 2px 10px rgba(26,35,126,.1)}
+.faq-btn{width:100%;text-align:left;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px;background:#fff;border:none;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:700;color:#222;line-height:1.55}
+.faq-btn:hover{background:#f0f3ff}
+.faq-q-label{color:#1a237e;font-weight:900;margin-right:6px;font-size:.95rem}
+.faq-arrow{flex-shrink:0;font-size:.8rem;color:#aaa;transition:transform .3s;margin-top:2px}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
+.faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
+@media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
 </style>
 </head>
 <body>
@@ -669,6 +684,86 @@ a{text-decoration:none;color:inherit}
       
       <p class="review-para">#수원매탄동하수구막힘 #수원매탄동파이프막힘 #매탄동변기뚫는곳 #수원싱크대백플로우 #하수구고압세척</p>
       
+    </div>
+  </div><!-- /section -->
+
+<!-- ⑦ FAQ 자주 묻는 질문 -->
+  <div class="section">
+    <div class="faq-wrap">
+      <div class="faq-title">&#128172; 도봉 배관막힘 자주 묻는 질문</div>
+      <div class="faq-sub">도봉 배관막힘 관련 고객 FAQ</div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 소속 건물의 욕실 하수 배수구가 배관이 완전히 막혀 통수가 안 될 때, 변기에 물티슈를 한두 장 버렸는데 막혔어요. 뚫어뻥으로 해결될까요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>물티슈는 휴지와 달리 물에 녹지 않고 질긴 섬유질로 되어 있어 뚫어뻥으로 압력을 가하면 배관 더 깊은 곳으로 밀려 들어가 상황을 악화시킬 수 있습니다. 오수관 입구에 걸려있다면 전문가용 관통기로 쉽게 빼낼 수 있으니 무리한 압력을 가하지 마세요. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 해당 건물 욕실 하수 배수구가 오수가 역류하며 거품이 솟구칠 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 저희 집 음식점 배수관이 물 흘릴 때 배관에서 꿀렁 소리가 날 때, 내시경 카메라 촬영 비용은 별도인가요? 꼭 봐야 하나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>도봉 지역 내 작업 시 기본적인 내시경 점검은 서비스로 포함되어 진행되는 경우가 많습니다. 내시경을 봐야 하는 이유는, 맹목적으로 구멍만 뚫는 것이 아니라 이물질의 종류(기름인지 시멘트인지), 배관의 역구배(기울기 불량) 여부, 작업 후 배관이 100% 깨끗해졌는지 고객님께서 직접 눈으로 확인하시고 안심하실 수 있도록 하기 위함입니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 현재 위치의 양변기가 하수구 역류가 거품과 함께 발생할 때, 도봉 심야 시간에 하수구가 역류하는데 야간 출동이 가능한가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>도봉 관내 24시간 응급 출동 업체들이 안내 페이지에 정리돼 있습니다. 하수 역류를 내버려 두면 침수 같은 2차 손해가 생기므로, 서비스 안내 페이지에서 심야·주말 출동 가능 업체를 찾아보세요. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 관내 씽크대가 썩은 냄새가 원인도 모른 채 진동할 때, 바닥 타일이나 욕조를 부수지 않고도 하수구 막힘을 뚫을 수 있나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>90% 이상의 현장은 타일 훼손 없이 내시경과 배관 스케일링 전용 장비를 투입하여 내부의 이물질만 정교하게 갈아내고 뽑아낼 수 있습니다. 배관 맞춤형 최신 장비로 원인 물질을 완전히 제거해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 해당 씽크대가 완전히 막혀 배수가 전혀 안 될 때, 락스와 베이킹소다를 섞어서 싱크대에 부으면 더 잘 뚫리나요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>절대 안 됩니다. 락스(염소계)와 베이킹소다, 혹은 식초(산성)를 섞어 사용하면 화학 반응으로 인해 유독 가스(염소 가스)가 발생하여 호흡기에 매우 치명적입니다. 배관 세척을 원하실 때는 반드시 하나의 제품만 단독으로 사용하셔야 합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 해당 손 씻는 대가 배수 때마다 배관 울림 소리가 들릴 때, 도봉 배관 내시경 카메라 촬영은 어떤 경우에 필수적인가요?</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>이물질의 정확한 위치와 종류(기름, 시멘트 등) 파악, 배관의 역구배 불량 확인, 작업 후 완벽하게 스케일링 되었는지 결과를 검증할 때 반드시 필요합니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-btn" aria-expanded="false">
+          <span><span class="faq-q-label">Q.</span>도봉 이 현장의 욕실 바닥 하수구가 하수구에서 심한 악취가 계속 올라올 때, 싱크대에서 물을 많이 버리면 화장실 바닥 하수구로 물이 뽀글뽀글 거품과 함께 올라옵니다.</span>
+          <span class="faq-arrow">&#9660;</span>
+        </button>
+        <div class="faq-answer" style="max-height:0">
+          <div class="faq-answer-inner"><span class="faq-a-label">A.</span>싱크대 배수관과 욕실 하수관이 바닥 아래에서 하나의 배관으로 만나 나가는 구조(Y자 티 배관)일 때 발생하는 현상입니다. 두 배관이 만나는 합류 지점 이후에 찌꺼기가 쌓여 병목 현상이 생겼기 때문입니다. 어느 쪽에서 진입하든 도봉 배관 내시경을 통해 만나는 지점의 오염 슬러지를 깨끗이 없애야 두 곳 모두 시원하게 뚫립니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다.</div>
+        </div>
+      </div>
     </div>
   </div><!-- /section -->
 
