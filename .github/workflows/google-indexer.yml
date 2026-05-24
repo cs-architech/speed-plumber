@@ -24,15 +24,7 @@ jobs:
       - name: 서비스 계정 JSON 복원
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-        run: |
-          python3 -c "
-          import os, json
-          s = os.environ['GOOGLE_SERVICE_ACCOUNT_JSON'].strip()
-          d = json.loads(s)
-          with open('service_account.json', 'w') as f:
-              json.dump(d, f)
-          print('service_account.json 생성 완료')
-          "
+        run: python3 -c "import os,json; d=json.loads(os.environ['GOOGLE_SERVICE_ACCOUNT_JSON'].strip()); open('service_account.json','w').write(json.dumps(d))"
 
       - name: Google 수집 요청 실행
         run: python google_indexer.py
