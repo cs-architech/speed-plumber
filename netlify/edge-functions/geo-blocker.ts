@@ -2,7 +2,7 @@
 // KR-only geo-block + marketing scraper bot block
 
 const BLOCKED_BOTS = ['AhrefsBot', 'SemrushBot', 'MJ12bot', 'PetalBot', 'DotBot', 'BLEXBot', 'MegaIndex', 'serpstatbot'];
-const ALLOWED_BOTS = ['Googlebot', 'bingbot', 'Yeti', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Slackbot', 'DuckDuckBot'];
+const ALLOWED_BOTS = ['Googlebot', 'Google-Site-Verification', 'Google-InspectionTool', 'APIs-Google', 'AdsBot-Google', 'bingbot', 'Yeti', 'NaverBot', 'facebookexternalhit', 'Twitterbot', 'LinkedInBot', 'Slackbot', 'DuckDuckBot'];
 const STATIC_PREFIX = ['/_astro/', '/images/', '/_assets/'];
 const STATIC_EXT    = new Set(['.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.css', '.js', '.woff', '.woff2', '.ttf', '.xml', '.txt']);
 
