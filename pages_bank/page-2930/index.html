@@ -978,6 +978,25 @@ function closeLb() {
     fetch('https://script.google.com/macros/s/AKfycbyDVeRRffY40-PLJB3AXFWpJVqyQ9yxIJVvQj_Jxnm6x528J5HX-t6CVG_MDmfdSey0/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body:body});
   }
 })();
+
+/* ---- FAQ 아코디언 ---- */
+document.querySelectorAll('.faq-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var answer = this.nextElementSibling;
+    var arrow  = this.querySelector('.faq-arrow');
+    var isOpen = this.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-btn').forEach(function(b) {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.style.maxHeight = '0';
+      var a = b.querySelector('.faq-arrow'); if (a) a.style.transform = '';
+    });
+    if (!isOpen) {
+      this.setAttribute('aria-expanded', 'true');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      if (arrow) arrow.style.transform = 'rotate(180deg)';
+    }
+  });
+});
 </script>
 </body>
 </html>
