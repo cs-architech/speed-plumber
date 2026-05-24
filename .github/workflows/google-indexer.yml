@@ -25,7 +25,14 @@ jobs:
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: |
-          echo "$GOOGLE_SERVICE_ACCOUNT_JSON" > service_account.json
+          python3 -c "
+          import os, json
+          s = os.environ['GOOGLE_SERVICE_ACCOUNT_JSON'].strip()
+          d = json.loads(s)
+          with open('service_account.json', 'w') as f:
+              json.dump(d, f)
+          print('service_account.json 생성 완료')
+          "
 
       - name: Google 수집 요청 실행
         run: python google_indexer.py
