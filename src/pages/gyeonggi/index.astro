@@ -3,10 +3,44 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import FAQ from '../../components/FAQ.astro';
+import { readFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { getUniqueSigungu, getDongsBySigungu } from '../../lib/regions';
+import { seededPick, REVIEW_TEXTS, FAQ_TITLES } from '../../lib/spintax';
 
 const sidoname = '경기도';
 const sigungus = getUniqueSigungu(sidoname);
+
+const region  = sidoname;
+const keyword = '배관막힘';
+const seed    = region.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+const reviewText = seededPick(seed + 4, REVIEW_TEXTS).replace(/\{region\}/g, region);
+const faqTitle   = seededPick(seed + 2, FAQ_TITLES).replace('{region}', region);
+
+function seededRand(s: number) {
+  let cur = s;
+  return () => { cur = (cur * 1664525 + 1013904223) & 0xffffffff; return (cur >>> 0) / 4294967295; };
+}
+const rand = seededRand(seed);
+const faqRaw  = readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../../faq6000.txt'), 'utf-8');
+const allFaqs: { q: string; a: string }[] = [];
+for (const chunk of faqRaw.split(/\n{2,}/)) {
+  const lines = chunk.split('\n');
+  const qLine = lines.find(l => l.trimStart().startsWith('Q.'));
+  const aLine = lines.find(l => l.trimStart().startsWith('A.'));
+  if (!qLine || !aLine) continue;
+  const q = qLine.replace(/^Q\.\s*/, '').trim();
+  const a = aLine.replace(/^A\.\s*/, '').replace(/\]\]/g, '').trim();
+  if (q.endsWith('질문') || a.startsWith('대답') || q.length < 10 || a.length < 10) continue;
+  allFaqs.push({ q, a });
+}
+const faqCount = 8 + (seed % 3);
+const pageFaqs = [...allFaqs].sort(() => rand() - 0.5).slice(0, faqCount).map(f => ({
+  q: f.q.replace(/"region"/g, region).replace(/"keywords"/g, keyword),
+  a: f.a.replace(/"region"/g, region).replace(/"keywords"/g, keyword),
+}));
 
 const breadcrumbs = [
   { name: '홈', url: '/' },
@@ -86,9 +120,54 @@ const jsonLd = {
 
     <!-- 상담 폼 -->
     <ContactForm region="경기도" keyword="배관막힘" />
+
+    <!-- 업체 작업후기 아코디언 -->
+    <div class="mt-8 pb-6">
+      <div class="text-center mb-3">
+        <button
+          id="review-toggle"
+          type="button"
+          class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-900 to-blue-700 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+          aria-expanded="false"
+          aria-controls="review-content"
+        >
+          <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+          </svg>
+          업체 작업후기 보기
+          <span id="review-arrow" class="text-sm transition-transform duration-300">▼</span>
+        </button>
+      </div>
+      <div
+        id="review-content"
+        class="hidden bg-white rounded-2xl border border-gray-100 shadow-sm p-6"
+        role="region"
+      >
+        {reviewText.split('\n\n').filter(p => p.trim()).map(para => (
+          <p class="text-gray-700 text-sm leading-relaxed mb-4 last:mb-0">{para.trim()}</p>
+        ))}
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="pb-6">
+      <FAQ region={region} keyword={keyword} faqs={pageFaqs} titleOverride={faqTitle} />
+    </div>
   </main>
 
   <footer class="bg-gray-900 text-gray-400 text-sm text-center py-6 mt-10">
     <p>© 2024 배관매니저 | Tel: <a href="tel:18662449" class="text-yellow-400 font-bold">1866-2449</a></p>
   </footer>
 </BaseLayout>
+
+<script>
+  const toggle  = document.getElementById('review-toggle');
+  const content = document.getElementById('review-content');
+  const arrow   = document.getElementById('review-arrow');
+  toggle?.addEventListener('click', () => {
+    const open = !content?.classList.contains('hidden');
+    content?.classList.toggle('hidden', open);
+    if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
+    toggle?.setAttribute('aria-expanded', String(!open));
+  });
+</script>

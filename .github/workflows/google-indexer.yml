@@ -1,10 +1,16 @@
-name: Google 인덱싱 API 하루 1회 수집 요청 (KST 09:00)
+name: Google 인덱싱 API (1시간마다 10개, 하루 100개)
 
 on:
   schedule:
-    # KST 09:00 = UTC 00:00
-    - cron: "0 0 * * *"
-  workflow_dispatch:  # 수동 실행 허용
+    - cron: "0 * * * *"  # 매 시간 정각 (UTC 기준)
+  workflow_dispatch:      # 수동 실행 허용
+
+permissions:
+  contents: write  # indexer_state.json 커밋용
+
+concurrency:
+  group: google-indexer
+  cancel-in-progress: false  # 이전 실행 취소하지 않음
 
 jobs:
   google-index:
@@ -12,6 +18,8 @@ jobs:
     steps:
       - name: 저장소 체크아웃
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Python 설치
         uses: actions/setup-python@v5
@@ -32,3 +40,11 @@ jobs:
       - name: 서비스 계정 파일 삭제 (보안)
         if: always()
         run: rm -f service_account.json
+
+      - name: 상태 파일 커밋 (변경 있을 때만)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add indexer_state.json
+          git diff --cached --quiet && echo "변경 없음 - 커밋 스킵" || git commit -m "chore: 인덱싱 상태 업데이트 $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push || echo "push 불필요 (변경 없음)"
