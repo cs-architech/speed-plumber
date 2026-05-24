@@ -122,6 +122,15 @@ a{text-decoration:none;color:inherit}
 .review-para{margin-bottom:18px;color:#444;line-height:1.85;font-size:.9rem}
 .review-para:last-child{margin-bottom:0}
 
+/* ── Internal Links ── */
+.related-section{background:#fff;border-radius:16px;box-shadow:0 2px 16px rgba(26,35,126,.08);padding:24px 20px;margin:24px 0}
+.related-section h3{font-size:1rem;font-weight:800;color:#1a237e;margin-bottom:14px;border-left:4px solid #ffeb3b;padding-left:10px}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.related-link{display:block;background:#f0f3ff;border-radius:8px;padding:10px 14px;font-size:.85rem;font-weight:600;color:#283593;transition:background .15s,transform .15s}
+.related-link:hover{background:#e3e8ff;transform:translateX(3px)}
+.related-link span{display:block;font-size:.75rem;color:#7986cb;font-weight:400;margin-top:2px}
+@media(max-width:480px){.related-grid{grid-template-columns:1fr}}
+
 /* ── Footer ── */
 .footer{background:#1a237e;color:#fff;text-align:center;padding:28px 16px;margin-top:40px}
 .footer p{font-size:.82rem;opacity:.75;margin-top:6px}
@@ -326,6 +335,20 @@ a{text-decoration:none;color:inherit}
   <span class="lightbox-close" id="lbClose">&times;</span>
   <img id="lbImg" src="" alt="확대 이미지">
 </div>
+
+<!-- 내부 링크 -->
+{% if related_pages %}
+<div class="container">
+  <div class="related-section">
+    <h3>같은 서비스 · 다른 지역</h3>
+    <div class="related-grid">
+      {% for p in related_pages %}
+      <a class="related-link" href="{{ p.url }}">{{ p.region }} {{ p.keyword }}<span>출장 서비스 안내 보기</span></a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
 
 <!-- 푸터 -->
 <footer class="footer">

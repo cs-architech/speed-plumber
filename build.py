@@ -694,11 +694,23 @@ def build_bank(count: int):
     combos = combos[:count]
     print(f"  지역 수: {len(region_indices)}, 조합 수: {len(combos)}")
 
+    # 1단계: 전체 페이지 메타데이터 사전 생성 (내부 링크용)
+    print("  내부 링크 인덱스 생성 중...")
+    page_meta = []
+    for i, (ri, kw) in enumerate(combos, 1):
+        primary_name = region_fullname(df.loc[ri])
+        page_meta.append({"num": i, "url": f"/page-{i:04d}/", "keyword": kw, "region": primary_name})
+
+    # 키워드별 페이지 목록 인덱스
+    kw_index: dict[str, list] = {}
+    for pm in page_meta:
+        kw_index.setdefault(pm["keyword"], []).append(pm)
+
     env = Environment(loader=FileSystemLoader(str(BASE_DIR)), autoescape=False, keep_trailing_newline=True)
     env.filters["nl2br"] = lambda v: v.replace("\n", "<br>")
     tpl = env.get_template(TEMPLATE_FILE)
 
-    # 페이지 생성
+    # 2단계: 페이지 생성 (내부 링크 포함)
     print(f"[3/3] {count}개 페이지 생성 중...")
     for i, (region_idx, main_keyword) in enumerate(combos, 1):
         page_dir = BANK_DIR / f"page-{i:04d}"
@@ -721,6 +733,10 @@ def build_bank(count: int):
         main_gallery = selected[:3]
         sub_gallery  = [(p, p) for p in selected[3:]]
 
+        # 같은 키워드 다른 지역 페이지 6개 (내부 링크)
+        candidates  = [p for p in kw_index.get(main_keyword, []) if p["num"] != i]
+        related_pages = random.sample(candidates, min(6, len(candidates)))
+
         html = tpl.render(
             phone=PHONE, site_name=SITE_NAME,
             region=primary_name, keyword=main_keyword,
@@ -735,6 +751,7 @@ def build_bank(count: int):
             canonical_url=canonical_url, og_image_url=og_image_url,
             google_site_verification=GOOGLE_SITE_VERIFICATION,
             naver_site_verification=NAVER_SITE_VERIFICATION,
+            related_pages=related_pages,
         )
         (page_dir / "index.html").write_text(html, encoding="utf-8")
         if i % 100 == 0 or i == count:
