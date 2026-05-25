@@ -13,8 +13,13 @@
 function doPost(e) {
   try {
     const ss   = SpreadsheetApp.getActiveSpreadsheet();
-    const raw  = (e && e.postData) ? e.postData.contents : '{}';
-    const data = JSON.parse(raw);
+    let data = {};
+    if (e && e.parameter && Object.keys(e.parameter).length > 0) {
+      data = e.parameter;
+    } else {
+      const raw = (e && e.postData && e.postData.contents) ? e.postData.contents : '{}';
+      try { data = JSON.parse(raw); } catch (_) { data = {}; }
+    }
 
     if (data.type === 'pageview') {
       recordVisit(ss, data);
