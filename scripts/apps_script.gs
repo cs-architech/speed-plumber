@@ -1,24 +1,32 @@
 /**
  * 배관매니저 Google Apps Script
  * ─────────────────────────────────────────────
- * POST 요청 처리:
- *   type = 'inquiry'  → "상담접수" 시트에 기록
- *   type = 'pageview' → "방문자"   시트에 기록 (날짜별 카운트)
+ * GET/POST 모두 처리 (URLSearchParams 방식)
+ * 상담접수 시트 컬럼: 날짜 | 이름 | 전화번호 | 문의내역 | 출처 | 페이지URL | 접수시간
  *
  * 배포: 확장 프로그램 → Apps Script → 새 배포 → 웹 앱
  *       실행 권한: 나, 액세스 권한: 모든 사용자
  * ─────────────────────────────────────────────
  */
 
+function doGet(e) {
+  return handleRequest(e);
+}
+
 function doPost(e) {
+  return handleRequest(e);
+}
+
+function handleRequest(e) {
   try {
-    const ss   = SpreadsheetApp.getActiveSpreadsheet();
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+    // URL 파라미터 우선 (GET 또는 POST+쿼리스트링)
     let data = {};
     if (e && e.parameter && Object.keys(e.parameter).length > 0) {
       data = e.parameter;
-    } else {
-      const raw = (e && e.postData && e.postData.contents) ? e.postData.contents : '{}';
-      try { data = JSON.parse(raw); } catch (_) { data = {}; }
+    } else if (e && e.postData && e.postData.contents) {
+      try { data = JSON.parse(e.postData.contents); } catch (_) {}
     }
 
     if (data.type === 'pageview') {
@@ -45,28 +53,35 @@ function recordInquiry(ss, data) {
 
   if (!sheet) {
     sheet = ss.insertSheet(SHEET);
-    const header = ['날짜', '이름', '전화번호', '문의내역', '출처', '페이지URL', '접수시간(UTC)'];
+    const header = ['날짜', '이름', '전화번호', '문의내역', '출처', '페이지URL', '접수시간'];
     sheet.appendRow(header);
-    sheet.getRange(1, 1, 1, header.length).setFontWeight('bold').setBackground('#1565C0').setFontColor('#ffffff');
+    sheet.getRange(1, 1, 1, header.length)
+      .setFontWeight('bold')
+      .setBackground('#1565C0')
+      .setFontColor('#ffffff');
     sheet.setFrozenRows(1);
     sheet.setColumnWidth(1, 100);
+    sheet.setColumnWidth(2, 100);
     sheet.setColumnWidth(3, 130);
-    sheet.setColumnWidth(4, 200);
+    sheet.setColumnWidth(4, 220);
+    sheet.setColumnWidth(5, 160);
     sheet.setColumnWidth(6, 300);
+    sheet.setColumnWidth(7, 180);
   }
 
-  const date      = data.date      || new Date().toISOString().slice(0, 10);
+  const now       = new Date();
+  const date      = data.date      || now.toISOString().slice(0, 10);
   const name      = data.name      || '';
   const phone     = data.phone     || '';
-  const inquiry   = data.inquiry   || data.category || data.service || '';
-  const source    = data.source    || '';
+  const inquiry   = data.inquiry   || data.content || '';
+  const source    = data.source    || data.site_url || '';
   const pageUrl   = data.page_url  || '';
-  const timestamp = data.timestamp || new Date().toISOString();
+  const timestamp = data.timestamp || now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
   sheet.appendRow([date, name, phone, inquiry, source, pageUrl, timestamp]);
 }
 
-// ── 방문자 카운트 기록 (날짜별 1회 누적) ────────────────────────────────────
+// ── 방문자 카운트 기록 ────────────────────────────────────────────────────────
 function recordVisit(ss, data) {
   const SHEET = '방문자';
   let sheet = ss.getSheetByName(SHEET);
@@ -75,7 +90,10 @@ function recordVisit(ss, data) {
     sheet = ss.insertSheet(SHEET);
     const header = ['날짜', '방문자수'];
     sheet.appendRow(header);
-    sheet.getRange(1, 1, 1, header.length).setFontWeight('bold').setBackground('#2E7D32').setFontColor('#ffffff');
+    sheet.getRange(1, 1, 1, header.length)
+      .setFontWeight('bold')
+      .setBackground('#2E7D32')
+      .setFontColor('#ffffff');
     sheet.setFrozenRows(1);
     sheet.setColumnWidth(1, 110);
     sheet.setColumnWidth(2, 100);

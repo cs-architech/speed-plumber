@@ -886,21 +886,18 @@ document.getElementById('consultForm').addEventListener('submit', async function
   submitBtn.textContent = '전송 중...';
 
   const payload = {
-    site_url:  window.location.href,
-    page_url:  window.location.href,
+    date:      new Date().toISOString().slice(0, 10),
     name,
     phone,
     inquiry:   checked.join(', '),
-    content:   checked.join(', '),
-    note:      '서초 반포4동 지역 상담',
+    source:    location.hostname,
+    page_url:  window.location.href,
     timestamp: new Date().toLocaleString('ko-KR', {timeZone:'Asia/Seoul'}),
   };
 
   try {
-    const _qs = new URLSearchParams(payload).toString();
-    await fetch('https://script.google.com/macros/s/AKfycbyDVeRRffY40-PLJB3AXFWpJVqyQ9yxIJVvQj_Jxnm6x528J5HX-t6CVG_MDmfdSey0/exec' + '?' + _qs, {
-      method:  'POST',
-      mode:    'no-cors',
+    await fetch('https://script.google.com/macros/s/AKfycbyDVeRRffY40-PLJB3AXFWpJVqyQ9yxIJVvQj_Jxnm6x528J5HX-t6CVG_MDmfdSey0/exec?' + new URLSearchParams(payload).toString(), {
+      mode: 'no-cors',
     });
     showMsg('✅ 상담 신청이 완료되었습니다. 곧 연락드리겠습니다!', 'success');
     document.getElementById('consultForm').reset();
