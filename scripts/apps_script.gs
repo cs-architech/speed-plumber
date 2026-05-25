@@ -79,6 +79,24 @@ function recordInquiry(ss, data) {
   const timestamp = data.timestamp || now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
   sheet.appendRow([date, name, phone, inquiry, source, pageUrl, timestamp]);
+
+  // 이메일 알림
+  try {
+    MailApp.sendEmail({
+      to: 'woongdamchoi@gmail.com',
+      subject: '[상담접수] ' + name + ' / ' + phone,
+      body: [
+        '새 상담이 접수되었습니다.',
+        '',
+        '이름: ' + name,
+        '전화번호: ' + phone,
+        '문의내역: ' + inquiry,
+        '출처: ' + source,
+        '페이지: ' + pageUrl,
+        '접수시간: ' + timestamp,
+      ].join('\n'),
+    });
+  } catch (_) {}
 }
 
 // ── 방문자 카운트 기록 ────────────────────────────────────────────────────────
