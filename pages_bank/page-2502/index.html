@@ -27,8 +27,44 @@
   "priceRange": "$$",
   "description": "강남 청담동 변기막힘 전문 24시간 긴급출동. 하수구막힘, 싱크대막힘, 변기막힘, 배관고압세척 전문."
 }
+
+/* ── 시/도 → 시/군/구 연동 ── */
+(function() {
+  var SG = {
+    "서울특별시":["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"],
+    "경기도":["수원시","성남시","의정부시","안양시","부천시","광명시","평택시","동두천시","안산시","고양시","과천시","구리시","남양주시","오산시","시흥시","군포시","의왕시","하남시","용인시","파주시","이천시","안성시","김포시","화성시","광주시","양주시","포천시","여주시","연천군","가평군","양평군"],
+    "인천광역시":["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"],
+    "부산광역시":["중구","서구","동구","영도구","부산진구","동래구","남구","북구","해운대구","사하구","금정구","강서구","연제구","수영구","사상구","기장군"],
+    "대구광역시":["중구","동구","서구","남구","북구","수성구","달서구","달성군"],
+    "대전광역시":["동구","중구","서구","유성구","대덕구"],
+    "광주광역시":["동구","서구","남구","북구","광산구"],
+    "울산광역시":["중구","남구","동구","북구","울주군"],
+    "세종특별자치시":["세종시"],
+    "강원특별자치도":["춘천시","원주시","강릉시","동해시","태백시","속초시","삼척시","홍천군","횡성군","영월군","평창군","정선군","철원군","화천군","양구군","인제군","고성군","양양군"],
+    "충청북도":["청주시","충주시","제천시","보은군","옥천군","영동군","증평군","진천군","괴산군","음성군","단양군"],
+    "충청남도":["천안시","공주시","보령시","아산시","서산시","논산시","계룡시","당진시","금산군","부여군","서천군","청양군","홍성군","예산군","태안군"],
+    "전북특별자치도":["전주시","군산시","익산시","정읍시","남원시","김제시","완주군","진안군","무주군","장수군","임실군","순창군","고창군","부안군"],
+    "전라남도":["목포시","여수시","순천시","나주시","광양시","담양군","곡성군","구례군","고흥군","보성군","화순군","장흥군","강진군","해남군","영암군","무안군","함평군","영광군","장성군","완도군","진도군","신안군"],
+    "경상북도":["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시","의성군","청송군","영양군","영덕군","청도군","고령군","성주군","칠곡군","예천군","봉화군","울진군","울릉군"],
+    "경상남도":["창원시","진주시","통영시","사천시","김해시","밀양시","거제시","양산시","의령군","함안군","창녕군","고성군","남해군","하동군","산청군","함양군","거창군","합천군"],
+    "제주특별자치도":["제주시","서귀포시"]
+  };
+  var sido = document.getElementById('sidoSelect');
+  var sigungu = document.getElementById('sigunguSelect');
+  if (!sido) return;
+  sido.addEventListener('change', function() {
+    var list = SG[this.value] || [];
+    sigungu.innerHTML = '<option value="">시/군/구 선택</option>';
+    list.forEach(function(s) { var o = document.createElement('option'); o.value=s; o.textContent=s; sigungu.appendChild(o); });
+    sigungu.disabled = list.length === 0;
+  });
+})();
 </script>
+<link rel="icon" href="/favicon.png" type="image/png">
 <title>지긋지긋한 강남 청담동 주변 변기막힘 배관 내시경 꼼꼼 점검 리스트</title>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"강남 청담동 현장 내 욕실 바닥 배수구가 완전히 막혀 배수가 전혀 안 될 때, 커피 찌꺼기는 기름기를 흡수한다는데 싱크대에 버려도 되나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 커피 찌꺼기는 물에 녹지 않고 배관에 가라앉아 기존의 기름때와 결합하면 딱딱한 덩어리로 변해 가장 뚫기 힘든 막힘을 유발합니다. 정기 관리와 점검으로 배관 막힘을 사전에 예방해야 합니다."}},{"@type":"Question","name":"강남 청담동 저희 집 주 하수배관이 물이 잘 안 빠져 배수 지연이 심할 때, 식기세척기를 돌릴 때마다 싱크대 하수구에서 물이 뿜어져 나옵니다.","acceptedAnswer":{"@type":"Answer","text":"식기세척기는 한 번에 많은 양의 물을 강하게 펌핑하여 배출하므로, 배관 내부에 찌꺼기가 조금만 쌓여있어도 수압을 견디지 못하고 역류하게 됩니다. 배관 전용 장비로 막힘 원인을 직접 제거하는 게 핵심입니다."}},{"@type":"Question","name":"강남 청담동 해당 현장의 손 씻는 대가 배수가 유독 느려 답답함을 느낄 때, 변기에 물티슈를 한 장씩만 버리는 건 수압으로 내려가지 않나요?","acceptedAnswer":{"@type":"Answer","text":"물티슈는 물에 풀리지 않는 합성 섬유이므로 단 한 장이라도 배관 굴곡진 S자 트랩이나 오수관에 걸려 거대한 막힘을 유발할 수 있습니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다."}},{"@type":"Question","name":"강남 청담동 제가 거주하는 욕실 하수 배수구가 하수가 부글거리며 역류가 심할 때, 강남 청담동 미용실 샴푸대 하수구가 꽉 막혔는데, 독한 약품을 부어도 될까요?","acceptedAnswer":{"@type":"Answer","text":"미용실은 다량의 머리카락과 함께 파마약, 염색약 등 각종 화학약품이 하수구로 흘러 들어갑니다. 이 약품들이 머리카락과 엉겨 붙어 끈적하고 단단한 덩어리를 만들기 때문에 시중의 배관 세척제로는 해결되지 않습니다. 고성능 석션 및 스케일링 장비로 덩어리를 직접 뽑아내야 배관 손상 없이 통수됩니다. 비파괴 방식의 전문 공법으로 배관을 유지하며 통수해야 합니다."}},{"@type":"Question","name":"강남 청담동 우리 집 건물 중앙 하수관이 막힘이 심해 물이 전혀 빠지지 않을 때, 싱크대 하부장 바닥 마루가 까맣게 썩어가고 물기가 있습니다.","acceptedAnswer":{"@type":"Answer","text":"싱크대 바닥 하수구가 막혀 물이 빠지지 못하고 역류하여 마루로 스며든 증상입니다. 마루 전체가 썩기 전에 즉시 배관을 뚫어야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다."}},{"@type":"Question","name":"강남 청담동 점검 중인 개수대가 배관이 완전히 막혀 통수가 안 될 때, 강남 청담동 심야 시간에 하수구가 역류하는데 야간 출동이 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"강남 청담동 지역에서 24시간 긴급 출동이 가능한 업체 정보를 확인하실 수 있습니다. 역류를 방치하면 침수 등 추가 피해가 발생하므로, 안내 페이지에서 심야·주말 긴급 출동 업체를 확인하실 수 있습니다. 지속적인 배관 유지보수가 재발 방지의 핵심입니다."}},{"@type":"Question","name":"강남 청담동 건물 내 주 하수배관이 하수가 부글거리며 역류가 심할 때, 인테리어 공사 후 강남 청담동 화장실 배수구가 막혔는데 백시멘트 같습니다.","acceptedAnswer":{"@type":"Answer","text":"타일 작업 중 들어간 백시멘트가 내부에서 돌처럼 굳어버린 험난한 상황입니다. 억지로 찌르면 배관이 깨지므로 특수 체인 노커로 시멘트만 파쇄해야 합니다. 예방을 위해서는 정기적인 배관 유지관리가 반드시 필요합니다."}},{"@type":"Question","name":"강남 청담동 근처의 욕실 배수구가 하수구가 완전히 폐색돼 물이 안 빠질 때, 변기에 화장품 병(또는 플라스틱 뚜껑, 칫솔)을 빠뜨리고 물을 내렸습니다. 강남 청담동 변기 안 뜯고 해결되나요?","acceptedAnswer":{"@type":"Answer","text":"플라스틱, 유리 등 딱딱한 고체 이물질이 들어갔을 때는 절대 뚫어뻥을 사용하시면 안 됩니다. 이물질이 S자 트랩 초입에 있다면 초강력 석션기(흡입기)로 변기를 뜯지 않고(무탈거) 쏙 뽑아낼 확률이 매우 높습니다. 단, 깊숙이 꽉 끼어있다면 부득이하게 변기를 잠시 탈거한 후 뒤집어서 에어 콤프레셔로 밀어내야 할 수도 있습니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다."}}]}
+</script>
 <style>
 /* ── Reset & Base ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -179,6 +215,13 @@ a{text-decoration:none;color:inherit}
 .faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
 .faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
 @media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
+
+/* ── Pagination ── */
+.page-nav{display:flex;justify-content:center;align-items:center;gap:6px;padding:24px 16px 8px;flex-wrap:wrap}
+.pn-btn{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 14px;background:#fff;border:1.5px solid #dde3f0;border-radius:8px;color:#283593;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .15s,border-color .15s}
+.pn-btn:hover{background:#e3e8ff;border-color:#3f51b5}
+.pn-btn.pn-curr{background:#1a237e;color:#fff;border-color:#1a237e;pointer-events:none}
+.pn-arrow{font-size:.8rem}
 </style>
 </head>
 <body>
@@ -226,6 +269,26 @@ a{text-decoration:none;color:inherit}
             <input class="form-input" type="tel" id="userPhone" name="phone"
                    placeholder="010-0000-0000" autocomplete="tel"
                    oninput="formatPhone(this)">
+          </div>
+
+          
+          <div class="form-group">
+            <label class="form-label">주소 <span class="req">*</span></label>
+            <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+              <select class="form-input" id="sidoSelect" style="flex:1;min-width:120px">
+                <option value="">시/도 선택</option>
+                <option>서울특별시</option><option>경기도</option><option>인천광역시</option>
+                <option>부산광역시</option><option>대구광역시</option><option>대전광역시</option>
+                <option>광주광역시</option><option>울산광역시</option><option>세종특별자치시</option>
+                <option>강원특별자치도</option><option>충청북도</option><option>충청남도</option>
+                <option>전북특별자치도</option><option>전라남도</option><option>경상북도</option>
+                <option>경상남도</option><option>제주특별자치도</option>
+              </select>
+              <select class="form-input" id="sigunguSelect" style="flex:1;min-width:120px" disabled>
+                <option value="">시/군/구 선택</option>
+              </select>
+            </div>
+            <input class="form-input" type="text" id="addrDetail" placeholder="상세주소 (동·읍면·아파트명 등)">
           </div>
 
           <div class="form-group">
@@ -1020,6 +1083,16 @@ a{text-decoration:none;color:inherit}
 
 
 <!-- 푸터 -->
+
+<nav class="page-nav" aria-label="페이지 이동">
+  <a href="/page-2501/" class="pn-btn pn-arrow">&#9664;</a>
+  <a href="/page-2500/" class="pn-btn">2500</a>
+  <a href="/page-2501/" class="pn-btn">2501</a>
+  <a href="/page-2502/" class="pn-btn pn-curr">2502</a>
+  <a href="/page-2503/" class="pn-btn">2503</a>
+  <a href="/page-2504/" class="pn-btn">2504</a>
+  <a href="/page-2503/" class="pn-btn pn-arrow">&#9654;</a>
+</nav>
 <footer class="footer">
   <div class="footer-phone">&#128222; 1866-2449</div>
   <p>배관막힘 전문업체 &middot; 24시간 긴급출동 &middot; 서울&#xB7;경기 전 지역</p>
@@ -1077,6 +1150,10 @@ document.getElementById('consultForm').addEventListener('submit', async function
     return el.value;
   });
 
+  const sido     = document.getElementById('sidoSelect') ? document.getElementById('sidoSelect').value : '';
+  const sigungu  = document.getElementById('sigunguSelect') ? document.getElementById('sigunguSelect').value : '';
+  const addrDetail = document.getElementById('addrDetail') ? document.getElementById('addrDetail').value.trim() : '';
+
   if (!name) { showMsg('이름을 입력해 주세요.', 'error'); return; }
   if (!phone || phone.replace(/\D/g,'').length < 10) {
     showMsg('정확한 연락처를 입력해 주세요.', 'error'); return;
@@ -1096,6 +1173,9 @@ document.getElementById('consultForm').addEventListener('submit', async function
     name,
     phone,
     inquiry:   checked.join(', '),
+    sido,
+    sigungu,
+    address:   [sido, sigungu, addrDetail].filter(Boolean).join(' '),
     source:    location.hostname,
     page_url:  window.location.href,
     timestamp: new Date().toLocaleString('ko-KR', {timeZone:'Asia/Seoul'}),

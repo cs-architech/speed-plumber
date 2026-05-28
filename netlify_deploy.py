@@ -53,6 +53,18 @@ def main() -> int:
     if bank_img.exists():
         shutil.copytree(str(bank_img), str(OUTPUT_DIR / "images"))
 
+    # favicon 루트 복사
+    favicon_src = BANK_DIR / "images" / "pavicon.png"
+    if favicon_src.exists():
+        shutil.copy2(favicon_src, OUTPUT_DIR / "favicon.png")
+
+    # 카테고리 페이지 복사 (한글 디렉토리)
+    cat_dirs = ["배관", "하수구막힘", "싱크대막힘", "변기막힘", "우수관막힘", "고압세척"]
+    for cat in cat_dirs:
+        cat_src = BANK_DIR / cat
+        if cat_src.exists():
+            shutil.copytree(str(cat_src), str(OUTPUT_DIR / cat))
+
     # N개 페이지 HTML 복사
     for page_dir in pages[:count]:
         dst = OUTPUT_DIR / page_dir.name

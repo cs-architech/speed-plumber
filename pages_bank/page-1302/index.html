@@ -27,8 +27,44 @@
   "priceRange": "$$",
   "description": "강서 화곡8동 배관막힘 전문 24시간 긴급출동. 하수구막힘, 싱크대막힘, 변기막힘, 배관고압세척 전문."
 }
+
+/* ── 시/도 → 시/군/구 연동 ── */
+(function() {
+  var SG = {
+    "서울특별시":["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"],
+    "경기도":["수원시","성남시","의정부시","안양시","부천시","광명시","평택시","동두천시","안산시","고양시","과천시","구리시","남양주시","오산시","시흥시","군포시","의왕시","하남시","용인시","파주시","이천시","안성시","김포시","화성시","광주시","양주시","포천시","여주시","연천군","가평군","양평군"],
+    "인천광역시":["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"],
+    "부산광역시":["중구","서구","동구","영도구","부산진구","동래구","남구","북구","해운대구","사하구","금정구","강서구","연제구","수영구","사상구","기장군"],
+    "대구광역시":["중구","동구","서구","남구","북구","수성구","달서구","달성군"],
+    "대전광역시":["동구","중구","서구","유성구","대덕구"],
+    "광주광역시":["동구","서구","남구","북구","광산구"],
+    "울산광역시":["중구","남구","동구","북구","울주군"],
+    "세종특별자치시":["세종시"],
+    "강원특별자치도":["춘천시","원주시","강릉시","동해시","태백시","속초시","삼척시","홍천군","횡성군","영월군","평창군","정선군","철원군","화천군","양구군","인제군","고성군","양양군"],
+    "충청북도":["청주시","충주시","제천시","보은군","옥천군","영동군","증평군","진천군","괴산군","음성군","단양군"],
+    "충청남도":["천안시","공주시","보령시","아산시","서산시","논산시","계룡시","당진시","금산군","부여군","서천군","청양군","홍성군","예산군","태안군"],
+    "전북특별자치도":["전주시","군산시","익산시","정읍시","남원시","김제시","완주군","진안군","무주군","장수군","임실군","순창군","고창군","부안군"],
+    "전라남도":["목포시","여수시","순천시","나주시","광양시","담양군","곡성군","구례군","고흥군","보성군","화순군","장흥군","강진군","해남군","영암군","무안군","함평군","영광군","장성군","완도군","진도군","신안군"],
+    "경상북도":["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시","의성군","청송군","영양군","영덕군","청도군","고령군","성주군","칠곡군","예천군","봉화군","울진군","울릉군"],
+    "경상남도":["창원시","진주시","통영시","사천시","김해시","밀양시","거제시","양산시","의령군","함안군","창녕군","고성군","남해군","하동군","산청군","함양군","거창군","합천군"],
+    "제주특별자치도":["제주시","서귀포시"]
+  };
+  var sido = document.getElementById('sidoSelect');
+  var sigungu = document.getElementById('sigunguSelect');
+  if (!sido) return;
+  sido.addEventListener('change', function() {
+    var list = SG[this.value] || [];
+    sigungu.innerHTML = '<option value="">시/군/구 선택</option>';
+    list.forEach(function(s) { var o = document.createElement('option'); o.value=s; o.textContent=s; sigungu.appendChild(o); });
+    sigungu.disabled = list.length === 0;
+  });
+})();
 </script>
+<link rel="icon" href="/favicon.png" type="image/png">
 <title>비용 걱정 없는 [강서 화곡8동] 배관막힘 최상급 장비 보유 현황 (당일 조치)</title>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"강서 화곡8동 점검 중인 씽크대가 배수 때마다 배관 울림 소리가 들릴 때, 강서 화곡8동 변기 막힘 및 부속품 교체를 한 번에 해결해 주는 업체를 찾을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"강서 화곡8동 지역 변기 수리, 부속 교체, 막힘 뚫음 관련 업종 업체를 한 곳에 모아 소개해 드리는 전용 페이지가 있습니다. 본문에 정리된 점검 가능 지역과 업체 연락처를 통해 신속하게 해결하실 수 있습니다. 배관 원형을 지키면서 비파괴 공법으로 통수 처리해야 합니다."}},{"@type":"Question","name":"강서 화곡8동 지금 이곳 식당 오수관이 출처 불분명한 악취가 실내에 퍼질 때, 강서 화곡8동 아파트 화장실에서 다른 집 담배 냄새나 하수구 악취가 심하게 올라옵니다.","acceptedAnswer":{"@type":"Answer","text":"화장실 환풍기 댐퍼 불량이나 바닥 하수구의 '봉수(냄새 차단용 고인 물)'가 말랐을 때 발생하는 현상입니다. 하수구를 정기적으로 청소하고 물을 부어주며, 필요시 강서 화곡8동 설비 업체를 통해 악취 차단 전용 트랩을 설치하면 99% 해결됩니다. 전용 장비를 활용한 정밀 처리로 막힘 원인을 없애는 것이 중요합니다."}},{"@type":"Question","name":"강서 화곡8동 살고 있는 곳의 변기가 하수 흐름이 현저히 둔해져 있을 때, 주방 싱크대에 끓는 물을 부으면 기름때 막힘이 해결되나요?","acceptedAnswer":{"@type":"Answer","text":"아주 가벼운 기름때라면 녹을 수 있지만, 배관 내부에 단단하게 굳은 유지방 덩어리(슬러지)에는 큰 효과가 없습니다. 오히려 가정용 싱크대 주름관(플라스틱 재질)은 고온에 약해 펄펄 끓는 물을 자주 부으면 배관이 쪼그라들거나 변형되어 누수의 원인이 될 수 있으므로 60도 이하의 따뜻한 물을 사용하는 것이 좋습니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다."}},{"@type":"Question","name":"강서 화곡8동 소속 건물의 욕실 배수구가 이유 없이 하수 냄새가 강하게 날 때, 강서 화곡8동 싱크대 하부장에서 물이 새고 마루가 까맣게 변색되고 있어요. 원인이 뭘까요?","acceptedAnswer":{"@type":"Answer","text":"싱크대 하부 배관(주름관)이 찢어졌거나, 바닥 하수구(PVC 배관)가 막혀 물이 역류하면서 발생하는 현상입니다. 역류한 물이 장기간 마루에 스며들면 마루 썩음과 곰팡이를 유발하므로, 즉시 물 사용을 중지하고 강서 화곡8동 배관 전문 업체를 통해 배관 내부를 뚫어 역류를 해결해야 합니다. 정확한 상황 파악을 위해 내시경 진단을 우선 진행해야 합니다."}},{"@type":"Question","name":"강서 화곡8동 제가 머무는 곳의 좌변기가 물을 내릴 때 배관에서 이상 소음이 날 때, 강서 화곡8동 변기에 들어간 플라스틱 뚜껑을 뚫어뻥으로 밀어내도 되나요?","acceptedAnswer":{"@type":"Answer","text":"압력을 가할수록 뚜껑이 더 깊이 끼어버릴 수 있으므로, 전문 장비로 역방향 흡입해 꺼내는 것이 가장 안전합니다. 배관 피해를 줄이는 비파괴 방식으로 처리하는 것이 바람직합니다."}},{"@type":"Question","name":"강서 화곡8동 현장 내 세면기가 배관에서 오물이 역류해 올라올 때, 샤워 후 화장실 바닥 하수구로 물이 안 빠져서 한참 기다려야 해요.","acceptedAnswer":{"@type":"Answer","text":"욕실 하수구 막힘의 90% 이상은 '머리카락'과 '비누 찌꺼기'가 엉켜 발생합니다. 하수구 덮개(유가)를 열고 내부의 트랩을 꺼내 엉킨 머리카락을 1차로 제거해 보시고, 그래도 안 빠진다면 하수관 깊은 곳에 슬러지가 쌓인 것이니 전문 장비 투입이 필요합니다. 원인 규명을 위해 내시경 검사를 통한 정확한 진단이 선행돼야 합니다."}},{"@type":"Question","name":"강서 화곡8동 살고 있는 곳의 욕실 배수구가 배관이 완전히 막혀 통수가 안 될 때, 강서 화곡8동 카페 씽크대와 제빙기 배수구가 자주 막히는데 원인이 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"카페 배관 막힘의 1순위는 '커피 찌꺼기(원두 가루)'와 '우유 지방'입니다. 커피 찌꺼기가 물에 씻겨 내려가는 것 같아도, 배관 내부에 가라앉아 우유의 유지방과 결합하면 콘크리트처럼 딱딱하게 굳어버립니다. 일반적인 방법으로는 뚫기 어려우며, 강서 화곡8동 전문 업체의 플렉스 샤프트 장비로 배관 내부를 갈아내는 스케일링 작업이 필요합니다. 내시경 카메라로 원인을 확인한 뒤 적절한 조치를 취해야 합니다."}},{"@type":"Question","name":"강서 화곡8동 이 현장의 욕실 배수구가 출처 불분명한 악취가 실내에 퍼질 때, 내시경 카메라 촬영 비용은 별도인가요? 꼭 봐야 하나요?","acceptedAnswer":{"@type":"Answer","text":"강서 화곡8동 지역 내 작업 시 기본적인 내시경 점검은 서비스로 포함되어 진행되는 경우가 많습니다. 내시경을 봐야 하는 이유는, 맹목적으로 구멍만 뚫는 것이 아니라 이물질의 종류(기름인지 시멘트인지), 배관의 역구배(기울기 불량) 여부, 작업 후 배관이 100% 깨끗해졌는지 고객님께서 직접 눈으로 확인하시고 안심하실 수 있도록 하기 위함입니다. 재발 방지를 위한 정기 배관 관리가 무엇보다 중요합니다."}},{"@type":"Question","name":"강서 화곡8동 일대 건물의 씽크대가 하수구 역류가 거품과 함께 발생할 때, 식당 주방에 있는 그리스트랩(기름 걸름망)이 자주 넘칩니다. 강서 화곡8동 상가 식당 정기 관리도 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"네, 가능합니다. 대형 식당이나 고깃집의 경우 그리스트랩 용량의 한계를 넘어 배관으로 기름이 유입되어 메인 배관이 막히는 경우가 잦습니다. 강서 화곡8동 주변 상가를 위한 정기 배관 청소·유지보수 서비스를 고압세척 장비로 제공하여 영업에 지장이 없도록 관리해 드리고 있습니다. 먼저 배관 내시경을 통해 정확한 원인부터 파악해야 합니다."}}]}
+</script>
 <style>
 /* ── Reset & Base ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -179,6 +215,13 @@ a{text-decoration:none;color:inherit}
 .faq-answer-inner{padding:12px 16px 16px;background:#f0f3ff;border-top:1px solid #e3e8ff;font-size:.88rem;color:#444;line-height:1.8}
 .faq-a-label{color:#ff6f00;font-weight:900;margin-right:6px}
 @media(max-width:600px){.faq-btn{font-size:.85rem;padding:12px 14px}}
+
+/* ── Pagination ── */
+.page-nav{display:flex;justify-content:center;align-items:center;gap:6px;padding:24px 16px 8px;flex-wrap:wrap}
+.pn-btn{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0 14px;background:#fff;border:1.5px solid #dde3f0;border-radius:8px;color:#283593;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .15s,border-color .15s}
+.pn-btn:hover{background:#e3e8ff;border-color:#3f51b5}
+.pn-btn.pn-curr{background:#1a237e;color:#fff;border-color:#1a237e;pointer-events:none}
+.pn-arrow{font-size:.8rem}
 </style>
 </head>
 <body>
@@ -226,6 +269,26 @@ a{text-decoration:none;color:inherit}
             <input class="form-input" type="tel" id="userPhone" name="phone"
                    placeholder="010-0000-0000" autocomplete="tel"
                    oninput="formatPhone(this)">
+          </div>
+
+          
+          <div class="form-group">
+            <label class="form-label">주소 <span class="req">*</span></label>
+            <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+              <select class="form-input" id="sidoSelect" style="flex:1;min-width:120px">
+                <option value="">시/도 선택</option>
+                <option>서울특별시</option><option>경기도</option><option>인천광역시</option>
+                <option>부산광역시</option><option>대구광역시</option><option>대전광역시</option>
+                <option>광주광역시</option><option>울산광역시</option><option>세종특별자치시</option>
+                <option>강원특별자치도</option><option>충청북도</option><option>충청남도</option>
+                <option>전북특별자치도</option><option>전라남도</option><option>경상북도</option>
+                <option>경상남도</option><option>제주특별자치도</option>
+              </select>
+              <select class="form-input" id="sigunguSelect" style="flex:1;min-width:120px" disabled>
+                <option value="">시/군/구 선택</option>
+              </select>
+            </div>
+            <input class="form-input" type="text" id="addrDetail" placeholder="상세주소 (동·읍면·아파트명 등)">
           </div>
 
           <div class="form-group">
@@ -970,6 +1033,16 @@ a{text-decoration:none;color:inherit}
 
 
 <!-- 푸터 -->
+
+<nav class="page-nav" aria-label="페이지 이동">
+  <a href="/page-1301/" class="pn-btn pn-arrow">&#9664;</a>
+  <a href="/page-1300/" class="pn-btn">1300</a>
+  <a href="/page-1301/" class="pn-btn">1301</a>
+  <a href="/page-1302/" class="pn-btn pn-curr">1302</a>
+  <a href="/page-1303/" class="pn-btn">1303</a>
+  <a href="/page-1304/" class="pn-btn">1304</a>
+  <a href="/page-1303/" class="pn-btn pn-arrow">&#9654;</a>
+</nav>
 <footer class="footer">
   <div class="footer-phone">&#128222; 1866-2449</div>
   <p>배관막힘 전문업체 &middot; 24시간 긴급출동 &middot; 서울&#xB7;경기 전 지역</p>
@@ -1027,6 +1100,10 @@ document.getElementById('consultForm').addEventListener('submit', async function
     return el.value;
   });
 
+  const sido     = document.getElementById('sidoSelect') ? document.getElementById('sidoSelect').value : '';
+  const sigungu  = document.getElementById('sigunguSelect') ? document.getElementById('sigunguSelect').value : '';
+  const addrDetail = document.getElementById('addrDetail') ? document.getElementById('addrDetail').value.trim() : '';
+
   if (!name) { showMsg('이름을 입력해 주세요.', 'error'); return; }
   if (!phone || phone.replace(/\D/g,'').length < 10) {
     showMsg('정확한 연락처를 입력해 주세요.', 'error'); return;
@@ -1046,6 +1123,9 @@ document.getElementById('consultForm').addEventListener('submit', async function
     name,
     phone,
     inquiry:   checked.join(', '),
+    sido,
+    sigungu,
+    address:   [sido, sigungu, addrDetail].filter(Boolean).join(' '),
     source:    location.hostname,
     page_url:  window.location.href,
     timestamp: new Date().toLocaleString('ko-KR', {timeZone:'Asia/Seoul'}),

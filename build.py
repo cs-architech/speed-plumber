@@ -802,6 +802,8 @@ def build_bank(count: int):
             google_site_verification=GOOGLE_SITE_VERIFICATION,
             naver_site_verification=NAVER_SITE_VERIFICATION,
             related_pages=related_pages,
+            page_num=i,
+            total_pages=count,
         )
         (page_dir / "index.html").write_text(html, encoding="utf-8")
         if i % 100 == 0 or i == count:

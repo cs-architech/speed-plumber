@@ -53,7 +53,7 @@ function recordInquiry(ss, data) {
 
   if (!sheet) {
     sheet = ss.insertSheet(SHEET);
-    const header = ['날짜', '이름', '전화번호', '문의내역', '출처', '페이지URL', '접수시간'];
+    const header = ['날짜', '이름', '전화번호', '문의내역', '주소', '출처', '페이지URL', '접수시간'];
     sheet.appendRow(header);
     sheet.getRange(1, 1, 1, header.length)
       .setFontWeight('bold')
@@ -74,11 +74,12 @@ function recordInquiry(ss, data) {
   const name      = data.name      || '';
   const phone     = data.phone     || '';
   const inquiry   = data.inquiry   || data.content || '';
+  const address   = data.address   || [data.sido, data.sigungu].filter(Boolean).join(' ') || '';
   const source    = data.source    || data.site_url || '';
   const pageUrl   = data.page_url  || '';
   const timestamp = data.timestamp || now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
-  sheet.appendRow([date, name, phone, inquiry, source, pageUrl, timestamp]);
+  sheet.appendRow([date, name, phone, inquiry, address, source, pageUrl, timestamp]);
 
   // 이메일 알림
   try {
@@ -90,6 +91,7 @@ function recordInquiry(ss, data) {
         '',
         '이름: ' + name,
         '전화번호: ' + phone,
+        '주소: ' + address,
         '문의내역: ' + inquiry,
         '출처: ' + source,
         '페이지: ' + pageUrl,
