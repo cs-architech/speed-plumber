@@ -252,9 +252,7 @@ a{text-decoration:none;color:inherit}
               <select class="form-input" id="sigunguSelect" style="flex:1;min-width:120px" disabled>
                 <option value="">시/군/구 선택</option>
               </select>
-            </div>
-            <input class="form-input" type="text" id="addrDetail" placeholder="상세주소 (동·읍면·아파트명 등)">
-          </div>
+            </div></div>
 
           <div class="form-group">
             <label class="form-label">문의 항목 <span class="req">*</span></label>
@@ -1079,7 +1077,6 @@ document.getElementById('consultForm').addEventListener('submit', async function
 
   const sido     = document.getElementById('sidoSelect') ? document.getElementById('sidoSelect').value : '';
   const sigungu  = document.getElementById('sigunguSelect') ? document.getElementById('sigunguSelect').value : '';
-  const addrDetail = document.getElementById('addrDetail') ? document.getElementById('addrDetail').value.trim() : '';
 
   if (!name) { showMsg('이름을 입력해 주세요.', 'error'); return; }
   if (!phone || phone.replace(/\D/g,'').length < 10) {
@@ -1102,7 +1099,7 @@ document.getElementById('consultForm').addEventListener('submit', async function
     inquiry:   checked.join(', '),
     sido,
     sigungu,
-    address:   [sido, sigungu, addrDetail].filter(Boolean).join(' '),
+    address:   [sido, sigungu].filter(Boolean).join(' '),
     source:    location.hostname,
     page_url:  window.location.href,
     timestamp: new Date().toLocaleString('ko-KR', {timeZone:'Asia/Seoul'}),
