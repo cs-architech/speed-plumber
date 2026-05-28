@@ -67,6 +67,18 @@ function recordInquiry(ss, data) {
     sheet.setColumnWidth(5, 160);
     sheet.setColumnWidth(6, 300);
     sheet.setColumnWidth(7, 180);
+  } else {
+    // 기존 시트에 '주소' 컬럼이 없으면 5번째 위치에 삽입
+    const lastCol = sheet.getLastColumn();
+    const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+    if (!headers.includes('주소')) {
+      sheet.insertColumnAfter(4);
+      sheet.getRange(1, 5).setValue('주소')
+        .setFontWeight('bold')
+        .setBackground('#1565C0')
+        .setFontColor('#ffffff');
+      sheet.setColumnWidth(5, 160);
+    }
   }
 
   const now       = new Date();
