@@ -354,6 +354,7 @@ def build_region_blocks(df: pd.DataFrame, main_keyword: str, mid_kw_lines: list[
 # ─── 이미지 처리 ──────────────────────────────────────────────────────────────
 
 def wash_and_compress(src: Path, dst: Path, max_kb: int = 100):
+    """이미지를 WebP로 변환·압축 (EXIF 제거, max_kb 이하)"""
     target = max_kb * 1024
     with Image.open(src) as img:
         img = img.convert("RGB")
@@ -364,9 +365,10 @@ def wash_and_compress(src: Path, dst: Path, max_kb: int = 100):
             random.randint(1, 3), random.randint(1, 3),
             w - random.randint(1, 3), h - random.randint(1, 3),
         ))
-        for quality in [85, 75, 65, 55, 45, 35]:
+        # WebP: quality 80→60→40 순으로 시도
+        for quality in [80, 65, 50, 40, 30]:
             buf = BytesIO()
-            clean.save(buf, format="JPEG", quality=quality, optimize=True)
+            clean.save(buf, format="WEBP", quality=quality, method=4)
             if buf.tell() <= target:
                 dst.write_bytes(buf.getvalue())
                 return
@@ -374,11 +376,11 @@ def wash_and_compress(src: Path, dst: Path, max_kb: int = 100):
         if max(clean.size) > max_dim:
             clean.thumbnail((max_dim, max_dim), Image.LANCZOS)
         buf = BytesIO()
-        clean.save(buf, format="JPEG", quality=35, optimize=True)
+        clean.save(buf, format="WEBP", quality=30, method=4)
         dst.write_bytes(buf.getvalue())
 
 def select_diverse_photos(n: int) -> list[Path]:
-    exts = {".jpg", ".jpeg", ".png"}
+    exts = {".jpg", ".jpeg", ".png", ".webp"}
     all_photos = [p for p in PHOTOS_DIR.iterdir() if p.suffix.lower() in exts]
     if not all_photos:
         return []
@@ -407,8 +409,11 @@ def process_gallery_named(img_dir: Path, region: str, keyword: str) -> list[str]
     n = random.randint(*GALLERY_RANGE)
     photos = select_diverse_photos(n)
     paths: list[str] = []
+    # SEO 파일명: 지역-키워드-작업사진-N.webp (공백→하이픈, 특수문자 제거)
+    safe_region  = re.sub(r'[^\w가-힣]', '-', region).strip('-')
+    safe_keyword = re.sub(r'[^\w가-힣]', '-', keyword).strip('-')
     for i, src in enumerate(photos):
-        fname = f"{region} {keyword} 업체 긴급출동({i + 1}).jpg"
+        fname = f"{safe_region}-{safe_keyword}-작업사진-{i + 1}.webp"
         dst   = img_dir / fname
         try:
             wash_and_compress(src, dst, max_kb=100)
@@ -710,11 +715,11 @@ def build_bank(count: int):
     # 갤러리 공유 풀 (이미지 없으면 새로 처리)
     if regen_images:
         print("[1/3] 공유 갤러리 이미지 처리 중...")
-        photo_exts = {".jpg", ".jpeg", ".png"}
+        photo_exts = {".jpg", ".jpeg", ".png", ".webp"}
         all_photos = sorted([p for p in PHOTOS_DIR.iterdir() if p.suffix.lower() in photo_exts]) if PHOTOS_DIR.exists() else []
         gallery_pool: list[str] = []
         for idx, src in enumerate(all_photos):
-            fname = f"gallery-{idx+1:03d}.jpg"
+            fname = f"배관막힘-작업사진-{idx+1:03d}.webp"
             try:
                 wash_and_compress(src, BANK_GAL_DIR / fname, max_kb=100)
                 gallery_pool.append(f"../images/gallery/{fname}")

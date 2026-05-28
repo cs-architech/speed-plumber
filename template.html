@@ -324,7 +324,7 @@ a{text-decoration:none;color:inherit}
     <div class="gallery-grid">
       {% for img in main_gallery %}
       <a href="{{ img }}" class="lb-trigger">
-        <img src="{{ img }}" alt="{{ region }} {{ keyword }} 작업 사진 {{ loop.index }}" loading="lazy">
+        <img src="{{ img }}" alt="{{ region }} {{ keyword }} 현장 출장 작업 사진 {{ loop.index }}" loading="lazy">
       </a>
       {% endfor %}
       {% if main_gallery|length < 3 %}
@@ -334,7 +334,7 @@ a{text-decoration:none;color:inherit}
       {% endif %}
       {% for full, _ in sub_gallery %}
       <a href="{{ full }}" class="lb-trigger gallery-sub">
-        <img src="{{ full }}" alt="{{ region }} {{ keyword }} 작업 사진" loading="lazy">
+        <img src="{{ full }}" alt="{{ region }} {{ keyword }} 긴급출동 작업 완료 사진" loading="lazy">
       </a>
       {% endfor %}
     </div>
