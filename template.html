@@ -643,18 +643,23 @@ function closeLb() {
     "경상남도":["창원시","진주시","통영시","사천시","김해시","밀양시","거제시","양산시","의령군","함안군","창녕군","고성군","남해군","하동군","산청군","함양군","거창군","합천군"],
     "제주특별자치도":["제주시","서귀포시"]
   };
-  var sido = document.getElementById('sidoSelect');
-  var sigungu = document.getElementById('sigunguSelect');
-  if (!sido) return;
-  sido.addEventListener('change', function() {
-    var list = SG[this.value] || [];
-    sigungu.innerHTML = '<option value="">시/군/구 선택</option>';
-    list.forEach(function(s) {
-      var o = document.createElement('option'); o.value = s; o.textContent = s;
-      sigungu.appendChild(o);
+  function _initAddr() {
+    var sido = document.getElementById('sidoSelect');
+    var sigungu = document.getElementById('sigunguSelect');
+    if (!sido || !sigungu) return;
+    sido.addEventListener('change', function() {
+      var list = SG[this.value] || [];
+      sigungu.innerHTML = '<option value="">시/군/구 선택</option>';
+      list.forEach(function(s) {
+        var o = document.createElement('option'); o.value = s; o.textContent = s;
+        sigungu.appendChild(o);
+      });
+      sigungu.disabled = list.length === 0;
     });
-    sigungu.disabled = list.length === 0;
-  });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _initAddr);
+  } else { _initAddr(); }
 })();
 
 /* ── 방문자 pageview 기록 (Google Apps Script) ── */
