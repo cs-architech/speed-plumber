@@ -86,7 +86,9 @@ function recordInquiry(ss, data) {
   const name      = data.name      || '';
   const phone     = data.phone     || '';
   const inquiry   = data.inquiry   || data.content || '';
-  const address   = data.address   || [data.sido, data.sigungu].filter(Boolean).join(' ') || '';
+  const sido      = data.sido      || '';
+  const sigungu   = data.sigungu   || '';
+  const address   = [sido, sigungu].filter(Boolean).join(' ') || data.address || '';
   const source    = data.source    || data.site_url || '';
   const pageUrl   = data.page_url  || '';
   const timestamp = data.timestamp || now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
