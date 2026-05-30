@@ -39,7 +39,7 @@ PHONE               = "1866-2449"
 SITE_NAME           = "하수구막힘 전문"
 GOOGLE_APPS_URL     = (
     "https://script.google.com/macros/s/"
-    "AKfycbxcmiQ8bvCcxBwjwRfAnZM3ke7LtoC2BfjyeSu-hRymbJ827RWiAWEPb79jBfe-yeF8/exec"
+    "AKfycbzK8bmvdHDyfPh6MXekJ82bunwQquxPjm2R32qJcEoFxbCykqLOL0TZ1nNRNC7hwHMa/exec"
 )
 REGION_BLOCK_COUNT  = 13  # 생성할 지역 블록 수 (주요 1 + 점검가능 12)
 GALLERY_RANGE       = (5, 11)
