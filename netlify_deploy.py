@@ -76,6 +76,7 @@ def main() -> int:
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        f'  <url><loc>{SITE_DOMAIN}/</loc><lastmod>{today}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>',
     ]
     for page_dir in pages[:count]:
         url = f"{SITE_DOMAIN}/{page_dir.name}/"
@@ -102,8 +103,11 @@ def main() -> int:
     ])
     (OUTPUT_DIR / "robots.txt").write_text(robots, encoding="utf-8")
 
-    # 루트 index.html — page-0001 내용을 그대로 복사 (canonical은 page-0001/ 유지)
-    if count > 0:
+    # 루트 index.html — 메인 페이지 (50개 링크 SEO 낙수효과)
+    main_idx = BANK_DIR / "main_index.html"
+    if main_idx.exists():
+        shutil.copy2(main_idx, OUTPUT_DIR / "index.html")
+    elif count > 0:
         shutil.copy2(pages[0] / "index.html", OUTPUT_DIR / "index.html")
 
     # 404.html — 존재하지 않는 경로 접근 시 표시
