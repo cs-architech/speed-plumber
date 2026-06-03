@@ -1,4 +1,4 @@
-// src/data/contents_list_fix_main.ts
+﻿// src/data/contents_list_fix_main.ts
 // ──────────────────────────────────────────────────────────────────────────────
 // 메인 페이지(index.astro) 전용 가변 데이터.
 // 이 파일만 수정 후 빌드(npm run build)하면 메인 페이지 전체에 자동 반영됩니다.
@@ -16,7 +16,7 @@ export const mainContent = {
     title:       '배관매니저 | 배관막힘 전문 업체 1866-2449 · 24시간 신속출동',
     description: '전국 배관막힘, 싱크대막힘, 우수관막힘 전문 업체 배관매니저. 24시간 신속 출동, 1866-2449. 서울·경기 전지역 커버.',
     keywords:    '배관막힘, 하수구막힘, 싱크대막힘, 변기막힘, 우수관막힘, 배관뚫음, 24시간출장, 배관매니저',
-    canonical:   'https://plumbers24.netlify.app',
+    canonical:   'https://speed-plumber.netlify.app',
     ogImage:     '/og-default.jpg',
   },
 

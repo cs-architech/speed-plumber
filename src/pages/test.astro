@@ -1,0 +1,121 @@
+﻿---
+// src/pages/test.astro — 디자인 확인용 테스트 페이지 (빌드 후 /test 접속)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import DongPage from '../components/DongPage.astro';
+
+// 테스트 데이터: 서울 강남구 역삼동
+const TEST_REGION = {
+  sidoname:   '서울특별시',
+  sigungu:    '강남',
+  dong:       '세곡동',
+  lat:        37.47107923,
+  lon:        127.1044417,
+  sidoSlug:   'seoul',
+  sidoLabel:  '서울특별시',
+  accentColor: '#2563eb',
+};
+
+const breadcrumbs = [
+  { name: '홈',         url: '/' },
+  { name: '서울특별시', url: '/seoul' },
+  { name: '강남구',     url: '/seoul/강남구' },
+  { name: '역삼동',     url: '/seoul/강남구/역삼동' },
+];
+---
+
+<BaseLayout
+  title="[TEST] 강남구 역삼동 배관막힘 | 배관매니저 1866-2449"
+  description="[테스트 페이지] 강남구 역삼동 배관막힘·하수구막힘 전문 업체. 배관매니저 1866-2449."
+  canonical="https://speed-plumber.netlify.app/test"
+  breadcrumbs={breadcrumbs}
+  region="강남구 역삼동"
+  keyword="배관막힘"
+>
+  <Header />
+
+  <!-- 테스트 배너 -->
+  <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs font-bold text-center py-2 px-4">
+    ⚠️ 테스트 페이지 — 실제 서비스 페이지가 아닙니다 (URL: /test)
+  </div>
+
+  <!-- 히어로 섹션 (지역 페이지 상단) -->
+  <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white py-10 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-xs font-bold text-yellow-300 uppercase tracking-widest mb-2">
+        서울특별시 강남구 역삼동
+      </p>
+      <h1 class="text-3xl md:text-4xl font-black mb-3 leading-tight">
+        역삼동 배관막힘 전문 업체<br/>
+        <span class="text-yellow-300">24시간 신속 출동</span>
+      </h1>
+      <p class="text-blue-100 text-sm mb-6 max-w-xl">
+        하수구막힘·싱크대막힘·변기막힘 당일 해결. 내시경 진단 후 정확한 견적, 당일 현장 처리.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="tel:18662449"
+          class="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-xl px-8 py-4 rounded-2xl shadow-lg hover:scale-105 transition-all"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+          </svg>
+          1866-2449
+        </a>
+        <div class="flex flex-col gap-1 text-xs text-blue-200">
+          <span>✅ 서울/경기 신속출동</span>
+          <span>✅ 배관 전문 해결</span>
+          <span>✅ 24시간 365일</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서비스 특징 배지 -->
+  <div class="bg-white border-b border-gray-200 py-4">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex flex-wrap gap-3 justify-center text-sm">
+        {[
+          { icon: '🔧', text: '배관막힘 전문' },
+          { icon: '🚿', text: '하수구·싱크대' },
+          { icon: '🚽', text: '변기·욕실' },
+          { icon: '🌧️', text: '우수관' },
+          { icon: '📷', text: '내시경 진단' },
+          { icon: '💧', text: '고압세척' },
+          { icon: '⚡', text: '24시간 긴급' },
+          { icon: '🎯', text: '정찰제 가격' },
+        ].map(f => (
+          <span class="flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full font-medium">
+            <span>{f.icon}</span> {f.text}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- DongPage 컴포넌트 (모든 섹션 포함) -->
+  <DongPage {...TEST_REGION} />
+
+  <!-- 하단 CTA -->
+  <div class="bg-blue-900 text-white text-center py-10 px-4">
+    <h2 class="text-2xl font-black mb-2">역삼동 배관막힘, 지금 바로 해결하세요!</h2>
+    <p class="text-blue-300 text-sm mb-5">24시간 365일 · 서울/경기 신속출동 · 확실한 막힘 해결</p>
+    <a
+      href="tel:18662449"
+      class="inline-block bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl px-12 py-5 rounded-2xl shadow-xl hover:scale-105 transition-all"
+    >
+      📞 1866-2449
+    </a>
+  </div>
+
+  <footer class="bg-gray-900 text-gray-400 text-sm text-center py-6">
+    <p>© 2024 배관매니저 | Tel: <a href="tel:18662449" class="text-yellow-400 font-bold">1866-2449</a></p>
+    <nav class="mt-2 flex justify-center gap-4 text-xs text-gray-500">
+      <a href="/" class="hover:text-gray-300">홈</a>
+      <a href="/seoul" class="hover:text-gray-300">서울</a>
+      <a href="/gyeonggi" class="hover:text-gray-300">경기</a>
+      <a href="/reviews" class="hover:text-gray-300">배관후기</a>
+      <a href="/contact" class="hover:text-gray-300">상담신청</a>
+    </nav>
+  </footer>
+</BaseLayout>

@@ -21,7 +21,8 @@ const {
   breadcrumbs,
 } = Astro.props;
 
-const siteUrl  = 'https://plumbers24.netlify.app';
+import { siteConfig } from '../data/contents_list_fix_netlify';
+const siteUrl  = siteConfig.siteUrl;
 const canonUrl = canonical ?? (siteUrl + Astro.url.pathname);
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec';
@@ -294,25 +295,36 @@ const allLd = [
       }
     });
 
-    // ── 일 방문자 카운터 (하루 1회, localStorage 기반) ──────────────
+    // ── 일 방문자 카운터 (하루 1회) — 봇/크롤러 제외, 공란 방지 ──────────────
     (function trackVisit() {
       try {
+        if (navigator.webdriver) return;
+        if (!window.localStorage) return;
+
         const APPS_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec';
         const today = new Date().toISOString().slice(0, 10);
-        const key   = 'pv_counted_' + today;
-        if (localStorage.getItem(key)) return; // 오늘 이미 카운트됨
-        localStorage.setItem(key, '1');
-        fetch(APPS_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            type: 'pageview',
-            date: today,
-            page_url: window.location.href,
-            timestamp: new Date().toISOString(),
-          }),
-        }).catch(() => {});
+        const key   = 'pv_' + today + '_' + location.hostname;
+        if (localStorage.getItem(key)) return;
+
+        setTimeout(() => {
+          try {
+            localStorage.setItem(key, '1');
+            const pvParams = new URLSearchParams({
+              date:      today,
+              name:      '[방문자]',
+              phone:     '-',
+              inquiry:   '페이지뷰(자동)',
+              address:   location.hostname,
+              source:    location.hostname,
+              page_url:  location.href,
+              timestamp: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+            });
+            fetch(APPS_URL + '?' + pvParams.toString(), {
+              method: 'POST',
+              mode: 'no-cors',
+            }).catch(() => {});
+          } catch (_) {}
+        }, 3000);
       } catch (_) {}
     })();
 

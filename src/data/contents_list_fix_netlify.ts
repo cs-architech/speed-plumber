@@ -3,7 +3,7 @@
 
 export const siteConfig = {
   // ── 기본 사이트 정보 ────────────────────────────────────────────────────────
-  siteUrl:    'https://plumbers24.netlify.app',
+  siteUrl:    'https://speed-plumber.netlify.app',
   siteName:   '배관매니저',
   phone:      '1866-2449',
   tel:        'tel:18662449',

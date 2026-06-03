@@ -1,8 +1,8 @@
-// src/pages/sitemap.xml.ts — 자동 sitemap.xml 생성
+﻿// src/pages/sitemap.xml.ts — 자동 sitemap.xml 생성
 import type { APIRoute } from 'astro';
 import { getAllRegions, SIDO_SLUG } from '../lib/regions';
 
-const SITE = 'https://plumbers24.netlify.app';
+const SITE = 'https://speed-plumber.netlify.app';
 
 export const GET: APIRoute = async () => {
   const allRegions = getAllRegions();

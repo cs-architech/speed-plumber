@@ -53,7 +53,10 @@ a{text-decoration:none;color:inherit}
 
 <div class="hero">
   <h1>🔧 배관막힘 24시간 긴급출동<br>서울·경기·인천 전 지역 전문업체</h1>
-  <a class="call-btn" href="tel:1866-2449">📞 1866-2449</a>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center">
+    <a class="call-btn" href="tel:1866-2449">📞 1866-2449</a>
+    <button onclick="navigator.clipboard.writeText('1866-2449').then(()=>{this.textContent='✅ 복사됨';setTimeout(()=>{this.textContent='📋 번호 복사'},1500)})" style="padding:12px 20px;background:rgba(255,255,255,.2);color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit">📋 번호 복사</button>
+  </div>
   <div class="hero-sub">지금 바로 전화하시면 전문 상담사가 연결됩니다 · 출장비 무료 · 못 뚫으면 0원</div>
 </div>
 

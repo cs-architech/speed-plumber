@@ -1,0 +1,32 @@
+---
+// test2.astro — 경기도 화성 동탄9동 DongPage 테스트
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import DongPage from '../components/DongPage.astro';
+
+const region = { sidoname: '경기도', sigungu: '화성', dong: '동탄9동', lat: 37.17942378, lon: 127.1301702, sidoSlug: 'gyeonggi', sidoLabel: '경기도', accentColor: '#16a34a' };
+const breadcrumbs = [
+  { name: '홈', url: '/' },
+  { name: '경기도', url: '/gyeonggi' },
+  { name: '화성', url: '/gyeonggi/화성' },
+  { name: '동탄9동', url: '/gyeonggi/화성/동탄9동' },
+];
+---
+<BaseLayout title="[TEST2] 화성 동탄9동 배관막힘 | 배관매니저 1866-2449" breadcrumbs={breadcrumbs} region="화성 동탄9동" keyword="배관막힘">
+  <Header />
+  <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs font-bold text-center py-2">⚠️ TEST2 — 경기도 화성 동탄9동</div>
+  <div class="bg-gradient-to-br from-green-900 via-green-800 to-green-600 text-white py-10 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-xs font-bold text-yellow-300 uppercase tracking-widest mb-2">경기도 화성 동탄9동</p>
+      <h1 class="text-3xl md:text-4xl font-black mb-3 leading-tight">동탄9동 배관막힘 전문 업체<br/><span class="text-yellow-300">24시간 신속 출동</span></h1>
+      <a href="tel:18662449" class="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-green-900 font-black text-xl px-8 py-4 rounded-2xl shadow-lg hover:scale-105 transition-all">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        1866-2449
+      </a>
+    </div>
+  </div>
+  <DongPage {...region} />
+  <footer class="bg-gray-900 text-gray-400 text-sm text-center py-6">
+    <p>© 2024 배관매니저 | <a href="tel:18662449" class="text-yellow-400 font-bold">1866-2449</a></p>
+  </footer>
+</BaseLayout>
