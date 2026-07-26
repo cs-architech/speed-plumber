@@ -6,7 +6,8 @@ interface Props {
 }
 const { region = '', keyword = '' } = Astro.props;
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec';
+// 제작1/3과 동일한 공유 상담접수 스크립트로 통합
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6MXekJ82bunwQquxPjm2R32qJcEoFxbCykqLOL0TZ1nNRNC7hwHMa/exec';
 ---
 
 <section class="bg-blue-50 border border-blue-100 rounded-2xl p-6 md:p-8">
@@ -148,6 +149,17 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxv
   // 페이지 URL 자동 입력
   document.getElementById('cf-page-url').value = window.location.href;
 
+  // 유입경로: 최초 진입 시점의 referrer를 세션에 저장해두고, 폼 제출 시 그 값을 사용
+  function getEntryReferrer() {
+    const KEY = '_entry_referrer';
+    let stored = sessionStorage.getItem(KEY);
+    if (stored === null) {
+      stored = document.referrer || '직접 접속';
+      sessionStorage.setItem(KEY, stored);
+    }
+    return stored;
+  }
+
   // 기타 체크박스 → 텍스트 입력 표시/숨김
   const chkOther   = document.getElementById('chk-other');
   const otherWrap  = document.getElementById('other-text-wrap');
@@ -204,7 +216,9 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxv
       region:   form.querySelector('[name="region"]').value,
       keyword:  form.querySelector('[name="keyword"]').value,
       page_url: form.querySelector('#cf-page-url').value,
-      source:   'contact-form',
+      source:   location.hostname,
+      referrer: getEntryReferrer(),
+      agree:    agree,
       timestamp: now.toISOString(),
     };
 
