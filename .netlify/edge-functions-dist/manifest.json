@@ -1,0 +1,1 @@
+{"bundles":[{"asset":"6316ceaedc218e6d5a0b96dfdef19dc717fd52a38052d77ff3941e7d392a1d5e.eszip","format":"eszip2"}],"routes":[{"function":"geo-blocker","pattern":"^(?:/(.*))/?$","excluded_patterns":[],"path":"/*"}],"post_cache_routes":[],"bundler_version":"14.10.3","layers":[],"import_map":"netlify:import-map","function_config":{}}

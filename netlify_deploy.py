@@ -14,7 +14,7 @@ BASE_DIR    = Path(__file__).parent
 BANK_DIR    = BASE_DIR / "pages_bank"
 OUTPUT_DIR  = BASE_DIR / "output"
 META_FILE   = BASE_DIR / "deploy_meta.json"
-SITE_DOMAIN = "https://speed-plumber.netlify.app"
+SITE_DOMAIN = "https://reviewkorea.co.kr/plumber2"
 
 
 def calc_count(start_dt: datetime) -> int:

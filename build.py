@@ -45,7 +45,7 @@ REGION_BLOCK_COUNT  = 13  # 생성할 지역 블록 수 (주요 1 + 점검가능
 GALLERY_RANGE       = (5, 11)
 KEYWORDS_POOL       = ['싱크대막힘', '변기막힘', '배관막힘', '하수구막힘',
                        '우수관막힘', '하수구역류', '배관고압세척', '하수구뚫음']
-SITE_DOMAIN         = "https://speed-plumber.netlify.app"
+SITE_DOMAIN         = "https://reviewkorea.co.kr/plumber2"
 
 # ─── 웹마스터 인증 코드 ────────────────────────────────────────────────────────
 # Google Search Console → 설정 → 소유권 인증 → HTML 태그 → content 값 입력

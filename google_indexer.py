@@ -27,7 +27,7 @@ except ImportError:
 BASE_DIR             = Path(__file__).parent
 SERVICE_ACCOUNT_FILE = BASE_DIR / "service_account.json"
 STATE_FILE           = BASE_DIR / "indexer_state.json"
-SITE_DOMAIN          = "https://speed-plumber.netlify.app"
+SITE_DOMAIN          = "https://reviewkorea.co.kr/plumber2"
 SITEMAP_URL          = f"{SITE_DOMAIN}/sitemap.xml"
 INDEXING_API_SCOPE   = "https://www.googleapis.com/auth/indexing"
 INDEXING_ENDPOINT    = "https://indexing.googleapis.com/v3/urlNotifications:publish"

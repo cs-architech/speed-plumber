@@ -1,0 +1,64 @@
+headersOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+
+[build]
+edge_functions = "d:\\홈페이지 배포★\\홈페이지제작2(배관)\\netlify\\edge-functions"
+publish = "d:\\홈페이지 배포★\\홈페이지제작2(배관)\\output"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "python netlify_deploy.py"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[edge_functions]]
+path = "/*"
+function = "geo-blocker"
+
+[functions]
+
+[functions."*"]
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+for = "/_assets/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/images/*"
+
+[headers.values]
+Cache-Control = "public, max-age=86400"
+
+[[redirects]]
+from = "/*"
+to = "/404.html"
+status = 404.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
