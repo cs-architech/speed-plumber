@@ -11,7 +11,7 @@ import sys
 import time
 from datetime import date, datetime
 from pathlib import Path
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 from xml.etree import ElementTree as ET
 
 try:
@@ -61,7 +61,8 @@ def save_state(state: dict):
 def fetch_urls(sitemap_url: str) -> list[str]:
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     try:
-        with urlopen(sitemap_url, timeout=30) as r:
+        req = Request(sitemap_url, headers={"User-Agent": "Mozilla/5.0 (compatible; GoogleIndexerBot/1.0)"})
+        with urlopen(req, timeout=30) as r:
             tree = ET.parse(r)
     except Exception as e:
         print(f"[WARN] 사이트맵 접근 실패 ({sitemap_url}): {e}")
