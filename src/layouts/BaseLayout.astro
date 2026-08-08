@@ -25,7 +25,7 @@ import { siteConfig } from '../data/contents_list_fix_netlify';
 const siteUrl  = siteConfig.siteUrl;
 const canonUrl = canonical ?? (siteUrl + Astro.url.pathname);
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6MXekJ82bunwQquxPjm2R32qJcEoFxbCykqLOL0TZ1nNRNC7hwHMa/exec';
 const gaId = import.meta.env.PUBLIC_GA_ID;
 
 // BreadcrumbList JSON-LD
@@ -301,7 +301,7 @@ const allLd = [
         if (navigator.webdriver) return;
         if (!window.localStorage) return;
 
-        const APPS_URL = 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec';
+        const APPS_URL = 'https://script.google.com/macros/s/AKfycbx5f3M9-myEFVA0P9rh5TcRdGa_kC6MSK5gf85r02iiU5AY4Kc0EEMT2-sltemtWYGm/exec';
         const today = new Date().toISOString().slice(0, 10);
         const key   = 'pv_' + today + '_' + location.hostname;
         if (localStorage.getItem(key)) return;
@@ -310,14 +310,10 @@ const allLd = [
           try {
             localStorage.setItem(key, '1');
             const pvParams = new URLSearchParams({
-              date:      today,
-              name:      '[방문자]',
-              phone:     '-',
-              inquiry:   '페이지뷰(자동)',
-              address:   location.hostname,
-              source:    location.hostname,
+              site_id:   'web_creation_2',
+              site_name: '홈페이지제작2 (배관)',
+              referrer:  document.referrer || '',
               page_url:  location.href,
-              timestamp: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
             });
             fetch(APPS_URL + '?' + pvParams.toString(), {
               method: 'POST',
