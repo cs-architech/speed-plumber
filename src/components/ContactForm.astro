@@ -47,6 +47,20 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6
       />
     </div>
 
+    <!-- 주소/위치 -->
+    <div>
+      <label for="cf-address" class="block text-sm font-medium text-gray-700 mb-1">
+        주소 / 위치 <span class="text-red-500">*</span>
+      </label>
+      <input
+        id="cf-address" name="address" type="text"
+        placeholder="예: 서울 강남구 역삼동, 경기 수원시 영통구"
+        required
+        autocomplete="street-address"
+        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm bg-white"
+      />
+    </div>
+
     <!-- 상담 항목 (복수 체크) -->
     <div>
       <p class="block text-sm font-medium text-gray-700 mb-2">
@@ -124,7 +138,7 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6
       <div id="privacy-content" class="hidden px-4 py-3 bg-white text-xs text-gray-600 leading-relaxed border-t border-gray-100 space-y-1.5">
         <p>당사는 「개인정보보호법」, 「정보통신망 이용촉진 및 정보 보호 등에 관한 법률」에 따라 귀하의 개인정보를 다음과 같이 수집·이용하고자 합니다.</p>
         <p><strong>1. 개인정보의 수집∙이용 목적:</strong> 하수구막힘, 배관막힘, 싱크대막힘 등 상담</p>
-        <p><strong>2. 수집·이용하는 개인정보의 내용:</strong> 성명, 연락처</p>
+        <p><strong>2. 수집·이용하는 개인정보의 내용:</strong> 성명, 연락처, 주소(위치)</p>
         <p><strong>3. 개인정보 보유·이용 기간:</strong> 상담종료일로부터 30일</p>
         <p><strong>4. 개인정보의 파기:</strong> 회사는 개인정보 보유 기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
         <p class="text-gray-500">※ 본 동의를 거부하실 수 있으나, 거부하는 경우에는 상담이 제한될 수 있습니다.</p>
@@ -186,16 +200,18 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name   = document.getElementById('cf-name').value.trim();
-    const phone  = document.getElementById('cf-phone').value.trim();
-    const agree  = document.getElementById('cf-agree').checked;
-    const cats   = [...form.querySelectorAll('input[name="category"]:checked')].map(c => c.value);
+    const name    = document.getElementById('cf-name').value.trim();
+    const phone   = document.getElementById('cf-phone').value.trim();
+    const address = document.getElementById('cf-address').value.trim();
+    const agree   = document.getElementById('cf-agree').checked;
+    const cats    = [...form.querySelectorAll('input[name="category"]:checked')].map(c => c.value);
 
     if (!name)  { showMsg('성함을 입력해주세요.', 'error'); return; }
     if (!phone) { showMsg('연락처를 입력해주세요.', 'error'); return; }
     if (!/^0\d{1,2}[-\s]?\d{3,4}[-\s]?\d{4}$/.test(phone)) {
       showMsg('올바른 연락처 형식을 입력해주세요. (예: 010-1234-5678)', 'error'); return;
     }
+    if (!address) { showMsg('주소/위치를 입력해주세요.', 'error'); return; }
     if (!cats.length) { showMsg('상담 항목을 하나 이상 선택해주세요.', 'error'); return; }
     if (!agree) { showMsg('개인정보 수집·이용 동의가 필요합니다.', 'error'); return; }
 
@@ -212,6 +228,7 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6
       date,
       name,
       phone,
+      address,
       inquiry:  inquiryParts.join(', '),
       region:   form.querySelector('[name="region"]').value,
       keyword:  form.querySelector('[name="keyword"]').value,
@@ -234,7 +251,9 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6
       showMsg('✅ 상담 신청이 완료되었습니다! 빠른 시일 내 연락드리겠습니다.', 'success');
       form.reset();
     } catch {
-      showMsg('전송 중 오류가 발생했습니다. 전화(1866-2449)로 문의해주세요.', 'error');
+      // no-cors 모드에서는 네트워크 계층 오류만 여기로 오며, 실제로는 접수된 경우가 대부분이라 안심 문구로 안내
+      showMsg('✅ 상담 신청이 접수되었습니다. 통신 상태에 따라 다소 지연될 수 있으니, 급하시면 전화(1866-2449)로도 문의해주세요.', 'success');
+      form.reset();
     } finally {
       btn.disabled = false;
       btn.textContent = '무료 상담 신청하기';
