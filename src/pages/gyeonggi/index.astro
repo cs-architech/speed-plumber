@@ -17,7 +17,7 @@ const region  = sidoname;
 const keyword = '배관막힘';
 const seed    = region.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
 const reviewText = seededPick(seed + 4, REVIEW_TEXTS).replace(/\{region\}/g, region);
-const faqTitle   = seededPick(seed + 2, FAQ_TITLES).replace('{region}', region);
+const faqTitle   = seededPick(seed + 2, FAQ_TITLES).replace(/\{region\}/g, region);
 
 function seededRand(s: number) {
   let cur = s;

@@ -99,9 +99,9 @@ function recordInquiry(ss, data) {
   try {
     MailApp.sendEmail({
       to: 'woongdamchoi@gmail.com',
-      subject: '[상담접수] ' + name + ' / ' + phone,
+      subject: '[하수구접수] ' + name + ' / ' + phone,
       body: [
-        '새 상담이 접수되었습니다.',
+        '새 하수구/배관 상담이 접수되었습니다.',
         '',
         '이름: ' + name,
         '전화번호: ' + phone,

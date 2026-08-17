@@ -10,7 +10,7 @@ export const siteConfig = {
   copyright:  '© 2025 배관매니저',
 
   // ── Google Apps Script (폼 접수 + 방문자 카운터 공용) ────────────────────────
-  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbxPiUmBKUWRPdxvht5K9cLHFMJ83ML_S8qY0PzgeqnL9TfZs_IZJB4alpz0NUcRzv0/exec',
+  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6MXekJ82bunwQquxPjm2R32qJcEoFxbCykqLOL0TZ1nNRNC7hwHMa/exec',
 
   // ── OG / SNS 기본 이미지 ─────────────────────────────────────────────────────
   ogImage:       '/og-default.jpg',

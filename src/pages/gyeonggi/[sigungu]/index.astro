@@ -28,7 +28,7 @@ const pageDesc  = SIGUNGU_DESCS [seed % SIGUNGU_DESCS.length ](sigungu, sidoname
 const region  = sigungu;
 const keyword = '배관막힘';
 const reviewText = seededPick(seed + 4, REVIEW_TEXTS).replace(/\{region\}/g, region);
-const faqTitle   = seededPick(seed + 2, FAQ_TITLES).replace('{region}', region);
+const faqTitle   = seededPick(seed + 2, FAQ_TITLES).replace(/\{region\}/g, region);
 
 function seededRand(s: number) {
   let cur = s;

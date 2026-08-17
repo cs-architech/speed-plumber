@@ -47,6 +47,32 @@ a{text-decoration:none;color:inherit}
 .footer{background:#1a237e;color:#fff;text-align:center;padding:28px 16px;margin-top:40px}
 .footer-phone{font-size:1.4rem;font-weight:800;color:#ffeb3b;letter-spacing:1px}
 .footer p{font-size:.78rem;opacity:.7;margin-top:6px}
+
+/* 상담 폼 */
+.form-wrap{max-width:520px;margin:24px auto 0;background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.08);overflow:hidden}
+.form-header{background:#1a237e;color:#fff;padding:16px 20px}
+.form-header h2{font-size:1.05rem;font-weight:800;margin-bottom:4px}
+.form-header p{font-size:.78rem;opacity:.85}
+.form-body{padding:20px}
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:.82rem;font-weight:700;color:#1a237e;margin-bottom:6px}
+.req{color:#e53935}
+.form-input{width:100%;padding:10px 12px;border:1.5px solid #dde1f0;border-radius:8px;font-size:.9rem;font-family:inherit}
+.check-group{display:flex;flex-wrap:wrap;gap:8px}
+.check-item{display:flex;align-items:center;gap:5px;font-size:.82rem;background:#f5f7fa;padding:6px 10px;border-radius:8px;cursor:pointer}
+.other-wrap{display:flex;align-items:center;gap:6px}
+.other-input{padding:6px 8px;border:1.5px solid #dde1f0;border-radius:8px;font-size:.8rem;width:110px}
+.privacy-check-row{display:flex;align-items:center;gap:8px}
+.privacy-toggle-btn{background:none;border:none;font-size:.82rem;font-weight:700;color:#1a237e;cursor:pointer;text-decoration:underline}
+.privacy-content{display:none;font-size:.72rem;color:#666;background:#f5f7fa;padding:10px;border-radius:8px;margin-top:8px;line-height:1.6}
+.privacy-content.show{display:block}
+.privacy-content ol{padding-left:18px}
+.privacy-note{margin-top:6px;color:#999}
+.submit-btn{width:100%;padding:14px;background:#ffeb3b;color:#1a237e;font-size:1rem;font-weight:800;border:none;border-radius:10px;cursor:pointer;margin-top:6px}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+.form-msg{margin-top:10px;font-size:.82rem;font-weight:600;text-align:center}
+.form-msg.success{color:#2e7d32}
+.form-msg.error{color:#e53935}
 </style>
 </head>
 <body>
@@ -66,6 +92,61 @@ a{text-decoration:none;color:inherit}
   <span class="feat">✅ 무료 견적</span>
   <span class="feat">✅ 당일 완료</span>
   <span class="feat">✅ 못 뚫으면 0원</span>
+</div>
+
+<div class="form-wrap">
+  <div class="form-header">
+    <h2>📋 무료 상담 신청</h2>
+    <p>정확한 연락처를 남겨 주시면 빠르게 연락드립니다</p>
+  </div>
+  <div class="form-body">
+    <form id="consultForm" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="userName">이름 <span class="req">*</span></label>
+        <input class="form-input" type="text" id="userName" name="name" placeholder="홍길동" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="userPhone">연락처 <span class="req">*</span></label>
+        <input class="form-input" type="tel" id="userPhone" name="phone" placeholder="010-0000-0000" autocomplete="tel" oninput="formatPhone(this)">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="userAddress">주소/지역 <span class="req">*</span></label>
+        <input class="form-input" type="text" id="userAddress" name="address" placeholder="예: 서울 강남구" autocomplete="address-line1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">문의 항목 <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="inquiry" value="하수구막힘"> 하수구막힘</label>
+          <label class="check-item"><input type="checkbox" name="inquiry" value="싱크대막힘"> 싱크대막힘</label>
+          <label class="check-item"><input type="checkbox" name="inquiry" value="배관막힘"> 배관막힘</label>
+          <label class="check-item"><input type="checkbox" name="inquiry" value="변기막힘"> 변기막힘</label>
+          <label class="check-item"><input type="checkbox" name="inquiry" value="우수관막힘"> 우수관막힘</label>
+          <div class="other-wrap">
+            <label class="check-item"><input type="checkbox" name="inquiry" value="기타" id="chkOther"> 기타:</label>
+            <input class="other-input" type="text" id="otherText" placeholder="직접 입력" disabled>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="privacy-check-row">
+          <input type="checkbox" id="privacyCheck" name="privacy">
+          <button type="button" class="privacy-toggle-btn" id="privacyToggle">[필수] 개인정보수집 및 이용에 동의합니다.</button>
+        </div>
+        <div class="privacy-content" id="privacyContent">
+          <p>당사는 「개인정보보호법」, 「정보통신망 이용촉진 및 정보 보호 등에 관한 법률」에 따라 귀하의 개인정보를 다음과 같이 수집·이용하고자 합니다.</p>
+          <ol>
+            <li><strong>개인정보의 수집∙이용 목적:</strong> 하수구막힘, 배관막힘, 싱크대막힘 등 상담</li>
+            <li><strong>수집·이용하는 개인정보의 내용:</strong> 성명, 연락처</li>
+            <li><strong>개인정보 보유·이용 기간:</strong> 상담종료일로부터 30일</li>
+            <li><strong>개인정보의 파기:</strong> 회사는 개인정보 보유 기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</li>
+          </ol>
+          <p class="privacy-note">※ 본 동의를 거부하실 수 있으나, 거부하는 경우에는 상담이 제한될 수 있습니다.</p>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn" disabled>상담 신청하기</button>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
+  </div>
 </div>
 
 <div class="container">
@@ -162,5 +243,85 @@ a{text-decoration:none;color:inherit}
   <p>서울특별시 마포구 신수로 3길 23</p>
 </footer>
 
+
+<script>
+function formatPhone(el){
+  var v=el.value.replace(/\D/g,'');
+  if(v.length<=3)el.value=v;
+  else if(v.length<=7)el.value=v.slice(0,3)+'-'+v.slice(3);
+  else el.value=v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7,11);
+}
+document.getElementById('chkOther').addEventListener('change', function(){
+  var inp = document.getElementById('otherText');
+  inp.disabled = !this.checked;
+  if(!this.checked) inp.value='';
+});
+
+var privacyToggle  = document.getElementById('privacyToggle');
+var privacyContent = document.getElementById('privacyContent');
+var privacyCheck   = document.getElementById('privacyCheck');
+var submitBtn      = document.getElementById('submitBtn');
+
+privacyToggle.addEventListener('click', function(){
+  privacyContent.classList.toggle('show');
+});
+privacyCheck.addEventListener('change', function(){
+  submitBtn.disabled = !this.checked;
+});
+
+document.getElementById('consultForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var name  = document.getElementById('userName').value.trim();
+  var phone = document.getElementById('userPhone').value.trim();
+  var address = document.getElementById('userAddress').value.trim();
+  var checked = [...document.querySelectorAll('input[name="inquiry"]:checked')].map(function(el){
+    if (el.value === '기타') {
+      var txt = document.getElementById('otherText').value.trim();
+      return txt ? '기타:' + txt : '기타';
+    }
+    return el.value;
+  });
+
+  function showMsg(msg, type){
+    var el = document.getElementById('formMsg');
+    el.textContent = msg;
+    el.className = 'form-msg ' + type;
+  }
+
+  if (!name) { showMsg('이름을 입력해 주세요.', 'error'); return; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) { showMsg('정확한 연락처를 입력해 주세요.', 'error'); return; }
+  if (!address) { showMsg('주소/지역을 입력해 주세요.', 'error'); return; }
+  if (checked.length === 0) { showMsg('문의 항목을 하나 이상 선택해 주세요.', 'error'); return; }
+  if (!privacyCheck.checked) { showMsg('개인정보 수집에 동의해 주세요.', 'error'); return; }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = '전송 중...';
+
+  var payload = {
+    date: new Date().toISOString().slice(0, 10),
+    name: name,
+    phone: phone,
+    inquiry: checked.join(', '),
+    address: address,
+    source: location.hostname,
+    page_url: window.location.href,
+    timestamp: new Date().toLocaleString('ko-KR', {timeZone:'Asia/Seoul'}),
+  };
+
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6MXekJ82bunwQquxPjm2R32qJcEoFxbCykqLOL0TZ1nNRNC7hwHMa/exec?' + new URLSearchParams(payload).toString(), {
+      mode: 'no-cors',
+    });
+    showMsg('✅ 상담 신청이 완료되었습니다. 곧 연락드리겠습니다!', 'success');
+    document.getElementById('consultForm').reset();
+    document.getElementById('otherText').disabled = true;
+  } catch (err) {
+    showMsg('전송 중 오류가 발생했습니다. 전화로 문의해 주세요.', 'error');
+  } finally {
+    submitBtn.textContent = '상담 신청하기';
+    submitBtn.disabled = !privacyCheck.checked;
+  }
+});
+</script>
 </body>
 </html>

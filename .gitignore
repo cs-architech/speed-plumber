@@ -7,3 +7,6 @@ output/
 홈페이지제작.zip
 service_account.json
 indexer_log.json
+
+# Local Netlify folder
+.netlify

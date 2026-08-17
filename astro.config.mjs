@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://plumbers24.netlify.app',
+  site: 'https://speed-plumber.netlify.app',
   integrations: [
     tailwind(),
   ],

@@ -241,11 +241,18 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzK8bmvdHDyfPh6
 
     try {
       if (APPS_SCRIPT_URL) {
-        await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
+        // POST+JSON은 Apps Script exec URL의 302 리다이렉트 과정에서 브라우저가
+        // body를 유실한 채 GET으로 재요청하는 경우가 있어 접수 내용이 공란으로
+        // 기록되는 문제가 있었음. 리다이렉트에도 안전한 GET + 쿼리스트링으로 전송.
+        // (주의: 이 파일은 과거 GET 방식으로 고쳤다가 다시 POST로 되돌아간
+        // 이력이 있음 — 되돌리지 말 것)
+        const params = new URLSearchParams();
+        Object.entries(payload).forEach(([key, val]) => {
+          params.set(key, val === undefined || val === null ? '' : String(val));
+        });
+        await fetch(`${APPS_SCRIPT_URL}?${params.toString()}`, {
+          method: 'GET',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
         });
       }
       showMsg('✅ 상담 신청이 완료되었습니다! 빠른 시일 내 연락드리겠습니다.', 'success');

@@ -70,9 +70,9 @@ const roadAddr  = generateRoadAddr(sidoname, sigungu, dong, seed);
 const jibunAddr = generateJibunAddr(sidoname, sigungu, dong, seed);
 
 // spintax 텍스트 선택
-const listTitle    = seededPick(seed,       REGION_LIST_TITLES).replace('{region}', region);
+const listTitle    = seededPick(seed,       REGION_LIST_TITLES).replace(/\{region\}/g, region);
 const listSummary  = seededPick(seed + 1,   SERVICE_SUMMARIES).replace('{count}', String(nearbyCards.length + 1));
-const faqTitle     = seededPick(seed + 2,   FAQ_TITLES).replace('{region}', region);
+const faqTitle     = seededPick(seed + 2,   FAQ_TITLES).replace(/\{region\}/g, region);
 const galleryTitle = seededPick(seed + 3,   GALLERY_TITLES);
 const reviewText   = seededPick(seed + 4,   REVIEW_TEXTS).replace(/\{region\}/g, region);
 
